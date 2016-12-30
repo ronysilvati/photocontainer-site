@@ -45,3 +45,15 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Grav Specific
+user/data/*
+!user/data/.*
+user/accounts/*
+!user/accounts/.*
+.sass-cache
+composer.lock
+cache/*
+assets/*
+logs/*
+images/*
