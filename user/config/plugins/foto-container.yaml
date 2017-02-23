@@ -1,0 +1,11 @@
+enabled: true
+text_var: 'Custom Text added by the **Foto Container** plugin (disable plugin to remove)'
+testimony:
+  -
+    testimony: 'Um testemunho'
+    author: José
+  -
+    testimony: 'Outro testemunho'
+    author: Manuel
+login_route: /do-login
+api_endpoint: 'http://192.168.99.100:32081/'

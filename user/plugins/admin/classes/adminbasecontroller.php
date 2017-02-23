@@ -420,6 +420,7 @@ class AdminBaseController
 
         switch ($type) {
             case 'configuration':
+            case 'config':
             case 'system':
                 $permissions[] = 'admin.configuration';
                 break;
@@ -434,6 +435,10 @@ class AdminBaseController
                 $permissions[] = 'admin.themes';
                 break;
             case 'users':
+                $permissions[] = 'admin.users';
+                break;
+            case 'user':
+                $permissions[] = 'admin.login';
                 $permissions[] = 'admin.users';
                 break;
             case 'pages':
@@ -804,11 +809,6 @@ class AdminBaseController
         $type      = $uri->param('type');
         $field     = $uri->param('field');
 
-        $event = $this->grav->fireEvent('onAdminCanSave', new Event(['controller' => &$this]));
-        if (!$event['can_save']) {
-            return false;
-        }
-
         $this->taskRemoveMedia();
 
         if ($type == 'pages') {
@@ -876,6 +876,9 @@ class AdminBaseController
         }
 
         $filename = base64_decode($this->grav['uri']->param('route'));
+        if (!$filename) {
+            $filename = base64_decode($this->route);
+        }
 
         $file                  = File::instance($filename);
         $resultRemoveMedia     = false;
@@ -895,20 +898,44 @@ class AdminBaseController
         }
 
         if ($resultRemoveMedia && $resultRemoveMediaMeta) {
-            $this->admin->json_response = [
-                'status'  => 'success',
-                'message' => $this->admin->translate('PLUGIN_ADMIN.REMOVE_SUCCESSFUL')
-            ];
+            if ($this->grav['uri']->extension() === 'json') {
+                $this->admin->json_response = [
+                    'status'  => 'success',
+                    'message' => $this->admin->translate('PLUGIN_ADMIN.REMOVE_SUCCESSFUL')
+                ];
+            } else {
+                $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.REMOVE_SUCCESSFUL'), 'info');
+                $this->clearMediaCache();
+                $this->setRedirect('/media-manager');
+            }
 
             return true;
         } else {
-            $this->admin->json_response = [
-                'status'  => 'success',
-                'message' => $this->admin->translate('PLUGIN_ADMIN.REMOVE_FAILED')
-            ];
+            if ($this->grav['uri']->extension() === 'json') {
+                $this->admin->json_response = [
+                    'status'  => 'success',
+                    'message' => $this->admin->translate('PLUGIN_ADMIN.REMOVE_FAILED')
+                ];
+            } else {
+                $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.REMOVE_FAILED'), 'error');
+            }
 
             return false;
         }
+    }
+
+    /**
+     * Handles clearing the media cache
+     *
+     * @return bool True if the action was performed
+     */
+    protected function clearMediaCache()
+    {
+        $key = 'media-manager-files';
+        $cache = $this->grav['cache'];
+        $cache->delete(md5($key));
+
+        return true;
     }
 
     /**

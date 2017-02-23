@@ -5,6 +5,7 @@ use Grav\Common\Cache;
 use Grav\Common\Config\Config;
 use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Filesystem\Folder;
+use Grav\Common\GPM\GPM as GravGPM;
 use Grav\Common\GPM\Installer;
 use Grav\Common\Grav;
 use Grav\Common\Data;
@@ -438,6 +439,18 @@ class AdminController extends AdminBaseController
 
         $config = $this->grav['config'];
 
+        // Special handler for user data.
+        if ($this->view == 'user') {
+            if (!$this->admin->authorize(['admin.super', 'admin.users'])) {
+                //not admin.super or admin.users
+                if ($this->prepareData($data)->username !== $this->grav['user']->username) {
+                    $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.INSUFFICIENT_PERMISSIONS_FOR_TASK') . ' save.',
+                    'error');
+                    return false;
+                }
+            }
+        }
+
         // Special handler for pages data.
         if ($this->view == 'pages') {
             /** @var Pages $pages */
@@ -512,7 +525,6 @@ class AdminController extends AdminBaseController
                 }
             }
 
-
         } else {
             // Handle standard data types.
             $obj = $this->prepareData($data);
@@ -545,7 +557,10 @@ class AdminController extends AdminBaseController
             $config->reload();
 
             if ($this->view === 'user') {
-                $this->grav['user']->merge(User::load($this->admin->route)->toArray());
+                if ($obj->username == $this->grav['user']->username) {
+                    //Editing current user. Reload user object
+                    $this->grav['user']->merge(User::load($this->admin->route)->toArray());
+                }
             }
         }
 
@@ -780,6 +795,51 @@ class AdminController extends AdminBaseController
     }
 
     /**
+     * Get update status from GPM
+     */
+    protected function taskGetUpdates()
+    {
+        $data     = $this->post;
+        $flush = isset($data['flush']) && $data['flush'] == true ? true : false;
+
+        if (isset($this->grav['session'])) {
+            $this->grav['session']->close();
+        }
+
+        try {
+            $gpm = new GravGPM($flush);
+
+            $resources_updates = $gpm->getUpdatable();
+            if ($gpm->grav != null) {
+                $grav_updates = [
+                    "isUpdatable" => $gpm->grav->isUpdatable(),
+                    "assets"      => $gpm->grav->getAssets(),
+                    "version"     => GRAV_VERSION,
+                    "available"   => $gpm->grav->getVersion(),
+                    "date"        => $gpm->grav->getDate(),
+                    "isSymlink"   => $gpm->grav->isSymlink()
+                ];
+
+                $this->admin->json_response = [
+                    "status"  => "success",
+                    "payload" => [
+                        "resources" => $resources_updates,
+                        "grav"      => $grav_updates,
+                        "installed" => $gpm->countInstalled(),
+                        'flushed'   => $flush
+                    ]
+                ];
+            } else {
+                $this->admin->json_response = ["status" => "error", "message" => "Cannot connect to the GPM"];
+            }
+
+        } catch (\Exception $e) {
+            $this->admin->json_response = ["status" => "error", "message" => $e->getMessage()];
+        }
+
+    }
+
+    /**
      * Get Notifications from cache.
      *
      */
@@ -958,12 +1018,11 @@ class AdminController extends AdminBaseController
         $type    = isset($data['type']) ? $data['type'] : '';
 
         if (!$this->authorizeTask('uninstall ' . $type, ['admin.' . $type, 'admin.super'])) {
-            $this->admin->json_response = [
+            $json_response = [
                 'status'  => 'error',
                 'message' => $this->admin->translate('PLUGIN_ADMIN.INSUFFICIENT_PERMISSIONS_FOR_TASK')
             ];
-
-            return false;
+            echo json_encode($json_response);exit;
         }
 
         //check if there are packages that have this as a dependency. Abort and show which ones
@@ -977,31 +1036,31 @@ class AdminController extends AdminBaseController
                         $dependent_packages) . "</cyan> depends on this package. Please remove it first.";
             }
 
-            $this->admin->json_response = ['status' => 'error', 'message' => $message];
-
-            return false;
+            $json_response = ['status' => 'error', 'message' => $message];
+            echo json_encode($json_response);exit;
         }
 
         try {
             $dependencies = $this->admin->dependenciesThatCanBeRemovedWhenRemoving($package);
             $result       = Gpm::uninstall($package, []);
         } catch (\Exception $e) {
-            $this->admin->json_response = ['status' => 'error', 'message' => $e->getMessage()];
-
-            return false;
+            $json_response = ['status' => 'error', 'message' => $e->getMessage()];
+            echo json_encode($json_response);exit;
         }
 
         if ($result) {
-            $this->admin->json_response = [
+            $json_response = [
                 'status'       => 'success',
                 'dependencies' => $dependencies,
                 'message'      => $this->admin->translate(is_string($result) ? $result : 'PLUGIN_ADMIN.UNINSTALL_SUCCESSFUL')
             ];
+            echo json_encode($json_response);exit;
         } else {
-            $this->admin->json_response = [
+            $json_response = [
                 'status'  => 'error',
                 'message' => $this->admin->translate('PLUGIN_ADMIN.UNINSTALL_FAILED')
             ];
+            echo json_encode($json_response);exit;
         }
 
         return true;
@@ -1102,7 +1161,7 @@ class AdminController extends AdminBaseController
      */
     protected function taskClearCache()
     {
-        if (!$this->authorizeTask('clear cache', ['admin.cache', 'admin.super'])) {
+        if (!$this->authorizeTask('clear cache', ['admin.cache', 'admin.super', 'admin.maintenance'])) {
             return false;
         }
 
@@ -1527,32 +1586,49 @@ class AdminController extends AdminBaseController
         }
 
         $targetPath = $page->path() . '/' . $filename;
+        $fileParts = pathinfo($filename);
 
-        if (!file_exists($targetPath)) {
+        $found = false;
+
+        if (file_exists($targetPath)) {
+            $found = true;
+            $result = unlink($targetPath);
+
+            if (!$result) {
+                $this->admin->json_response = [
+                    'status'  => 'error',
+                    'message' => $this->admin->translate('PLUGIN_ADMIN.FILE_COULD_NOT_BE_DELETED') . ': ' . $filename
+                ];
+
+                return false;
+            }
+        }
+
+
+        foreach (scandir($page->path()) as $file) {
+            if (preg_match("/{$fileParts['filename']}@\d+x\.{$fileParts['extension']}$/", $file)) {
+                $result = unlink($page->path() . '/' . $file);
+
+                if (!$result) {
+                    $this->admin->json_response = [
+                        'status'  => 'error',
+                        'message' => $this->admin->translate('PLUGIN_ADMIN.FILE_COULD_NOT_BE_DELETED') . ': ' . $filename
+                    ];
+
+                    return false;
+                }
+
+                $found = true;
+            }
+        }
+
+        if (!$found) {
             $this->admin->json_response = [
                 'status'  => 'error',
                 'message' => $this->admin->translate('PLUGIN_ADMIN.FILE_NOT_FOUND') . ': ' . $filename
             ];
 
             return false;
-        }
-
-        $fileParts = pathinfo($filename);
-        $result    = unlink($targetPath);
-
-        if (!$result) {
-            $this->admin->json_response = [
-                'status'  => 'error',
-                'message' => $this->admin->translate('PLUGIN_ADMIN.FILE_COULD_NOT_BE_DELETED') . ': ' . $filename
-            ];
-
-            return false;
-        }
-
-        foreach (scandir($page->path()) as $file) {
-            if (preg_match("/{$fileParts['filename']}@\d+x\.{$fileParts['extension']}$/", $file)) {
-                unlink($page->path() . '/' . $file);
-            }
         }
 
         $this->grav->fireEvent('onAdminAfterDelMedia', new Event(['page' => $page]));
@@ -1963,6 +2039,7 @@ class AdminController extends AdminBaseController
             $aPage->init(new \SplFileInfo($path), $language . '.md');
             $aPage->header($obj->header());
             $aPage->rawMarkdown($obj->rawMarkdown());
+            $aPage->template($obj->template());
             $aPage->validate();
             $aPage->filter();
             $aPage->save();

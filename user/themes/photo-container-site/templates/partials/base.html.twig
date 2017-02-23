@@ -1,0 +1,33 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block stylesheets %}
+        {% do assets.addCss('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900', 100) %}
+        {% do assets.addCss('http://kohl.com.br/work/fc/app.min.css', 99) %}
+        {% do assets.addCss('http://kohl.com.br/work/fc/resources/fontello/css/fontello.css', 98) %}
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery', 100) %}
+        {% do assets.addJs('http://kohl.com.br/work/fc/app.min.js', 99) %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+
+<body>
+{% block body %}
+    {% block content %}{% endblock %}
+{% endblock %}
+</body>
+
+</html>

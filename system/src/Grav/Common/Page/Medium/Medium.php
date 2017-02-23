@@ -70,7 +70,7 @@ class Medium extends Data implements RenderableInterface
     /**
      * Return just metadata from the Medium object
      *
-     * @return $this
+     * @return Data
      */
     public function meta()
     {
@@ -84,7 +84,7 @@ class Medium extends Data implements RenderableInterface
      */
     public function addMetaFile($filepath)
     {
-        $this->merge(CompiledYamlFile::instance($filepath)->content());
+        $this->merge((array)CompiledYamlFile::instance($filepath)->content());
     }
 
     /**
@@ -229,7 +229,7 @@ class Medium extends Data implements RenderableInterface
         }
 
         if (empty($attributes['alt'])) {
-            if (!empty($alt)) {
+            if (!empty($alt) || $alt === '') {
                 $attributes['alt'] = $alt;
             } elseif (!empty($this->items['alt'])) {
                 $attributes['alt'] = $this->items['alt'];

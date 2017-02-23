@@ -1,0 +1,13 @@
+name: Foto Container
+version: 0.1.0
+description: Tema para o FotoContainer
+icon: rebel
+author:
+  name: Luiz Nunes
+  email: luizfsnunes@gmail.com
+homepage: https://github.com/luiz-nunes/grav-theme-foto-container
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/luiz-nunes/grav-theme-foto-container/issues
+readme: https://github.com/luiz-nunes/grav-theme-foto-container/blob/develop/README.md
+license: MIT

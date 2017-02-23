@@ -1,3 +1,71 @@
+# v1.2.14
+## 02/17/2017
+
+1. [](#bugfix)
+    * Fixed bad bug with `GPM::install()` from a change in Admin v1.2.13
+
+# v1.2.13
+## 02/17/2017
+
+1. [](#bugfix)
+    * Fix issue with validating page when switching language [#963](https://github.com/getgrav/grav-plugin-admin/issues/963)
+    * Fix issue with quotes in Admin strings used in JS [#965](https://github.com/getgrav/grav-plugin-admin/issues/965)
+    * Refactored `AdminController::taskGetUpdates` to use standard task/response [#980](https://github.com/getgrav/grav-plugin-admin/issues/980)
+    * Sync Admin pages blueprints with core [core#212d35221a9bbcc242508ba49a551b3f6e62af8e](https://github.com/getgrav/grav/commit/212d35221a9bbcc242508ba49a551b3f6e62af8e)
+
+# v1.2.12
+## 02/12/2017
+
+1. [](#bugfix)
+    * Rebuilt the JS bundle to address various JS-related issues that cropped up in `v1.2.11`
+    * Fixed Firefox Network Error issue when updating multiple plugins/themes at concurrently [#1301](https://github.com/getgrav/grav/issues/1301)
+
+# v1.2.11
+## 02/10/2017
+
+1. [](#new)
+    * Added lang strings for `CLI_COMPATIBILITY` which is new in Grav v1.1.16
+1. [](#improved)
+    * Allow plugin to set custom 'authorize' and 'location' in `onAdminMenu()` event
+    * Updated all language files with latest from [Crowdin](https://crowdin.com/project/grav-admin)
+1. [](#bugfix)
+    * Fixed issue `admin.super` or `admin.users` users changing the account when saving another user [#713](https://github.com/getgrav/grav-plugin-admin/issues/713)
+    * Fix issue where non `admin.super`/`admin.users` users could see other users profiles [#713](https://github.com/getgrav/grav-plugin-admin/issues/713)
+    * Fix removing responsive image from page media [#111](https://github.com/getgrav/grav-plugin-admin/issues/111) [#952](https://github.com/getgrav/grav-plugin-admin/issues/952)
+    * Use @2x & @3x fallback images in the filepicker. [#952](https://github.com/getgrav/grav-plugin-admin/issues/952)
+
+# v1.2.10
+## 1/30/2017
+
+1. [](#improved)
+    * It is now possible to manually specify a format for the `datetime` field [#1261](https://github.com/getgrav/grav/issues/1261)
+    * Allow to see plugins and themes list without internet connection. Also add a more helpful message in the "add" view [grav#1008](https://github.com/getgrav/grav/issues/1008)
+1. [](#bugfix)
+    * Fixed issue with downloaded package when installing a testing release
+    * Allow non admin.super users to change their account information. Allow `admin.super` and `admin.users` to change other users information. [#943](https://github.com/getgrav/grav/issues/943)
+    * Handle removing a media file also if it's not a json request. Was not working after https://github.com/getgrav/grav-plugin-admin/commit/6b343365996ce838759d80fa3917d4d994f1aeb4
+
+# v1.2.9
+## 01/18/2017
+
+1. [](#improved)
+    * Added lang strings for `ALLOW_WEBSERVER_GZIP` in System configuration
+
+# v1.2.8
+## 01/17/2017
+
+1. [](#improved)
+    * Allow the ability to clear the cache if `admin.maintenance`, as stated in the docs [#908](https://github.com/getgrav/grav-plugin-admin/issues/908)
+    * Added lang strings for `DEFAULT_LANG` in Site configuration
+    * Added lang strings for `NEVER_CACHE_TWIG` in System and Page configuration
+1. [](#bugfix)
+    * Fixed saving the configuration if not `admin.super`
+    * Show the clear cache buttons if the user has `admin.cache` permissions [#908](https://github.com/getgrav/grav-plugin-admin/issues/908#issuecomment-270748616)
+    * Fix colorpicker validation when transparency is set to 1.00 [#921](https://github.com/getgrav/grav-plugin-admin/issues/921)
+    * Fix html markup in section twig [#922](https://github.com/getgrav/grav-plugin-admin/pull/922)
+    * Fix bug in deleting a file uploaded with the `file` field [#920](github.com/getgrav/grav-plugin-admin/issues/920)
+    * Fix for plugin throwing event-based errors when plugin is removed and no longer available to process said event
+
 # v1.2.7
 ## 12/22/2016
 

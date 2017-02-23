@@ -1,0 +1,17 @@
+<div class="fotorama"
+     data-loop="true"
+     data-width="100%"
+     data-ratio="1024/768"
+     data-minwidth="400"
+     data-maxwidth="1000"
+     data-minheight="300"
+     data-maxheight="100%">
+
+    {% for testimony in page.header.testimonials %}
+        <div>
+           <p>{{ testimony.text }}</p>
+           <p>{{ testimony.author }}</p>
+           <p><img src="{{ (testimony.image|first).path }}" /></p>
+       </div>
+    {% endfor %}
+</div>

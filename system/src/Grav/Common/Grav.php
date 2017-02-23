@@ -8,7 +8,11 @@
 
 namespace Grav\Common;
 
+use Grav\Common\Config\Config;
+use Grav\Common\Language\Language;
 use Grav\Common\Page\Medium\ImageMedium;
+use Grav\Common\Page\Medium\Medium;
+use Grav\Common\Page\Page;
 use RocketTheme\Toolbox\DI\Container;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -306,7 +310,12 @@ class Grav extends Container
                 } else {
                     // Without gzip we have no other choice than to prevent server from compressing the output.
                     // This action turns off mod_deflate which would prevent us from closing the connection.
-                    header('Content-Encoding: none');
+                    if ($this['config']->get('system.cache.allow_webserver_gzip')) {
+                        header('Content-Encoding: identity');
+                    } else {
+                        header('Content-Encoding: none');
+                    }
+
                 }
 
 
