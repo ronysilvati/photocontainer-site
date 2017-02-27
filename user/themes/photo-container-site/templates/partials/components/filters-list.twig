@@ -1,15 +1,15 @@
 <div class="filters-list">
   <h5 class="title">Foram encontrados 104 resultados.</h5>
   <ul class="list-inline">
-    <?php for ($i=0; $i < 4; $i++) { ?>
+    {% for i in range(0,4) %}
 
     <li>
-      <span>Paisagem</span>
+      <span>Paisagem {{i}}</span>
       <button type="button" class="close" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </li>
 
-    <?php } ?>
+    {% endfor %}
   </ul>
 </div>

@@ -1,0 +1,207 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="app page-add-gallery">
+  {%
+  include 'partials/components/page-header.twig' with {
+    'title': 'Criar Álbum',
+    'show': ['title','nav-add-gallery']
+  }
+  %}
+  <div class="container">
+    <div class="tab-content">
+      <div class="tab-pane active" id="evento" role="tabpanel">
+        <h4 class="mb-5">Evento</h4>
+        <h5 class="mb-3">Selecione as categorias</h5>
+        <div data-toggle="buttons">
+          {% for i in range(1,4) %}
+          <label class="btn btn-secondary btn-check btn-lg text-uppercase px-5">
+            <input type="checkbox" autocomplete="off">Despedida
+          </label>
+          {% endfor %}
+        </div>
+        <h5 class="mb-3 mt-5">Informações do evento</h5>
+        <div class="row row-lg">
+
+          <!-- COL 1 -->
+          <div class="col-3">
+            <div class="form-group">
+              <label>Nome da noiva</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Nome do noivo</label>
+              <input type="text" class="form-control">
+            </div>
+            <label>Data do evento</label>
+            <div class="row row-xs">
+              <div class="col-3">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>22</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>Abril</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>2017</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- COL 2 -->
+          <div class="col-3">
+            <div class="form-group">
+              <label>País</label>
+              <select class="form-control">
+                <option>Brasil</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Estado</label>
+              <select class="form-control">
+                <option>Santa Catarina</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Cidade</label>
+              <select class="form-control">
+                <option>Florianópolis</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- COL 3 -->
+          <div class="col-3">
+            <div class="form-group">
+              <label>Título</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <h5 class="mb-3 mt-5">Preferências</h5>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            Liberado
+          </label>
+          <a><i class="icon-help-circled"></i></a>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            Liberado pelo fotógrafo
+          </label>
+          <a><i class="icon-help-circled"></i></a>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            Liberado pelos noivos
+          </label>
+          <a><i class="icon-help-circled"></i></a>
+        </div>
+      </div>
+      <div class="tab-pane" id="fornecedores" role="tabpanel">
+        <h5 class="mb-3 mt-5">Informações do evento</h5>
+        <div class="row row-lg">
+
+            {%
+            set forn_labels = [
+                'Fotos',
+                'Filmagem',
+                'Cerimonial',
+                'Decoração',
+                'Lista de presentes',
+                'Buffet',
+                'Doces',
+                'Bebidas',
+                'Música',
+                'Salão de festa',
+                'Salão de beleza',
+                'Roupas',
+                'Sapatos',
+                'Alianças',
+                'Local cerimônia'
+              ]
+            %}
+            {% set forn_max =   5 %}
+            {% set forn_count = 0 %}
+            {% set forn_total = 0 %}
+
+            {% for value in forn_labels %}
+              {% if forn_count == 0 %}
+                <div class="col-3">
+              {% endif %}
+              {% set forn_count = forn_count+1 %}
+              {% set forn_total = forn_total+1 %}
+            <div class="form-group">
+              <label>{{ value }}</label>
+              <div id="campo-{{ value }}"  class="form-control-close">
+                <input type="text" class="form-control">
+                <button type="button" class="close" data-toggle="remove" data-target="_parent">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <small class="form-text text-muted text-right"><a data-toggle="clone" data-target="#campo-{{ value }}">Adicionar</a></small>
+            </div>
+            {% if (forn_count == forn_max) or (forn_total == 15) %}
+              </div>
+              {% set forn_count = 0 %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="tab-pane" id="caracteristicas" role="tabpanel">
+        <h4 class="mb-4">Características</h4>
+        {{ include('partials/components/filters.twig') }}
+      </div>
+      <div class="tab-pane" id="fotos" role="tabpanel">
+        <div class="upload-area">
+          <div class="upload-area-inner">
+            <i class="icon-upload"></i>
+            <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
+
+            <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
+            <button class="btn btn-primary px-5">Buscar</button>
+          </div>
+        </div>
+        <div class="row row-sm">
+
+          {%
+          include 'partials/components/thumb-gallery.twig' with {
+            'type': '',
+            'show': []
+          }
+          %}
+          <!-- <?php
+            for ($i=0; $i < 12; $i++) {
+              get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['search','trash']]]);
+            }
+          ?> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'partials/components/add-gallery-footer.twig' %}
+</div>
+
+{% endblock %}

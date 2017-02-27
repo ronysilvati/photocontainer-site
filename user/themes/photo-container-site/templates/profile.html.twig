@@ -1,0 +1,159 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+
+<div class="app page-profile">
+  {{ include('partials/components/navbar-top.twig') }}
+
+  <div class="profile-header" style="background-image: url({{url('theme://_temp/signin-bg.png')}})">
+    <button class="btn btn-primary px-4 btn-upload text-uppercase">Upload foto</button>
+  </div>
+  <div class="container">
+    <h2 class="h3 title mb-5 text-uppercase">Perfil</h2>
+    <div class="row row-lg">
+      <!-- COL 1 -->
+      <div class="col-4">
+        <h3 class="h5 title mb-5">Personal information</h3>
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Sexo</label>
+          <select class="form-control">
+            <option>Selecione</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" class="form-control">
+        </div>
+        <label>Data ds nascimento</label>
+        <div class="row row-xs">
+          <div class="col-3">
+            <div class="form-group">
+              <select class="form-control">
+                <option>22</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-group">
+              <select class="form-control">
+                <option>Abril</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <select class="form-control">
+                <option>2017</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Facebook</label>
+          <input type="url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Instagram</label>
+          <input type="url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Linkedin</label>
+          <input type="url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Site</label>
+          <input type="url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Blog</label>
+          <input type="url" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <h3 class="h5 title mb-5">Locate</h3>
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>País</label>
+          <select class="form-control">
+            <option>Selecione</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Estado</label>
+          <select class="form-control">
+            <option>Selecione</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <select class="form-control">
+            <option>Selecione</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Logradouro</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Complemento</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h4 class="card-title text-uppercase text-center">Dados de acesso</h4>
+          <div class="card-block">
+            <h3 class="h5 title mb-5">Alterar senha</h3>
+            <div class="form-group">
+              <label>Senha</label>
+              <input type="text" class="form-control">
+            </div>
+            <h3 class="h5 title mb-5">Alterar email</h3>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="row row-sm">
+              <div class="col-md-6">
+                <button class="btn btn-secondary btn-block text-uppercase">Cancelar</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-primary btn-block text-uppercase">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="mt-4 btn btn-secondary btn-block text-uppercase">Quero deletar minha conta</button>
+      </div>
+    </div>
+
+    <h3 class="h5 title mb-3 mt-5">Preferências</h3>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Aceito os <a href="#">Termos e condições de uso</a>
+      </label>
+    </div>
+  </div>
+
+  {{ include('partials/components/footer.twig') }}
+</div>
+
+
+
+
+{% endblock %}

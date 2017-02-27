@@ -1,0 +1,79 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{{ include('partials/components/navbar-top.twig') }}
+
+<div class="app page-gallery bg-gray-lightest">
+
+  <!-- <?php get_component('page-header', ['title' => 'Galeria', 'show' => ['title','form-search', 'nav-gallery']]);?> -->
+  {%
+  include 'partials/components/page-header.twig' with {
+    'title': 'Galeria',
+    'show': ['title','form-search', 'nav-gallery']
+  }
+  %}
+
+  <div class="container">
+    <h6 class="title text-muted text-uppercase mb-0"><a class="text-muted" href="#">Casamento</a></h6>
+    <h2 class="title text-uppercase mb-3">Roberta e Márcio</h2>
+    <h6 class="title text-muted text-uppercase mb-5">100 fotos de <a class="text-muted" href="#">Sebastião Doce</a></h6>
+    {{ include('partials/components/filters-list.twig') }}
+
+    <div class="row">
+      <div class="col-md-3 offset-sm-3">
+        <button type="button" class="btn btn-primary text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Favoritos</button>
+      </div>
+      <div class="col-md-3 mb-5">
+        <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Downloads</button>
+      </div>
+    </div>
+    <div class="row row-sm">
+      <div class="col-md-3">
+        <div class="card thumb-gallery ratio-1by1 thumb-add">
+          <div class="card-text-add">
+            <i class="icon-plus"></i>
+            <p class="text-uppercase">Novo álbum</p>
+          </div>
+        </div>
+      </div>
+      <!-- <?php
+      get_component('thumb-gallery', ['type' => 'home', 'show'=> ['icon', 'photo-name', 'album-type', 'album-name', 'fav-count']]);
+      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['trash']]]);
+      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['search','trash']]]);
+      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['fav','download']]]);
+      get_component('thumb-gallery', ['type' => 'footer', 'show'=>['album-name','album-type','image-count','date','photo-label', 'photo-name']]);
+      for($i= 0; $i < 14 ; ++$i) {
+        get_component('thumb-gallery', ['type' => 'footer', 'show'=>['album-name','album-type','image-count','date','nav'=> ['fav','edit','trash']]]);
+        // include 'components/thumb-gallery.php';
+      }
+      ?>
+
+'nav': [
+  'fav',
+  'edit',
+  'trash'
+]
+    -->
+
+      {% for i in range(1, 18) %}
+        {%
+        include 'partials/components/thumb-gallery.twig' with {
+          'type': 'footer',
+          'show': [
+            'album-name',
+            'album-type',
+            'image-count',
+            'date'
+          ]
+        }
+        %}
+      {% endfor %}
+
+    </div>
+  </div>
+  {{ include('partials/components/modal-filters.twig') }}
+  {{ include('partials/components/footer.twig') }}
+</div>
+
+{% endblock %}

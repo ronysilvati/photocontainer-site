@@ -30,7 +30,7 @@
           {% for key, value in show %}
 
             {% if value == 'album-type' %}  <p class="album-type"><a href="#">Casamento</a></p>{% endif %}
-            {% if value == 'image-count' %} <p class="image-count"><span>'.rand(1,110).'</span> fotos</p> {% endif %}
+            {% if value == 'image-count' %} <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
             {% if value == 'album-name' %}  <p class="album-name"><a href="#">Roberta & Marcio</a></p>{% endif %}
             {% if value == 'date' %}        <p class="">Criado em 30/01/2017</p>{% endif %}
             {% if value == 'photo-label' %} <p class="photo-label">Fotógrafo</p>{% endif %}

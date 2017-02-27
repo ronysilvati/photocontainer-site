@@ -1,0 +1,76 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="app page-login page-signup" style="background-image: url({{ url('theme://_temp/signup-bg.png') }})">
+  <!-- <div class="row">
+  <div class="col-md-6 offset-3"> -->
+    <div class="login-box">
+  <div class="row row-md">
+  <div class="col-md-6">
+    <h2 class='title text-uppercase'>Selecione um plano</h2>
+    <div data-toggle="buttons">
+      <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
+        <input type="radio" autocomplete="off">
+        <span>Primeiro mês grátis</span>
+        <small>Cobrança após o primeiro mês, caso não cancele sua conta</small>
+        <small>R$<b>39</b></small>
+      </label>
+      <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
+        <input type="radio" autocomplete="off">
+        <span>Assinatura semestral</span>
+        <small>Pague <b>5</b> meses e leve <b>6</b></small>
+        <small>R$<b>199</b></small>
+      </label>
+      <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
+        <input type="radio" autocomplete="off">
+        <span>Assinatura anual</span>
+        <small>Pague <b>10</b> meses e leve <b>12</b></small>
+        <small>R$<b>399</b></small>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2 class='title text-uppercase'>Insira seus dados</h2>
+    <form class="form-signup">
+      <div class="form-group">
+        <label for="input_name" class="sr-only">Nome</label>
+        <input type="text" id="input_name" class="form-control form-control-login" placeholder="Nome" required="">
+      </div>
+      <div class="form-group">
+        <label for="input_email" class="sr-only">E-mail</label>
+        <input type="email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="">
+      </div>
+      <div class="form-group">
+        <label for="input_remail" class="sr-only">Confirmar e-mail</label>
+        <input type="email" id="input_remail" class="form-control form-control-login" placeholder="Confirmar e-mail" required="">
+      </div>
+      <div class="form-group">
+        <label for="input_password" class="sr-only">Senha</label>
+        <input type="password" id="input_password" class="form-control form-control-login" placeholder="Senha" required="">
+      </div>
+      <div class="form-check text-white  custom-checkbox">
+        <label class="form-check-label">
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Aceito os <a href="#" class="text-white">Termos e condições de uso</a></span>
+        </label>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-submit btn-outline-secondary" type="submit">Entrar</button>
+      </div>
+      <div class="text-center pt-3">
+        <small class="text-white text-muted d-block">Já possue um perfil?</small>
+        <a class="text-white text-uppercase" href="page-signin.php">
+          Acessar seu perfil
+        </a>
+      </div>
+    </form>
+  </div>
+  </div>
+
+  </div>
+
+  {{ include('partials/components/login-footer.twig') }}
+</div>
+{% endblock %}
