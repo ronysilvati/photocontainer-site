@@ -1,0 +1,19 @@
+// /* FONTS */
+$headings-font-family: 'Raleway', sans-serif;
+$buttons-font-family: 'Raleway', sans-serif;
+$quotes-font-family: 'Dancing Script', cursive;
+// $font-family-base:  $font-family-sans-serif;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1180px
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1160px
+);

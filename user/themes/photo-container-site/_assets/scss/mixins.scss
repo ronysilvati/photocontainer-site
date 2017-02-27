@@ -1,0 +1,34 @@
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before{
+        display: block;
+        content: " ";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+}
+
+
+@mixin overlay() {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+@mixin make-other-row($gutters, $size) {
+  .#{$size} {
+    margin: -$gutters!important;
+    margin: -$gutters!important;
+    > .col,
+    > [class*="col-"] {
+      padding: $gutters!important;
+      padding: $gutters!important;
+    }
+  }
+}

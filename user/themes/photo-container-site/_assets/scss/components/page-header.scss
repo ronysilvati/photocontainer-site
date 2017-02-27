@@ -1,0 +1,16 @@
+.page-header {
+    height: 90px;
+    border-bottom: 1px solid $gray-lighter;
+    margin-bottom: 60px;
+
+    .title {
+      text-transform: uppercase;
+      text-transform: uppercase;
+      line-height: 90px;
+      color: $gray;
+      font-size: 26px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+    }
+}

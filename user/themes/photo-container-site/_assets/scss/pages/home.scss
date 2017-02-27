@@ -1,0 +1,91 @@
+.page-home {
+
+  .navbar-home {
+    height: 98px;
+    border-bottom: 2px solid #ddd;
+    z-index: 100;
+    transition: initial;
+  }
+  &.navbar-fixed {
+    margin-top: 100px;
+    .navbar-home {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 58px;
+      transition: .2s;
+    }
+  }
+  .block-banner {
+
+  }
+  .block-banner-1 {
+    background-size: cover;
+    height: 100vh;
+    min-height: 400px;
+    position: relative;
+    @include overlay();
+
+    .container {
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .content-center {
+      justify-content: flex-end;
+    }
+  }
+  .block-who {
+    .who-card {
+      text-align: center;
+      i{
+        font-size: 130px;
+      }
+    }
+  }
+  .block-how {
+    .how-card {
+      text-align: center;
+      i{
+        font-size: 130px;
+      }
+
+      &:after {
+        font-family: fontello;
+        content: '\e88c';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        font-size: 60px;
+        transform: translateX(50%);
+      }
+      &:last-child {
+        &:after {
+          content: '';
+        }
+      }
+    }
+  }
+  .block-gallery {
+    overflow: hidden;
+  }
+  .block-plans {
+    text-align: center;
+  }
+  .block-about {
+    .about-card {
+      text-align: center;
+      img {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+      }
+      p {
+        max-width: 200px;
+        margin: 0;
+        transform: translateX(50%);
+      }
+    }
+  }
+}

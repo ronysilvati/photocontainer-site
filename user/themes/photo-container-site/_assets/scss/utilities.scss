@@ -1,0 +1,14 @@
+.rounded-top-right-0 { border-top-right-radius: 0; }
+.rounded-top-left-0 { border-top-left-radius: 0; }
+.rounded-bottom-right-0 { border-bottom-right-radius: 0; }
+.rounded-bottom-left-0 { border-bottom-left-radius: 0; }
+
+.content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    .content-center-inner {
+
+    }
+}

@@ -1,0 +1,65 @@
+.btn {
+  font-family:  $buttons-font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+
+  &.btn-primary {
+    background-color: $gray-dark;
+    border-color: $gray-dark;
+  }
+  &.btn-secondary {
+    color: $gray-light;
+  }
+
+  &.btn-circle {
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0;
+    line-height: 30px;
+    width: 40px;
+    height: 40px;
+    i {
+      font-size: 25px;
+      line-height: 1.5em;
+    }
+    &.btn-sm {
+      width: 30px;
+      height: 30px;
+      i {
+        font-size: 16px;
+      }
+    }
+    &.btn-lg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &.btn-sm {
+    font-size: 12px;
+  }
+
+  &.btn-plan {
+    padding: 20px;
+    font-weight: 500;
+    white-space: initial;
+    span {
+      display:block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    small{
+      display: block;
+      font-size: 14px;
+      // margin-bottom: 4px;
+      b {
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+  }
+}

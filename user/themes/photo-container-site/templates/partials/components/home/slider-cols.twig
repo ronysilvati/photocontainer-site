@@ -1,0 +1,32 @@
+
+<div id="home-slider-cols" class="carousel slide slider slider-cols" data-ride="carousel">
+
+  <div class="carousel-inner" role="listbox">
+    {% for i in range(0, 2) %}
+    <div class="carousel-item {{ ((i == 0) ? 'active' : '') }}">
+      <div class="carousel-caption">
+        <div class="container">
+          <div class="row row-md">
+            {% for f in range(0, 3) %}
+            <div class="col-md-3">
+              <div class="slider-card">
+                <img src="{{url('theme://_temp/logos/1.png') }}">
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#home-slider-cols" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#home-slider-cols" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div>

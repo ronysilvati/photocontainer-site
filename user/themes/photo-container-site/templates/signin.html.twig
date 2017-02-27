@@ -1,33 +1,36 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    <div class="app page-login" style="background-image: url(http://kohl.com.br/work/fc/_temp/signin-bg.png)">
-        <div class="login-box">
-            <h2 class='title text-uppercase'>Acesse seu perfil</h2>
-            <form class="form-signin">
-                <div class="form-group">
-                    <label for="input_email" class="sr-only">E-mail</label>
-                    <input type="email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="" autofocus="">
-                </div>
-                <div class="form-group">
-                    <label for="input_password" class="sr-only">Senha</label>
-                    <input type="password" id="input_password" class="form-control form-control-login" placeholder="Senha" required="">
-                </div>
-                <div class="text-center pb-3">
-                    <a class="text-white" href="#">
-                        Esqueceu sua senha?
-                    </a>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-submit btn-primary btn-outline-secondary" type="submit">Entrar</button>
-                </div>
-                <div class="text-center pt-3">
-                    <small class="text-white text-muted d-block">Não tem um perfil?</small>
-                    <a class="text-white text-uppercase" href="page-signup.php">
-                        Experimente Grátis
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="app page-login page-signin" style="background-image: url({{ url('theme://_temp/signin-bg.png') }})">
+  <div class="login-box">
+    <h2 class='title text-uppercase'>Acesse seu perfil</h2>
+    <form class="form-signin">
+      <div class="form-group">
+        <label for="input_email" class="sr-only">E-mail</label>
+        <input type="email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="" autofocus="">
+      </div>
+      <div class="form-group">
+        <label for="input_password" class="sr-only">Senha</label>
+        <input type="password" id="input_password" class="form-control form-control-login" placeholder="Senha" required="">
+      </div>
+      <div class="text-center pb-3">
+        <a class="text-white" href="#">
+          Esqueceu sua senha?
+        </a>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-submit btn-outline-secondary" type="submit">Entrar</button>
+      </div>
+      <div class="text-center pt-3">
+        <small class="text-white text-muted d-block">Não tem um perfil?</small>
+        <a class="text-white text-uppercase" href="page-signup.php">
+          Experimente Grátis
+        </a>
+      </div>
+    </form>
+  </div>
+
+  {{ include('partials/components/login-footer.twig') }}
+
+</div>
 {% endblock %}

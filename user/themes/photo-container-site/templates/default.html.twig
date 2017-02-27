@@ -1,5 +1,37 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    {{ page.content }}
+<div class="app page-home">
+  <div id="inicio">
+    {{ include('partials/components/home/slider-top.twig') }}
+    {{ include('partials/components/home/navbar.twig') }}
+  </div>
+  <div id="praquem">
+    {{ include('partials/components/home/who.twig') }}
+    {{ include('partials/components/home/banner-1.twig') }}
+  </div>
+  <div id="comofunciona">
+    {{ include('partials/components/home/how.twig') }}
+    {{ include('partials/components/home/gallery.twig') }}
+  </div>
+  <div id="planos">
+    {{ include('partials/components/home/plans.twig') }}
+    {{ include('partials/components/home/slider-quotes.twig') }}
+    {{ include('partials/components/home/slider-cols.twig') }}
+  </div>
+  <div id="quemsomos">
+    {{ include('partials/components/home/about.twig') }}
+    {{ include('partials/components/home/slider-tags.twig') }}
+    {{ include('partials/components/home/banner-2.twig') }}
+  </div>
+
+  {{ include('partials/components/footer.twig') }}
+</div>
+
+<!-- <script>
+$( document ).ready(function(){
+  $('body').scrollspy({ target: '.navbar-spy', offset: 120 });
+});
+</script> -->
+
 {% endblock %}

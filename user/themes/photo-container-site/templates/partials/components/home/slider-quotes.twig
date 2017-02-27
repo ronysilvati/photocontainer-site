@@ -1,0 +1,29 @@
+{% set slider_images = [url('theme://_temp/slider-quotes1.png'),url('theme://_temp/signin-bg.png')] %}
+
+<div id="home-slider-quotes" class="carousel slide slider slider-quotes vh cover" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {% set i = 0 %}
+    {% for image in slider_images %}
+    <li data-target="#home-slider-top" data-slide-to="{{ i }}" {{ ((i == 0) ? 'class="active"' : '') }}></li>
+    {% set i = i+1 %}
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    {% set i = 0 %}
+    {% for image in slider_images %}
+    <div class="carousel-item {{ ((i == 0) ? 'active' : '') }}">
+      <img class="d-block img-fluid" src="{{image}}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <i class="icon-quote"></i>
+        <blockquote class="blockquote">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer class="blockquote-footer">Lauro Maeda</footer>
+        </blockquote>
+      </div>
+    </div>
+    {% set i = i+1 %}
+    {% endfor %}
+  </div>
+
+
+</div>

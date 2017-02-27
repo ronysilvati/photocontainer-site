@@ -1,0 +1,31 @@
+.filters-list {
+  margin-bottom: 50px;
+
+  .title {
+    color: $gray-light;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  li {
+    border: 1px solid $gray-lighter;
+    color: $gray-lighter;
+    background: $white;
+
+    padding: 4px 8px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 2px;
+
+    .close {
+      margin-left: 20px;
+      font-weight: 100;
+      line-height: 10px;
+      position: relative;
+      top: 5px;
+      font-size: 24px;
+    }
+  }
+}
