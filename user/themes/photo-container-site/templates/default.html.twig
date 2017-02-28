@@ -28,10 +28,16 @@
   {{ include('partials/components/footer.twig') }}
 </div>
 
-<!-- <script>
+<script>
 $( document ).ready(function(){
-  $('body').scrollspy({ target: '.navbar-spy', offset: 120 });
+  // $('body').scrollspy({ target: '.navbar-spy', offset: 120 });
+  $('.slider-top .slider-inner').slick({
+    dots: true,
+    arrows: false,
+    infinite: true
+  });
+  // alert();
 });
-</script> -->
+</script>
 
 {% endblock %}

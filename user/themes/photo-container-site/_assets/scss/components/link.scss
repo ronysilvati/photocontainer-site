@@ -1,11 +1,10 @@
 .link {
-position: relative;
-border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+  position: relative;
 
   &:after {
     content: "";
     position: absolute;
-    background: #fff;
+    background: #000;
     bottom: -1px;
     right: 50%;
     left: 50%;
@@ -19,6 +18,14 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.26);
       left: 0;
       right: 0;
       opacity:1;
+    }
+  }
+
+
+  &.text-white {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+    &:after {
+      background: #fff;
     }
   }
 }

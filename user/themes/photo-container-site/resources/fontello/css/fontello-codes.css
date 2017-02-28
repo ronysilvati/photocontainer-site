@@ -14,7 +14,7 @@
 .icon-user-add:before { content: '\e80c'; } /* '' */
 .icon-video:before { content: '\e80d'; } /* '' */
 .icon-picture:before { content: '\e80e'; } /* '' */
-.icon-camera:before { content: '\e80f'; } /* '' */
+.icon-camera-1:before { content: '\e80f'; } /* '' */
 .icon-layout:before { content: '\e810'; } /* '' */
 .icon-menu:before { content: '\e811'; } /* '' */
 .icon-check:before { content: '\e812'; } /* '' */
@@ -233,6 +233,13 @@
 .icon-cc-zero:before { content: '\e8e7'; } /* '' */
 .icon-cc-share:before { content: '\e8e8'; } /* '' */
 .icon-cc-remix:before { content: '\e8e9'; } /* '' */
+.icon-arrow-mid:before { content: '\e8ea'; } /* '' */
+.icon-photo-upload:before { content: '\e8eb'; } /* '' */
+.icon-blog:before { content: '\e8ec'; } /* '' */
+.icon-camera:before { content: '\e8ed'; } /* '' */
+.icon-photo-details:before { content: '\e8ee'; } /* '' */
+.icon-photo-download:before { content: '\e8ef'; } /* '' */
+.icon-photo-publish:before { content: '\e8f0'; } /* '' */
 .icon-github:before { content: '\f300'; } /* '' */
 .icon-github-circled:before { content: '\f301'; } /* '' */
 .icon-flickr:before { content: '\f303'; } /* '' */

@@ -1,30 +1,24 @@
 {% set slider_images = [url('theme://_temp/slider-quotes1.png'),url('theme://_temp/signin-bg.png')] %}
 
-<div id="home-slider-top" class="carousel slide slider slider-top vh cover" data-ride="carousel">
-  <ol class="carousel-indicators">
+<div id="home-slider-top" class="slider slider-top">
+
+  <div class="slider-inner vh cover" role="listbox">
     {% set i = 0 %}
     {% for image in slider_images %}
-    <li data-target="#home-slider-top" data-slide-to="{{ i }}" {{ ((i == 0) ? 'class="active"' : '') }}></li>
-    {% set i = i+1 %}
-    {% endfor %}
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    {% set i = 0 %}
-    {% for image in slider_images %}
-    <div class="carousel-item {{ ((i == 0) ? 'active' : '') }}">
-      <img src="{{image}}" alt="First slide">
+    <div class="slider-item">
+      <img src="{{image}}">
     </div>
     {% set i = i+1 %}
     {% endfor %}
   </div>
 
-  <div class="carousel-over">
-    <div class="carousel-over-inner">
+  <div class="slider-over">
+    <div class="slider-over-inner">
       <h6 class="title">O que realmente importa</h6>
       <h2 class="title">Imagens sensacionais</h2>
-      <h6 class="title">Pra quem tem um Blog, uma excelente escolha, pra quem fotografa, um negócio e tanto.</h6>
+      <h6 class="title">Pra quem tem um Blog, uma excelente escolha,<br>pra quem fotografa, um negócio e tanto.</h6>
       <div class="mt-5">
-        <a class="btn btn-lg btn-outline-secondary">Experimente</a>
+        <a class="btn btn-lg btn-outline-secondary text-uppercase px-5">Experimente</a>
       </div>
       <div class="mt-5">
         <a href="#praquem" class="spy btn btn-circle btn-lg btn-outline-secondary"><i class="icon-down-open-big"></i></a>

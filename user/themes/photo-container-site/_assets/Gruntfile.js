@@ -25,6 +25,7 @@ module.exports = function( grunt ) {
 					'lib/jquery-3.1.1.min.js',
 					'lib/tether-1.3.3/dist/js/tether.min.js',
 					'lib/bootstrap-4.0.0-alpha.6/dist/js/bootstrap.min.js',
+					'lib/slick-1.6.0/slick/slick.min.js',
 					'js/*.js'
 				],
 	      dest: '_temp/app.js',
