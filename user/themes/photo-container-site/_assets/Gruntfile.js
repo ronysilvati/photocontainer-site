@@ -60,14 +60,14 @@ module.exports = function( grunt ) {
 			},
 			target: {
 				files: {
-					'../app.min.css':  ['_temp/app.css']
+					'../resources/app.min.css':  ['_temp/app.css']
 				}
 			}
 		},
 		uglify: {
 	    my_target: {
 	      files: {
-	        '../app.min.js': ['_temp/app.js']
+	        '../resources/app.min.js': ['_temp/app.js']
 	      }
 	    }
 	  }

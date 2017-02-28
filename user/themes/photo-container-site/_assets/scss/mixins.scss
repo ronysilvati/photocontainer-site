@@ -9,6 +9,10 @@
 }
 
 
+@mixin checkicon() {
+  font-family: fontello;
+  content: '\e812';
+}
 @mixin overlay() {
   &:before {
     content: "";

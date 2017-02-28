@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8548,8 +8549,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 }
 
 body {
-  position: relative;
-  min-height: 800px;
+  height: 100%;
   background-color: #F9F9F9;
 }
 
@@ -8562,6 +8562,8 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
+  cursor: pointer;
+  outline: 0 !important;
 }
 .btn.btn-primary {
   background-color: #292b2c;
@@ -8607,7 +8609,7 @@ body {
 .btn.btn-plan span {
   display: block;
   font-size: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .btn.btn-plan small {
   display: block;
@@ -8616,6 +8618,16 @@ body {
 .btn.btn-plan small b {
   font-size: 20px;
   font-weight: 400;
+}
+.btn.btn-outline-secondary {
+  transition: .3s;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.btn.btn-outline-secondary:focus, .btn.btn-outline-secondary:hover, .btn.btn-outline-secondary.active {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.2);
+  outline: 0 !important;
 }
 
 .filters-list {
@@ -8656,12 +8668,6 @@ body {
 .footer.footer-default {
   text-align: center;
   margin-top: 140px;
-}
-.footer.login-footer {
-  background-color: transparent;
-  text-align: center;
-  margin-top: 20px;
-  padding: 0;
 }
 
 .form-group label {
@@ -8705,6 +8711,34 @@ body {
   background: transparent;
   color: #636c72;
   font-size: 20px;
+}
+
+.form-check-label {
+  position: relative;
+}
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+}
+.form-check-label span:before {
+  font-family: fontello;
+  content: '\e812';
+  margin-right: 7px;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  top: -1px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #fff;
+  border-radius: 4px;
+  line-height: 12px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0);
+  transition: .3s;
+}
+.form-check-label input:checked ~ span:before {
+  color: white;
 }
 
 .btn-color {
@@ -8809,6 +8843,30 @@ body {
 .row-xl > [class*="col-"] {
   padding: 40px !important;
   padding: 40px !important;
+}
+
+.link {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+}
+.link:after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  bottom: -1px;
+  right: 50%;
+  left: 50%;
+  height: 1px;
+  transition: .3s;
+  opacity: 0;
+}
+.link:hover {
+  text-decoration: none;
+}
+.link:hover:after {
+  left: 0;
+  right: 0;
+  opacity: 1;
 }
 
 .nav-steps {
@@ -9464,22 +9522,19 @@ body {
 }
 
 .form-control-login::-webkit-input-placeholder {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .form-control-login:-moz-placeholder {
-  /* FF 4-18 */
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .form-control-login::-moz-placeholder {
-  /* FF 19+ */
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .form-control-login:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .page-login {
@@ -9488,32 +9543,38 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: cover;
+  overflow: auto;
 }
-.page-login:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.page-login .page-login-inner {
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.29);
+  min-height: 100vh;
 }
-.page-login .login-box {
+.page-login .page-login-inner .login-box {
   background-color: rgba(0, 0, 0, 0.5);
   max-width: 760px;
-  padding: 50px 40px;
+  padding: 40px;
   position: relative;
   z-index: 1;
   left: 50%;
   transform: translate(-50%);
   margin-top: 60px;
 }
-.page-login .login-box .title {
+.page-login .page-login-inner .login-box .title {
   color: #fff;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 26px;
+  font-weight: 400;
+}
+.page-login .page-login-inner .text-muted {
+  color: #b1b1b1 !important;
+}
+.page-login .page-login-inner .login-footer {
+  background-color: transparent;
+  text-align: center;
+  padding: 0;
+  margin: 80px 40px 40px;
 }
 .page-login.page-signin .login-box {
   max-width: 400px;
@@ -9528,8 +9589,21 @@ body {
   font-size: .9rem;
   line-height: 1.25;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.31);
-  border: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 4px;
+  transition: .3s;
+}
+
+.form-control-login:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.form-control-login:focus,
+.form-control-login:active {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
 }
 
 .btn-submit {

@@ -86,6 +86,10 @@ $container-max-widths: (
 }
 
 
+@mixin checkicon() {
+  font-family: fontello;
+  content: '\e812';
+}
 @mixin overlay() {
   &:before {
     content: "";
@@ -125,9 +129,10 @@ $container-max-widths: (
     }
 }
 
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900');
+
 body {
-  position: relative;
-  min-height: 800px;
+  height: 100%;
   background-color:#F9F9F9;
 }
 .app.bg-gray-lightest {
@@ -139,6 +144,8 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
+  cursor: pointer;
+  outline: 0!important;
 
   &.btn-primary {
     background-color: $gray-dark;
@@ -183,10 +190,11 @@ body {
     padding: 20px;
     font-weight: 500;
     white-space: initial;
+
     span {
       display:block;
       font-size: 20px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     small{
       display: block;
@@ -196,6 +204,18 @@ body {
         font-size: 20px;
         font-weight: 400;
       }
+    }
+  }
+
+  &.btn-outline-secondary {
+    transition: .3s;
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+    &:focus, &:hover, &.active {
+      border-color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,.2);
+
+      outline: 0!important;
     }
   }
 }
@@ -245,12 +265,7 @@ body {
     margin-top: 140px;
 
   }
-  &.login-footer {
-    background-color: transparent;
-    text-align: center;
-    margin-top: 20px;
-    padding: 0;
-  }
+
 }
 
 .form-group {
@@ -296,6 +311,35 @@ body {
     background: transparent;
     color: $gray-light;
     font-size: 20px;
+  }
+}
+.form-check-label {
+  position: relative;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+  span {
+    &:before {
+      @include checkicon();
+      margin-right: 7px;
+      position: relative;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      top: -1px;
+      background-color: rgba(255,255,255,0);
+      border: 2px solid #fff;
+      border-radius: 4px;
+      line-height: 12px;
+      font-size: 10px;
+      color:rgba(255,255,255,0);
+      transition: .3s;
+    }
+  }
+  input:checked ~ span:before {
+    color: rgba(255,255,255,1);
   }
 }
 
@@ -354,6 +398,31 @@ body {
 @include make-other-row(16px, row-md);
 @include make-other-row(30px, row-lg);
 @include make-other-row(40px, row-xl);
+
+.link {
+position: relative;
+border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    bottom: -1px;
+    right: 50%;
+    left: 50%;
+    height: 1px;
+    transition: .3s;
+    opacity:0;
+  }
+  &:hover {
+    text-decoration: none;
+    &:after {
+      left: 0;
+      right: 0;
+      opacity:1;
+    }
+  }
+}
 
 .nav-steps {
   border: 0;
@@ -984,19 +1053,16 @@ body {
 }
 
 .form-control-login::-webkit-input-placeholder {
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login:-moz-placeholder {
-    /* FF 4-18 */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login::-moz-placeholder {
-    /* FF 19+ */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login:-ms-input-placeholder {
-    /* IE 10+ */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 
 .page-login {
@@ -1005,37 +1071,45 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: cover;
+  overflow: auto;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  .page-login-inner {
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.29);
-  }
+    min-height: 100vh;
 
-  .login-box {
-    background-color: rgba(0,0,0,.5);
-    max-width: 760px;
-    padding: 50px 40px;
-    position: relative;
-    z-index: 1;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 60px;
+    .login-box {
+      background-color: rgba(0,0,0,.5);
+      max-width: 760px;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-50%);
+      margin-top: 60px;
 
-    .title {
-      color:$white;
+      .title {
+        color:$white;
 
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 26px;
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 26px;
+        font-weight: 400;
+      }
     }
-  }
 
+    .text-muted {
+        color: #b1b1b1!important;
+    }
+
+    .login-footer {
+      background-color: transparent;
+      text-align: center;
+      padding: 0;
+      margin: 80px 40px 40px;
+    }
+
+  }
   &.page-signin {
     .login-box {
       max-width: 400px;
@@ -1052,10 +1126,19 @@ body {
   font-size: .9rem;
   line-height: 1.25;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.31);
-  border: 0;
-
-
+  background-color: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,0);
+  border-radius: 4px;
+  transition: .3s;
+}
+.form-control-login:hover {
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 4px;
+}
+.form-control-login:focus,
+.form-control-login:active {
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 4px;
 }
 .btn-submit {
   font-family: $headings-font-family;

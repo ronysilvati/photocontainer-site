@@ -3,6 +3,8 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
+  cursor: pointer;
+  outline: 0!important;
 
   &.btn-primary {
     background-color: $gray-dark;
@@ -47,10 +49,11 @@
     padding: 20px;
     font-weight: 500;
     white-space: initial;
+
     span {
       display:block;
       font-size: 20px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     small{
       display: block;
@@ -60,6 +63,18 @@
         font-size: 20px;
         font-weight: 400;
       }
+    }
+  }
+
+  &.btn-outline-secondary {
+    transition: .3s;
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+    &:focus, &:hover, &.active {
+      border-color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,.2);
+
+      outline: 0!important;
     }
   }
 }

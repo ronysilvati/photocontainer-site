@@ -1,0 +1,24 @@
+.link {
+position: relative;
+border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    bottom: -1px;
+    right: 50%;
+    left: 50%;
+    height: 1px;
+    transition: .3s;
+    opacity:0;
+  }
+  &:hover {
+    text-decoration: none;
+    &:after {
+      left: 0;
+      right: 0;
+      opacity:1;
+    }
+  }
+}

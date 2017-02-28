@@ -9,15 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     {% block stylesheets %}
-        {% do assets.addCss('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900', 100) %}
-        {% do assets.addCss('theme://css/app.min.css', 99) %}
-        {% do assets.addCss('theme://css/fontello/css/fontello.css', 98) %}
+        {% do assets.addCss('theme://resources/app.min.css', 99) %}
+        {% do assets.addCss('theme://resources/fontello/css/fontello.css', 98) %}
     {% endblock %}
     {{ assets.css() }}
 
     {% block javascripts %}
         {% do assets.addJs('jquery', 100) %}
-        {% do assets.addJs('theme://js/app.min.js', 99) %}
+        {% do assets.addJs('theme://resources/app.min.js', 99) %}
     {% endblock %}
     {{ assets.js() }}
 

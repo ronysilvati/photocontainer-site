@@ -1,17 +1,14 @@
 .form-control-login::-webkit-input-placeholder {
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login:-moz-placeholder {
-    /* FF 4-18 */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login::-moz-placeholder {
-    /* FF 19+ */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 .form-control-login:-ms-input-placeholder {
-    /* IE 10+ */
-    color: $white;
+    color: rgba(255,255,255,.7);
 }
 
 .page-login {
@@ -20,37 +17,45 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: cover;
+  overflow: auto;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  .page-login-inner {
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.29);
-  }
+    min-height: 100vh;
 
-  .login-box {
-    background-color: rgba(0,0,0,.5);
-    max-width: 760px;
-    padding: 50px 40px;
-    position: relative;
-    z-index: 1;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 60px;
+    .login-box {
+      background-color: rgba(0,0,0,.5);
+      max-width: 760px;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-50%);
+      margin-top: 60px;
 
-    .title {
-      color:$white;
+      .title {
+        color:$white;
 
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 26px;
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 26px;
+        font-weight: 400;
+      }
     }
-  }
 
+    .text-muted {
+        color: #b1b1b1!important;
+    }
+
+    .login-footer {
+      background-color: transparent;
+      text-align: center;
+      padding: 0;
+      margin: 80px 40px 40px;
+    }
+
+  }
   &.page-signin {
     .login-box {
       max-width: 400px;
@@ -67,10 +72,19 @@
   font-size: .9rem;
   line-height: 1.25;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.31);
-  border: 0;
-
-
+  background-color: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,0);
+  border-radius: 4px;
+  transition: .3s;
+}
+.form-control-login:hover {
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 4px;
+}
+.form-control-login:focus,
+.form-control-login:active {
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 4px;
 }
 .btn-submit {
   font-family: $headings-font-family;

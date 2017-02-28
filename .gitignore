@@ -57,3 +57,7 @@ cache/*
 assets/*
 logs/*
 images/*
+
+# THEME
+user/themes/photo-container-site/_assets/node_modules/*
+user/themes/photo-container-site/_assets/.sass-cache/*
