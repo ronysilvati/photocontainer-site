@@ -1,5 +1,0 @@
----
-title: Teste
-slug: example
----
-

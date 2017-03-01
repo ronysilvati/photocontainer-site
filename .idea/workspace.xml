@@ -1,473 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5beb1270-b2b9-417a-8982-1515cefca7e9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/plugins.json.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/themes.json.twig" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/composer.phar" afterPath="$PROJECT_DIR$/bin/composer.phar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/config/site.yaml" afterPath="$PROJECT_DIR$/system/blueprints/config/site.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/config/system.yaml" afterPath="$PROJECT_DIR$/system/blueprints/config/system.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/default.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/default.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/external.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/external.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/modular_new.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/modular_new.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/modular_raw.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/modular_raw.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/move.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/move.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/new.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/new.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/new_folder.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/new_folder.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/blueprints/pages/raw.yaml" afterPath="$PROJECT_DIR$/system/blueprints/pages/raw.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/config/site.yaml" afterPath="$PROJECT_DIR$/system/config/site.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/config/system.yaml" afterPath="$PROJECT_DIR$/system/config/system.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/defines.php" afterPath="$PROJECT_DIR$/system/defines.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Assets.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Assets.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Cache.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Config/CompiledLanguages.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Config/CompiledLanguages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Debugger.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Debugger.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Errors/Errors.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Errors/Errors.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/File/CompiledFile.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/File/CompiledFile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Filesystem/Folder.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Filesystem/Folder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Filesystem/RecursiveFolderFilterIterator.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Filesystem/RecursiveFolderFilterIterator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/GPM/GPM.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/GPM/GPM.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/GPM/Response.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/GPM/Response.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/GPM/Upgrader.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/GPM/Upgrader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Grav.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Grav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Helpers/Excerpts.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Helpers/Excerpts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Helpers/Truncator.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Helpers/Truncator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Language/Language.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Language/Language.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Markdown/ParsedownGravTrait.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Markdown/ParsedownGravTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Collection.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Collection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/Link.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/Link.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/Medium.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/Medium.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/StaticResizeTrait.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Medium/StaticResizeTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Page.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Page/Pages.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Page/Pages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Plugin.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Plugin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/AssetsProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/AssetsProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ConfigurationProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ConfigurationProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/DebuggerAssetsProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/DebuggerAssetsProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/DebuggerInitProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/DebuggerInitProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ErrorsProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ErrorsProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/InitializeProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/InitializeProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/PagesProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/PagesProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/PluginsProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/PluginsProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ProcessorBase.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ProcessorBase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ProcessorInterface.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ProcessorInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/RenderProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/RenderProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/SiteSetupProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/SiteSetupProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/TasksProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/TasksProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ThemesProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/ThemesProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Processors/TwigProcessor.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Processors/TwigProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Service/AssetsServiceProvider.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Service/AssetsServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Service/OutputServiceProvider.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Service/OutputServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Service/PageServiceProvider.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Service/PageServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Service/TaskServiceProvider.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Service/TaskServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Taxonomy.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Taxonomy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Theme.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Theme.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Twig/Twig.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Twig/Twig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Uri.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Uri.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Common/Utils.php" afterPath="$PROJECT_DIR$/system/src/Grav/Common/Utils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/ConsoleTrait.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/ConsoleTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/DirectInstallCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/DirectInstallCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/InfoCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/InfoCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/InstallCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/InstallCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/SelfupgradeCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/SelfupgradeCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/UpdateCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/UpdateCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/VersionCommand.php" afterPath="$PROJECT_DIR$/system/src/Grav/Console/Gpm/VersionCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/config/system.yaml" afterPath="$PROJECT_DIR$/user/config/system.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/pages/01.home/default.md" afterPath="$PROJECT_DIR$/user/pages/01.home/default.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/CHANGELOG.md" afterPath="$PROJECT_DIR$/user/plugins/admin/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/admin.php" afterPath="$PROJECT_DIR$/user/plugins/admin/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/modular_new.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/modular_new.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/modular_raw.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/modular_raw.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/move.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/move.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/new.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/new.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/new_folder.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/new_folder.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/raw.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/blueprints/admin/pages/raw.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/classes/admin.php" afterPath="$PROJECT_DIR$/user/plugins/admin/classes/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/classes/adminbasecontroller.php" afterPath="$PROJECT_DIR$/user/plugins/admin/classes/adminbasecontroller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/classes/admincontroller.php" afterPath="$PROJECT_DIR$/user/plugins/admin/classes/admincontroller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/classes/gpm.php" afterPath="$PROJECT_DIR$/user/plugins/admin/classes/gpm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ar.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ar.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ca.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ca.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/cs.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/cs.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/cy.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/cy.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/da.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/da.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/de.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/de.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/el.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/el.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/en.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/en.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/es.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/es.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/fa.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/fa.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/fi.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/fi.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/fr.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/fr.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/hr.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/hr.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/hu.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/hu.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/it.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/it.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ja.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ja.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ko.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ko.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/lt.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/lt.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/nl.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/nl.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/no.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/no.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/pl.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/pl.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/pt.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/pt.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ro.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ro.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/ru.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/ru.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/sk.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/sk.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/sv.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/sv.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/th.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/th.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/tr.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/tr.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/uk.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/uk.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/languages/zh.yaml" afterPath="$PROJECT_DIR$/user/plugins/admin/languages/zh.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/pages/admin/update.md" afterPath="$PROJECT_DIR$/user/plugins/admin/pages/admin/update.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/forms/fields/filepicker.js" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/forms/fields/filepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/utils/gpm.js" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/utils/gpm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/utils/packages.js" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/app/utils/packages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/js/admin.min.js" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/js/admin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/js/vendor.min.js" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/js/vendor.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/package.json" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/dashboard.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/dashboard.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forgot.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forgot.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/colorpicker/colorpicker.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/colorpicker/colorpicker.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/datetime/datetime.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/datetime/datetime.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/section/section.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/forms/fields/section/section.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/login.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/login.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/logout.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/logout.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/pages.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/pages.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/nav.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/nav.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/plugins-list.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/plugins-list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/themes-list.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/partials/themes-list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/reset.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/reset.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/user.html.twig" afterPath="$PROJECT_DIR$/user/plugins/admin/themes/grav/templates/user.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/admin/vendor/bin/picofeed" afterPath="$PROJECT_DIR$/user/plugins/admin/vendor/bin/picofeed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/CHANGELOG.md" afterPath="$PROJECT_DIR$/user/plugins/email/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/blueprints.yaml" afterPath="$PROJECT_DIR$/user/plugins/email/blueprints.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/composer/ClassLoader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/composer/autoload_classmap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/composer/autoload_static.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/composer/installed.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/CHANGES" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/CHANGES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/VERSION" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/VERSION" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/composer.json" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/messages.rst" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/messages.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/overview.rst" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/overview.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/sending.rst" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/doc/sending.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MailTransport.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MailTransport.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/OpenDKIMHeader.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/OpenDKIMHeader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ThrottlerPlugin.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ThrottlerPlugin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DomainKeySigner.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DomainKeySigner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/NTLMAuthenticator.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/NTLMAuthenticator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/MailTransport.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/MailTransport.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/phpunit.xml.dist" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/phpunit.xml.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/ByteStream/FileByteStreamAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/ByteStream/FileByteStreamAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/DependencyContainerAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/DependencyContainerAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/AbstractStreamBufferAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/AbstractStreamBufferAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/BasicSocketAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/BasicSocketAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/ProcessAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/ProcessAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SocketTimeoutTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SocketTimeoutTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SslSocketAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SslSocketAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/TlsSocketAcceptanceTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/TlsSocketAcceptanceTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/bug/Swift/BugFileByteStreamConsecutiveReadCallsTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/bug/Swift/BugFileByteStreamConsecutiveReadCallsTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/ByteStream/ArrayByteStreamTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/ByteStream/ArrayByteStreamTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterStream/ArrayCharacterStreamTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterStream/ArrayCharacterStreamTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/DependencyContainerTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/DependencyContainerTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/CommandEventTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/CommandEventTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/ResponseEventTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/ResponseEventTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SendEventTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SendEventTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SimpleEventDispatcherTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SimpleEventDispatcherTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportChangeEventTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportChangeEventTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportExceptionEventTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportExceptionEventTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/ArrayKeyCacheTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/ArrayKeyCacheTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/SimpleKeyCacheInputStreamTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/SimpleKeyCacheInputStreamTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/MessageTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/MessageTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/AbstractMimeEntityTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/AbstractMimeEntityTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/MimePartTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/MimePartTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderFactoryTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderFactoryTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderSetTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderSetTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleMessageTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleMessageTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/AntiFloodPluginTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/AntiFloodPluginTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/BandwidthMonitorPluginTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/BandwidthMonitorPluginTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/LoggerPluginTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/LoggerPluginTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/PopBeforeSmtpPluginTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/PopBeforeSmtpPluginTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HitReporterTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HitReporterTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HtmlReporterTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HtmlReporterTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/EsmtpTransportTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/EsmtpTransportTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/LoadBalancedTransportTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/LoadBalancedTransportTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/MailTransportTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/MailTransportTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/SendmailTransportTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/SendmailTransportTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/StreamBufferTest.php" afterPath="$PROJECT_DIR$/user/plugins/email/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/StreamBufferTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/CHANGELOG.md" afterPath="$PROJECT_DIR$/user/plugins/form/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/app/main.js" afterPath="$PROJECT_DIR$/user/plugins/form/app/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/assets/form.min.js" afterPath="$PROJECT_DIR$/user/plugins/form/assets/form.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/blueprints.yaml" afterPath="$PROJECT_DIR$/user/plugins/form/blueprints.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/classes/form.php" afterPath="$PROJECT_DIR$/user/plugins/form/classes/form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/form.php" afterPath="$PROJECT_DIR$/user/plugins/form/form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/languages.yaml" afterPath="$PROJECT_DIR$/user/plugins/form/languages.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/templates/forms/default/data.html.twig" afterPath="$PROJECT_DIR$/user/plugins/form/templates/forms/default/data.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/templates/forms/default/form.html.twig" afterPath="$PROJECT_DIR$/user/plugins/form/templates/forms/default/form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/form/templates/forms/fields/file/file.html.twig" afterPath="$PROJECT_DIR$/user/plugins/form/templates/forms/fields/file/file.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/login/CHANGELOG.md" afterPath="$PROJECT_DIR$/user/plugins/login/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/login/blueprints.yaml" afterPath="$PROJECT_DIR$/user/plugins/login/blueprints.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/login/pages/forgot.md" afterPath="$PROJECT_DIR$/user/plugins/login/pages/forgot.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/login/templates/partials/login-form.html.twig" afterPath="$PROJECT_DIR$/user/plugins/login/templates/partials/login-form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/login/templates/partials/login-status.html.twig" afterPath="$PROJECT_DIR$/user/plugins/login/templates/partials/login-status.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/problems/CHANGELOG.md" afterPath="$PROJECT_DIR$/user/plugins/problems/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/problems/blueprints.yaml" afterPath="$PROJECT_DIR$/user/plugins/problems/blueprints.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user/plugins/problems/problems.php" afterPath="$PROJECT_DIR$/user/plugins/problems/problems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/autoload.php" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/donatj/phpuseragentparser/README.md" afterPath="$PROJECT_DIR$/vendor/donatj/phpuseragentparser/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/donatj/phpuseragentparser/Source/UserAgentParser.php" afterPath="$PROJECT_DIR$/vendor/donatj/phpuseragentparser/Source/UserAgentParser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/erusev/parsedown/Parsedown.php" afterPath="$PROJECT_DIR$/vendor/erusev/parsedown/Parsedown.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Exception/Inspector.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Exception/Inspector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/JsonResponseHandler.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/JsonResponseHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/PlainTextHandler.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/PlainTextHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/PrettyPageHandler.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/PrettyPageHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/XmlResponseHandler.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Handler/XmlResponseHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Resources/views/layout.html.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Resources/views/layout.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Run.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Run.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Util/TemplateHelper.php" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Util/TemplateHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/CSS.php" afterPath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/CSS.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/JS.php" afterPath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/JS.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/Minify.php" afterPath="$PROJECT_DIR$/vendor/matthiasmullie/minify/src/Minify.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/matthiasmullie/path-converter/src/Converter.php" afterPath="$PROJECT_DIR$/vendor/matthiasmullie/path-converter/src/Converter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Bridge/Twig/TwigCollector.php" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Bridge/Twig/TwigCollector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/DataCollector/PDO/PDOCollector.php" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/DataCollector/PDO/PDOCollector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/DataCollector/TimeDataCollector.php" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/DataCollector/TimeDataCollector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/debugbar.css" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/debugbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/debugbar.js" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/debugbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/widgets/sqlqueries/widget.js" afterPath="$PROJECT_DIR$/vendor/maximebf/debugbar/src/DebugBar/Resources/widgets/sqlqueries/widget.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Application.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Application.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Command/Command.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Command/Command.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Descriptor/MarkdownDescriptor.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Descriptor/MarkdownDescriptor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Descriptor/TextDescriptor.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Descriptor/TextDescriptor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Formatter/OutputFormatter.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Formatter/OutputFormatter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Formatter/OutputFormatterStyleStack.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Formatter/OutputFormatterStyleStack.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/DescriptorHelper.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/DescriptorHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/Helper.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/Helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/SymfonyQuestionHelper.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/SymfonyQuestionHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/Table.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/Table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableCell.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableCell.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableHelper.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableStyle.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Helper/TableStyle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/LICENSE" afterPath="$PROJECT_DIR$/vendor/symfony/console/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Question/ChoiceQuestion.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Question/ChoiceQuestion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Question/Question.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Question/Question.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/console/Style/SymfonyStyle.php" afterPath="$PROJECT_DIR$/vendor/symfony/console/Style/SymfonyStyle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/Event.php" afterPath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/Event.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/GenericEvent.php" afterPath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/GenericEvent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/LICENSE" afterPath="$PROJECT_DIR$/vendor/symfony/event-dispatcher/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/Caster/ReflectionCaster.php" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/Caster/ReflectionCaster.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/Caster/SplCaster.php" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/Caster/SplCaster.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/LICENSE" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/yaml/Inline.php" afterPath="$PROJECT_DIR$/vendor/symfony/yaml/Inline.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/yaml/LICENSE" afterPath="$PROJECT_DIR$/vendor/symfony/yaml/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/symfony/yaml/Parser.php" afterPath="$PROJECT_DIR$/vendor/symfony/yaml/Parser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/CHANGELOG" afterPath="$PROJECT_DIR$/vendor/twig/twig/CHANGELOG" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/LICENSE" afterPath="$PROJECT_DIR$/vendor/twig/twig/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Autoloader.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Autoloader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/BaseNodeVisitor.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/BaseNodeVisitor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Cache/Filesystem.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Cache/Filesystem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Cache/Null.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Cache/Null.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/CacheInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/CacheInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Compiler.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Compiler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/CompilerInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/CompilerInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Environment.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Environment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Loader.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Loader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Runtime.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Runtime.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Syntax.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Error/Syntax.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExistsLoaderInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExistsLoaderInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExpressionParser.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExpressionParser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Core.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Core.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Debug.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Debug.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Escaper.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Escaper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Optimizer.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Optimizer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Profiler.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Profiler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Sandbox.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Sandbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Staging.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/Staging.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/StringLoader.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Extension/StringLoader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExtensionInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ExtensionInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FileExtensionEscapingStrategy.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FileExtensionEscapingStrategy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Function.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Method.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Method.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Node.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Filter/Node.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterCallableInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterCallableInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FilterInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Function.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Method.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Method.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Node.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Function/Node.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionCallableInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionCallableInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/FunctionInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Lexer.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Lexer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LexerInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LexerInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Array.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Array.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Chain.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Chain.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Filesystem.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/Filesystem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/String.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Loader/String.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LoaderInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/LoaderInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Markup.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Markup.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/AutoEscape.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/AutoEscape.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Block.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/BlockReference.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/BlockReference.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Body.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Body.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/CheckSecurity.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/CheckSecurity.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Do.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Do.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Embed.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Embed.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Array.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Array.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/AssignName.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/AssignName.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Add.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Add.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/And.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/And.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseAnd.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseAnd.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseOr.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseOr.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseXor.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/BitwiseXor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Concat.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Concat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Div.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Div.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/EndsWith.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/EndsWith.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Equal.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Equal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/FloorDiv.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/FloorDiv.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Greater.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Greater.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/GreaterEqual.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/GreaterEqual.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/In.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/In.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Less.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Less.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/LessEqual.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/LessEqual.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Matches.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Matches.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mod.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mod.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mul.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Mul.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotEqual.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotEqual.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotIn.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/NotIn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Or.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Or.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Power.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Power.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Range.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Range.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/StartsWith.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/StartsWith.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Sub.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Binary/Sub.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/BlockReference.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/BlockReference.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Call.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Call.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Conditional.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Conditional.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Constant.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Constant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/ExtensionReference.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/ExtensionReference.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter/Default.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Filter/Default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Function.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/GetAttr.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/GetAttr.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/MethodCall.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/MethodCall.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Name.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Name.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Parent.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Parent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/TempName.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/TempName.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Constant.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Constant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Defined.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Defined.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Divisibleby.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Divisibleby.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Even.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Even.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Null.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Null.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Odd.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Odd.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Sameas.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Test/Sameas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Neg.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Neg.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Not.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Not.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Pos.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Expression/Unary/Pos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Flush.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Flush.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/For.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/For.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/ForLoop.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/ForLoop.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/If.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/If.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Import.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Import.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Include.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Include.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Macro.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Macro.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Module.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Module.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Print.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Print.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Sandbox.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Sandbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SandboxedPrint.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SandboxedPrint.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Set.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Set.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SetTemp.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/SetTemp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Spaceless.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Spaceless.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Text.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/Text.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/With.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Node/With.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeOutputInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeOutputInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeTraverser.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeTraverser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Escaper.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Escaper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Optimizer.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Optimizer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/SafeAnalysis.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/SafeAnalysis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Sandbox.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitor/Sandbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitorInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/NodeVisitorInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Parser.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Parser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ParserInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/ParserInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Blackfire.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Blackfire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Html.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Text.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Dumper/Text.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Node/EnterProfile.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Node/EnterProfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Node/LeaveProfile.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Node/LeaveProfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/NodeVisitor/Profiler.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/NodeVisitor/Profiler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Profile.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Profiler/Profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedFilterError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedFilterError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedFunctionError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedFunctionError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedMethodError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedMethodError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedPropertyError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedPropertyError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedTagError.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityNotAllowedTagError.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicy.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicyInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Sandbox/SecurityPolicyInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFilter.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFunction.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleFunction.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleTest.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SimpleTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Source.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Source.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SourceContextLoaderInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/SourceContextLoaderInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Template.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TemplateInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TemplateInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TemplateWrapper.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TemplateWrapper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Function.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/IntegrationTestCase.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/IntegrationTestCase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Method.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Method.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Node.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Test/Node.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestCallableInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestCallableInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TestInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Token.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Token.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/AutoEscape.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/AutoEscape.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Block.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Block.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Do.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Do.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Embed.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Embed.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Extends.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Extends.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Filter.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Filter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Flush.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Flush.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/For.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/For.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/From.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/From.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/If.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/If.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Import.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Import.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Include.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Include.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Macro.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Macro.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Sandbox.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Sandbox.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Set.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Set.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Spaceless.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Spaceless.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Use.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/Use.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/With.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParser/With.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBroker.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBroker.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBrokerInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserBrokerInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserInterface.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenParserInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenStream.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/TokenStream.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Util/DeprecationCollector.php" afterPath="$PROJECT_DIR$/vendor/twig/twig/lib/Twig/Util/DeprecationCollector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver-configs/Caddyfile" afterPath="$PROJECT_DIR$/webserver-configs/Caddyfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver-configs/Caddyfile-0.8.x" afterPath="$PROJECT_DIR$/webserver-configs/Caddyfile-0.8.x" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webserver-configs/nginx.conf" afterPath="$PROJECT_DIR$/webserver-configs/nginx.conf" />
-    </list>
+    <list default="true" id="e01d3f05-f6b2-4f69-ac93-5486bfd1e4c5" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -477,26 +11,23 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="HTML (Twig)" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <leaf>
+      <file leaf-file-name="photo-container.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/plugins/photo-container/photo-container.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="65" column="38" lean-forward="false" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/user/themes/photo-container-site/templates/modular.html.twig.html" />
-        <option value="$PROJECT_DIR$/user/themes/photo-container-site/templates/login.html.twig" />
-        <option value="$PROJECT_DIR$/user/themes/photo-container-site/templates/partials/base.html.twig" />
-        <option value="$PROJECT_DIR$/user/themes/photo-container-site/templates/signin.html.twig" />
+        <option value="$PROJECT_DIR$/user/plugins/photo-container/photo-container.php" />
       </list>
     </option>
   </component>
@@ -533,11 +64,65 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="photocontainer-site" />
+              <option name="myItemId" value="grav-admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="photocontainer-site" />
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grav-admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="photo-container" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -548,18 +133,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.path.for.package.jscs" value="project" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\marte\www\photocontainer\photocontainer-site\user\themes\photo-container-site\templates" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -634,37 +212,38 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5beb1270-b2b9-417a-8982-1515cefca7e9" name="Default" comment="" />
-      <created>1487803804193</created>
+      <changelist id="e01d3f05-f6b2-4f69-ac93-5486bfd1e4c5" name="Default" comment="" />
+      <created>1488245542086</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1487803804193</updated>
-      <workItem from="1487803807116" duration="4960000" />
+      <updated>1488245542086</updated>
+      <workItem from="1488245543470" duration="4175000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4960000" />
+    <option name="totallyTimeSpent" value="4175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19742814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -682,106 +261,32 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/phpdocker/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/foto-container/templates/modular/banner.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/partials/metadata.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/antimatter/templates/modular.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/modular.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/antimatter/templates/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/antimatter/templates/partials/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="83" column="18" lean-forward="true" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/partials/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/signup.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="88" lean-forward="false" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/themes/photo-container-site/templates/signin.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="535">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/plugins/login/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/plugins/photo-container/photo-container.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="65" column="38" lean-forward="false" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
           <folding />
         </state>
       </provider>

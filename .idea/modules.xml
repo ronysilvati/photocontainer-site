@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/photocontainer-site.iml" filepath="$PROJECT_DIR$/.idea/photocontainer-site.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/grav-admin.iml" filepath="$PROJECT_DIR$/.idea/grav-admin.iml" />
     </modules>
   </component>
 </project>
