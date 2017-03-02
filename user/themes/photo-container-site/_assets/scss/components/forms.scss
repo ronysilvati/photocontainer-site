@@ -46,7 +46,9 @@
 }
 .form-check{
   position: relative;
-
+  .form-check-label {
+    padding: 0;
+  }
   input {
     position: absolute;
     opacity: 0;

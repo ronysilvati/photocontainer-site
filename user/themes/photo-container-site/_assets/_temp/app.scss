@@ -350,7 +350,9 @@ body {
 }
 .form-check{
   position: relative;
-
+  .form-check-label {
+    padding: 0;
+  }
   input {
     position: absolute;
     opacity: 0;
@@ -1104,12 +1106,12 @@ body {
 }
 
 .page-home {
-
+  // transition: 0s margin-top;
   .navbar-home {
     height: 98px;
     border-bottom: 2px solid #ddd;
     z-index: 100;
-    transition: initial;
+    transition: .3s;
     .navbar-nav {
       .nav-item {
         .nav-link {
@@ -1120,6 +1122,11 @@ body {
           padding: 0 20px;
           font-family: $buttons-font-family;
           color: $gray;
+          transition: .3s;
+
+          &.active {
+            background-color: #eee;
+          }
         }
         .btn {
           top: 50%;
@@ -1130,14 +1137,20 @@ body {
     }
   }
   &.navbar-fixed {
-    margin-top: 100px;
+    margin-top: 42px;
+    padding-top: 58px;
+    // transition: 3s margin-top;
+
     .navbar-home {
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
       height: 58px;
-      transition: .2s;
+      transition: .3s;
+      .navbar-nav .nav-item .nav-link {
+        line-height: 56px;
+      }
     }
   }
 
@@ -1431,25 +1444,85 @@ body {
   line-height: 16px;
 }
 
-.profile-header {
-  height: 300px;
-  background-position: center top;
-  background-size: cover;
-  position: relative;
-  margin-bottom: 60px;
+.page-profile {
+  .profile-header {
+    height: 300px;
+    background-position: center top;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 60px;
 
-  .btn-upload {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 50%);
+    .btn-upload {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
   }
-}
 
-.card {
-  &>.card-title {
-    text-align: center;
-    background-color: $gray-lighter;
-    padding: 40px 0;
+  .card {
+    &>.card-title {
+      text-align: center;
+      background-color: $gray-lighter;
+      padding: 40px 0;
+    }
+  }
+  .block-who {
+    padding: 100px 0 150px;
+
+    h2 {
+      font-size: 40px;
+      font-weight: 400;
+    }
+    h6 {
+      color: #8F8F8F;
+    }
+    .who-card {
+      text-align: center;
+
+      h6 {
+        color: $gray-dark;
+        font-weight: 800;
+        font-size: 18px;
+      }
+      p {
+        color: $gray;
+      }
+      i{
+        font-size: 160px;
+        line-height: 160px;
+      }
+
+      &.who-card-center {
+        h5 {
+          font-weight: 700;
+        }
+        .icon-arrow-mid {
+          transform: rotate(180deg);
+          display: block;
+          font-size: 90px;
+          line-height: 90px;
+        }
+
+        h5+  .icon-arrow-mid {
+          transform: rotate(0);
+        }
+      }
+
+      &.who-card-link {
+        border-radius: 4px;
+        transition: .3s;
+        cursor: pointer;
+        * {
+          transition: .3s;
+        }
+        &:hover {
+          background-color: $gray-dark;
+          * {
+            color: $white!important;
+          }
+        }
+      }
+    }
   }
 }

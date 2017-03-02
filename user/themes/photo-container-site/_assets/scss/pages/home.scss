@@ -1,10 +1,10 @@
 .page-home {
-
+  // transition: 0s margin-top;
   .navbar-home {
     height: 98px;
     border-bottom: 2px solid #ddd;
     z-index: 100;
-    transition: initial;
+    transition: .3s;
     .navbar-nav {
       .nav-item {
         .nav-link {
@@ -15,6 +15,11 @@
           padding: 0 20px;
           font-family: $buttons-font-family;
           color: $gray;
+          transition: .3s;
+
+          &.active {
+            background-color: #eee;
+          }
         }
         .btn {
           top: 50%;
@@ -25,14 +30,20 @@
     }
   }
   &.navbar-fixed {
-    margin-top: 100px;
+    margin-top: 42px;
+    padding-top: 58px;
+    // transition: 3s margin-top;
+
     .navbar-home {
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
       height: 58px;
-      transition: .2s;
+      transition: .3s;
+      .navbar-nav .nav-item .nav-link {
+        line-height: 56px;
+      }
     }
   }
 

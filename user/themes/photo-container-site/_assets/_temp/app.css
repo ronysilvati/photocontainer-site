@@ -8745,6 +8745,9 @@ body {
 .form-check {
   position: relative;
 }
+.form-check .form-check-label {
+  padding: 0;
+}
 .form-check input {
   position: absolute;
   opacity: 0;
@@ -9560,7 +9563,7 @@ body {
   height: 98px;
   border-bottom: 2px solid #ddd;
   z-index: 100;
-  transition: initial;
+  transition: .3s;
 }
 .page-home .navbar-home .navbar-nav .nav-item .nav-link {
   font-weight: 800;
@@ -9570,6 +9573,10 @@ body {
   padding: 0 20px;
   font-family: "Raleway", sans-serif;
   color: #656565;
+  transition: .3s;
+}
+.page-home .navbar-home .navbar-nav .nav-item .nav-link.active {
+  background-color: #eee;
 }
 .page-home .navbar-home .navbar-nav .nav-item .btn {
   top: 50%;
@@ -9577,7 +9584,8 @@ body {
   position: relative;
 }
 .page-home.navbar-fixed {
-  margin-top: 100px;
+  margin-top: 42px;
+  padding-top: 58px;
 }
 .page-home.navbar-fixed .navbar-home {
   position: fixed;
@@ -9585,7 +9593,10 @@ body {
   right: 0;
   left: 0;
   height: 58px;
-  transition: .2s;
+  transition: .3s;
+}
+.page-home.navbar-fixed .navbar-home .navbar-nav .nav-item .nav-link {
+  line-height: 56px;
 }
 .page-home .block-banner-1 {
   background-size: cover;
@@ -9859,24 +9870,74 @@ body {
   line-height: 16px;
 }
 
-.profile-header {
+.page-profile .profile-header {
   height: 300px;
   background-position: center top;
   background-size: cover;
   position: relative;
   margin-bottom: 60px;
 }
-.profile-header .btn-upload {
+.page-profile .profile-header .btn-upload {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
 }
-
-.card > .card-title {
+.page-profile .card > .card-title {
   text-align: center;
   background-color: #eceeef;
   padding: 40px 0;
+}
+.page-profile .block-who {
+  padding: 100px 0 150px;
+}
+.page-profile .block-who h2 {
+  font-size: 40px;
+  font-weight: 400;
+}
+.page-profile .block-who h6 {
+  color: #8F8F8F;
+}
+.page-profile .block-who .who-card {
+  text-align: center;
+}
+.page-profile .block-who .who-card h6 {
+  color: #383838;
+  font-weight: 800;
+  font-size: 18px;
+}
+.page-profile .block-who .who-card p {
+  color: #656565;
+}
+.page-profile .block-who .who-card i {
+  font-size: 160px;
+  line-height: 160px;
+}
+.page-profile .block-who .who-card.who-card-center h5 {
+  font-weight: 700;
+}
+.page-profile .block-who .who-card.who-card-center .icon-arrow-mid {
+  transform: rotate(180deg);
+  display: block;
+  font-size: 90px;
+  line-height: 90px;
+}
+.page-profile .block-who .who-card.who-card-center h5 + .icon-arrow-mid {
+  transform: rotate(0);
+}
+.page-profile .block-who .who-card.who-card-link {
+  border-radius: 4px;
+  transition: .3s;
+  cursor: pointer;
+}
+.page-profile .block-who .who-card.who-card-link * {
+  transition: .3s;
+}
+.page-profile .block-who .who-card.who-card-link:hover {
+  background-color: #383838;
+}
+.page-profile .block-who .who-card.who-card-link:hover * {
+  color: #fff !important;
 }
 
 /*# sourceMappingURL=app.css.map */
