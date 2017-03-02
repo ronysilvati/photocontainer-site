@@ -7,13 +7,13 @@
 			this.target = $(this).attr('data-target');
 
 			this.html = $(this.target)
-										.clone()
-										.removeAttr('id')
-										.wrap('<div>')
-										.parent()
-										.html();
+				.clone()
+				.removeAttr('id')
+				.wrap('<div>')
+				.parent()
+				.html();
 
-			$(this.target).after(this.html);
+			$(this.target).parent().append(this.html).find('input').focus();
 
 		});// click
 

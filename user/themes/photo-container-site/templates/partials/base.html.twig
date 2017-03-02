@@ -9,14 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     {% block stylesheets %}
-        {% do assets.addCss('theme://resources/app.min.css', 99) %}
         {% do assets.addCss('theme://resources/fontello/css/fontello.css', 98) %}
+        {% do assets.addCss('theme://resources/lightGallery-master/dist/css/lightgallery.min.css', 97) %}
+        {% do assets.addCss('theme://resources/lightslider-master/dist/css/lightslider.min.css', 97) %}
+        {% do assets.addCss('theme://resources/app.min.css', 96) %}
     {% endblock %}
     {{ assets.css() }}
 
     {% block javascripts %}
         {% do assets.addJs('jquery', 100) %}
         {% do assets.addJs('theme://resources/app.min.js', 99) %}
+        {% do assets.addJs('theme://resources/lightGallery-master/dist/js/lightgallery.min.js', 98) %}
+        {% do assets.addJs('theme://resources/lightslider-master/dist/js/lightslider.min.js', 97) %}
+        {% do assets.addJs('theme://resources/Mason-master/dist/mason.min.js', 97) %}
     {% endblock %}
     {{ assets.js() }}
 

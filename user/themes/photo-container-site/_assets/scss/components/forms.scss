@@ -10,20 +10,21 @@
   border-radius: 0;
   padding: 8px 0;
 }
-.form-control-close {
-  position: relative;
+.form-control-fields {
+  .form-control-close {
+    position: relative;
 
-  .close {
-    position: absolute;
-    top: 8px;
-    right: 0;
-    font-weight: 100;
-  }
-
-  &:first-child {
-    display:none;
     .close {
-      display:none;
+      position: absolute;
+      top: 8px;
+      right: 0;
+      font-weight: 100;
+    }
+
+    &:first-child {
+      .close {
+        display:none;
+      }
     }
   }
 }
@@ -43,7 +44,7 @@
     font-size: 20px;
   }
 }
-.form-check-label {
+.form-check{
   position: relative;
 
   input {
@@ -59,17 +60,31 @@
       height: 16px;
       display: inline-block;
       top: -2px;
-      background-color: rgba(255,255,255,0);
-      border: 2px solid #fff;
+      background-color: rgba($gray-dark ,0);
+      border: 2px solid $gray-dark;
       border-radius: 4px;
       line-height: 12px;
       font-size: 10px;
-      color:rgba(255,255,255,0);
+      color:rgba($gray-dark ,0);
       transition: .3s;
+      text-align: center;
     }
   }
   input:checked ~ span:before {
-    color: rgba(255,255,255,1);
+    color: rgba($gray-dark ,1);
+  }
+
+  &.text-white {
+    span {
+      &:before {
+        background-color: rgba($white ,0);
+        border: 2px solid $white;
+        color:rgba($white ,0);
+      }
+    }
+    input:checked ~ span:before {
+      color: rgba($white ,1);
+    }
   }
 }
 

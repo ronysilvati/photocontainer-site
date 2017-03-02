@@ -30,13 +30,34 @@
 
 <script>
 $( document ).ready(function(){
-  // $('body').scrollspy({ target: '.navbar-spy', offset: 120 });
-  $('.slider-top .slider-inner').slick({
-    dots: true,
-    arrows: false,
-    infinite: true
+  $('body').scrollspy({ target: '.navbar-spy', offset: 120 });
+
+  $("#home-slider-top .slider-inner").lightSlider({
+    item: 1,
+    controls: false
   });
-  // alert();
+  $("#home-slider-quotes .slider-inner").lightSlider({
+    item: 1,
+    controls: false
+  });
+  $("#home-slider-tags .slider-inner").lightSlider({
+    item: 1,
+    pager: false,
+    controls: true
+  });
+  $("#home-slider-cols .slider-inner").lightSlider({
+    item: 4,
+    loop: true,
+    pager: false,
+    slideMargin: 30,
+    controls: true
+  });
+
+
+  $('#block-gallery').lightGallery({
+      subHtmlSelectorRelative: true
+  });
+
 });
 </script>
 

@@ -37,9 +37,12 @@
 	};
 
 	$( document ).ready(function(){
-		$('['+DATA.name+']').each(function() {
-			$(this).attr(DATA.name+DATA.attr_suffix, $(this).offset().top);
-		});
+		setTimeout(function(){
+			$('['+DATA.name+']').each(function() {
+				$(this).attr(DATA.name+DATA.attr_suffix, $(this).offset().top);
+			});
+		}, 300);
+
 		// alert();
 	});
 

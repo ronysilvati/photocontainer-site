@@ -3,12 +3,10 @@
 <div id="home-slider-top" class="slider slider-top">
 
   <div class="slider-inner vh cover" role="listbox">
-    {% set i = 0 %}
     {% for image in slider_images %}
     <div class="slider-item">
       <img src="{{image}}">
     </div>
-    {% set i = i+1 %}
     {% endfor %}
   </div>
 

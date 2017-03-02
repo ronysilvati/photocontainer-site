@@ -11,7 +11,7 @@
   %}
   <div class="container">
     <div class="tab-content">
-      <div class="tab-pane active" id="evento" role="tabpanel">
+      <div class="tab-pane fade show active" id="evento" role="tabpanel">
         <h4 class="mb-5">Evento</h4>
         <h5 class="mb-3">Selecione as categorias</h5>
         <div data-toggle="buttons">
@@ -100,46 +100,53 @@
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input">
-            Liberado
+            <span>Liberado</span>
           </label>
-          <a><i class="icon-help-circled"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input">
-            Liberado pelo fotógrafo
+            <span>Liberado pelo fotógrafo</span>
           </label>
-          <a><i class="icon-help-circled"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox" class="form-check-input">
-            Liberado pelos noivos
+            <span>Liberado pelos noivos</span>
           </label>
-          <a><i class="icon-help-circled"></i></a>
+          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
+          </label>
+          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
       </div>
-      <div class="tab-pane" id="fornecedores" role="tabpanel">
+      <div class="tab-pane fade" id="fornecedores" role="tabpanel">
         <h5 class="mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
             {%
             set forn_labels = [
-                'Fotos',
-                'Filmagem',
-                'Cerimonial',
-                'Decoração',
-                'Lista de presentes',
-                'Buffet',
-                'Doces',
-                'Bebidas',
-                'Música',
-                'Salão de festa',
-                'Salão de beleza',
-                'Roupas',
-                'Sapatos',
-                'Alianças',
-                'Local cerimônia'
+                ['Fotos', 'fotos'],
+                ['Filmagem', 'filmagem'],
+                ['Cerimonial', 'cerimonial'],
+                ['Decoração', 'decoracao'],
+                ['Lista de presentes', 'presentes'],
+                ['Buffet', 'buffet'],
+                ['Doces', 'doces'],
+                ['Bebidas', 'bebidas'],
+                ['Música', 'musica'],
+                ['Salão de festa', 'festa'],
+                ['Salão de beleza', 'beleza'],
+                ['Roupas', 'roupas'],
+                ['Sapatos', 'sapatos'],
+                ['Alianças', 'aliancas'],
+                ['Local cerimônia', 'local']
               ]
             %}
             {% set forn_max =   5 %}
@@ -153,14 +160,18 @@
               {% set forn_count = forn_count+1 %}
               {% set forn_total = forn_total+1 %}
             <div class="form-group">
-              <label>{{ value }}</label>
-              <div id="campo-{{ value }}"  class="form-control-close">
-                <input type="text" class="form-control">
-                <button type="button" class="close" data-toggle="remove" data-target="_parent">
-                  <span aria-hidden="true">×</span>
-                </button>
+              <label>{{ value[0] }}</label>
+              <div class="form-control-fields">
+                <div id="campo-{{ value[1] }}"  class="form-control-close">
+                  <input type="text" class="form-control">
+                  <button type="button" class="close" data-toggle="remove" data-target="_parent">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
               </div>
-              <small class="form-text text-muted text-right"><a data-toggle="clone" data-target="#campo-{{ value }}">Adicionar</a></small>
+              <small class="form-text text-muted text-right">
+                <a data-toggle="clone" class="link" data-target="#campo-{{ value[1] }}">Adicionar</a>
+              </small>
             </div>
             {% if (forn_count == forn_max) or (forn_total == 15) %}
               </div>
@@ -169,11 +180,11 @@
           {% endfor %}
         </div>
       </div>
-      <div class="tab-pane" id="caracteristicas" role="tabpanel">
+      <div class="tab-pane fade" id="caracteristicas" role="tabpanel">
         <h4 class="mb-4">Características</h4>
         {{ include('partials/components/filters.twig') }}
       </div>
-      <div class="tab-pane" id="fotos" role="tabpanel">
+      <div class="tab-pane fade" id="fotos" role="tabpanel">
         <div class="upload-area">
           <div class="upload-area-inner">
             <i class="icon-upload"></i>
@@ -185,17 +196,21 @@
         </div>
         <div class="row row-sm">
 
-          {%
-          include 'partials/components/thumb-gallery.twig' with {
-            'type': '',
-            'show': []
-          }
-          %}
-          <!-- <?php
-            for ($i=0; $i < 12; $i++) {
-              get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['search','trash']]]);
+          {% for i in range(1, 10) %}
+            {%
+            include 'partials/components/thumb-gallery.twig' with {
+              'type': '',
+              'show': [
+                'nav'
+              ],
+              'nav': [
+                'search',
+                'trash'
+              ]
             }
-          ?> -->
+            %}
+          {% endfor %}
+
         </div>
       </div>
     </div>

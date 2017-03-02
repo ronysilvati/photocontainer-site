@@ -1,13 +1,16 @@
-$("a.spy[href^='#']").on('click', function(e) {
+$( document ).ready(function(){
 
-	e.preventDefault();
+	$("a.spy").on('click', function(e) {
 
-	var hash = this.hash;
+		e.preventDefault();
 
-	$('html, body').animate({
-		scrollTop: ($(hash).offset().top - parseFloat($("body .app").css("margin-top")))
-	}, 600, function(){
-		window.location.hash = hash;
+		var hash = this.hash;
+
+		$('html, body').animate({
+			scrollTop: ($(hash).offset().top - parseFloat($("body .app").css("margin-top")))
+		}, 600, function(){
+			window.location.hash = hash;
+		});
+
 	});
-
 });

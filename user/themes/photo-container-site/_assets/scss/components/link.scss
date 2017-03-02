@@ -1,10 +1,12 @@
 .link {
   position: relative;
+  color: $gray-dark;
+  cursor: pointer;
 
   &:after {
     content: "";
     position: absolute;
-    background: #000;
+    background: $gray-dark;
     bottom: -1px;
     right: 50%;
     left: 50%;
@@ -14,6 +16,7 @@
   }
   &:hover {
     text-decoration: none;
+    color: $black;
     &:after {
       left: 0;
       right: 0;
