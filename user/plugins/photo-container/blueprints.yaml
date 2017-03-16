@@ -37,3 +37,11 @@ form:
               label: Rota para o Login
               help: Rota que recebe o POST da tela de Login
               default: '/do-login'
+            input_pwd:
+              type: text
+              label: Campo da senha
+              help: ID do input da senha
+            input_username:
+              type: text
+              label: Campo do username
+              help: ID do input do username

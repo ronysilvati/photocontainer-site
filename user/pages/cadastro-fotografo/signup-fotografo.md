@@ -1,6 +1,6 @@
 ---
 title: 'Cadastro - Fotografo'
-slug: signup-2
+slug: signup-photographer
 visible: true
 ---
 

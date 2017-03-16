@@ -1,6 +1,6 @@
 ---
 title: 'Cadastro - Blog'
-slug: signup
+slug: signup-publisher
 visible: true
 ---
 

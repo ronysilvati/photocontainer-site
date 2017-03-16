@@ -2,7 +2,11 @@
 
 {% block content %}
 
-{{ include('partials/components/navbar-top.twig') }}
+{%
+  include 'partials/components/navbar-top.twig' with {
+  'profile': grav.user.profile
+  }
+%}
 
 <div class="app page-gallery bg-gray-lightest">
 

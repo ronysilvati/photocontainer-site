@@ -8,16 +8,16 @@
 
       <h2 class='title text-uppercase'>Acesse seu perfil</h2>
 
-      <form class="form-signin">
+      <form class="form-signin" action="/do-signin" method="post">
 
         <div class="form-group">
           <label for="input_email" class="sr-only">E-mail</label>
-          <input type="email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="" autofocus="">
+          <input type="email" id="input_email" name="input_email" class="form-control form-control-login" placeholder="E-mail" required="" autofocus="">
         </div>
 
         <div class="form-group">
           <label for="input_password" class="sr-only">Senha</label>
-          <input type="password" id="input_password" class="form-control form-control-login" placeholder="Senha" required="">
+          <input type="password" id="input_password" name="input_password" class="form-control form-control-login" placeholder="Senha" required="">
         </div>
 
         <div class="text-center pb-3">

@@ -2,8 +2,8 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
-use RocketTheme\Toolbox\Event\Event;
 use Grav\Common\User\User;
+use RocketTheme\Toolbox\Event\Event;
 
 /**
  * Class FotoContainerPlugin
@@ -25,6 +25,7 @@ class PhotoContainerPlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
         ];
     }
 
@@ -37,11 +38,15 @@ class PhotoContainerPlugin extends Plugin
         if ($this->isAdmin()) {
             return;
         }
+        $this->grav['messages']->clear();
 
         $uri = $this->grav['uri'];
 
-        $this->grav['messages']->clear();
-        if (!empty($_POST) && $uri->route() == $this->grav['config']->get('plugins.foto-container.login_route')) {
+        if ($uri->route() == '/logout') {
+            $this->onLogout();
+        }
+
+        if (!empty($_POST) && $uri->route() == $this->grav['config']->get('plugins.photo-container.login_route')) {
             $this->onLoginByApi();
         }
     }
@@ -55,7 +60,10 @@ class PhotoContainerPlugin extends Plugin
     public function onLoginByApi()
     {
         try {
-            $username = $_POST['email'];
+            $inputPwd = $this->grav['config']->get('plugins.photo-container.input_pwd');
+            $inputUsername = $this->grav['config']->get('plugins.photo-container.input_username');
+
+            $username = $_POST[$inputUsername];
             $user = User::load($username);
 
             if (!$user->exists()) {
@@ -63,18 +71,18 @@ class PhotoContainerPlugin extends Plugin
 
                 $res = $client->request(
                     'POST',
-                    $this->grav['config']->get('plugins.foto-container.api_endpoint') . "login_check",
+                    $this->grav['config']->get('plugins.photo-container.api_endpoint') . "login_check",
                     [
                     'form_params' => [
-                        'email' => $_POST['email'],
-                        'password' => $_POST['passwd']
+                        'email' => $username,
+                        'password' => $_POST[$inputPwd],
                     ]
                 ]);
                 $credentials = json_decode($res->getBody()->getContents());
 
                 $res = $client->request(
                     'GET',
-                    $this->grav['config']->get('plugins.foto-container.api_endpoint')."users.json?email=".$_POST['email'],
+                    $this->grav['config']->get('plugins.photo-container.api_endpoint')."users.json?email=".$username,
                     ['headers' => ['Authorization' => 'Bearer '.$credentials->token]]
                 );
 
@@ -87,6 +95,7 @@ class PhotoContainerPlugin extends Plugin
                     'username' => $data->email,
                     'email'    => $data->email,
                     'lang'     => 'en',
+                    'profile'  => $data->profile[0]->id,
                 ];
 
                 $userData['groups'] = $this->grav['config']->get('plugins.login.user_registration.groups');
@@ -101,18 +110,26 @@ class PhotoContainerPlugin extends Plugin
             unset($this->grav['user']);
             $this->grav['user'] = $user;
 
-            if ($data->profile[0]->id == 1) {
-                $this->grav->redirect('/fotografo');
-            }
-
-            if ($data->profile[0]->id == 2) {
-                $this->grav->redirect('/blogueiro');
-            }
+            $this->grav->redirect('/gallery');
         } catch (\Exception $e) {
             $messages = $this->grav['messages'];
             $messages->add($e->getMessage(), 'error');
         }
 
         return true;
+    }
+
+    public function onTwigSiteVariables()
+    {
+//        echo "<pre>";
+//        var_dump($this->grav['page']);
+//        exit;
+//
+//        $this->grav['page'] = ['lala' => 'oi'];
+    }
+
+    public function onLogout() {
+        session_destroy();
+        $this->grav->redirect('/');
     }
 }
