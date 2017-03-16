@@ -61,3 +61,15 @@ var Signup = (function () {
         photographer: photographer
     };
 })();
+
+var Profile = (function () {
+    var load = function(api)
+    {
+        $("#input-email").val("teste@teste.com")
+        $("#input-name").val("Nome de Teste")
+    }
+
+    return {
+        load: load
+    };
+})();
