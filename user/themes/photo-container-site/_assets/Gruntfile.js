@@ -25,6 +25,8 @@ module.exports = function( grunt ) {
 					'lib/jquery-3.1.1.min.js',
 					'lib/tether-1.3.3/dist/js/tether.min.js',
 					'lib/bootstrap-4.0.0-alpha.6/dist/js/bootstrap.min.js',
+					'lib/Inputmask-3.x/dist/min/jquery.inputmask.bundle.min.js',
+					'lib/jquery-validation-1.16.0/dist/jquery.validate.min.js',
 					'js/*.js'
 				],
 	      dest: '_temp/app.js',

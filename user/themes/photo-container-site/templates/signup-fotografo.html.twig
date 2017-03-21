@@ -7,58 +7,63 @@
   <div class="page-login-inner">
 
     <div class="login-box">
-
+    <form class="form-signup-photographer form-validate">
       <div class="row row-md">
 
       <div class="col-md-6">
         <h2 class='title text-uppercase'>Selecione um plano</h2>
         <div data-toggle="buttons">
           <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
-            <input type="radio" autocomplete="off">
+            <input type="radio" name="input_plan" autocomplete="off">
             <span>Primeiro mês grátis</span>
             <small>Cobrança após o primeiro mês, caso não cancele sua conta</small>
             <small>R$<b>39</b></small>
           </label>
           <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
-            <input type="radio" autocomplete="off">
+            <input type="radio" name="input_plan" autocomplete="off">
             <span>Assinatura semestral</span>
             <small>Pague <b>5</b> meses e leve <b>6</b></small>
             <small>R$<b>199</b></small>
           </label>
           <label class="btn btn-plan btn-outline-secondary btn-check btn-lg text-uppercase btn-block">
-            <input type="radio" autocomplete="off">
+            <input type="radio" name="input_plan" autocomplete="off">
             <span>Assinatura anual</span>
             <small>Pague <b>10</b> meses e leve <b>12</b></small>
             <small>R$<b>399</b></small>
           </label>
         </div>
-      </div>
+        <label class="error msg-error" for="input_plan" style="display: none;"></label>
+    </div>
 
       <div class="col-md-6">
         <h2 class='title text-uppercase'>Insira seus dados</h2>
-        <form class="form-signup-photographer">
           <div class="form-group">
             <label for="input_name" class="sr-only">Nome</label>
-            <input type="text" name="name" id="input_name" class="form-control form-control-login" placeholder="Nome" required="">
+            <input type="text" name="input_name" class="form-control form-control-login" placeholder="Nome" required="">
+            <label class="error msg-error" for="input_name" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label for="input_email" class="sr-only">E-mail</label>
-            <input type="email" name="email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="">
+            <input type="email" name="input_email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="">
+            <label class="error msg-error" for="input_email" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label for="input_remail" class="sr-only">Confirmar e-mail</label>
-            <input type="email" id="input_remail" class="form-control form-control-login" placeholder="Confirmar e-mail" required="">
+            <input type="email" name="input_remail" class="form-control form-control-login" placeholder="Confirmar e-mail" required="">
+            <label class="error msg-error" for="input_remail" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label for="input_password" class="sr-only">Senha</label>
-            <input type="password" name="password" id="input_password" class="form-control form-control-login" placeholder="Senha" required="">
+            <input type="password" name="input_password" class="form-control form-control-login" placeholder="Senha" required="">
+            <label class="error msg-error" for="input_password" style="display: none;"></label>
           </div>
           <div class="form-check text-white text-center">
             <label class="form-check-label">
-              <input type="checkbox">
+              <input type="checkbox" name="input_terms">
               <span>Aceito os <a href="#" class="text-white link">Termos e condições de uso</a></span>
             </label>
-          </div>
+            <label class="error msg-error" for="input_terms" style="display: none;"></label>
+        </div>
           <div class="text-center mt-4">
             <button class="btn btn-submit btn-outline-secondary" type="submit">Entrar</button>
           </div>
@@ -69,12 +74,13 @@
             </a>
           </div>
           <input type="hidden" name="user[profile][]" value="/profiles/1">
-        </form>
       </div>
 
     </div>
-
+  </form>
+    <!-- a -->
     </div>
+    <!-- a -->
 
     {{ include('partials/components/login-footer.twig') }}
   </div>
