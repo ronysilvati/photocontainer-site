@@ -9870,6 +9870,12 @@ body {
   line-height: 16px;
 }
 
+.msg-error {
+  display: block;
+  font-size: 10px;
+  color: #fff;
+}
+
 .page-profile .profile-header {
   height: 300px;
   background-position: center top;
