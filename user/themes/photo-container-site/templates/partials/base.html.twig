@@ -35,4 +35,17 @@
 {% endblock %}
 </body>
 
+{% if grav.user.id is not null %}
+<script>
+    if (localStorage.getItem('logged_in') === null) {
+        localStorage.setItem('logged_in', true)
+        localStorage.setItem('endpoint', 'http://192.168.99.100:8081/')
+        localStorage.setItem('profile', {{ grav.user.profile }})
+        localStorage.setItem('fullname', '{{ grav.user.fullname }}')
+        localStorage.setItem('email', '{{ grav.user.email }}')
+        localStorage.setItem('user', {{ grav.user.id }})
+    }
+</script>
+{%  endif %}
+
 </html>

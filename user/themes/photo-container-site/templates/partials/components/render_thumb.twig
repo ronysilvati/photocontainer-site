@@ -1,0 +1,49 @@
+{% set thumb_class = 'card thumb-gallery ratio-1by1' %}
+{% if type %}
+    {% set thumb_class = thumb_class ~ ' thumb-gallery-' ~ type %}
+{% endif %}
+{% if not col %}
+    {% set col = "col-md-3" %}
+{% endif %}
+
+<div class="{{col}} event-thumb-search" data-src="{{ data.thumb }}">
+    <div class="{{thumb_class}}">
+        <img alt='' src="{{ data.thumb }}">
+        <div class="card-text">
+            <div class="card-text-inner">
+
+                {% if show %}
+                    {% for key, value in show %}
+
+                        {% if value == 'album-type' %}  <p class="album-type">Casamento</p>{% endif %}
+                        {% if value == 'image-count' %} <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
+                        {% if value == 'album-name' %}  <p class="album-name">{{ data.title }}</p>{% endif %}
+                        {% if value == 'date' %}        <p class="">{{ data.eventdate }}</p>{% endif %}
+                        {% if value == 'photo-label' %} <p class="photo-label">{{ data.name }}</p>{% endif %}
+                        {% if value == 'photo-name' %}  <p class="photo-name">Sebastião Doce</p>{% endif %}
+                        {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
+                        {% if value == 'icon' %}        <p class="icon"><i class="icon-search"></i></p>{% endif %}
+
+                        {% if value == 'nav' %}
+                            <ul class="nav">
+                                {% for value_nav in nav %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            {% if value_nav == 'fav' %}       <i class="icon-star"></i>{% endif %}
+                                            {% if value_nav == 'edit' %}      <i class="icon-pencil"></i>{% endif %}
+                                            {% if value_nav == 'trash' %}     <i class="icon-trash"></i>{% endif %}
+                                            {% if value_nav == 'search' %}    <i class="icon-search"></i>{% endif %}
+                                            {% if value_nav == 'download' %}  <i class="icon-download"></i>{% endif %}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>

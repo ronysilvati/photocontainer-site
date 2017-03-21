@@ -28,32 +28,33 @@
           <div class="col-3">
             <div class="form-group">
               <label>Nome da noiva</label>
-              <input type="text" class="form-control">
+              <input id="input-bride" type="text" class="form-control">
             </div>
             <div class="form-group">
               <label>Nome do noivo</label>
-              <input type="text" class="form-control">
+              <input id="input-groom" type="text" class="form-control">
             </div>
             <label>Data do evento</label>
             <div class="row row-xs">
               <div class="col-3">
                 <div class="form-group">
-                  <select class="form-control">
-                    <option>22</option>
+                  <select id="select-day" class="form-control">
+                    <option value="21">21</option>
+                    <option value="22">22</option>
                   </select>
                 </div>
               </div>
               <div class="col-5">
                 <div class="form-group">
-                  <select class="form-control">
-                    <option>Abril</option>
+                  <select id="select-month" class="form-control">
+                    <option value="04">Abril</option>
                   </select>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <select class="form-control">
-                    <option>2017</option>
+                  <select id="select-year" class="form-control">
+                    <option value="2017">2017</option>
                   </select>
                 </div>
               </div>
@@ -86,11 +87,11 @@
           <div class="col-3">
             <div class="form-group">
               <label>Título</label>
-              <input type="text" class="form-control">
+              <input id="input-title" type="text" class="form-control">
             </div>
             <div class="form-group">
               <label>Descrição</label>
-              <textarea class="form-control"></textarea>
+              <textarea id="input-description" class="form-control"></textarea>
             </div>
           </div>
 
@@ -99,28 +100,28 @@
         <h5 class="mb-3 mt-5">Preferências</h5>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
+            <input id="input-approval-general" type="checkbox" class="form-check-input">
             <span>Liberado</span>
           </label>
           <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
+            <input id="input-approval-photographer" type="checkbox" class="form-check-input">
             <span>Liberado pelo fotógrafo</span>
           </label>
           <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
+            <input id="input-approval-bride" type="checkbox" class="form-check-input">
             <span>Liberado pelos noivos</span>
           </label>
           <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
+            <input id="input-terms" type="checkbox" class="form-check-input">
             <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
           </label>
           <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
@@ -218,5 +219,9 @@
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
+
+<script>
+  Event.createHandler(localStorage.api, localStorage.user)
+</script>
 
 {% endblock %}

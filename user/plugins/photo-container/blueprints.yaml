@@ -37,6 +37,14 @@ form:
               label: Rota para o Login
               help: Rota que recebe o POST da tela de Login
               default: '/do-login'
+            unprotected_routes:
+              type: list
+              style: vertical
+              label: Rotas desprotegidas
+              fields:
+                .text:
+                  type: text
+                  label: Rota
             input_pwd:
               type: text
               label: Campo da senha

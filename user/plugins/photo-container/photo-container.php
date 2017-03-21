@@ -25,7 +25,6 @@ class PhotoContainerPlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
-            'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
         ];
     }
 
@@ -40,14 +39,34 @@ class PhotoContainerPlugin extends Plugin
         }
         $this->grav['messages']->clear();
 
-        $uri = $this->grav['uri'];
+        $route = $this->grav['uri']->route();
 
-        if ($uri->route() == '/logout') {
+        if ($this->grav['user']->authenticated == null) {
+            $allUnprotected = $this->grav['config']->get('plugins.photo-container.unprotected_routes');
+
+            $flatArray = ["/event_search"];
+            foreach ($allUnprotected as $unprotected) {
+                $flatArray[] = $unprotected['text'];
+            }
+
+            if (!in_array($route, $flatArray)) {
+                $this->grav->redirect('/');
+                exit(0);
+            }
+        }
+
+        if ($route == '/logout') {
             $this->onLogout();
         }
 
-        if (!empty($_POST) && $uri->route() == $this->grav['config']->get('plugins.photo-container.login_route')) {
+        if (!empty($_POST) && $route == $this->grav['config']->get('plugins.photo-container.login_route')) {
             $this->onLoginByApi();
+        }
+
+        if ($route == "/event_search") {
+            $this->enable([
+                'onTwigInitialized' => ['onTwigInitialized', 0]
+            ]);
         }
     }
 
@@ -71,23 +90,23 @@ class PhotoContainerPlugin extends Plugin
 
                 $res = $client->request(
                     'POST',
-                    $this->grav['config']->get('plugins.photo-container.api_endpoint') . "login_check",
+                    $this->grav['config']->get('plugins.photo-container.api_endpoint') . "login",
                     [
                     'form_params' => [
-                        'email' => $username,
+                        'user' => $username,
                         'password' => $_POST[$inputPwd],
                     ]
                 ]);
+
                 $credentials = json_decode($res->getBody()->getContents());
 
                 $res = $client->request(
                     'GET',
-                    $this->grav['config']->get('plugins.photo-container.api_endpoint')."users.json?email=".$username,
+                    $this->grav['config']->get('plugins.photo-container.api_endpoint')."users?email=".$username,
                     ['headers' => ['Authorization' => 'Bearer '.$credentials->token]]
                 );
 
                 $data = json_decode($res->getBody()->getContents());
-                $data = is_array($data) && !empty($data) ? $data[0] : null;
 
                 $userData = [
                     'id'       => $data->id,
@@ -95,7 +114,7 @@ class PhotoContainerPlugin extends Plugin
                     'username' => $data->email,
                     'email'    => $data->email,
                     'lang'     => 'en',
-                    'profile'  => $data->profile[0]->id,
+                    'profile'  => $data->profile->profile_id,
                 ];
 
                 $userData['groups'] = $this->grav['config']->get('plugins.login.user_registration.groups');
@@ -119,17 +138,29 @@ class PhotoContainerPlugin extends Plugin
         return true;
     }
 
-    public function onTwigSiteVariables()
-    {
-//        echo "<pre>";
-//        var_dump($this->grav['page']);
-//        exit;
-//
-//        $this->grav['page'] = ['lala' => 'oi'];
-    }
-
     public function onLogout() {
         session_destroy();
         $this->grav->redirect('/');
+    }
+
+    public function onTwigInitialized()
+    {
+        if (empty($_POST)) {
+            return true;
+        }
+
+        $keyword = $_POST['keyword'];
+
+        $client = new \GuzzleHttp\Client();
+
+        $res = $client->request(
+            'GET',
+            $this->grav['config']->get('plugins.photo-container.api_endpoint') . "events?keyword={$keyword}"
+        );
+        $found = json_decode($res->getBody()->getContents());
+
+        header('Access-Control-Allow-Origin: *');
+        echo $this->grav['twig']->processTemplate("partials/components/render_gallery.twig", ['found' =>$found]);
+        exit;
     }
 }

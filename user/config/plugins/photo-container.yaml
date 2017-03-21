@@ -1,5 +1,16 @@
 enabled: true
-api_endpoint: 'http://192.168.99.100:8081/app_dev.php/'
+api_endpoint: 'http://192.168.99.100:8081/'
 login_route: /do-signin
 input_pwd: input_password
 input_username: input_email
+unprotected_routes:
+  -
+    text: /
+  -
+    text: /signin
+  -
+    text: /signup-photographer
+  -
+    text: /signup-publisher
+  -
+    text: /do-signin

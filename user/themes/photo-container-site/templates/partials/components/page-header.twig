@@ -19,8 +19,8 @@
     <div class="collapse navbar-collapse">
 
         {% if 'form-search' in show %}
-        <form class="form-inline form-search ml-auto">
-          <input class="form-control" type="text" placeholder="BUSCA">
+        <form class="form-inline form-search ml-auto" action="#">
+          <input id="keyword-search" class="form-control" type="text" placeholder="BUSCA">
           <button class="btn btn-search" type="submit"><i class="icon-search"></i></button>
         </form>
         {% endif %}
