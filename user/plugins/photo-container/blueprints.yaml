@@ -24,27 +24,27 @@ form:
       type: tabs
       active: 1
       fields:
-        advanced:
+        basics:
           type: tab
-          title: 'Avançado'
+          title: 'Básico'
           fields:
             api_endpoint:
               type: text
               label: API URL
               help: URL da API utilizada pelo Plugin
+            domain:
+              type: text
+              label: URL do Site
+              help: URL do site do Photo Container
+        login:
+          type: tab
+          title: 'Login'
+          fields:
             login_route:
               type: text
               label: Rota para o Login
               help: Rota que recebe o POST da tela de Login
               default: '/do-login'
-            unprotected_routes:
-              type: list
-              style: vertical
-              label: Rotas desprotegidas
-              fields:
-                .text:
-                  type: text
-                  label: Rota
             input_pwd:
               type: text
               label: Campo da senha
@@ -53,3 +53,15 @@ form:
               type: text
               label: Campo do username
               help: ID do input do username
+        routes:
+          type: tab
+          title: 'Rotas Desprotegidas'
+          fields:
+            unprotected_routes:
+              type: list
+              style: vertical
+              label: Rotas desprotegidas
+              fields:
+                .text:
+                  type: text
+                  label: Rota

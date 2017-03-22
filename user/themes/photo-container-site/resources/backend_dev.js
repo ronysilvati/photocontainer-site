@@ -1,56 +1,87 @@
 var Signup = (function () {
-    var photographer = function(api) {
-        //Resultado OK da API, retorna um objeto parecido com este\
-        var result = {
-            "@context": "/app_dev.php/contexts/User",
-            "@id": "/app_dev.php/users/64",
-            "@type": "User",
-            "id": 64,
-            "name": "Luiz Nunes",
-            "email": "luiz@teste.com",
-            "created": null,
-            "updated": null,
-            "userDetail": null,
-            "profile": [
-                {
-                    "@id": "/app_dev.php/profiles/1",
-                    "@type": "Profile",
-                    "id": 1,
-                    "name": "teste"
-                }
-            ]
-        }
 
-        //Se der erro no cadastro poderia deixar alguma mensagem de erro pronta para ser exibida na tela
+  var autologin = function() {
+    var form = new FormData();
+    form.append("input_email", $("#input_email").val());
+    form.append("input_password", $("#input_password").val());
 
-        return result
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.domain+"do-signin",
+      "method": "POST",
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": form
     }
 
-    var publisher = function(api) {
-        //Resultado OK da API, retorna um objeto parecido com este
-        var result = {
-            "@context": "/app_dev.php/contexts/User",
-            "@id": "/app_dev.php/users/64",
-            "@type": "User",
-            "id": 64,
-            "name": "Luiz Nunes",
-            "email": "luiz@teste.com",
-            "created": null,
-            "updated": null,
-            "userDetail": null,
-            "profile": [
-                {
-                    "@id": "/app_dev.php/profiles/1",
-                    "@type": "Profile",
-                    "id": 1,
-                    "name": "teste"
-                }
-            ]
-        }
+    $.ajax(settings).done(function (response) {
+      location.href = "/gallery"
+    })
+  }
 
-        //Se der erro no cadastro poderia deixar alguma mensagem de erro pronta para ser exibida na tela
+  var photographer = function(api) {
+    data = {
+      name: $("#input_name").val(),
+      email: $("#input_email").val(),
+      password: $("#input_password").val(),
+      profile: "2"
+    }
 
-        return result
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.endpoint+"users",
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+      },
+      "processData": false,
+      "data": JSON.stringify(data)
+    }
+
+    $.ajax(settings)
+    .done(function (response) {
+      autologin()
+    })
+    .fail(function (response) {
+      var object = JSON.parse(response.responseText)
+      alert("Erro: "+object.message)
+    });
+  }
+
+  var publisher = function(api) {
+    data = {
+      name: $("#input_name").val(),
+      email: $("#input_email").val(),
+      password: $("#input_password").val(),
+      details: {blog: $("#input_blog").val()},
+      profile: "3"
+    }
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.endpoint+"users",
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+      },
+      "processData": false,
+      "data": JSON.stringify(data)
+    }
+
+    $.ajax(settings)
+      .done(function (response) {
+        autologin()
+      })
+      .fail(function (response) {
+        var object = JSON.parse(response.responseText)
+        alert("Erro: "+object.message)
+      });
     }
 
     return {
@@ -191,7 +222,7 @@ var Event = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api + "event_search?page=1",
+      "url": api + "event_search",
       "method": "POST",
       "processData": false,
       "contentType": false,

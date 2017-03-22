@@ -37,6 +37,15 @@ class PhotoContainerPlugin extends Plugin
         if ($this->isAdmin()) {
             return;
         }
+
+        $endpoint = $this->grav['config']->get('plugins.photo-container.api_endpoint');
+        $this->config->set('plugins.photocontainer.endpoint', $endpoint);
+
+        $this->config->set(
+            'plugins.photocontainer.domain',
+            $this->grav['config']->get('plugins.photo-container.domain')
+        );
+
         $this->grav['messages']->clear();
 
         $route = $this->grav['uri']->route();
@@ -152,10 +161,11 @@ class PhotoContainerPlugin extends Plugin
         $keyword = $_POST['keyword'];
 
         $client = new \GuzzleHttp\Client();
+        $photographer = $this->grav['session']->user->id;
 
         $res = $client->request(
             'GET',
-            $this->grav['config']->get('plugins.photo-container.api_endpoint') . "events?keyword={$keyword}"
+            $this->grav['config']->get('plugins.photo-container.api_endpoint')."events?photographer={$photographer}&keyword={$keyword}"
         );
         $found = json_decode($res->getBody()->getContents());
 
