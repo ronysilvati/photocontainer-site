@@ -46,6 +46,9 @@ class PhotoContainerPlugin extends Plugin
             $this->grav['config']->get('plugins.photo-container.domain')
         );
 
+        $categories = $this->grav['config']->get('plugins.photo-container.categories');
+        $this->config->set('plugins.photocontainer.categories', $categories);
+
         $this->grav['messages']->clear();
 
         $route = $this->grav['uri']->route();
@@ -158,19 +161,26 @@ class PhotoContainerPlugin extends Plugin
             return true;
         }
 
-        $keyword = $_POST['keyword'];
+        $qs = http_build_query([
+            'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
+            'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
+            'photographer' => $_GET['profileType'] === '2' ? $this->grav['session']->user->id : ''
+        ]);
 
         $client = new \GuzzleHttp\Client();
-        $photographer = $this->grav['session']->user->id;
 
         $res = $client->request(
             'GET',
-            $this->grav['config']->get('plugins.photo-container.api_endpoint')."events?photographer={$photographer}&keyword={$keyword}"
+            $this->grav['config']->get('plugins.photo-container.api_endpoint')."events?".$qs
         );
+
         $found = json_decode($res->getBody()->getContents());
 
         header('Access-Control-Allow-Origin: *');
-        echo $this->grav['twig']->processTemplate("partials/components/render_gallery.twig", ['found' =>$found]);
+        echo $this->grav['twig']->processTemplate(
+            "partials/components/render_gallery.twig",
+                ['found' =>$found, 'logged_user_id' => $this->grav['session']->user->id]
+        );
         exit;
     }
 }

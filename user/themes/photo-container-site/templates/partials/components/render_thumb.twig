@@ -15,7 +15,7 @@
                 {% if show %}
                     {% for key, value in show %}
 
-                        {% if value == 'album-type' %}  <p class="album-type">Casamento</p>{% endif %}
+                        {% if value == 'album-type' %}  <p class="album-type">{{ data.category }}</p>{% endif %}
                         {% if value == 'image-count' %} <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
                         {% if value == 'album-name' %}  <p class="album-name">{{ data.title }}</p>{% endif %}
                         {% if value == 'date' %}        <p class="">{{ data.eventdate }}</p>{% endif %}
@@ -28,13 +28,25 @@
                             <ul class="nav">
                                 {% for value_nav in nav %}
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            {% if value_nav == 'fav' %}       <i class="icon-star"></i>{% endif %}
-                                            {% if value_nav == 'edit' %}      <i class="icon-pencil"></i>{% endif %}
-                                            {% if value_nav == 'trash' %}     <i class="icon-trash"></i>{% endif %}
-                                            {% if value_nav == 'search' %}    <i class="icon-search"></i>{% endif %}
-                                            {% if value_nav == 'download' %}  <i class="icon-download"></i>{% endif %}
-                                        </a>
+                                        {% if value_nav == 'fav' %}
+                                            <a class="nav-link" href="#"><i class="icon-star"></i></a>
+                                        {% endif %}
+
+                                        {% if value_nav == 'edit' and data.photographer_id == logged_user_id %}
+                                            <a class="nav-link" href="/gallery/edit?event={{ data.id }}"><i class="icon-pencil"></i></a>
+                                        {% endif %}
+
+                                        {% if value_nav == 'trash' and data.photographer_id == logged_user_id %}
+                                            <a class="nav-link" href="#"><i class="icon-trash"></i></a>
+                                        {% endif %}
+
+                                        {% if value_nav == 'search' %}
+                                            <a class="nav-link" href="#"><i class="icon-search"></i></a>
+                                        {% endif %}
+
+                                        {% if value_nav == 'download' %}
+                                            <a class="nav-link" href="#"><i class="icon-download"></i></a>
+                                        {% endif %}
                                     </li>
                                 {% endfor %}
                             </ul>
