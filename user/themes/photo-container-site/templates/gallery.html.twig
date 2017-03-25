@@ -23,7 +23,7 @@
     <h6 class="title text-muted text-uppercase mb-0"><a class="text-muted" href="#">Casamento</a></h6>
     <h2 class="title text-uppercase mb-3">Roberta e Márcio</h2>
     <h6 class="title text-muted text-uppercase mb-5">100 fotos de <a class="text-muted" href="#">Sebastião Doce</a></h6>
-    <p><a href="/add">Add</a></p>
+    <p><a href="/gallery/add">Add</a></p>
 
     {{ include('partials/components/filters-list.twig') }}
 
@@ -72,6 +72,8 @@
 
 <script>
 $( document ).ready(function(){
+  Event.loadTags(localStorage.endpoint)
+
   $(".form-search").submit(function (e) {
     e.preventDefault();
     Event.search("http://" + location.host + "/")

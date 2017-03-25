@@ -14,13 +14,7 @@
       <div class="tab-pane fade show active" id="evento" role="tabpanel">
         <h4 class="mb-5">Evento</h4>
         <h5 class="mb-3">Selecione as categorias</h5>
-        <div data-toggle="buttons">
-          {% for i in range(1,4) %}
-          <label class="btn btn-secondary btn-check btn-lg text-uppercase px-5">
-            <input type="checkbox" autocomplete="off">Despedida
-          </label>
-          {% endfor %}
-        </div>
+        <div data-toggle="buttons" id="categories-button-group"></div>
         <h5 class="mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
@@ -221,7 +215,9 @@
 </div>
 
 <script>
-  Event.createHandler(localStorage.api, localStorage.user)
+  Event.createHandler(localStorage.endpoint, localStorage.user);
+  Event.loadCategories(localStorage.endpoint);
+  Event.loadTags(localStorage.endpoint);
 </script>
 
 {% endblock %}

@@ -180,7 +180,7 @@ var Event = (function () {
   var createHandler = function(api, user) {
     $(".end-add-gallery-tab").on('click', function () {
       data = {
-        user_id: user,
+        user_id: localStorage.user,
         bride: $("#input-bride").val(),
         groom: $("#input-groom").val(),
         eventDate: $('#select-year').val()+'-'+$('#select-month').val()+'-'+$('#select-day').val(),
@@ -189,8 +189,14 @@ var Event = (function () {
         approval_general: $("#input-approval-general").is(":checked"),
         approval_photographer: $("#input-approval-photographer").is(":checked"),
         approval_bride: $("#input-approval-bride").is(":checked"),
-        terms: $("#input-terms").is(":checked")
+        terms: $("#input-terms").is(":checked"),
+        categories: [$('input[name="categories[]"]:checked').val()],
+        tags: []
       }
+
+      $('input[name="tags[]"]:checked').each(function (key, item) {
+        data.tags.push($(item).val())
+      })
 
       var settings = {
         "async": true,
@@ -215,14 +221,69 @@ var Event = (function () {
     })
   }
 
+  var loadCategories = function (api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"events/categories",
+      "method": "GET",
+    }
+
+    $.ajax(settings).done(function (response) {
+      response.forEach(function(item) {
+        $("#categories-button-group").append('<label class="btn btn-secondary btn-check btn-lg text-uppercase px-5">\
+          <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'">'+item.description+'\
+        </label> ')
+      });
+    });
+  }
+
+  var loadTags = function (api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"events/tags",
+      "method": "GET",
+    }
+
+    $.ajax(settings).done(function (response) {
+      response.forEach(function(tagGroup) {
+
+        if (tagGroup.id != 12) {
+          var list = '\
+          <div class="col-md-3">\
+            <h6 class="title mt-3 text-center text-uppercase"><small>' + tagGroup.description + '</small></h6>\
+            <hr class="mt-0">\
+            <div data-toggle="buttons">';
+
+          tagGroup.tags.forEach(function (tag) {
+            list += '<label class="btn btn-secondary btn-check btn-block">\
+              <input name="tags[]" type="checkbox" autocomplete="off" value="' + tag.id + '">' + tag.description + '\
+            </label>'
+          })
+
+          list += '\
+            </div>\
+          </div>';
+
+          $("#tag-list").append(list);
+        }
+      });
+    });
+  }
+
   var search = function(api) {
     var form = new FormData();
     form.append("keyword", $("#keyword-search").val());
 
+    $('input[name="tags[]"]:checked').each(function (i, item){
+      form.append('tags[]', $(item).val())
+    })
+
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api + "event_search",
+      "url": api + "event_search?profileType="+localStorage.profile,
       "method": "POST",
       "processData": false,
       "contentType": false,
@@ -238,7 +299,9 @@ var Event = (function () {
 
   return {
     createHandler: createHandler,
-    search: search
+    search: search,
+    loadCategories: loadCategories,
+    loadTags: loadTags
   };
 })();
 
