@@ -8,7 +8,7 @@
   pointer-events: all;
   text-transform: uppercase;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
 // SIZES
   &.btn-lg {
     font-size: 16px;
@@ -20,6 +20,8 @@
   &.btn-xs {
     font-size: 10px;
     line-height: 9px;
+    padding: 12px 18px;
+    font-weight: 400;
   }
 // STYLES
   &.btn-primary {
@@ -30,9 +32,19 @@
   &.btn-secondary {
     color: $gray-light;
   }
+  &.btn-ph, &.btn-pu{
+    color:$white;
+    border:0;
+  }
+  &.btn-ph{
+    background-color:$color-ph;
+  }
+  &.btn-pu{
+    background-color:$color-pu;
+  }
   &.btn-outline-primary {
     border: 1px solid rgba($gray-dark,.15);
-    color: $gray-dark;
+    color: $gray;
     &:focus, &:hover, &.active {
       border-color: rgba($gray-dark,.3);
       background: rgba($gray-dark,.1);

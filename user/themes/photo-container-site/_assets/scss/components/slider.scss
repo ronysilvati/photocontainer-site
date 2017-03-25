@@ -65,17 +65,24 @@
       .slider-over-inner {
         text-align: center;
         color: $white;
+        font-size: 7px;
         h6 {
           height: 20px;
           text-transform: uppercase;
           font-weight: 400;
           margin: 0;
-          font-size: 18px;
+          font-size: 1.8em;
+          color:$white;
         }
         h2 {
-          font-size: 66px;
+          font-size: 6.6em;
           text-transform: uppercase;
           font-weight: 800;
+          color:$white;
+        }
+
+        @include media-breakpoint-up(md) {
+          font-size: 10px;
         }
       }
     }
@@ -103,14 +110,23 @@
         border: 0;
         p {
           font-family: $quotes-font-family;
-          font-size: 44px;
-          line-height: 40px;
+          font-size: 34px;
+          line-height: 30px;
+
+          @include media-breakpoint-up(lg) {
+            font-size: 44px;
+            line-height: 40px;
+          }
+
         }
         footer {
           color: $white;
           text-transform: uppercase;
-          font-size: 22px;
+          font-size: 18px;
           margin-top: 40px;
+          @include media-breakpoint-up(lg) {
+          font-size: 22px;
+          }
         }
       }
     }
@@ -151,11 +167,11 @@
   }
 
   &.slider-cols {
-    background:#383838;
+    background:$gray;
     padding: 50px 0;
     .slider-inner {
       .slider-item {
-        background-color:#333333;
+        background-color:$gray-light;
         height:160px;
         padding:20px;
         text-align: center;

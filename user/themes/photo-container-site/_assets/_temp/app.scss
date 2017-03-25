@@ -18,8 +18,14 @@ $container-max-widths: (
   xl: 1160px
 );
 
-$gray-dark: #383838;
-$gray: #656565;
+$color-ph:                  #54b6e0;
+$color-pu:                  #e1c09d;
+
+$gray-dark:                 #383838;
+$gray:                      #656565;
+$gray-light:                #bebebe;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f9fafc;
 
 // @import url('https://fonts.googleapis.com/css?family=Raleway'); // font-family: 'Raleway', sans-serif;
 
@@ -136,12 +142,20 @@ $gray: #656565;
   font-weight: 700!important;
 }
 
+.color-ph{
+  color:$color-ph;
+}
+.color-pu{
+  color:$color-pu;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script:400,700');
 
 body {
   height: 100%;
-  background-color:#F9F9F9;
+  background-color:#FFF;
+  overflow-x: hidden;
 }
 .app.bg-gray-lightest {
   background-color: $gray-lightest;
@@ -157,7 +171,7 @@ body {
   pointer-events: all;
   text-transform: uppercase;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
 // SIZES
   &.btn-lg {
     font-size: 16px;
@@ -169,6 +183,8 @@ body {
   &.btn-xs {
     font-size: 10px;
     line-height: 9px;
+    padding: 12px 18px;
+    font-weight: 400;
   }
 // STYLES
   &.btn-primary {
@@ -179,9 +195,19 @@ body {
   &.btn-secondary {
     color: $gray-light;
   }
+  &.btn-ph, &.btn-pu{
+    color:$white;
+    border:0;
+  }
+  &.btn-ph{
+    background-color:$color-ph;
+  }
+  &.btn-pu{
+    background-color:$color-pu;
+  }
   &.btn-outline-primary {
     border: 1px solid rgba($gray-dark,.15);
-    color: $gray-dark;
+    color: $gray;
     &:focus, &:hover, &.active {
       border-color: rgba($gray-dark,.3);
       background: rgba($gray-dark,.1);
@@ -297,7 +323,14 @@ body {
   &.footer-default {
     text-align: center;
     margin-top: 140px;
-
+    .footer-brand {
+      img {
+        height: 44px;
+      }
+    }
+    p {
+      font-weight: 300;
+    }
   }
 
 }
@@ -667,17 +700,24 @@ body {
       .slider-over-inner {
         text-align: center;
         color: $white;
+        font-size: 7px;
         h6 {
           height: 20px;
           text-transform: uppercase;
           font-weight: 400;
           margin: 0;
-          font-size: 18px;
+          font-size: 1.8em;
+          color:$white;
         }
         h2 {
-          font-size: 66px;
+          font-size: 6.6em;
           text-transform: uppercase;
           font-weight: 800;
+          color:$white;
+        }
+
+        @include media-breakpoint-up(md) {
+          font-size: 10px;
         }
       }
     }
@@ -705,14 +745,23 @@ body {
         border: 0;
         p {
           font-family: $quotes-font-family;
-          font-size: 44px;
-          line-height: 40px;
+          font-size: 34px;
+          line-height: 30px;
+
+          @include media-breakpoint-up(lg) {
+            font-size: 44px;
+            line-height: 40px;
+          }
+
         }
         footer {
           color: $white;
           text-transform: uppercase;
-          font-size: 22px;
+          font-size: 18px;
           margin-top: 40px;
+          @include media-breakpoint-up(lg) {
+          font-size: 22px;
+          }
         }
       }
     }
@@ -753,11 +802,11 @@ body {
   }
 
   &.slider-cols {
-    background:#383838;
+    background:$gray;
     padding: 50px 0;
     .slider-inner {
       .slider-item {
-        background-color:#333333;
+        background-color:$gray-light;
         height:160px;
         padding:20px;
         text-align: center;
@@ -934,6 +983,7 @@ body {
   }
 
   &.thumb-gallery-home {
+    cursor:pointer;
     .card-text {
       font-family: $headings-font-family;
       .card-text-inner {
@@ -942,19 +992,19 @@ body {
         .album-name, .album-name a, .album-type, .album-type a {
           display: inline-block;
         }
-        .album-type {
-          margin-right: 6px;
+        .album-type, .album-name {
+          font-size: 12px;
         }
         .photo-name {
-          font-size: 18px;
-          font-weight: 700;
-          margin-bottom: 6px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 0px;
         }
         .fav-count {
           margin-top: 16px;
         }
         .icon {
-          margin-bottom: 50px;
+          margin-bottom: 40px;
           margin-top: 6px;
           i {
             background: $gray-lighter;
@@ -971,7 +1021,7 @@ body {
               width: 100%;
               height: 100%;
               line-height: 30px;
-              font-size: 20px;
+              font-size: 15px;
               transform: rotate(-45deg);
             }
           }
@@ -1107,25 +1157,56 @@ body {
 
 .page-home {
   // transition: 0s margin-top;
+  h2.title {
+    color:$gray;
+    font-weight: 400;
+  }
   .navbar-home {
-    height: 98px;
+    background-color: $gray-lightest;
+    height: auto;
     border-bottom: 2px solid #ddd;
     z-index: 100;
     transition: .3s;
+    padding: 0;
+    .container {
+      width: 100%;
+      @include media-breakpoint-up(sm) {
+        width: 100%;
+      }
+    }
+    .navbar-brand {
+      img {
+        height: 52px;
+      }
+    }
+    .navbar-toggler {
+      margin-top: 10px;
+    }
+    .navbar-collapse {
+    }
     .navbar-nav {
+      margin-top: 20px;
+      @include media-breakpoint-up(lg) {
+        margin-top: 0;
+      }
       .nav-item {
         .nav-link {
-          font-weight: 800;
+          font-weight: 400;
           text-transform: uppercase;
           font-size: 13px;
-          line-height: 96px;
           padding: 0 20px;
+          line-height: 50px;
           font-family: $buttons-font-family;
-          color: $gray;
+          color: $gray-light;
           transition: .3s;
 
           &.active {
             background-color: #eee;
+            color: $gray-dark;
+          }
+
+          @include media-breakpoint-up(lg) {
+            line-height: 96px;
           }
         }
         .btn {
@@ -1133,7 +1214,25 @@ body {
           transform: translateY(-50%);
           position: relative;
         }
+
+        &.nav-login {
+          height: 60px;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+
+          @include media-breakpoint-up(lg) {
+            height: auto;
+            margin: 0;
+            padding: 0;
+            text-align: initial;
+          }
+        }
       }
+    }
+
+    @include media-breakpoint-up(lg) {
+      height: 98px;
     }
   }
   &.navbar-fixed {
@@ -1146,10 +1245,17 @@ body {
       top: 0;
       right: 0;
       left: 0;
-      height: 58px;
+      height: auto;
       transition: .3s;
       .navbar-nav .nav-item .nav-link {
-        line-height: 56px;
+        height: auto;
+        @include media-breakpoint-up(lg) {
+          line-height: 56px;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: 58px;
       }
     }
   }
@@ -1184,6 +1290,7 @@ body {
     }
     .content-center {
       justify-content: flex-end;
+      color: $gray;
     }
   }
   .block-who {
@@ -1194,27 +1301,29 @@ body {
       font-weight: 400;
     }
     h6 {
-      color: #8F8F8F;
+      // color: #8F8F8F;
     }
     .who-card {
       text-align: center;
 
       h6 {
-        color: $gray-dark;
-        font-weight: 800;
+        // color: $gray-dark;
+        font-weight: 500;
         font-size: 18px;
       }
       p {
         color: $gray;
       }
       i{
-        font-size: 160px;
+        font-size: 130px;
         line-height: 160px;
+        display: inline-block;
       }
 
       &.who-card-center {
+        color: $gray;
         h5 {
-          font-weight: 700;
+          font-weight: 500;
         }
         .icon-arrow-mid {
           transform: rotate(180deg);
@@ -1236,51 +1345,52 @@ body {
       font-weight: 400;
     }
     h6 {
-      color: #8F8F8F;
     }
 
     .how-card {
       text-align: center;
       i{
-        font-size: 160px;
+        font-size: 130px;
         line-height: 160px
       }
       h6 {
-        color: $gray;
-        font-weight: 800;
-        font-size: 14px;
+        font-weight: 600;
+        font-size: 15px;
         margin: 30px 0 0 0;
       }
       h5 {
         font-size: 18px;
-        font-weight: 700;
-      }
-      &:after {
-        font-family: fontello;
-        content: '\e8ea';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        font-size: 88px;
-        line-height: 88px;
+        font-weight: 400;
       }
 
-      &:nth-child(odd) {
+      @include media-breakpoint-up(lg) {
         &:after {
-          transform: translate(50%, -50%) scale(1, -1);
-          margin-top: -70px;
+          font-family: fontello;
+          content: '\e8ea';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          font-size: 88px;
+          line-height: 88px;
         }
-      }
-      &:nth-child(even) {
-        &:after {
-          transform: translate(50%, -50%) scale(1, 1);
-          margin-top: 20px;
-        }
-      }
 
-      &:last-child {
-        &:after {
-          content: '';
+        &:nth-child(odd) {
+          &:after {
+            transform: translate(50%, -50%) scale(1, -1);
+            margin-top: -70px;
+          }
+        }
+        &:nth-child(even) {
+          &:after {
+            transform: translate(50%, -50%) scale(1, 1);
+            margin-top: 20px;
+          }
+        }
+
+        &:last-child {
+          &:after {
+            content: '';
+          }
         }
       }
     }
@@ -1290,7 +1400,11 @@ body {
   }
   .block-plans {
     text-align: center;
-    padding: 100px 0 0;
+    padding: 100px 0;
+
+    @include media-breakpoint-up(lg) {
+        padding: 100px 0 0;
+    }
 
     h2 {
       font-size: 40px;
@@ -1302,7 +1416,14 @@ body {
 
     .row h5 {
       font-size: 19px;
-      font-weight: 700;
+      font-weight: 500;
+    }
+
+    img {
+      display: none;
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
     }
   }
   .block-about {
@@ -1532,3 +1653,5 @@ body {
     }
   }
 }
+
+

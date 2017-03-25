@@ -18,5 +18,11 @@ $container-max-widths: (
   xl: 1160px
 );
 
-$gray-dark: #383838;
-$gray: #656565;
+$color-ph:                  #54b6e0;
+$color-pu:                  #e1c09d;
+
+$gray-dark:                 #383838;
+$gray:                      #656565;
+$gray-light:                #bebebe;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f9fafc;

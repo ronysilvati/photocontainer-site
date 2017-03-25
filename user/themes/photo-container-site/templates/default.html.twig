@@ -50,7 +50,30 @@ $( document ).ready(function(){
     loop: true,
     pager: false,
     slideMargin: 30,
-    controls: true
+    controls: true,
+    responsive : [
+      {
+      breakpoint:992,
+      settings: {
+        item:3,
+        slideMove:3,
+      }
+    },
+      {
+      breakpoint:768,
+      settings: {
+        item:2,
+        slideMove:2,
+      }
+    },
+    {
+      breakpoint:576,
+      settings: {
+        item:1,
+        slideMove:1,
+      }
+    }
+  ]
   });
 
 

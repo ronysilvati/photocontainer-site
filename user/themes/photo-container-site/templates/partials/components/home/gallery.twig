@@ -2,17 +2,16 @@
 <div class="row row-xxs" id="block-gallery">
 
 <!-- get_component('thumb-gallery', ['type' => 'home', 'col' => 'col-md-2', 'show'=> ['icon', , , ]]); -->
-{% for i in range(1, 12) %}
+{% for i in range(1, 18) %}
   {%
   include 'partials/components/thumb-gallery.twig' with {
     'type': 'home',
-    'col': 'col-md-3',
+    'col': 'col-md-2 col-sm-4 col-6',
     'show': [
       'icon',
       'photo-name',
       'album-type',
-      'album-name',
-      'fav-count'
+      'album-name'
     ]
   }
   %}

@@ -3,7 +3,8 @@
 
 body {
   height: 100%;
-  background-color:#F9F9F9;
+  background-color:#FFF;
+  overflow-x: hidden;
 }
 .app.bg-gray-lightest {
   background-color: $gray-lightest;

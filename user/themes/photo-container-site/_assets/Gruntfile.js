@@ -39,7 +39,8 @@ module.exports = function( grunt ) {
 					'scss/utilities.scss',
 					'scss/app.scss',
 					'scss/components/*.scss',
-					'scss/pages/*.scss'
+					'scss/pages/*.scss',
+					'scss/responsive.scss'
 				],
 	      dest: '_temp/app.scss',
 	    }

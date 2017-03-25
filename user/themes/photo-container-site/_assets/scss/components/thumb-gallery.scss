@@ -95,6 +95,7 @@
   }
 
   &.thumb-gallery-home {
+    cursor:pointer;
     .card-text {
       font-family: $headings-font-family;
       .card-text-inner {
@@ -103,19 +104,19 @@
         .album-name, .album-name a, .album-type, .album-type a {
           display: inline-block;
         }
-        .album-type {
-          margin-right: 6px;
+        .album-type, .album-name {
+          font-size: 12px;
         }
         .photo-name {
-          font-size: 18px;
-          font-weight: 700;
-          margin-bottom: 6px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 0px;
         }
         .fav-count {
           margin-top: 16px;
         }
         .icon {
-          margin-bottom: 50px;
+          margin-bottom: 40px;
           margin-top: 6px;
           i {
             background: $gray-lighter;
@@ -132,7 +133,7 @@
               width: 100%;
               height: 100%;
               line-height: 30px;
-              font-size: 20px;
+              font-size: 15px;
               transform: rotate(-45deg);
             }
           }

@@ -9,7 +9,14 @@
   &.footer-default {
     text-align: center;
     margin-top: 140px;
-
+    .footer-brand {
+      img {
+        height: 44px;
+      }
+    }
+    p {
+      font-weight: 300;
+    }
   }
 
 }
