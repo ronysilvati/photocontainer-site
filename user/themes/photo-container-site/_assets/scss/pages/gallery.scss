@@ -1,0 +1,35 @@
+.page-gallery {
+  .page-header {
+    .navbar-collapse {
+      float: right;
+    margin-top: 28px;
+    .form-search {
+      float: left;
+    }
+    ul.navbar-nav {
+      float: right;
+    display: block;
+    li {
+      float: left
+    }
+    }
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: initial;
+      .title {
+        display: block;
+        text-align: center;
+        line-height: 30px;
+      }
+      .navbar-collapse {
+        transform: translateX(50%);
+        position: relative;
+        left: -50%;
+        .form-search input {
+            width: 130px;
+        }
+      }
+    }
+  }
+}

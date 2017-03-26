@@ -2,10 +2,6 @@
   background-color: $gray;
   // text-align: center;
   padding: 30px 0;
-  &.footer-steps {
-    margin-top: 140px;
-
-  }
   &.footer-default {
     text-align: center;
     margin-top: 140px;
@@ -18,5 +14,22 @@
       font-weight: 300;
     }
   }
+  &.footer-steps {
+    margin-top: 140px;
+    padding: 20px 0;
+    .footer-brand {
+      img {
+        height: 44px;
+      }
+    }
 
+    @include media-breakpoint-down(sm) {
+      .footer-brand {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+    }
+  }
 }

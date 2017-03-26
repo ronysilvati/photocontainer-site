@@ -287,4 +287,16 @@ $(document).ready(function(){
       alert("Liberou cadastro");
     }
   });
+
+  $(".form-validate.form-profile").validate({
+    rules: {
+			input_name: {
+				required: true
+			}
+  	},
+    submitHandler: function() {
+      Signup.publisher("qualquer valor");
+      alert("Liberou cadastro");
+    }
+  });
 });

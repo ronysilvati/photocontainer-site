@@ -6,20 +6,22 @@
   {%
   include 'partials/components/page-header.twig' with {
     'title': 'Criar Álbum',
-    'show': ['title','nav-add-gallery']
+    'show': ['title','nav-add-gallery'],
+    'class': 'page-header-add',
+    'class_nav_steps': 'nav-steps-ph',
   }
   %}
   <div class="container">
     <div class="tab-content">
       <div class="tab-pane fade show active" id="evento" role="tabpanel">
-        <h4 class="mb-5">Evento</h4>
-        <h5 class="mb-3">Selecione as categorias</h5>
+        <h4 class="title mb-5">Evento</h4>
+        <h5 class="title mb-3">Selecione as categorias</h5>
         <div data-toggle="buttons" id="categories-button-group"></div>
-        <h5 class="mb-3 mt-5">Informações do evento</h5>
+        <h5 class="title mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
           <!-- COL 1 -->
-          <div class="col-3">
+          <div class="col-md-4">
             <div class="form-group">
               <label>Nome da noiva</label>
               <input id="input-bride" type="text" class="form-control">
@@ -33,6 +35,7 @@
               <div class="col-3">
                 <div class="form-group">
                   <select id="select-day" class="form-control">
+                    <option selected="true" disabled="disabled">Dia</option>
                     <option value="21">21</option>
                     <option value="22">22</option>
                   </select>
@@ -41,6 +44,7 @@
               <div class="col-5">
                 <div class="form-group">
                   <select id="select-month" class="form-control">
+                    <option selected="true" disabled="disabled">Mês</option>
                     <option value="04">Abril</option>
                   </select>
                 </div>
@@ -48,6 +52,7 @@
               <div class="col-4">
                 <div class="form-group">
                   <select id="select-year" class="form-control">
+                    <option selected="true" disabled="disabled">Ano</option>
                     <option value="2017">2017</option>
                   </select>
                 </div>
@@ -56,73 +61,79 @@
           </div>
 
           <!-- COL 2 -->
-          <div class="col-3">
+          <div class="col-md-4">
             <div class="form-group">
               <label>País</label>
               <select class="form-control">
+                <option selected="true" disabled="disabled">Selecione</option>
                 <option>Brasil</option>
               </select>
             </div>
             <div class="form-group">
               <label>Estado</label>
               <select class="form-control">
+                <option selected="true" disabled="disabled">Selecione</option>
                 <option>Santa Catarina</option>
               </select>
             </div>
             <div class="form-group">
               <label>Cidade</label>
               <select class="form-control">
+                <option selected="true" disabled="disabled">Selecione</option>
                 <option>Florianópolis</option>
               </select>
             </div>
           </div>
 
           <!-- COL 3 -->
-          <div class="col-3">
+          <div class="col-md-4">
             <div class="form-group">
               <label>Título</label>
               <input id="input-title" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <label>Descrição</label>
+              <label>
+                Descrição
+                <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+              </label>
               <textarea id="input-description" class="form-control"></textarea>
             </div>
           </div>
 
         </div>
 
-        <h5 class="mb-3 mt-5">Preferências</h5>
+        <h5 class="title mb-3 mt-5">Preferências</h5>
         <div class="form-check">
           <label class="form-check-label">
             <input id="input-approval-general" type="checkbox" class="form-check-input">
             <span>Liberado</span>
           </label>
-          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input id="input-approval-photographer" type="checkbox" class="form-check-input">
             <span>Liberado pelo fotógrafo</span>
           </label>
-          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input id="input-approval-bride" type="checkbox" class="form-check-input">
             <span>Liberado pelos noivos</span>
           </label>
-          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input id="input-terms" type="checkbox" class="form-check-input">
             <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
           </label>
-          <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
         </div>
       </div>
       <div class="tab-pane fade" id="fornecedores" role="tabpanel">
-        <h5 class="mb-3 mt-5">Informações do evento</h5>
+        <h5 class="title mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
             {%
@@ -150,7 +161,7 @@
 
             {% for value in forn_labels %}
               {% if forn_count == 0 %}
-                <div class="col-3">
+                <div class="col-md-4">
               {% endif %}
               {% set forn_count = forn_count+1 %}
               {% set forn_total = forn_total+1 %}
@@ -176,7 +187,7 @@
         </div>
       </div>
       <div class="tab-pane fade" id="caracteristicas" role="tabpanel">
-        <h4 class="mb-4">Características</h4>
+        <h4 class="title mb-4">Características</h4>
         {{ include('partials/components/filters.twig') }}
       </div>
       <div class="tab-pane fade" id="fotos" role="tabpanel">
@@ -186,7 +197,7 @@
             <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
 
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
-            <button class="btn btn-primary px-5">Buscar</button>
+            <button class="btn btn-ph px-5">Buscar</button>
           </div>
         </div>
         <div class="row row-sm">
@@ -195,6 +206,7 @@
             {%
             include 'partials/components/thumb-gallery.twig' with {
               'type': '',
+              'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
               'show': [
                 'nav'
               ],

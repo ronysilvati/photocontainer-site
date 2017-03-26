@@ -18,8 +18,14 @@
 }
 
 .color-ph{
-  color:$color-ph;
+  color:$color-ph!important;
 }
 .color-pu{
-  color:$color-pu;
+  color:$color-pu!important;
+}
+.bg-ph{
+  background-color:$color-ph!important;
+}
+.bg-pu{
+  background-color:$color-pu!important;
 }

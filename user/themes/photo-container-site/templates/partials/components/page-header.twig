@@ -1,8 +1,5 @@
-<div class="page-header navbar navbar-toggleable-md">
+<div class="page-header navbar navbar-toggleable-md {{class}}">
   <div class="container">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".page-heade .navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
     {% if 'title' in show %}
     <h2 class="title navbar-brand hide">{{ title }}</h2>
@@ -11,12 +8,12 @@
 
     {% if 'btn-back' in show %}
     <div class="navbar-collapse">
-      <a href="#" class="btn btn-sm btn-primary btn-circle"><i class="icon-left-open"></i></a>
+      <a href="#" class="btn btn-sm btn-ph btn-circle"><i class="icon-left-open"></i></a>
       <span class="pl-2 pt-1 text-uppercase"> Voltar para Galeria</span>
     </div>
     {% endif %}
 
-    <div class="collapse navbar-collapse">
+    <div class="navbar-collapse">
 
         {% if 'form-search' in show %}
         <form class="form-inline form-search ml-auto" action="#">
@@ -28,7 +25,7 @@
         {% if 'nav-gallery' in show %}
         <ul class="navbar-nav ml-0">
           <li class="nav-item ml-4">
-            <button class="btn btn-sm btn-primary text-uppercase px-4" data-toggle="modal" data-target=".modal-filters">Filtros</button>
+            <button class="btn btn-sm btn-outline-primary text-uppercase px-4" data-toggle="modal" data-target=".modal-filters">Filtros</button>
           </li>
           <li class="nav-item ml-4">
             <a class="btn btn-sm btn-primary btn-circle" href="#"><i class="icon-help"></i></a>
@@ -37,7 +34,7 @@
         {% endif %}
 
         {% if 'nav-add-gallery' in show %}
-        <ul class="nav nav-tabs nav-steps ml-auto">
+        <ul class="nav nav-tabs nav-steps ml-auto {{class_nav_steps}}">
           <li class="nav-item">
             <a class="nav-link active" data-index="1" data-toggle="tab" href="#evento" role="tab"><span class="badge">1</span> Evento</a>
           </li>

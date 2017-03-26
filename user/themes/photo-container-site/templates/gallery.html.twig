@@ -5,11 +5,12 @@
 {%
   include 'partials/components/navbar-top.twig' with {
   'profile': grav.user.profile,
-  'active': 'gallery'
+  'active': 'gallery',
+  'class': 'bg-ph'
   }
 %}
 
-<div class="app page-gallery bg-gray-lightest">
+<div class="app page-gallery">
 
   <!-- <?php get_component('page-header', ['title' => 'Galeria', 'show' => ['title','form-search', 'nav-gallery']]);?> -->
   {%
@@ -28,11 +29,11 @@
     {{ include('partials/components/filters-list.twig') }}
 
     <div class="row">
-      <div class="col-md-3 offset-sm-3">
-        <button type="button" class="btn btn-primary text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Favoritos</button>
+      <div class="col-6 col-md-3 offset-md-3">
+        <button type="button" class="btn btn-ph text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
       </div>
-      <div class="col-md-3 mb-5">
-        <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Downloads</button>
+      <div class="col-6 col-md-3 mb-5">
+        <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
       </div>
     </div>
     <div id="gallery" class="row row-sm">
@@ -54,7 +55,7 @@
   'trash'
 ]
     -->
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12">
         <div class="card thumb-gallery ratio-1by1 thumb-add">
           <div class="card-text-add">
             <i class="icon-plus"></i>
@@ -63,11 +64,26 @@
         </div>
       </div>
 
+      {% for i in range(1, 12) %}
+        {%
+        include 'partials/components/thumb-gallery.twig' with {
+          'type': 'home',
+          'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+          'show': [
+            'icon',
+            'photo-name',
+            'album-type',
+            'album-name'
+          ]
+        }
+        %}
+      {% endfor %}
+
 
     </div>
   </div>
   {{ include('partials/components/modal-filters.twig') }}
-  {{ include('partials/components/footer.twig') }}
+  {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
 </div>
 
 <script>

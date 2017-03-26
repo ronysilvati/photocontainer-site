@@ -13,4 +13,31 @@
       margin: 0;
       padding: 0;
     }
+
+    .form-search {
+      input {
+        font-size: 14px;
+        width: 200px;
+      }
+    }
+
+    &.page-header-add {
+      background-color: $gray-lightest;
+
+      @include media-breakpoint-down(md) {
+          height: auto;
+          min-height: 90px;
+          text-align: center;
+
+          .title {
+            font-size: 14px;
+            line-height: 20px;
+          }
+          .nav-steps {
+            justify-content: center;
+          }
+
+      }
+    }
+
 }

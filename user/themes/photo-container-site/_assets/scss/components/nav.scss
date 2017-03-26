@@ -16,15 +16,15 @@
 
 
     .badge {
-      background: transparent;
+      background: $white;
       line-height: 30px;
       width: 30px;
       padding: 0;
       margin: 0;
       font-size: 18px;
       border-radius: 50%;
-      color: #ddd;
-      border: 2px solid #ddd;
+      color: $gray-light;
+      border: 1px solid #ddd;
       box-sizing: content-box;
       font-weight: 400;
       transition: .3s;
@@ -36,6 +36,28 @@
       .badge {
         background-color: $gray;
         border-color: $gray;
+        color:$white;
+      }
+    }
+  }
+
+  &.nav-steps-ph {
+    .nav-link {
+      &.active {
+        .badge {
+          background-color: $color-ph;
+          border-color: $color-ph;
+        }
+      }
+    }
+  }
+  &.nav-steps-pu {
+    .nav-link {
+      &.active {
+        .badge {
+          background-color: $color-pu;
+          border-color: $color-pu;
+        }
       }
     }
   }

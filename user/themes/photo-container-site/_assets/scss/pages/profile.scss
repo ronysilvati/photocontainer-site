@@ -35,8 +35,8 @@
       text-align: center;
 
       h6 {
-        color: $gray-dark;
-        font-weight: 800;
+        color: $gray;
+        font-weight: 500;
         font-size: 18px;
       }
       p {
@@ -48,8 +48,9 @@
       }
 
       &.who-card-center {
+        color: $gray;
         h5 {
-          font-weight: 700;
+          font-weight: 500;
         }
         .icon-arrow-mid {
           transform: rotate(180deg);
@@ -64,14 +65,36 @@
       }
 
       &.who-card-link {
+        i {
+          display: block;
+          margin-bottom: 30px;
+        }
+
         border-radius: 4px;
         transition: .3s;
         cursor: pointer;
         * {
           transition: .3s;
         }
+      }
+
+      &.who-card-ph {
+        i {
+          color: $color-ph;
+        }
         &:hover {
-          background-color: $gray-dark;
+          background-color: $color-ph;
+          * {
+            color: $white!important;
+          }
+        }
+      }
+      &.who-card-pu {
+        i {
+          color: $color-pu;
+        }
+        &:hover {
+          background-color: $color-pu;
           * {
             color: $white!important;
           }

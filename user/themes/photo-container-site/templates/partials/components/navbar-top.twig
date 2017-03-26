@@ -1,14 +1,22 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse navbar-top">
+<!--
+
+LUIZ, aqui a troca da cor da navbar dependendo da página é feita só trocando
+a classe "bg-pu" para publisher ou "bg-ph" para fotografo
+
+!!! A cor aplicada na navbar precisa ser aplicada no footer também
+
+-->
+<nav class="navbar navbar-toggleable-md navbar-inverse navbar-top {{ class }}">
   <div class="container">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-top .navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="{{ url('theme://resources/logo-navbar-top.png') }}"/></a>
+    <a class="navbar-brand" href="#"><img src="{{ url('theme://resources/images/logo-white.svg') }}"/></a>
 
     <div class="collapse navbar-collapse ">
       <ul class="navbar-nav ml-auto">
 
-        {% if profile == 2 %}
+        <!-- { % if profile == 2 %} -->
         <li class="nav-item {{ active == "gallery" ? 'active' : '' }} ">
           <a class="nav-link" href="/gallery"><i class="icon-picture"></i> Galeria</a>
         </li>
@@ -18,7 +26,7 @@
           <li class="nav-item {{ active == "notifications" ? 'active' : '' }} ">
           <a class="nav-link" href="#"><i class="icon-bell"></i> Solicitações</a>
         </li>
-        {% endif %}
+        <!-- { % endif %} -->
         <li class="nav-item {{ active == "profile" ? 'active' : '' }} ">
           <a class="nav-link" href="/profile"><i class="icon-user"></i> Perfil</a>
         </li>

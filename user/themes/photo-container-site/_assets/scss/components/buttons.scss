@@ -25,16 +25,16 @@
   }
 // STYLES
   &.btn-primary {
-    background-color: $gray-dark;
-    border-color: $gray-dark;
+    background-color: $gray;
+    border-color: $gray;
     color: $white!important;
   }
   &.btn-secondary {
-    color: $gray-light;
+    color: $gray;
   }
   &.btn-ph, &.btn-pu{
     color:$white;
-    border:0;
+    border-color: transparent;
   }
   &.btn-ph{
     background-color:$color-ph;
@@ -44,7 +44,7 @@
   }
   &.btn-outline-primary {
     border: 1px solid rgba($gray-dark,.15);
-    color: $gray;
+    color: $gray-light;
     &:focus, &:hover, &.active {
       border-color: rgba($gray-dark,.3);
       background: rgba($gray-dark,.1);
@@ -115,4 +115,8 @@
       }
     }
   }
+}
+
+.btn-help {
+  color: $gray;
 }

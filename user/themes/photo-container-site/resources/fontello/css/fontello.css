@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?39429003');
-  src: url('../font/fontello.eot?39429003#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?39429003') format('woff2'),
-       url('../font/fontello.woff?39429003') format('woff'),
-       url('../font/fontello.ttf?39429003') format('truetype'),
-       url('../font/fontello.svg?39429003#fontello') format('svg');
+  src: url('../font/fontello.eot?4356434');
+  src: url('../font/fontello.eot?4356434#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?4356434') format('woff2'),
+       url('../font/fontello.woff?4356434') format('woff'),
+       url('../font/fontello.ttf?4356434') format('truetype'),
+       url('../font/fontello.svg?4356434#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?39429003#fontello') format('svg');
+    src: url('../font/fontello.svg?4356434#fontello') format('svg');
   }
 }
 */
@@ -55,7 +55,16 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-search:before { content: '\e800'; } /* '' */
+.icon-help-circled:before { content: '\e800'; } /* '' */
+.icon-doc-text:before { content: '\e801'; } /* '' */
+.icon-logout:before { content: '\e802'; } /* '' */
+.icon-search:before { content: '\e803'; } /* '' */
+.icon-cancel:before { content: '\e804'; } /* '' */
+.icon-picture:before { content: '\e80e'; } /* '' */
+.icon-check:before { content: '\e812'; } /* '' */
+.icon-plus:before { content: '\e816'; } /* '' */
+.icon-help:before { content: '\e81b'; } /* '' */
+.icon-upload:before { content: '\e82e'; } /* '' */
 .icon-quote:before { content: '\e833'; } /* '' */
 .icon-location:before { content: '\e849'; } /* '' */
 .icon-down-open-big:before { content: '\e87a'; } /* '' */
@@ -69,3 +78,5 @@
 .icon-photo-download:before { content: '\e8ee'; } /* '' */
 .icon-photo-publish:before { content: '\e8ef'; } /* '' */
 .icon-photo-upload:before { content: '\e8f1'; } /* '' */
+.icon-bell:before { content: '\f0f3'; } /* '' */
+.icon-user:before { content: '\f2be'; } /* '' */

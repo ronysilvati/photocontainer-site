@@ -7,29 +7,32 @@
     {%
     include 'partials/components/navbar-top.twig' with {
     'profile': grav.user.profile,
-    'active': 'profile'
+    'active': 'profile',
+    'class': 'bg-pu'
     }
     %}
 
   <div class="profile-header" style="background-image: url({{url('theme://_temp/signin-bg.png')}})">
-    <button class="btn btn-primary px-4 btn-upload text-uppercase">Upload foto</button>
+    <button class="btn btn-pu px-4 btn-upload text-uppercase">Upload foto</button>
   </div>
 
-  <form method="post" id="frmProfile" action="#">
+  <form class="form-validate form-profile" method="post" id="frmProfile" action="#">
     <div class="container">
       <h2 class="h3 title mb-5 text-uppercase">Perfil</h2>
       <div class="row row-lg">
         <!-- COL 1 -->
-        <div class="col-4">
+        <div class="col-md-4 col-sm-6">
           <h3 class="h5 title mb-5">Personal information</h3>
           <div class="form-group">
             <label>Nome</label>
-            <input id="input-name" type="text" class="form-control">
+            <input name="input_name" id="input_name" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Sexo</label>
-            <select class="form-control">
-              <option>Selecione</option>
+            <select name="input_genre" id="input_genre" class="form-control">
+              <option selected="true" disabled="disabled">Selecione</option>
+              <option>Feminino</option>
+              <option>Masculino</option>
             </select>
           </div>
           <div class="form-group">
@@ -41,6 +44,7 @@
             <div class="col-3">
               <div class="form-group">
                 <select class="form-control">
+                  <option selected="true" disabled="disabled">Dia</option>
                   <option>22</option>
                 </select>
               </div>
@@ -48,6 +52,7 @@
             <div class="col-5">
               <div class="form-group">
                 <select class="form-control">
+                  <option selected="true" disabled="disabled">Mês</option>
                   <option>Abril</option>
                 </select>
               </div>
@@ -55,6 +60,7 @@
             <div class="col-4">
               <div class="form-group">
                 <select class="form-control">
+                  <option selected="true" disabled="disabled">Ano</option>
                   <option>2017</option>
                 </select>
               </div>
@@ -84,7 +90,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-4 col-sm-6">
           <h3 class="h5 title mb-5">Locate</h3>
           <div class="form-group">
             <label>CEP</label>
@@ -93,19 +99,22 @@
           <div class="form-group">
             <label>País</label>
             <select class="form-control">
-              <option>Selecione</option>
+              <option selected="true" disabled="disabled">Selecione</option>
+              <option>Brasil</option>
             </select>
           </div>
           <div class="form-group">
             <label>Estado</label>
             <select class="form-control">
-              <option>Selecione</option>
+              <option selected="true" disabled="disabled">Selecione</option>
+              <option>SC</option>
             </select>
           </div>
           <div class="form-group">
             <label>Cidade</label>
             <select class="form-control">
-              <option>Selecione</option>
+              <option selected="true" disabled="disabled">Selecione</option>
+              <option>Cidade</option>
             </select>
           </div>
           <div class="form-group">
@@ -121,9 +130,9 @@
             <input type="text" class="form-control">
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
           <div class="card">
-            <h4 class="card-title text-uppercase text-center">Dados de acesso</h4>
+            <h4 class="card-title text-uppercase text-center h5">Dados de acesso</h4>
             <div class="card-block">
               <h3 class="h5 title mb-5">Alterar senha</h3>
               <div class="form-group">
@@ -140,18 +149,21 @@
                   <button class="btn btn-secondary btn-block">Cancelar</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-primary btn-block">Confirmar</button>
+                  <button class="btn btn-pu btn-block">Confirmar</button>
                 </div>
               </div>
             </div>
           </div>
           <div class="card mt-4">
             <div class="card-block">
-              <h3 class="h6 title text-center">Você possue o <span class="text-uppercase">Plano anual</span></h3>
-              <h4 class="title text-center bold h4 mb-3"><small>R$</small> 399</h4>
+              <small class="d-block text-center title text-center text-uppercase mb-3">Faltam <b class="h5 bold">10</b> dias para o seu Plano anual encerrar</small>
+              <h4 class="title text-center bold h4 mb-4"><small>R$</small> 399</h4>
               <div class="row row-sm">
-                <div class="col-md-6 offset-md-3">
-                  <button class="btn btn-primary btn-block">Alterar</button>
+                <div class="col-md-6">
+                  <button class="btn btn-outline-primary btn-block">Alterar</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-pu btn-block">Renovar</button>
                 </div>
               </div>
               </div>
@@ -172,7 +184,7 @@
     </div>
   </form>
 
-  {{ include('partials/components/footer.twig') }}
+  {% include 'partials/components/footer.twig' with {'class': 'bg-pu'} %}
 </div>
 
 <script>
