@@ -225,7 +225,7 @@ var Event = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"events/categories",
+      "url": api+"search/categories",
       "method": "GET",
     }
 
@@ -242,7 +242,7 @@ var Event = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"events/tags",
+      "url": api+"search/tags",
       "method": "GET",
     }
 

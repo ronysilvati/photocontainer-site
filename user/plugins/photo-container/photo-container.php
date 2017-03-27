@@ -171,7 +171,7 @@ class PhotoContainerPlugin extends Plugin
 
         $res = $client->request(
             'GET',
-            $this->grav['config']->get('plugins.photo-container.api_endpoint')."events?".$qs
+            $this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events?".$qs
         );
 
         $found = json_decode($res->getBody()->getContents());
