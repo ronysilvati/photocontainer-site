@@ -1,20 +1,15 @@
 {% for event in found %}
   {%
     include 'partials/components/render_thumb.twig' with {
-      'data': event,
-      'type': 'footer',
-      'show': [
-        'album-name',
-        'album-type',
-        'image-count',
-        'date',
-        'nav'
-      ],
-      'nav': [
-        'fav',
-        'edit',
-        'trash'
-      ]
-    }
+    'data': event,
+    'type': 'home',
+    'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+    'show': [
+      'icon',
+      'photo-name',
+      'album-type',
+      'album-name'
+    ]
+  }
   %}
 {% endfor %}
