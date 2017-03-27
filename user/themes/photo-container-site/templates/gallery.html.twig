@@ -28,6 +28,7 @@
 
     {{ include('partials/components/filters-list.twig') }}
 
+    {% if grav.user.profile == 3 %}
     <div class="row">
       <div class="col-6 col-md-3 offset-md-3">
         <button type="button" class="btn btn-ph text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
@@ -36,6 +37,7 @@
         <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
       </div>
     </div>
+    {% endif %}
     <div id="gallery" class="row row-sm">
       <!-- <?php
       get_component('thumb-gallery', ['type' => 'home', 'show'=> ['icon', 'photo-name', 'album-type', 'album-name', 'fav-count']]);
