@@ -292,7 +292,7 @@ var Event = (function () {
     }
 
     $.ajax(settings).done(function (response) {
-      $(".event-thumb-search").remove()
+      $(".search-result-thumb").remove()
       $("#gallery").append(response)
     });
   }
