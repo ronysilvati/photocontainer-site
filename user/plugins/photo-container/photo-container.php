@@ -143,8 +143,12 @@ class PhotoContainerPlugin extends Plugin
 
             $this->grav->redirect('/gallery');
         } catch (\Exception $e) {
-            $messages = $this->grav['messages'];
-            $messages->add($e->getMessage(), 'error');
+            $msg = "?error=Erro no processo de login.";
+            if ($e->getCode() == 401) {
+                $msg = "?error=Email ou Senha incorretos!";
+            }
+
+            $this->grav->redirect("/signin{$msg}");
         }
 
         return true;
