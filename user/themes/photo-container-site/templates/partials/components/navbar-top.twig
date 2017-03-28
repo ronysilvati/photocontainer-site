@@ -1,12 +1,6 @@
-<!--
+{% import "functions.twig" as functions %}
 
-LUIZ, aqui a troca da cor da navbar dependendo da página é feita só trocando
-a classe "bg-pu" para publisher ou "bg-ph" para fotografo
-
-!!! A cor aplicada na navbar precisa ser aplicada no footer também
-
--->
-<nav class="navbar navbar-toggleable-md navbar-inverse navbar-top {{ class }}">
+<nav class="{{ functions.profileClass(grav.user.profile) }} navbar navbar-toggleable-md navbar-inverse navbar-top {{ class }}">
   <div class="container">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-top .navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

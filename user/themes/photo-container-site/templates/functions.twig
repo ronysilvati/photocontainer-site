@@ -1,0 +1,15 @@
+{% macro profileClass(profile) %}
+    {% if profile == 2 %}
+        bg-ph
+    {% else %}
+        bg-pu
+    {% endif %}
+{% endmacro %}
+
+{% macro buttonClass(profile) %}
+    {% if profile == 2 %}
+        btn-ph
+    {% else %}
+        btn-pu
+    {% endif %}
+{% endmacro %}
