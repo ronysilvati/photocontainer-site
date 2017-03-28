@@ -91,75 +91,90 @@ var Signup = (function () {
 })();
 
 var Profile = (function () {
-    var load = function(api) {
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": localStorage.getItem('endpoint')+"users?id="+localStorage.getItem('user'),
-            "method": "GET",
-            "headers": {
-              "content-type": "application/json",
-              "accept": "application/json",
-            }
-        }
-
-        $.ajax(settings)
-        .done(function (response) {
-            $("#input-email").val(response.email)
-            $("#input-name").val(response.name)
-
-            if (response.details) {
-              $("#input-facebook").val(response.details.facebook)
-              $("#input-instagram").val(response.details.instagram)
-              $("#input-linkedin").val(response.details.linkedin)
-              $("#input-site").val(response.details.site)
-              $("#input-blog").val(response.details.blog)
-              $("#input-phone").val(response.details.phone)
-            }
-        });
+  var load = function(api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.getItem('endpoint')+"users?id="+localStorage.getItem('user'),
+      "method": "GET",
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+      }
     }
 
-    var update = function(api) {
-        data = {
-          email: $("#input-email").val(),
-          name: $("#input-name").val(),
-          details: {
-            facebook: $("#input-facebook").val(),
-            instagram: $("#input-instagram").val(),
-            linkedin: $("#input-linkedin").val(),
-            site: $("#input-site").val(),
-            blog: $("#input-blog").val(),
-            phone: $("#input-phone").val()
-          }
-        }
+    $.ajax(settings)
+    .done(function (response) {
+      $("#input-email").val(response.email)
+      $("#input-name").val(response.name)
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": localStorage.getItem('endpoint')+"users/"+localStorage.getItem('user'),
-            "method": "PATCH",
-            "headers": {
-                "content-type": "application/json",
-                "accept": "application/json",
-            },
-            "processData": false,
-            "data": JSON.stringify(data)
-        }
+      if (response.details) {
+        $("#input-facebook").val(response.details.facebook)
+        $("#input-instagram").val(response.details.instagram)
+        $("#input-linkedin").val(response.details.linkedin)
+        $("#input-site").val(response.details.site)
+        $("#input-blog").val(response.details.blog)
+        $("#input-phone").val(response.details.phone)
+        $("#input-genre").val(response.details.gender).change()
 
-        $.ajax(settings)
-        .done(function (response) {
-          alert('Salvo com sucesso.')
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-          var object = JSON.parse(jqXHR.responseText)
-          alert(object.message)
-        })
+        if (response.details.birth != "") {
+          birthParts = response.details.birth.split('-')
+          $("#input-year").val(birthParts[0]).change()
+          $("#input-month").val(birthParts[1]).change()
+          $("#input-day").val(parseInt(birthParts[2])).change()
+        }
+      }
+    });
+  }
+
+  var update = function(api) {
+    data = {
+      email: $("#input-email").val(),
+      name: $("#input-name").val(),
+      details: {
+        facebook: $("#input-facebook").val(),
+        instagram: $("#input-instagram").val(),
+        linkedin: $("#input-linkedin").val(),
+        site: $("#input-site").val(),
+        blog: $("#input-blog").val(),
+        phone: $("#input-phone").val(),
+        gender: $("#input-genre :selected").val(),
+        birth: ''
+      }
     }
 
-    return {
-        load: load,
-        update: update
-    };
+    if ($("#input-year").val() != null && $("#input-month").val() != null && $("#input-day").val() != null){
+      var day = $("#input-day").val() < 10 ? '0'+$("#input-day").val() : $("#input-day").val()
+      data.details.birth = $("#input-year").val()+'-'+$("#input-month").val()+'-'+day
+    }
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.getItem('endpoint')+"users/"+localStorage.getItem('user'),
+      "method": "PATCH",
+      "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+      },
+      "processData": false,
+      "data": JSON.stringify(data)
+    }
+
+    $.ajax(settings)
+    .done(function (response) {
+      alert('Salvo com sucesso.')
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      var object = JSON.parse(jqXHR.responseText)
+      alert(object.message)
+    })
+  }
+
+  return {
+    load: load,
+    update: update
+  };
 })();
 
 var Logout = (function () {
