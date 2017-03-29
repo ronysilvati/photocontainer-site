@@ -320,3 +320,70 @@ var Event = (function () {
   };
 })();
 
+var Cep = (function () {
+  var loadStates = function(api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"/location/country/1/states",
+      "method": "GET"
+    }
+
+    return $.ajax(settings)
+      .done(function (response) {
+        for (var prop in response) {
+          var obj = response[prop]
+          $("#input-state").append("<option data-id='"+obj.id+"' value='"+obj.statecode+"'>"+obj.name+"</option>")
+        }
+      });
+  }
+
+  var loadCities = function(api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"/location/state/"+$("#input-state :selected").data().id+"/cities",
+      "method": "GET"
+    }
+
+    return $.ajax(settings)
+      .done(function (response) {
+        $("#input-city option").remove()
+        $("#input-city").append("<option>Selecione</option>")
+
+        for (var prop in response) {
+          var obj = response[prop]
+          $("#input-city").append("<option value='"+obj.name+"'>"+obj.name+"</option>")
+        }
+      });
+  }
+
+  var loadCep = function(api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"location/zipcode/"+$("#input-cep").val(),
+      "method": "GET"
+    }
+
+    return $.ajax(settings)
+    .done(function (response) {
+      $("#input-country").val(response.country).change()
+      $("#input-state").val(response.state).change()
+
+      setTimeout(function () {
+        $("#input-city").val(response.city).change()
+      }, 250)
+
+      $("#input-neighborhood").val(response.neighborhood)
+      $("#input-street").val(response.street)
+      $("#input-complement").val(response.complement)
+    });
+  }
+
+  return {
+    loadCep: loadCep,
+    loadStates: loadStates,
+    loadCities: loadCities
+  };
+})();

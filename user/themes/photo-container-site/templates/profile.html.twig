@@ -110,40 +110,39 @@
           <h3 class="h5 title mb-5">Locate</h3>
           <div class="form-group">
             <label>CEP</label>
-            <input type="text" class="form-control">
+            <input id="input-cep" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>País</label>
-            <select class="form-control">
-              <option selected="true" disabled="disabled">Selecione</option>
-              <option>Brasil</option>
+            <select id="input-country" class="form-control">
+              <option disabled="disabled">Selecione</option>
+              <option selected="true">Brasil</option>
             </select>
           </div>
           <div class="form-group">
             <label>Estado</label>
-            <select class="form-control">
+            <select id="input-state" class="form-control">
               <option selected="true" disabled="disabled">Selecione</option>
-              <option>SC</option>
             </select>
           </div>
           <div class="form-group">
             <label>Cidade</label>
-            <select class="form-control">
+            <select id="input-city" class="form-control">
               <option selected="true" disabled="disabled">Selecione</option>
               <option>Cidade</option>
             </select>
           </div>
           <div class="form-group">
             <label>Bairro</label>
-            <input type="text" class="form-control">
+            <input id="input-neighborhood" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Logradouro</label>
-            <input type="text" class="form-control">
+            <input id="input-street" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Complemento</label>
-            <input type="text" class="form-control">
+            <input id="input-complement" type="text" class="form-control">
           </div>
         </div>
         <div class="col-md-4">
@@ -165,7 +164,7 @@
                   <button class="btn btn-secondary btn-block">Cancelar</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block">Confirmar</button>
+                  <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block btn-save-profile">Confirmar</button>
                 </div>
               </div>
             </div>
@@ -205,9 +204,20 @@
 
 <script>
 $( document ).ready(function(){
-  Profile.load(localStorage.endpoint);
+  Cep.loadStates(localStorage.endpoint)
+  .then(Profile.load(localStorage.endpoint));
 
-  $("#frmProfile").submit(function(e){
+  $("#input-cep").on('keyup', function (e) {
+    if ($("#input-cep").val().length == 8) {
+      Cep.loadCep(localStorage.endpoint)
+    }
+  })
+
+  $("#input-state").on('change', function (e) {
+      Cep.loadCities(localStorage.endpoint)
+  })
+
+  $(".btn-save-profile").on('click', function(e){
     e.preventDefault();
     Profile.update(localStorage.endpoint);
   })
