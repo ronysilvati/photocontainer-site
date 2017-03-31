@@ -28,7 +28,11 @@ m.length>1&&1!==a.inArray(f.radixPoint,m)&&("0"==l&&(m=m.replace(/^\?/g,"")),m=m
 $( document ).ready(function() {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-  })
+  });
+	$('#modal-filters-ok').click(function() {
+    Event.search("http://" + location.host + "/");
+    alert();
+  });
 })
 
 $( document ).ready(function(){

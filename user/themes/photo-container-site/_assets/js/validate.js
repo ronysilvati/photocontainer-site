@@ -34,7 +34,7 @@ $(document).ready(function(){
 		},
     submitHandler: function() {
       Signup.photographer("qualquer valor");
-      alert("Liberou cadastro");
+      // alert("Liberou cadastro");
     }
   });
 
@@ -65,7 +65,7 @@ $(document).ready(function(){
   	},
     submitHandler: function() {
       Signup.publisher("qualquer valor");
-      alert("Liberou cadastro");
+      // alert("Liberou cadastro");
     }
   });
 
@@ -77,7 +77,7 @@ $(document).ready(function(){
   	},
     submitHandler: function() {
       Signup.publisher("qualquer valor");
-      alert("Liberou cadastro");
+      // alert("Liberou cadastro");
     }
   });
 });

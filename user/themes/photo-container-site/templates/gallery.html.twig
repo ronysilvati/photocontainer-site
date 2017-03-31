@@ -39,32 +39,16 @@
     </div>
     {% endif %}
     <div id="gallery" class="row row-sm">
-      <!-- <?php
-      get_component('thumb-gallery', ['type' => 'home', 'show'=> ['icon', 'photo-name', 'album-type', 'album-name', 'fav-count']]);
-      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['trash']]]);
-      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['search','trash']]]);
-      get_component('thumb-gallery', ['type' => '', 'show'=> ['nav'=> ['fav','download']]]);
-      get_component('thumb-gallery', ['type' => 'footer', 'show'=>['album-name','album-type','image-count','date','photo-label', 'photo-name']]);
-      for($i= 0; $i < 14 ; ++$i) {
-        get_component('thumb-gallery', ['type' => 'footer', 'show'=>['album-name','album-type','image-count','date','nav'=> ['fav','edit','trash']]]);
-        // include 'components/thumb-gallery.php';
-      }
-      ?>
 
-'nav': [
-  'fav',
-  'edit',
-  'trash'
-]
-    -->
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-        <div class="card thumb-gallery ratio-1by1 thumb-add">
-          <div class="card-text-add">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 add-gallery-click">
+        <a href="{{ base_url_absolute  }}/gallery/add" class="card thumb-gallery ratio-1by1 thumb-add">
+          <span class="card-text-add">
             <i class="icon-plus"></i>
             <p class="text-uppercase">Novo álbum</p>
-          </div>
-        </div>
+          </span>
+        </a>
       </div>
+
     </div>
   </div>
   {{ include('partials/components/modal-filters.twig') }}
@@ -84,7 +68,9 @@ $( document ).ready(function(){
       subHtmlSelectorRelative: true
   });
 
-  Event.search("http://" + location.host + "/")
+  $( ".add-gallery-click" ).unbind();
+
+  Event.search("http://" + location.host + "/");
 });
 </script>
 {% endblock %}
