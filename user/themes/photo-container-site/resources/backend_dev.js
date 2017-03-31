@@ -268,7 +268,7 @@ var Event = (function () {
       "method": "GET",
     }
 
-    $.ajax(settings).done(function (response) {
+    return $.ajax(settings).done(function (response) {
       response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'">'+item.description+'\
@@ -285,7 +285,7 @@ var Event = (function () {
       "method": "GET",
     }
 
-    $.ajax(settings).done(function (response) {
+    return $.ajax(settings).done(function (response) {
       response.forEach(function(tagGroup) {
 
         if (tagGroup.id != 12) {
@@ -336,11 +336,47 @@ var Event = (function () {
     });
   }
 
+  var loadEvent = function (api) {
+    var id = location.search.split("=")[1]
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api + "events?id="+id,
+      "method": "GET",
+      "processData": false,
+      "contentType": false,
+    }
+
+    $.ajax(settings).done(function (response) {
+      debugger
+      $("#input-bride").val(response.bride)
+      $("#input-groom").val(response.groom)
+      $("#input-title").val(response.title)
+      $("#input-description").val(response.description)
+
+      $("#input-approval-general").attr('checked', response.approval);
+      $("#input-approval-bride").attr('checked', response.approval_bride);
+      $("#input-approval-photographer").attr('checked', response.approval_photographer);
+      $("#input-terms").attr('checked', response.terms);
+
+      response.categories.forEach(function(key, item) {
+        $("[name^='categories']").filter(":checkbox[value=3]").attr("checked", true)
+        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
+      });
+
+      response.tags.forEach(function(key, item) {
+        $("[name^='tags']").filter(":checkbox[value="+key+"]").click()
+      });
+    });
+  }
+
   return {
     createHandler: createHandler,
     search: search,
     loadCategories: loadCategories,
-    loadTags: loadTags
+    loadTags: loadTags,
+    loadEvent: loadEvent
   };
 })();
 

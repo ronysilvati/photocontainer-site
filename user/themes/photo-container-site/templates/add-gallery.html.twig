@@ -228,8 +228,9 @@
 
 <script>
   Event.createHandler(localStorage.endpoint, localStorage.user);
-  Event.loadCategories(localStorage.endpoint);
-  Event.loadTags(localStorage.endpoint);
+  Event.loadCategories(localStorage.endpoint)
+    .then(Event.loadTags(localStorage.endpoint)
+      .then(Event.loadEvent(localStorage.endpoint)))
 </script>
 
 {% endblock %}
