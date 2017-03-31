@@ -117,12 +117,27 @@ var Profile = (function () {
         $("#input-phone").val(response.details.phone)
         $("#input-genre").val(response.details.gender).change()
 
-        if (response.details.birth != "") {
+        if (response.details.birth != null) {
           birthParts = response.details.birth.split('-')
           $("#input-year").val(birthParts[0]).change()
           $("#input-month").val(birthParts[1]).change()
           $("#input-day").val(parseInt(birthParts[2])).change()
         }
+      }
+
+      if (response.address) {
+        $("#input-cep").val(response.address.zipcode)
+        $("#input-country").val(response.address.country)
+        $("#input-state").val(response.address.state)
+
+        Cep.loadCities(localStorage.endpoint)
+        .then(function () {
+          $("#input-city").val(response.address.city)
+        })
+
+        $("#input-neighborhood").val(response.address.neighborhood)
+        $("#input-street").val(response.address.street)
+        $("#input-complement").val(response.address.complement)
       }
     });
   }
@@ -140,6 +155,15 @@ var Profile = (function () {
         phone: $("#input-phone").val(),
         gender: $("#input-genre :selected").val(),
         birth: ''
+      },
+      address: {
+        zipcode: $("#input-cep").val(),
+        country: $("#input-country").val(),
+        state: $("#input-state").val(),
+        city: $("#input-city").val(),
+        neighborhood: $("#input-neighborhood").val(),
+        street: $("#input-street").val(),
+        complement: $("#input-complement").val()
       }
     }
 
@@ -339,10 +363,14 @@ var Cep = (function () {
   }
 
   var loadCities = function(api) {
+    if ($("#input-state :selected").data('id') == undefined) {
+      return false;
+    }
+
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"/location/state/"+$("#input-state :selected").data().id+"/cities",
+      "url": api+"/location/state/"+$("#input-state :selected").data('id')+"/cities",
       "method": "GET"
     }
 
@@ -369,15 +397,15 @@ var Cep = (function () {
     return $.ajax(settings)
     .done(function (response) {
       $("#input-country").val(response.country).change()
-      $("#input-state").val(response.state).change()
-
-      setTimeout(function () {
-        $("#input-city").val(response.city).change()
-      }, 250)
-
+      $("#input-state").val(response.state)
       $("#input-neighborhood").val(response.neighborhood)
       $("#input-street").val(response.street)
       $("#input-complement").val(response.complement)
+
+      Cep.loadCities(localStorage.endpoint)
+        .then(function () {
+          $("#input-city").val(response.city).change()
+        })
     });
   }
 
