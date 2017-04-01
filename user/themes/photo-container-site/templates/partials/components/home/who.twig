@@ -26,7 +26,13 @@
       </div>
     </div>
     <div class="text-center mt-5">
-      <button class="btn btn-outline-primary btn-lg">Conheça nossos planos</button>
+      <a class="btn btn-outline-primary btn-lg who-plans">Conheça nossos planos</a>
     </div>
   </div>
 </div>
+
+<script>
+  $(".who-plans").on('click', function () {
+    $(".nav-link")[3].click()
+  })
+</script>
