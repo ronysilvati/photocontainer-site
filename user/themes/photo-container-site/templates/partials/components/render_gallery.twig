@@ -1,4 +1,4 @@
-{% for event in found %}
+{% for event in found.result %}
   {%
     include 'partials/components/render_thumb.twig' with {
     'data': event,
@@ -13,3 +13,9 @@
   }
   %}
 {% endfor %}
+
+<script>
+  $( document ).ready(function(){
+    $(".search-hits").html({{ found.total }})
+  })
+</script>
