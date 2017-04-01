@@ -31,7 +31,6 @@ $( document ).ready(function() {
   });
 	$('#modal-filters-ok').click(function() {
     Event.search("http://" + location.host + "/");
-    alert();
   });
 })
 
