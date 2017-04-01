@@ -251,7 +251,7 @@ var Event = (function () {
 
       $.ajax(settings)
         .done(function (response) {
-          alert('Salvo com sucesso.')
+          location.href = "/gallery"
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
@@ -450,4 +450,4 @@ var Cep = (function () {
     loadStates: loadStates,
     loadCities: loadCities
   };
-})();
+})()
