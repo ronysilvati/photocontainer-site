@@ -40,7 +40,7 @@
     </div>
     {% endif %}
     <div id="gallery" class="row row-sm">
-
+      {% if grav.user.profile == 2 %}
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 add-gallery-click">
         <a href="{{ base_url_absolute  }}/gallery/add" class="card thumb-gallery ratio-1by1 thumb-add">
           <span class="card-text-add">
@@ -49,6 +49,7 @@
           </span>
         </a>
       </div>
+      {% endif %}
 
     </div>
   </div>
