@@ -53,6 +53,9 @@
 
     </div>
   </div>
+
+  <a id="add-page" data-page="1" href="#">Próxima página</a>
+
   {{ include('partials/components/modal-filters.twig') }}
   {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
 </div>
@@ -63,6 +66,10 @@ $( document ).ready(function(){
 
   $(".form-search").submit(function (e) {
     e.preventDefault();
+
+    $(".search-result-thumb").remove()
+    $("#add-page").data().page = 1
+
     Event.search("http://" + location.host + "/")
   })
 
@@ -73,6 +80,13 @@ $( document ).ready(function(){
   $( ".add-gallery-click" ).unbind();
 
   Event.search("http://" + location.host + "/");
+
+  $("#add-page").on('click', function (e) {
+    e.preventDefault()
+    $(this).data().page += 1
+
+    Event.search(localStorage.domain)
+  })
 });
 </script>
 {% endblock %}

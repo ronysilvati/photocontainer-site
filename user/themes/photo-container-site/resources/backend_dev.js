@@ -216,47 +216,74 @@ var Logout = (function () {
 })();
 
 var Event = (function () {
-  var createHandler = function(api, user) {
-    $(".end-add-gallery-tab").on('click', function () {
-      data = {
-        user_id: localStorage.user,
-        bride: $("#input-bride").val(),
-        groom: $("#input-groom").val(),
-        eventDate: $('#select-year').val()+'-'+$('#select-month').val()+'-'+$('#select-day').val(),
-        title: $("#input-title").val(),
-        description: $("#input-description").val(),
-        approval_general: $("#input-approval-general").is(":checked"),
-        approval_photographer: $("#input-approval-photographer").is(":checked"),
-        approval_bride: $("#input-approval-bride").is(":checked"),
-        terms: $("#input-terms").is(":checked"),
-        categories: [$('input[name="categories[]"]:checked').val()],
-        tags: []
-      }
+  var id = 0;
 
-      $('input[name="tags[]"]:checked').each(function (key, item) {
-        data.tags.push($(item).val())
-      })
-
+  var createHandler = function (api, user) {
+    $(".next-add-gallery-tab").on('click', function () {
       var settings = {
         "async": true,
-        "url": localStorage.getItem('endpoint')+"events",
         "method": "POST",
         "headers": {
           "content-type": "application/json",
           "accept": "application/json",
         },
         "processData": false,
-        "data": JSON.stringify(data)
+        "data": ''
       }
 
-      $.ajax(settings)
+      if ($("#evento").is(':visible')) {
+        data = {
+          user_id: localStorage.user,
+          bride: $("#input-bride").val(),
+          groom: $("#input-groom").val(),
+          eventDate: $('#select-year').val()+'-'+$('#select-month').val()+'-'+$('#select-day').val(),
+          title: $("#input-title").val(),
+          description: $("#input-description").val(),
+          approval_general: $("#input-approval-general").is(":checked"),
+          approval_photographer: $("#input-approval-photographer").is(":checked"),
+          approval_bride: $("#input-approval-bride").is(":checked"),
+          terms: $("#input-terms").is(":checked"),
+          categories: [$('input[name="categories[]"]:checked').val()],
+          tags: []
+        }
+
+        settings.url = localStorage.getItem('endpoint')+"events"
+        settings.url += Event.id > 0 ? "/"+Event.id : ''
+
+        settings.method = Event.id > 0 ? 'PUT' : 'POST'
+
+        settings.data = JSON.stringify(data)
+        $.ajax(settings)
         .done(function (response) {
-          location.href = "/gallery"
+          Event.id = response.id
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
           alert(object.message)
         })
+      }
+
+      if ($("#caracteristicas").is(':visible')) {
+        var data = {
+          tags: []
+        }
+
+        $('input[name="tags[]"]:checked').each(function (key, item) {
+          data.tags.push($(item).val())
+        })
+
+        settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/tags"
+        settings.data = JSON.stringify(data)
+        $.ajax(settings)
+          .done(function (response) {
+            // Event.id = response.id
+          })
+          .fail(function (jqXHR, textStatus, errorThrown) {
+            var object = JSON.parse(jqXHR.responseText)
+            alert(object.message)
+          })
+      }
+
     })
   }
 
@@ -319,10 +346,12 @@ var Event = (function () {
       form.append('tags[]', $(item).val())
     })
 
+    var page = $("#add-page").length == 0 ? '&page=1' : '&page='+$("#add-page").data().page
+
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api + "event_search?profileType="+localStorage.profile,
+      "url": api + "event_search?profileType="+localStorage.profile+page,
       "method": "POST",
       "processData": false,
       "contentType": false,
@@ -331,13 +360,18 @@ var Event = (function () {
     }
 
     $.ajax(settings).done(function (response) {
-      $(".search-result-thumb").remove()
-      $("#gallery").append(response)
+      if (response) {
+        $("#gallery").append(response)
+        $("#add-page").prop('disabled', false)
+      } else {
+        $("#add-page").prop('disabled', true)
+      }
     });
   }
 
   var loadEvent = function (api) {
     var id = location.search.split("=")[1]
+    Event.id = id
 
     var settings = {
       "async": true,
@@ -349,7 +383,6 @@ var Event = (function () {
     }
 
     $.ajax(settings).done(function (response) {
-      debugger
       $("#input-bride").val(response.bride)
       $("#input-groom").val(response.groom)
       $("#input-title").val(response.title)
@@ -366,7 +399,9 @@ var Event = (function () {
       });
 
       response.tags.forEach(function(key, item) {
-        $("[name^='tags']").filter(":checkbox[value="+key+"]").click()
+        var checkbox = $("[name^='tags']").filter(":checkbox[value="+key+"]")
+        $(checkbox).click()
+        $(checkbox).prop("checked", true)
       });
     });
   }
@@ -376,7 +411,8 @@ var Event = (function () {
     search: search,
     loadCategories: loadCategories,
     loadTags: loadTags,
-    loadEvent: loadEvent
+    loadEvent: loadEvent,
+    id: id
   };
 })();
 

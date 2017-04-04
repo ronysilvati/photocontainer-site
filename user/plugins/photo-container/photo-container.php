@@ -168,7 +168,8 @@ class PhotoContainerPlugin extends Plugin
         $qs = http_build_query([
             'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
             'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
-            'photographer' => $_GET['profileType'] === '2' ? $this->grav['session']->user->id : ''
+            'photographer' => $_GET['profileType'] === '2' ? $this->grav['session']->user->id : '',
+            'page' => $_GET['page']
         ]);
 
         $client = new \GuzzleHttp\Client();
