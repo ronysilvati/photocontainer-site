@@ -429,7 +429,7 @@ var Event = (function () {
             if (input) {
               $("[name^='supplier["+field+"]']").filter(":eq("+i+")").val(suppliers.supplier[field][i])
             } else {
-              
+              $(".btn-add-field-"+field).click()
             }
 
             // debugger
