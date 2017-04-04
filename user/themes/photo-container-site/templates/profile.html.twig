@@ -213,6 +213,10 @@ $( document ).ready(function(){
     }
   })
 
+  $("#input-state").on('change', function (e) {
+      Cep.loadCities(localStorage.endpoint)
+  })
+
   $(".btn-save-profile").on('click', function(e){
     e.preventDefault();
     Profile.update(localStorage.endpoint);
