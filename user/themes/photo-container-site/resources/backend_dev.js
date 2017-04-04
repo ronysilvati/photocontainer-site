@@ -424,16 +424,12 @@ var Event = (function () {
       for (field in suppliers.supplier) {
         if (suppliers.supplier[field].length > 0) {
           for (var i = 0; i < suppliers.supplier[field].length; i++) {
-            var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
-
-            if (input) {
-              $("[name^='supplier["+field+"]']").filter(":eq("+i+")").val(suppliers.supplier[field][i])
-            } else {
+            if (i > 0) {
               $(".btn-add-field-"+field).click()
             }
 
-            // debugger
-            // $("[name^='supplier[fotos]']")[0].val(suppliers.supplier[field][i])
+            var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
+            $(input).val(suppliers.supplier[field][i])
           }
         }
       }
