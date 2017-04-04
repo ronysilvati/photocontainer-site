@@ -284,6 +284,22 @@ var Event = (function () {
           })
       }
 
+      if ($("#fornecedores").is(':visible')) {
+        var serialized = $("#fornecedores input:text").serialize()
+
+        settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/suppliers"
+        settings.data = serialized
+        settings.headers = {"content-type": "application/x-www-form-urlencoded"}
+        $.ajax(settings)
+          .done(function (response) {
+            // Event.id = response.id
+          })
+          .fail(function (jqXHR, textStatus, errorThrown) {
+            var object = JSON.parse(jqXHR.responseText)
+            alert(object.message)
+          })
+      }
+
     })
   }
 
@@ -403,6 +419,24 @@ var Event = (function () {
         $(checkbox).click()
         $(checkbox).prop("checked", true)
       });
+
+      var suppliers = JSON.parse(response.suppliers)
+      for (field in suppliers.supplier) {
+        if (suppliers.supplier[field].length > 0) {
+          for (var i = 0; i < suppliers.supplier[field].length; i++) {
+            var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
+
+            if (input) {
+              $("[name^='supplier["+field+"]']").filter(":eq("+i+")").val(suppliers.supplier[field][i])
+            } else {
+              
+            }
+
+            // debugger
+            // $("[name^='supplier[fotos]']")[0].val(suppliers.supplier[field][i])
+          }
+        }
+      }
     });
   }
 
