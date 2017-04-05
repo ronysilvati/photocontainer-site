@@ -2,6 +2,7 @@
   {%
     include 'partials/components/render_thumb.twig' with {
     'data': event,
+    'profile': profile,
     'type': 'home',
     'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
     'show': [
@@ -22,4 +23,6 @@
   })
 
   Event.removeEvent(localStorage.endpoint)
+  Event.likeEvent(localStorage.endpoint)
+  Event.dislikeEvent(localStorage.endpoint)
 </script>

@@ -169,6 +169,7 @@ class PhotoContainerPlugin extends Plugin
             'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
             'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
             'photographer' => $_GET['profileType'] === '2' ? $this->grav['session']->user->id : '',
+            'publisher' => $_GET['profileType'] === '3' ? $this->grav['session']->user->id : '',
             'page' => $_GET['page']
         ]);
 
@@ -184,7 +185,11 @@ class PhotoContainerPlugin extends Plugin
         header('Access-Control-Allow-Origin: *');
         echo $this->grav['twig']->processTemplate(
             "partials/components/render_gallery.twig",
-                ['found' =>$found, 'logged_user_id' => $this->grav['session']->user->id]
+            [
+                'found' =>$found,
+                'logged_user_id' => $this->grav['session']->user->id,
+                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher'
+            ]
         );
         exit;
     }

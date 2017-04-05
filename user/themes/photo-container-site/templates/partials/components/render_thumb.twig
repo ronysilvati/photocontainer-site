@@ -21,7 +21,7 @@
                         {% if value == 'date' %}        <p class="">{{ data.eventdate }}</p>{% endif %}
                         {% if value == 'photo-label' %} <p class="photo-label">Fotógrafo</p>{% endif %}
                         {% if value == 'photo-name' %}  <p class="photo-name">{{ data.photographer }}</p>{% endif %}
-                        {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
+                        {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{ data.likes }} Like</p>{% endif %}
                         {% if value == 'icon' and data.photographer_id == logged_user_id %}
                             {% if data.photographer_id == logged_user_id %}
                                 <p class="icon"><a href="/gallery/edit?id={{ data.id }}"><i class="icon-search"></i></a></p>
@@ -29,8 +29,8 @@
                         {% endif %}
                     {% endfor %}
 
-                    {% if data.photographer_id == logged_user_id %}
-                        <ul class="nav">
+                    <ul class="nav">
+                        {% if data.photographer_id == logged_user_id %}
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="icon-star"></i></a>
                             </li>
@@ -46,8 +46,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/#"><i class="icon-download"></i></a>
                             </li>
+                        {% endif %}
+
+                        {% if profile == "publisher" %}
+                            <li class="nav-item">
+                                <a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="/#"><i class="icon-star"></i>Like</a>
+                                <a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="/#"><i class="icon-star"></i>Dislike</a>
+                            </li>
+                        {% endif %}
+
                         </ul>
-                    {% endif %}
                 {% endif %}
 
             </div>

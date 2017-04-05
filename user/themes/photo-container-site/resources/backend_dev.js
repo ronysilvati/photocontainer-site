@@ -464,7 +464,64 @@ var Event = (function () {
         })
     })
   }
-  
+
+  var likeEvent = function (api) {
+    $(".event-like").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": {},
+        "url": api+"events/"+$(this).data().likeevent+"/favorite/publisher/"+localStorage.user
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          var $favoriteLink = $("li").find("[data-likeevent="+response.event_id+"]")
+
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
+          $favoriteLink.hide()
+
+          $("li").find("[data-dislikeevent="+response.event_id+"]").show()
+        })
+    })
+  }
+
+  var dislikeEvent = function (api) {
+    $(".event-dislike").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "DELETE",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": {},
+        "url": api+"events/"+$(this).data().dislikeevent+"/favorite/publisher/"+localStorage.user
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          var $favoriteLink = $("li").find("[data-dislikeevent="+response.event_id+"]")
+
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
+          $favoriteLink.hide()
+
+          $("li").find("[data-likeevent="+response.event_id+"]").show()
+
+        })
+    })
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -472,6 +529,8 @@ var Event = (function () {
     loadTags: loadTags,
     loadEvent: loadEvent,
     removeEvent: removeEvent,
+    likeEvent: likeEvent,
+    dislikeEvent: dislikeEvent,
     id: id
   };
 })();
