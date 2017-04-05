@@ -389,6 +389,10 @@ var Event = (function () {
     var id = location.search.split("=")[1]
     Event.id = id
 
+    if (id == undefined) {
+      return true
+    }
+
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -421,15 +425,18 @@ var Event = (function () {
       });
 
       var suppliers = JSON.parse(response.suppliers)
-      for (field in suppliers.supplier) {
-        if (suppliers.supplier[field].length > 0) {
-          for (var i = 0; i < suppliers.supplier[field].length; i++) {
-            if (i > 0) {
-              $(".btn-add-field-"+field).click()
-            }
 
-            var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
-            $(input).val(suppliers.supplier[field][i])
+      if (suppliers != null) {
+        for (field in suppliers.supplier) {
+          if (suppliers.supplier[field].length > 0) {
+            for (var i = 0; i < suppliers.supplier[field].length; i++) {
+              if (i > 0) {
+                $(".btn-add-field-"+field).click()
+              }
+
+              var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
+              $(input).val(suppliers.supplier[field][i])
+            }
           }
         }
       }
@@ -451,7 +458,7 @@ var Cep = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"/location/country/1/states",
+      "url": api+"/location/country/"+$("#input-country :selected").val()+"/states",
       "method": "GET"
     }
 
@@ -479,7 +486,7 @@ var Cep = (function () {
     return $.ajax(settings)
       .done(function (response) {
         $("#input-city option").remove()
-        $("#input-city").append("<option>Selecione</option>")
+        $("#input-city").append("<option disabled=\"disabled\">Selecione</option>")
 
         for (var prop in response) {
           var obj = response[prop]
