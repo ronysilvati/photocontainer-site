@@ -6,7 +6,7 @@
     {% set col = "col-md-3" %}
 {% endif %}
 
-<div class="{{col}} search-result-thumb" data-src="{{ data.thumb }}">
+<div class="{{col}} search-result-thumb" data-src="{{ data.thumb }}" id="event-thumb-{{ data.id }}">
     <div class="{{thumb_class}}">
         <img alt='' src="{{ data.thumb }}">
         <div class="card-text">
@@ -16,35 +16,38 @@
                     {% for key, value in show %}
 
                         {% if value == 'album-type' %}  <p class="album-type">{{ data.category }}</p>{% endif %}
-                        {% if value == 'image-count' %} <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
+                        {% if value == 'image-count' %} <p class="image-count"><span>{{ data.photos }}</span> fotos</p> {% endif %}
                         {% if value == 'album-name' %}  <p class="album-name">{{ data.title }}</p>{% endif %}
                         {% if value == 'date' %}        <p class="">{{ data.eventdate }}</p>{% endif %}
                         {% if value == 'photo-label' %} <p class="photo-label">Fotógrafo</p>{% endif %}
                         {% if value == 'photo-name' %}  <p class="photo-name">{{ data.photographer }}</p>{% endif %}
                         {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
-                        {% if value == 'icon' %}        <p class="icon"><a href="/gallery/edit?id={{ data.id }}"><i class="icon-search"></i></a></p>{% endif %}
-
-                        {% if value == 'nav' %}
-                            <ul class="nav">
-                                {% for value_nav in nav %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            {% if value_nav == 'fav' %}       <i class="icon-star"></i>{% endif %}
-
-                                            {% if value_nav == 'edit' and data.photographer_id == logged_user_id %}
-                                                {% if value_nav == 'edit' %}<a class="nav-link" href="/gallery/edit?event={{ data.id }}"><i class="icon-pencil"></i>{% endif %}
-                                                {% if value_nav == 'trash' %}<a class="nav-link" href="/#"><i class="icon-trash"></i>{% endif %}
-                                            {% endif %}
-
-                                            {% if value_nav == 'search' %}    <i class="icon-search"></i>{% endif %}
-                                            {% if value_nav == 'download' %}  <i class="icon-download"></i>{% endif %}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                        {% if value == 'icon' and data.photographer_id == logged_user_id %}
+                            {% if data.photographer_id == logged_user_id %}
+                                <p class="icon"><a href="/gallery/edit?id={{ data.id }}"><i class="icon-search"></i></a></p>
+                            {% endif %}
                         {% endif %}
-
                     {% endfor %}
+
+                    {% if data.photographer_id == logged_user_id %}
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="icon-star"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#"><i class="icon-pencil"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link event-remove" data-event="{{ data.id }}" href="/#"><i class="icon-trash"></i>Remover</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#"><i class="icon-download"></i></a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 {% endif %}
 
             </div>

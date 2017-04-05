@@ -425,7 +425,6 @@ var Event = (function () {
       });
 
       var suppliers = JSON.parse(response.suppliers)
-
       if (suppliers != null) {
         for (field in suppliers.supplier) {
           if (suppliers.supplier[field].length > 0) {
@@ -443,12 +442,36 @@ var Event = (function () {
     });
   }
 
+  var removeEvent = function (api) {
+    $(".event-remove").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "DELETE",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": {},
+        "url": api+"events/"+$(this).data().event
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          $("#event-thumb-"+response.id).remove()
+        })
+    })
+  }
+  
   return {
     createHandler: createHandler,
     search: search,
     loadCategories: loadCategories,
     loadTags: loadTags,
     loadEvent: loadEvent,
+    removeEvent: removeEvent,
     id: id
   };
 })();

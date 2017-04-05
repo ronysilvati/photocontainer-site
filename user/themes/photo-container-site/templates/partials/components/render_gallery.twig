@@ -8,7 +8,9 @@
       'icon',
       'photo-name',
       'album-type',
-      'album-name'
+      'album-name',
+      'image-count',
+      'fav-count'
     ]
   }
   %}
@@ -18,4 +20,6 @@
   $( document ).ready(function(){
     $(".search-hits").html({{ found.total }})
   })
+
+  Event.removeEvent(localStorage.endpoint)
 </script>
