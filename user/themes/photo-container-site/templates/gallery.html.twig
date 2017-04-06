@@ -29,16 +29,17 @@
 
     {{ include('partials/components/filters-list.twig') }}
 
-    {% if grav.user.profile == 3 %}
+    {% if grav.user.profile == 3 and page.slug() == "historic" %}
     <div class="row">
       <div class="col-6 col-md-3 offset-md-3">
-        <button type="button" class="btn btn-ph text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
+        <button type="button" class="btn btn-pu text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
       </div>
       <div class="col-6 col-md-3 mb-5">
         <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
       </div>
     </div>
     {% endif %}
+
     <div id="gallery" class="row row-sm">
       {% if grav.user.profile == 2 %}
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 add-gallery-click">
@@ -50,7 +51,6 @@
         </a>
       </div>
       {% endif %}
-
     </div>
   </div>
 
@@ -79,7 +79,9 @@ $( document ).ready(function(){
 
   $( ".add-gallery-click" ).unbind();
 
-  Event.search("http://" + location.host + "/");
+  {% if page.slug() == "gallery" %}
+    Event.search("http://" + location.host + "/");
+  {% endif %}
 
   $("#add-page").on('click', function (e) {
     e.preventDefault()

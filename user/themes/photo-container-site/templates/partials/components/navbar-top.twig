@@ -11,7 +11,7 @@
       <ul class="navbar-nav ml-auto">
 
         <!-- { % if profile == 2 %} -->
-        <li class="nav-item {{ active == "gallery" ? 'active' : '' }} ">
+        <li class="nav-item {{ page.slug() == "gallery" ? 'active' : '' }} ">
           <a class="nav-link" href="/gallery"><i class="icon-picture"></i> Galeria</a>
         {#</li>#}
           {#<li class="nav-item {{ active == "historic" ? 'active' : '' }} ">#}
@@ -21,6 +21,14 @@
           {#<a class="nav-link" href="#"><i class="icon-bell"></i> Solicitações</a>#}
         {#</li>#}
         <!-- { % endif %} -->
+
+        {% if profile == 3 %}
+        </li>
+          <li class="nav-item {{ page.slug() == "historic" ? 'active' : '' }} ">
+          <a class="nav-link" href="/gallery/historic"><i class="icon-doc-text"></i> Histórico</a>
+        </li>
+        {% endif %}
+
         <li class="nav-item {{ active == "profile" ? 'active' : '' }} ">
           <a class="nav-link" href="/profile"><i class="icon-user"></i> Perfil</a>
         </li>
