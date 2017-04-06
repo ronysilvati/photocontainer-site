@@ -7,58 +7,33 @@
 {% endif %}
 
 <div class="{{col}} search-result-thumb" data-src="{{ data.thumb }}" id="event-thumb-{{ data.id }}">
-    <div class="{{thumb_class}}">
-        <img alt='' src="{{ data.thumb }}">
-        <div class="card-text">
-            <div class="card-text-inner">
+  <div class="{{thumb_class}}">
+    <img alt='' src="{{ data.thumb }}">
+    <div class="card-text">
+      <div class="card-text-inner">
+        <p class="album-name"><a href="#">{{ data.title }}</a></p>
+        <p class="album-type"><a href="#">{{ data.category }}</a></p>
+        <p class="image-count"><span>{{ data.photos }}</span> fotos</p>
+        <p class="date">Criado em {{ data.eventdate }}</p>
+        <p class="fav-count">{{ data.likes }} Likes</p>
 
-                {% if show %}
-                    {% for key, value in show %}
+        {% if data.context == "gallery_photographer" and profile == 'photographer' and data.photographer_id == logged_user_id %}
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i>Remover</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i>Editar</a></li>
+        </ul>
+        {% endif %}
 
-                        {% if value == 'album-type' %}  <p class="album-type">{{ data.category }}</p>{% endif %}
-                        {% if value == 'image-count' %} <p class="image-count"><span>{{ data.photos }}</span> fotos</p> {% endif %}
-                        {% if value == 'album-name' %}  <p class="album-name">{{ data.title }}</p>{% endif %}
-                        {% if value == 'date' %}        <p class="">{{ data.eventdate }}</p>{% endif %}
-                        {% if value == 'photo-label' %} <p class="photo-label">Fotógrafo</p>{% endif %}
-                        {% if value == 'photo-name' %}  <p class="photo-name">{{ data.photographer }}</p>{% endif %}
-                        {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{ data.likes }} Like</p>{% endif %}
-                        {% if value == 'icon' and data.photographer_id == logged_user_id %}
-                            {% if data.photographer_id == logged_user_id %}
-                                <p class="icon"><a href="/gallery/edit?id={{ data.id }}"><i class="icon-search"></i></a></p>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-
-                    <ul class="nav">
-                        {% if data.photographer_id == logged_user_id %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="icon-star"></i></a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#"><i class="icon-pencil"></i></a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link event-remove" data-event="{{ data.id }}" href="/#"><i class="icon-trash"></i>Remover</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/#"><i class="icon-download"></i></a>
-                            </li>
-                        {% endif %}
-
-                        {% if profile == "publisher" %}
-                            <li class="nav-item">
-                                <a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="/#"><i class="icon-star"></i>Like</a>
-                                <a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="/#"><i class="icon-star"></i>Dislike</a>
-                            </li>
-                        {% endif %}
-
-                        </ul>
-                {% endif %}
-
-            </div>
-        </div>
+        {% if data.context == "gallery_publisher" and profile == 'publisher' %}
+        <p class="photo-name">Fotógrafo {{ data.photographer }}</p>
+        <ul class="nav">
+          <li class="nav-item">
+            <a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>
+            <a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </div>

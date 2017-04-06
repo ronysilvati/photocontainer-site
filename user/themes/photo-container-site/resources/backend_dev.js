@@ -127,7 +127,7 @@ var Profile = (function () {
 
       if (response.address) {
         $("#input-cep").val(response.address.zipcode)
-        $("#input-country").val(response.address.country)
+        $("#input-country").val(1)
         $("#input-state").val(response.address.state)
 
         Cep.loadCities(localStorage.endpoint)
@@ -485,10 +485,9 @@ var Event = (function () {
         .done(function (response) {
           var $favoriteLink = $("li").find("[data-likeevent="+response.event_id+"]")
 
-          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
           $favoriteLink.hide()
-
           $("li").find("[data-dislikeevent="+response.event_id+"]").show()
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
         })
     })
   }
@@ -513,11 +512,9 @@ var Event = (function () {
         .done(function (response) {
           var $favoriteLink = $("li").find("[data-dislikeevent="+response.event_id+"]")
 
-          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
           $favoriteLink.hide()
-
           $("li").find("[data-likeevent="+response.event_id+"]").show()
-
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
         })
     })
   }
@@ -537,10 +534,12 @@ var Event = (function () {
 
 var Cep = (function () {
   var loadStates = function(api) {
+    var country = $("#input-country :selected").length > 0 ? $("#input-country :selected").val() : 1
+
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"/location/country/"+$("#input-country :selected").val()+"/states",
+      "url": api+"/location/country/"+country+"/states",
       "method": "GET"
     }
 
@@ -568,7 +567,7 @@ var Cep = (function () {
     return $.ajax(settings)
       .done(function (response) {
         $("#input-city option").remove()
-        $("#input-city").append("<option disabled=\"disabled\">Selecione</option>")
+        $("#input-city").append("<option value=\"0\" disabled=\"disabled\">Selecione</option>")
 
         for (var prop in response) {
           var obj = response[prop]
@@ -587,16 +586,31 @@ var Cep = (function () {
 
     return $.ajax(settings)
     .done(function (response) {
-      $("#input-country").val(response.country).change()
+      $("#input-country").val(1).change()
       $("#input-state").val(response.state)
       $("#input-neighborhood").val(response.neighborhood)
       $("#input-street").val(response.street)
       $("#input-complement").val(response.complement)
 
-      Cep.loadCities(localStorage.endpoint)
+      Cep.loadStates(localStorage.endpoint)
+      .then(Cep.loadCities(localStorage.endpoint)
         .then(function () {
           $("#input-city").val(response.city).change()
         })
+      )
+    })
+    .fail(function (response){
+      console.log('aqui')
+      $("#input-country").val()
+
+      $("#input-state").val(0)
+
+      $("#input-city option").remove()
+      $("#input-city").append("<option value=\"0\" disabled=\"disabled\">Selecione</option>")
+
+      $("#input-neighborhood").val('')
+      $("#input-street").val('')
+      $("#input-complement").val('')
     });
   }
 
