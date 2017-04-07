@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{%
+  include 'partials/components/navbar-top.twig' with {
+    'profile': grav.user.profile,
+    'active': 'gallery',
+    'class': 'bg-ph'
+  }
+%}
+
+<div class="app page-gallery">
+  {%
+  include 'partials/components/page-header.twig' with {
+    'title': 'Galeria',
+    'show': ['btn-back']
+  }
+  %}
+
+  <div class="container publisher-gallery-photos"></div>
+
+  {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
+</div>
+
+<script>
+  $( document ).ready(function(){
+
+    Event.loadPublisherGallery(localStorage.domain)
+
+    $('#gallery').lightGallery({
+      subHtmlSelectorRelative: true
+    });
+  });
+</script>
+{% endblock %}

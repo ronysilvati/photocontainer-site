@@ -1,6 +1,7 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\GPM\Response;
 use Grav\Common\Plugin;
 use Grav\Common\User\User;
 use RocketTheme\Toolbox\Event\Event;
@@ -56,7 +57,7 @@ class PhotoContainerPlugin extends Plugin
         if ($this->grav['user']->authenticated == null) {
             $allUnprotected = $this->grav['config']->get('plugins.photo-container.unprotected_routes');
 
-            $flatArray = ["/event_search"];
+            $flatArray = ["/event_search", "/publisher_gallery_photos"];
             foreach ($allUnprotected as $unprotected) {
                 $flatArray[] = $unprotected['text'];
             }
@@ -75,7 +76,7 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-        if ($route == "/event_search") {
+        if (in_array($route, ["/event_search", "/publisher_gallery_photos"])) {
             $this->enable([
                 'onTwigInitialized' => ['onTwigInitialized', 0]
             ]);
@@ -161,10 +162,36 @@ class PhotoContainerPlugin extends Plugin
 
     public function onTwigInitialized()
     {
-        if (empty($_POST)) {
-            return true;
+        $route = $this->grav['uri']->route();
+
+        if ($route == "/event_search" && !empty($_POST)) {
+            $this->searchGallery();
         }
 
+        if ($route == "/publisher_gallery_photos") {
+            $this->searchGalleryPhotos();
+        }
+
+        exit;
+    }
+
+    private function searchGalleryPhotos()
+    {
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."/search/events/".$_REQUEST['id']."/photos");
+        $found = json_decode($response, true);
+
+        header('Access-Control-Allow-Origin: *');
+        echo $this->grav['twig']->processTemplate(
+            "partials/components/render_gallery_photos.html.twig",
+            [
+                'event' => $found,
+            ]
+        );
+        exit;
+    }
+
+    private function searchGallery()
+    {
         $qs = http_build_query([
             'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
             'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
@@ -173,20 +200,14 @@ class PhotoContainerPlugin extends Plugin
             'page' => $_GET['page']
         ]);
 
-        $client = new \GuzzleHttp\Client();
-
-        $res = $client->request(
-            'GET',
-            $this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events?".$qs
-        );
-
-        $found = json_decode($res->getBody()->getContents());
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events?".$qs);
+        $found = json_decode($response, true);
 
         header('Access-Control-Allow-Origin: *');
         echo $this->grav['twig']->processTemplate(
             "partials/components/render_gallery.twig",
             [
-                'found' =>$found,
+                'found' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
                 'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher'
             ]

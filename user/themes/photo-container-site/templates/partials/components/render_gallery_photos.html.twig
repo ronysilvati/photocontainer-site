@@ -1,0 +1,25 @@
+<h6 class="title text-muted text-uppercase mb-0">{{ event.category }}</h6>
+<h2 class="title text-uppercase mb-3">{{ event.title }}</span></h2>
+<h6 class="title text-muted text-uppercase mb-5">{{ event.photos|length }} fotos de {{ event.photographer }}</h6>
+
+<div id="gallery" class="row row-sm">
+{% for photo in event.photos %}
+  {%
+    include 'partials/components/render_thumb.twig' with {
+      'data': photo,
+      'profile': 3,
+      'type': 'gallery',
+      'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+    'show': [
+      'icon',
+      'photo-name',
+      'album-type',
+      'album-name',
+      'image-count',
+      'fav-count'
+      ]
+    }
+  %}
+{% endfor %}
+
+</div>

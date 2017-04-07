@@ -12,21 +12,14 @@
 
 <div class="app page-gallery">
 
-  <!-- <?php get_component('page-header', ['title' => 'Galeria', 'show' => ['title','form-search', 'nav-gallery']]);?> -->
   {%
-  include 'partials/components/page-header.twig' with {
-    'title': 'Galeria',
-    'show': ['title','form-search', 'nav-gallery']
-  }
+    include 'partials/components/page-header.twig' with {
+      'title': 'Galeria',
+      'show': ['title','form-search', 'nav-gallery']
+    }
   %}
 
   <div class="container">
-    <!--
-    <h6 class="title text-muted text-uppercase mb-0"><a class="text-muted" href="#">Casamento</a></h6>
-    <h2 class="title text-uppercase mb-3">Roberta e Márcio</h2>
-    <h6 class="title text-muted text-uppercase mb-5">100 fotos de <a class="text-muted" href="#">Sebastião Doce</a></h6>
-    -->
-
     {{ include('partials/components/filters-list.twig') }}
 
     {% if grav.user.profile == 3 and page.slug() == "historic" %}
@@ -54,7 +47,7 @@
     </div>
   </div>
 
-  <a id="add-page" data-page="1" href="#">Próxima página</a>
+   <a id="add-page" data-page="1" href="#">Próxima página</a>
 
   {{ include('partials/components/modal-filters.twig') }}
   {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}

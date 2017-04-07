@@ -11,11 +11,13 @@
     <img alt='' src="{{ data.thumb }}">
     <div class="card-text">
       <div class="card-text-inner">
-        <p class="album-name"><a href="#">{{ data.title }}</a></p>
-        <p class="album-type"><a href="#">{{ data.category }}</a></p>
-        <p class="image-count"><span>{{ data.photos }}</span> fotos</p>
-        <p class="date">Criado em {{ data.eventdate }}</p>
-        <p class="fav-count">{{ data.likes }} Likes</p>
+        {% if data.context in ["gallery_photographer", "gallery_publisher"] %}
+          <p class="album-name"><a href="#">{{ data.title }}</a></p>
+          <p class="album-type"><a href="#">{{ data.category }}</a></p>
+          <p class="image-count"><span>{{ data.photos }}</span> fotos</p>
+          <p class="date">Criado em {{ data.eventdate }}</p>
+          <p class="fav-count">{{ data.likes }} Likes</p>
+        {% endif %}
 
         {% if data.context == "gallery_photographer" and profile == 'photographer' and data.photographer_id == logged_user_id %}
         <ul class="nav">
@@ -31,6 +33,14 @@
             <a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>
             <a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="/gallery/photos?id={{ data.id }}"><i class="icon-trash"></i>Fotos</a></li>
+        </ul>
+        {% endif %}
+
+        {% if data.context == "gallery_photos_publisher" %}
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="icon-star"></i>Favoritar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="icon-download"></i>Download</a></li>
         </ul>
         {% endif %}
       </div>

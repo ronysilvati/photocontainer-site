@@ -385,6 +385,23 @@ var Event = (function () {
     });
   }
 
+  var loadPublisherGallery = function (api) {
+    var id = location.search.split("=")[1]
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"publisher_gallery_photos?id="+id,
+      "method": "POST",
+      "processData": false,
+      "contentType": false,
+    }
+
+    $.ajax(settings).done(function (response) {
+      $(".publisher-gallery-photos").html(response)
+    });
+  }
+
   var loadEvent = function (api) {
     var id = location.search.split("=")[1]
     Event.id = id
@@ -528,6 +545,7 @@ var Event = (function () {
     removeEvent: removeEvent,
     likeEvent: likeEvent,
     dislikeEvent: dislikeEvent,
+    loadPublisherGallery: loadPublisherGallery,
     id: id
   };
 })();
