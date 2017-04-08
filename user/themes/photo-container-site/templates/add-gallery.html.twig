@@ -192,10 +192,30 @@
         <div class="upload-area">
           <div class="upload-area-inner">
             <i class="icon-upload"></i>
-            <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
 
+            <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
-            <button class="btn btn-ph px-5">Buscar</button>
+            <button class="btn btn-ph px-5" id="btn-buscar">Buscar</button>
+
+            <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+            <script>
+                $( document ).ready(function() {
+                    var myDropzone = new Dropzone("#btn-buscar", {
+                        url: "http://photo.api/photo",
+                        method: "POST",
+                        withCredentials: false,
+                        headers: {
+                            "Cache-Control": null,
+                            "X-Requested-With": null
+                        }
+                    });
+                });
+            </script>
+            <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+            <form action="http://photo.api/photo" class="dropzone">
+              <input type="hidden" name="event_id" value="" id="event_id" />
+            </form>
+
           </div>
         </div>
         <div class="row row-sm">
