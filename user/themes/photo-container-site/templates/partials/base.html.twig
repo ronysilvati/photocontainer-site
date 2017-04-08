@@ -36,20 +36,24 @@
 </body>
 
 <script>
-localStorage.setItem('endpoint', '{{ config.plugins.photocontainer.endpoint }}')
-localStorage.setItem('domain', '{{ config.plugins.photocontainer.domain }}')
-</script>
+$( document ).ready(function(){
+  localStorage.setItem('endpoint', '{{ config.plugins.photocontainer.endpoint }}')
+  localStorage.setItem('domain', '{{ config.plugins.photocontainer.domain }}')
 
-{% if grav.user.id is not null %}
-<script>
-    if (localStorage.getItem('logged_in') === null) {
-        localStorage.setItem('logged_in', true)
-        localStorage.setItem('profile', {{ grav.user.profile }})
-        localStorage.setItem('fullname', '{{ grav.user.fullname }}')
-        localStorage.setItem('email', '{{ grav.user.email }}')
-        localStorage.setItem('user', {{ grav.user.id }})
-    }
+  {% if grav.user.id is not null %}
+  if (localStorage.user != "" && localStorage.user != {{ grav.user.id }}) {
+    localStorage.clear()
+  }
+
+  if (localStorage.getItem('logged_in') === null) {
+    localStorage.setItem('logged_in', true)
+    localStorage.setItem('profile', {{ grav.user.profile }})
+    localStorage.setItem('fullname', '{{ grav.user.fullname }}')
+    localStorage.setItem('email', '{{ grav.user.email }}')
+    localStorage.setItem('user', {{ grav.user.id }})
+  }
+  {%  endif %}
+})
 </script>
-{%  endif %}
 
 </html>
