@@ -19,36 +19,40 @@
     url('theme://_temp/photos/10.jpg')
   ]
 %}
-
-<div class="{{col}}" data-src="{{random(image)}}">
+{% set progressbar = 0 %}
+<div id="{{id}}" class="{{col}}" data-src="{{random(image)}}">
   <div class="{{thumb_class}}">
-    <img alt='' src="{{random(image)}}">
+    <img alt='' {{img_attr}} src="">
     <div class="card-text">
       <div class="card-text-inner">
 
         {% if show %}
           {% for key, value in show %}
 
-            {% if value == 'album-type' %}  <p class="album-type">Casamento</p>{% endif %}
-            {% if value == 'image-count' %} <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
-            {% if value == 'album-name' %}  <p class="album-name">Roberta & Marcio</p>{% endif %}
-            {% if value == 'date' %}        <p class="">Criado em 30/01/2017</p>{% endif %}
-            {% if value == 'photo-label' %} <p class="photo-label">Fotógrafo</p>{% endif %}
-            {% if value == 'photo-name' %}  <p class="photo-name">Sebastião Doce</p>{% endif %}
-            {% if value == 'fav-count' %}   <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
-            {% if value == 'icon' %}        <p class="icon"><i class="icon-search"></i></p>{% endif %}
+            {% if value == 'upload_progress' %}
+              {% set progressbar = 1 %}
+            {% endif %}
+
+            {% if value == 'album-type' %}        <p class="album-type">Casamento</p>{% endif %}
+            {% if value == 'image-count' %}       <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
+            {% if value == 'album-name' %}        <p class="album-name">Roberta & Marcio</p>{% endif %}
+            {% if value == 'date' %}              <p class="">Criado em 30/01/2017</p>{% endif %}
+            {% if value == 'photo-label' %}       <p class="photo-label">Fotógrafo</p>{% endif %}
+            {% if value == 'photo-name' %}        <p class="photo-name">Sebastião Doce</p>{% endif %}
+            {% if value == 'fav-count' %}         <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
+            {% if value == 'icon' %}              <p class="icon"><i class="icon-search"></i></p>{% endif %}
 
             {% if value == 'nav' %}
               <ul class="nav">
               {% for value_nav in nav %}
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    {% if value_nav == 'fav' %}       <i class="icon-star"></i>{% endif %}
-                    {% if value_nav == 'edit' %}      <i class="icon-pencil"></i>{% endif %}
-                    {% if value_nav == 'trash' %}     <i class="icon-trash"></i>{% endif %}
-                    {% if value_nav == 'search' %}    <i class="icon-search"></i>{% endif %}
-                    {% if value_nav == 'download' %}  <i class="icon-download"></i>{% endif %}
-                  </a>
+
+                  {% if value_nav == 'fav' %}       <a class="nav-link" href="#"><i class="icon-star"></i></a>{% endif %}
+                  {% if value_nav == 'edit' %}      <a class="nav-link" href="#"><i class="icon-pencil"></i></a>{% endif %}
+                  {% if value_nav == 'trash' %}     <a class="nav-link" {{remove_attr}} href="#"><i class="icon-trash"></i></a>{% endif %}
+                  {% if value_nav == 'search' %}    <a class="nav-link" href="#"><i class="icon-search"></i></a>{% endif %}
+                  {% if value_nav == 'download' %}  <a class="nav-link" href="#"><i class="icon-download"></i></a>{% endif %}
+
                 </li>
               {% endfor %}
               </ul>
@@ -59,5 +63,11 @@
 
       </div>
     </div>
+    {% if progressbar == 1 %}
+    <div class="progressbar" role="progressbar">
+      <div style="width:0%;" data-dz-uploadprogress></div>
+    </div>
+    {% endif %}
+
   </div>
 </div>
