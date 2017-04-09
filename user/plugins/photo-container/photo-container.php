@@ -128,6 +128,7 @@ class PhotoContainerPlugin extends Plugin
                     'email'    => $data->email,
                     'lang'     => 'en',
                     'profile'  => $data->profile->profile_id,
+                    'sigla'  => $data->profile->profile_id == 2 : 'ph' : 'pu',
                 ];
 
                 $userData['groups'] = $this->grav['config']->get('plugins.login.user_registration.groups');
