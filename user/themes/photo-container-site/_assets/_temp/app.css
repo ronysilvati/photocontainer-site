@@ -8591,6 +8591,8 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
+  white-space: normal;
+  line-height: 1.2em;
   outline: none !important;
   box-shadow: none !important;
   text-decoration: none !important;
@@ -8616,14 +8618,14 @@ body {
 .btn.btn-secondary {
   color: #656565;
 }
-.btn.btn-ph, .btn.btn-pu {
+.btn.btn-ph:not(.btn-check), .btn.btn-pu:not(.btn-check) {
   color: #fff;
   border-color: transparent;
 }
-.btn.btn-ph {
+.btn.btn-ph:not(.btn-check) {
   background-color: #54b6e0;
 }
-.btn.btn-pu {
+.btn.btn-pu:not(.btn-check) {
   background-color: #e1c09d;
 }
 .btn.btn-outline-primary {
@@ -8890,11 +8892,7 @@ select.form-control {
   box-sizing: content-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-.btn-check {
-  position: relative;
-}
-.btn-check:after {
+.btn-color:after {
   opacity: 0;
   transition: .3s;
   color: #fff;
@@ -8920,10 +8918,23 @@ select.form-control {
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  content: initial;
 }
-.btn-check.active:after {
+.btn-color.active:after {
   opacity: 1;
+}
+
+.btn-check {
+  position: relative;
+}
+.btn-check.btn-ph.active {
+  background-color: #54b6e0;
+  color: #fff;
+  border-color: transparent;
+}
+.btn-check.btn-pu.active {
+  background-color: #e1c09d;
+  color: #fff;
+  border-color: transparent;
 }
 
 .row {
@@ -9029,6 +9040,10 @@ select.form-control {
 }
 .link.text-white:after {
   background: #fff;
+}
+
+.modal .modal-full {
+  max-width: calc(100% - 60px);
 }
 
 .nav-steps {
@@ -10231,7 +10246,7 @@ select.form-control {
 }
 .page-profile .card > .card-title {
   text-align: center;
-  background-color: #eceeef;
+  background-color: #f9fafc;
   padding: 40px 0;
 }
 .page-profile .block-who {

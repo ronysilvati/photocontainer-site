@@ -5,24 +5,11 @@
 {% if not col %}
   {% set col = "col-md-3" %}
 {% endif %}
-{%
-  set image = [
-    url('theme://_temp/photos/1.jpg'),
-    url('theme://_temp/photos/2.jpg'),
-    url('theme://_temp/photos/3.jpg'),
-    url('theme://_temp/photos/4.jpg'),
-    url('theme://_temp/photos/5.jpg'),
-    url('theme://_temp/photos/6.jpg'),
-    url('theme://_temp/photos/7.jpg'),
-    url('theme://_temp/photos/8.jpg'),
-    url('theme://_temp/photos/9.jpg'),
-    url('theme://_temp/photos/10.jpg')
-  ]
-%}
+
 {% set progressbar = 0 %}
-<div id="{{id}}" class="{{col}}" data-src="{{random(image)}}">
+<div id="{{id}}" class="{{col}}" data-src="{{img_src}}">
   <div class="{{thumb_class}}">
-    <img alt='' {{img_attr}} src="">
+    <img alt='' {{img_attr}} src="{{img_src}}">
     <div class="card-text">
       <div class="card-text-inner">
 
@@ -33,13 +20,13 @@
               {% set progressbar = 1 %}
             {% endif %}
 
-            {% if value == 'album-type' %}        <p class="album-type">Casamento</p>{% endif %}
-            {% if value == 'image-count' %}       <p class="image-count"><span>{{random(110)}}</span> fotos</p> {% endif %}
-            {% if value == 'album-name' %}        <p class="album-name">Roberta & Marcio</p>{% endif %}
-            {% if value == 'date' %}              <p class="">Criado em 30/01/2017</p>{% endif %}
-            {% if value == 'photo-label' %}       <p class="photo-label">Fotógrafo</p>{% endif %}
-            {% if value == 'photo-name' %}        <p class="photo-name">Sebastião Doce</p>{% endif %}
-            {% if value == 'fav-count' %}         <p class="fav-count"><i class="icon-star"></i>{{random(110)}}</p>{% endif %}
+            {% if value == 'album-type' %}        <p class="album-type">{{ data_album_type }}</p>{% endif %}
+            {% if value == 'image-count' %}       <p class="image-count"><span>{{ data_image_count }}</span> fotos</p> {% endif %}
+            {% if value == 'album-name' %}        <p class="album-name">{{ data_album_name }}</p>{% endif %}
+            {% if value == 'date' %}              <p class="">{{ data_album_date }}</p>{% endif %}
+            {% if value == 'photo-label' %}       <p class="photo-label">{{ data_photo_label }}</p>{% endif %}
+            {% if value == 'photo-name' %}        <p class="photo-name">{{ data_photo_name }}</p>{% endif %}
+            {% if value == 'fav-count' %}         <p class="fav-count"><i class="icon-star"></i>{{ data_fav_count }}</p>{% endif %}
             {% if value == 'icon' %}              <p class="icon"><i class="icon-search"></i></p>{% endif %}
 
             {% if value == 'nav' %}

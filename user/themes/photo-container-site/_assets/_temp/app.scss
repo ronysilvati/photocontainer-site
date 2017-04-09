@@ -179,6 +179,8 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
+  white-space: normal;
+  line-height: 1.2em;
 
   outline: none!important;
   box-shadow: none!important;
@@ -207,13 +209,15 @@ body {
     color: $gray;
   }
   &.btn-ph, &.btn-pu{
-    color:$white;
-    border-color: transparent;
+    &:not(.btn-check) {
+      color:$white;
+      border-color: transparent;
+    }
   }
-  &.btn-ph{
+  &.btn-ph:not(.btn-check){
     background-color:$color-ph;
   }
-  &.btn-pu{
+  &.btn-pu:not(.btn-check){
     background-color:$color-pu;
   }
   &.btn-outline-primary {
@@ -517,45 +521,60 @@ select.form-control {
   padding: 0;
   box-sizing: content-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  &:after {
+    opacity: 0;
+    transition: .3s;
+    color: #fff;
+    height: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: block;
+    text-decoration: inherit;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    margin-left: .2em;
+    content: '\e812';
+    font-size: 12px;
+    line-height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    // content:initial;
+  }
+
+  &.active {
+    &:after {
+      opacity: 1;
+    }
+  }
 }
 // .form-colors {
   .btn-check{
     position: relative;
 
-    &:after {
-      opacity: 0;
-      transition: .3s;
-      color: #fff;
-      height: 16px;
-      background-color: rgba(0, 0, 0, 0.4);
-      position: absolute;
-      font-family: "fontello";
-      font-style: normal;
-      font-weight: normal;
-      speak: none;
-      display: block;
-      text-decoration: inherit;
-      margin-right: .2em;
-      text-align: center;
-      font-variant: normal;
-      text-transform: none;
-      margin-left: .2em;
-      content: '\e812';
-      font-size: 12px;
-      line-height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      top: 50%;
-      left: 5px;
-      transform: translateY(-50%);
-      content:initial;
-    }
-
-    &.active {
-      &:after {
-        opacity: 1;
+    &.btn-ph {
+        &.active {
+        background-color:$color-ph;
+        color: $white;
+        border-color: transparent;
       }
     }
+    &.btn-pu {
+      &.active {
+        background-color:$color-pu;
+        color: $white;
+        border-color: transparent;
+      }
+    }
+
   }
 // }
 
@@ -603,6 +622,12 @@ select.form-control {
     &:after {
       background: #fff;
     }
+  }
+}
+
+.modal {
+  .modal-full {
+      max-width: calc(100% - 60px);
   }
 }
 
@@ -1847,7 +1872,7 @@ select.form-control {
   .card {
     &>.card-title {
       text-align: center;
-      background-color: $gray-lighter;
+      background-color: $gray-lightest;
       padding: 40px 0;
     }
   }
