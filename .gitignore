@@ -65,3 +65,4 @@ user/themes/photo-container-site/_assets/.sass-cache/*
 .idea/
 user/config/plugins/photo-container.yaml
 user/plugins/photo-container/photo-container.php
+user/config/plugins/photo-container.yaml
