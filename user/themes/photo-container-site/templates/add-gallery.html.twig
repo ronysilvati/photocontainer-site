@@ -204,7 +204,7 @@
                     var previewTemplate = previewNode.parentNode.innerHTML;
                     previewNode.parentNode.removeChild(previewNode);
                     new Dropzone(".upload-area", {
-                        url: "http://photo.api/photo",
+                        url: localStorage.endpoint+'/photo',
                         previewTemplate: previewTemplate,
                         previewsContainer: "#previews",
                         init: function() {
@@ -238,7 +238,6 @@
         </div>
         <div class="row row-sm"  id="previews">
 
-          {#% for i in range(1, 10) %#}
             {%
             include 'partials/components/thumb-gallery.twig' with {
               'type': '',
@@ -255,50 +254,11 @@
               ]
             }
             %}
-          {#% endfor %#}
 
         </div>
       </div>
     </div>
   </div>
-
-  <!-- HTML heavily inspired by http://blueimp.github.io/jQuery-File-Upload/ -->
-  <div class="table table-striped" class="files" id="_previews">
-
-    <div id="_template" class="file-row">
-      <!-- This is used as the file preview template -->
-      <div>
-        <span class="preview"><img data-dz-thumbnail /></span>
-      </div>
-      <div>
-        <p class="name" data-dz-name></p>
-        <strong class="error text-danger" data-dz-errormessage></strong>
-      </div>
-      <div>
-        <p class="size" data-dz-size></p>
-        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-        </div>
-      </div>
-      <!--div>
-        <button class="btn btn-primary start">
-          <i class="glyphicon glyphicon-upload"></i>
-          <span>Start</span>
-        </button>
-        <button data-dz-remove class="btn btn-warning cancel">
-          <i class="glyphicon glyphicon-ban-circle"></i>
-          <span>Cancel</span>
-        </button>
-        <button data-dz-remove class="btn btn-danger delete">
-          <i class="glyphicon glyphicon-trash"></i>
-          <span>Delete</span>
-        </button>
-      </div-->
-    </div>
-
-  </div>
-
-
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
