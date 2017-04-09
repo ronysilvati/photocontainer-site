@@ -188,6 +188,8 @@ class PhotoContainerPlugin extends Plugin
                 'event' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
                 'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
+                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
+                'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
             ]
         );
         exit;
@@ -212,7 +214,8 @@ class PhotoContainerPlugin extends Plugin
             [
                 'found' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
-                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher'
+                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
+                'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
             ]
         );
         exit;
