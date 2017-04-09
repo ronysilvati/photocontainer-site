@@ -256,6 +256,7 @@ var Event = (function () {
         $.ajax(settings)
         .done(function (response) {
           Event.id = response.id
+          $("#event_id").val(Event.id);
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
