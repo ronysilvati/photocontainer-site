@@ -185,6 +185,8 @@ class PhotoContainerPlugin extends Plugin
             "partials/components/render_gallery_photos.html.twig",
             [
                 'event' => $found,
+                'logged_user_id' => $this->grav['session']->user->id,
+                'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
             ]
         );
         exit;
