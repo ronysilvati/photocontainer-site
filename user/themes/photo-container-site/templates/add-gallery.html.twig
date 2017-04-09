@@ -204,7 +204,7 @@
                     var previewTemplate = previewNode.parentNode.innerHTML;
                     previewNode.parentNode.removeChild(previewNode);
                     new Dropzone("#btn-buscar, .upload-area-inner", {
-                        url: "http://photo.api/photo",
+                        url: localStorage.endpoint+'/photo',
                         previewTemplate: previewTemplate,
                         previewsContainer: "#previews",
                         init: function() {
