@@ -9,6 +9,8 @@
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
+  white-space: normal;
+  line-height: 1.2em;
 
   outline: none!important;
   box-shadow: none!important;
@@ -37,13 +39,15 @@
     color: $gray;
   }
   &.btn-ph, &.btn-pu{
-    color:$white;
-    border-color: transparent;
+    &:not(.btn-check) {
+      color:$white;
+      border-color: transparent;
+    }
   }
-  &.btn-ph{
+  &.btn-ph:not(.btn-check){
     background-color:$color-ph;
   }
-  &.btn-pu{
+  &.btn-pu:not(.btn-check){
     background-color:$color-pu;
   }
   &.btn-outline-primary {

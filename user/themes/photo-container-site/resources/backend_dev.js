@@ -314,7 +314,7 @@ var Event = (function () {
 
     return $.ajax(settings).done(function (response) {
       response.forEach(function(item) {
-        $("#categories-button-group").append('<label class="btn btn-secondary btn-check btn-lg text-uppercase px-5">\
+        $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'">'+item.description+'\
         </label> ')
       });
@@ -340,8 +340,8 @@ var Event = (function () {
             <div data-toggle="buttons">';
 
           tagGroup.tags.forEach(function (tag) {
-            list += '<label class="btn btn-secondary btn-check btn-block">\
-              <input name="tags[]" type="checkbox" autocomplete="off" value="' + tag.id + '">' + tag.description + '\
+            list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
+              <input name="tags[]" type="radio" autocomplete="off" value="' + tag.id + '">' + tag.description + '\
             </label>'
           })
 
