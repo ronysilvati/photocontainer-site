@@ -1,4 +1,5 @@
 .form-group {
+  margin-bottom: 4px;
   label {
     color: $gray-light;
     margin: 0 0 -6px 0;
@@ -143,6 +144,7 @@ select.form-control {
       top: 50%;
       left: 5px;
       transform: translateY(-50%);
+      content:initial;
     }
 
     &.active {

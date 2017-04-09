@@ -1,5 +1,5 @@
 enabled: true
-api_endpoint: 'http://64.173.180.165:8081/'
+api_endpoint: 'http://64.137.180.165:8081/'
 login_route: /do-signin
 input_pwd: input_password
 input_username: input_email

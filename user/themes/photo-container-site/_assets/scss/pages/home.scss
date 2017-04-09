@@ -15,12 +15,15 @@
     @include media-breakpoint-up(lg) {
       padding: 0;
     }
-    .container {
-      width: 100%;
+    @include media-breakpoint-down(md) {
+      .container {
+        width: 100%;
+      }
     }
     .navbar-brand {
       img {
         height: 52px;
+        transition: .3s;
       }
     }
     .navbar-toggler {
@@ -94,6 +97,13 @@
       left: 0;
       height: auto;
       transition: .3s;
+
+      .navbar-brand {
+        margin-top: -3px;
+        img {
+          height: 45px;
+        }
+      }
       .navbar-nav .nav-item .nav-link {
         height: auto;
         @include media-breakpoint-up(lg) {
