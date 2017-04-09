@@ -128,6 +128,7 @@ class PhotoContainerPlugin extends Plugin
                     'email'    => $data->email,
                     'lang'     => 'en',
                     'profile'  => $data->profile->profile_id,
+                    'sigla'  => $data->profile->profile_id == 2 ? 'ph' : 'pu',
                 ];
 
                 $userData['groups'] = $this->grav['config']->get('plugins.login.user_registration.groups');
@@ -185,6 +186,10 @@ class PhotoContainerPlugin extends Plugin
             "partials/components/render_gallery_photos.html.twig",
             [
                 'event' => $found,
+                'logged_user_id' => $this->grav['session']->user->id,
+                'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
+                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
+                'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
             ]
         );
         exit;
@@ -209,7 +214,8 @@ class PhotoContainerPlugin extends Plugin
             [
                 'found' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
-                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher'
+                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
+                'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
             ]
         );
         exit;

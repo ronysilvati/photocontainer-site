@@ -3,6 +3,10 @@
   color: $gray-dark;
   cursor: pointer;
 
+  outline: none!important;
+  box-shadow: none!important;
+  text-decoration: none!important;
+
   &:after {
     content: "";
     position: absolute;

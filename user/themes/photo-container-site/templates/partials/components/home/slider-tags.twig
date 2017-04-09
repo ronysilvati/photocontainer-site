@@ -1,4 +1,10 @@
-{% set slider_images = [url('theme://resources/images/MAE_0209.jpg'), url('theme://resources/images/MAE_0209.jpg')] %}
+{% set loopindex = 0 %}
+{% set slider_images = [url('theme://resources/images/tag-1.jpg'), url('theme://resources/images/tag-2.jpg'), url('theme://resources/images/tag-3.jpg')] %}
+{% set slider_tags = [
+  ["Fazenda, Sítio",'Verde, Amarelo','Clássico','DJ'],
+  ['Praia', 'Verde, Amarelo', 'Clássico', 'Banda'],
+  ['Praia', 'Branco, Verde, Laranja', 'Moderno', 'Banda']
+] %}
 
 <div id="home-slider-tags" class="slider slider-tags">
 
@@ -10,16 +16,25 @@
       <h4 class="title">No Fotocontainer você encontra suas fotos buscando por tags</h4>
       <ul>
         <li>
-          <i class="icon-location"></i>
-          Clube 12 de agosto
+          <i class="icon-tag-local"></i>
+          {{slider_tags[loopindex][0]}}
         </li>
         <li>
-          <i class="icon-location"></i>
-          Clube 12 de agosto
+          <i class="icon-tag-color"></i>
+          {{slider_tags[loopindex][1]}}
+        </li>
+        <li>
+          <i class="icon-tag-style"></i>
+          {{slider_tags[loopindex][2]}}
+        </li>
+        <li>
+          <i class="icon-tag-music"></i>
+          {{slider_tags[loopindex][3]}}
         </li>
       </ul>
     </div>
   </div>
+  {% set loopindex = loopindex + 1 %}
   {% endfor %}
   </div>
 

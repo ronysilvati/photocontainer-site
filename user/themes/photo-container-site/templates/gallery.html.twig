@@ -63,7 +63,7 @@ $( document ).ready(function(){
     $(".search-result-thumb").remove()
     $("#add-page").data().page = 1
 
-    Event.search("http://" + location.host + "/")
+    Event.search(localStorage.domain)
   })
 
   $('#gallery').lightGallery({
@@ -73,7 +73,7 @@ $( document ).ready(function(){
   $( ".add-gallery-click" ).unbind();
 
   {% if page.slug() == "gallery" %}
-    Event.search("http://" + location.host + "/");
+    Event.search(localStorage.domain);
   {% endif %}
 
   $("#add-page").on('click', function (e) {

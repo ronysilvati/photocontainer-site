@@ -1,0 +1,5 @@
+---
+title: album
+routable: true
+---
+

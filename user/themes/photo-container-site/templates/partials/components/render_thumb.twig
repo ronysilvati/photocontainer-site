@@ -22,7 +22,7 @@
         {% if data.context == "gallery_photographer" and profile == 'photographer' and data.photographer_id == logged_user_id %}
         <ul class="nav">
           <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i>Remover</a></li>
-          <li class="nav-item"><a class="nav-link" href="/gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i>Editar</a></li>
+          <li class="nav-item"><a class="nav-link" href="./gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i>Editar</a></li>
         </ul>
         {% endif %}
 
@@ -40,7 +40,7 @@
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
           <li class="nav-item"><a class="nav-link" href="#"><i class="icon-star"></i>Favoritar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="icon-download"></i>Download</a></li>
+          <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i>Download</a></li>
         </ul>
         {% endif %}
       </div>
