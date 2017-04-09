@@ -8696,7 +8696,7 @@ body {
   width: 40px;
   height: 40px;
   transform: scale(1, 1);
-  transition: .3s;
+  transition: .15s;
 }
 .btn.btn-circle:hover {
   transform: scale(1.1, 1.1);
@@ -9440,6 +9440,7 @@ select.form-control {
   background: rgba(0, 0, 0, 0.6);
   height: 0;
   transition: .3s;
+  z-index: 2;
 }
 .card.thumb-gallery .card-text .card-text-inner {
   position: absolute;
@@ -9479,6 +9480,18 @@ select.form-control {
 }
 .card.thumb-gallery .card-text .card-text-inner .album-name, .card.thumb-gallery .card-text .card-text-inner .album-name a, .card.thumb-gallery .card-text .card-text-inner .album-type, .card.thumb-gallery .card-text .card-text-inner .album-type a {
   text-align: left;
+}
+.card.thumb-gallery .progressbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.card.thumb-gallery .progressbar div {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
 }
 .card.thumb-gallery:hover img {
   transform: translate(-50%, -50%) scale(1.1);
@@ -9587,6 +9600,8 @@ select.form-control {
 }
 .card.thumb-gallery.thumb-add {
   border: 2px dotted #ddd;
+  transition: .3s;
+  color: #656565;
 }
 .card.thumb-gallery.thumb-add .card-text-add {
   position: absolute;
@@ -9615,6 +9630,9 @@ select.form-control {
 .card.thumb-gallery.thumb-add .card-text-add p {
   font-size: 18px;
   margin: 30px 0 0 0;
+}
+.card.thumb-gallery.thumb-add:hover {
+  background-color: #f9fafc;
 }
 .card.thumb-gallery:before {
   display: block;

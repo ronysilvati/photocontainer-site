@@ -301,7 +301,7 @@ body {
     width: 40px;
     height: 40px;
       transform: scale(1,1);
-    transition: .3s;
+    transition: .15s;
 
     &:hover {
       transform: scale(1.1,1.1);
@@ -1086,6 +1086,7 @@ select.form-control {
     background: rgba(0,0,0,.6);
     height: 0;
     transition: .3s;
+    z-index: 2;
 
     .card-text-inner {
       position: absolute;
@@ -1127,6 +1128,19 @@ select.form-control {
       .album-name, .album-name a, .album-type, .album-type a {
         text-align: left;
       }
+    }
+  }
+
+  .progressbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    div {
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
     }
   }
 
@@ -1262,6 +1276,8 @@ select.form-control {
 
   &.thumb-add {
     border: 2px dotted #ddd;
+    transition: .3s;
+    color: $gray;
     .card-text-add {
       position: absolute;
       top: 50%;
@@ -1290,6 +1306,10 @@ select.form-control {
         font-size: 18px;
         margin: 30px 0 0 0;
       }
+    }
+
+    &:hover {
+      background-color: $gray-lightest;
     }
   }
 
