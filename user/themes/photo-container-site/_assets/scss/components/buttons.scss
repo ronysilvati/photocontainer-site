@@ -61,13 +61,15 @@
       outline: 0!important;
     }
     &.btn-ph {
-      &.active {
+        &:focus, &:hover, &.active {
         background-color:$color-ph;
+        color: $white;
       }
     }
     &.btn-pu {
-      &.active {
+      &:focus, &:hover, &.active {
         background-color:$color-pu;
+        color: $white;
       }
     }
   }
@@ -128,6 +130,13 @@
     line-height: 30px;
     width: 40px;
     height: 40px;
+      transform: scale(1,1);
+    transition: .15s;
+
+    &:hover {
+      transform: scale(1.1,1.1);
+    }
+
     i {
       font-size: 25px;
       line-height: 1.5em;

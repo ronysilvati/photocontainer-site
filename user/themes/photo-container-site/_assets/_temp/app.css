@@ -8639,11 +8639,13 @@ body {
   background: rgba(56, 56, 56, 0.1);
   outline: 0 !important;
 }
-.btn.btn-outline-primary.btn-ph.active {
+.btn.btn-outline-primary.btn-ph:focus, .btn.btn-outline-primary.btn-ph:hover, .btn.btn-outline-primary.btn-ph.active {
   background-color: #54b6e0;
+  color: #fff;
 }
-.btn.btn-outline-primary.btn-pu.active {
+.btn.btn-outline-primary.btn-pu:focus, .btn.btn-outline-primary.btn-pu:hover, .btn.btn-outline-primary.btn-pu.active {
   background-color: #e1c09d;
+  color: #fff;
 }
 .btn.btn-outline-secondary {
   transition: .3s;
@@ -8693,6 +8695,11 @@ body {
   line-height: 30px;
   width: 40px;
   height: 40px;
+  transform: scale(1, 1);
+  transition: .3s;
+}
+.btn.btn-circle:hover {
+  transform: scale(1.1, 1.1);
 }
 .btn.btn-circle i {
   font-size: 25px;

@@ -1,4 +1,4 @@
-{% set thumb_class = 'card thumb-gallery ratio-1by1' %}
+{% set thumb_class = 'card thumb-gallery ratio-1by1 thumb-' ~ grav.user.sigla %}
 {% if type %}
     {% set thumb_class = thumb_class ~ ' thumb-gallery-' ~ type %}
 {% endif %}
