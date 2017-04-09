@@ -5,8 +5,7 @@
 {%
   include 'partials/components/navbar-top.twig' with {
   'profile': grav.user.profile,
-  'active': 'gallery',
-  'class': 'bg-ph'
+  'active': 'gallery'
   }
 %}
 
@@ -25,7 +24,7 @@
     {% if grav.user.profile == 3 and page.slug() == "historic" %}
     <div class="row">
       <div class="col-6 col-md-3 offset-md-3">
-        <button type="button" class="btn btn-pu text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
+        <button type="button" class="btn btn-{{grav.user.sigla}} text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
       </div>
       <div class="col-6 col-md-3 mb-5">
         <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
@@ -47,10 +46,10 @@
     </div>
   </div>
 
-   <a id="add-page" data-page="1" href="#">Próxima página</a>
+   <a id="add-page" style="display:none;" data-page="1" href="#">Próxima página</a>
 
   {{ include('partials/components/modal-filters.twig') }}
-  {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
+  {% include 'partials/components/footer.twig' %}
 </div>
 
 <script>
