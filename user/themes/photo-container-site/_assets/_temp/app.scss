@@ -1144,6 +1144,7 @@ select.form-control {
         font-size: 30px;
           i {
             color:$white;
+            transition: .3s;
           }
       }
       p + ul .nav-link {
@@ -1191,6 +1192,18 @@ select.form-control {
           text-align: center;
         }
       }
+    }
+  }
+
+  &.thumb-ph {
+    .card-text .card-text-inner .nav-link:hover i {
+      color: $color-ph
+    }
+  }
+
+  &.thumb-pu {
+    .card-text .card-text-inner .nav-link:hover i {
+      color: $color-pu
     }
   }
 
