@@ -1,0 +1,60 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{%
+include 'partials/components/navbar-top.twig' with {
+'profile': grav.user.profile,
+'active': 'gallery'
+}
+%}
+
+<div class="app page-gallery">
+
+    {%
+    include 'partials/components/page-header.twig' with {
+    'title': 'Histórico',
+    'show': ['title','form-search', 'nav-gallery']
+    }
+    %}
+
+    <div class="container">
+        {{ include('partials/components/filters-list.twig') }}
+
+        <div class="row">
+            <div id="btn-favorites" class="col-6 col-md-3 offset-md-3">
+                <button type="button" class="btn btn-{{grav.user.sigla}} text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
+            </div>
+            <div id="btn-downloaded" class="col-6 col-md-3 mb-5">
+                <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
+            </div>
+        </div>
+
+        <div id="thumb-data-download">
+        </div>
+    </div>
+
+    {{ include('partials/components/modal-filters.twig') }}
+    {% include 'partials/components/footer.twig' %}
+</div>
+
+<script>
+  $( document ).ready(function(){
+    Event.loadTags(localStorage.endpoint)
+
+    $(".form-search").submit(function (e) {
+      e.preventDefault();
+
+      $(".search-result-thumb").remove()
+
+      Event.loadPublisherDownloadGallery(localStorage.domain)
+    })
+
+    $('#gallery').lightGallery({
+      subHtmlSelectorRelative: true
+    });
+
+    Event.loadPublisherDownloadGallery(localStorage.domain)
+  });
+</script>
+{% endblock %}

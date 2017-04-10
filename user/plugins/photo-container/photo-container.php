@@ -228,11 +228,17 @@ class PhotoContainerPlugin extends Plugin
 
     private function publisherDownloadGallery()
     {
-        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/photo/user/".$_REQUEST['publisher_id']."/downloads");
+        $qs = http_build_query([
+            'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
+            'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
+        ]);
+
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/photo/user/".$_REQUEST['publisher_id']."/downloads?".$qs);
+
         $found = json_decode($response, true);
 
         echo $this->grav['twig']->processTemplate(
-            "partials/components/render_gallery_photos.html.twig",
+            "partials/components/render_gallery_historic.html.twig",
             [
                 'event' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
