@@ -57,7 +57,7 @@ class PhotoContainerPlugin extends Plugin
         if ($this->grav['user']->authenticated == null) {
             $allUnprotected = $this->grav['config']->get('plugins.photo-container.unprotected_routes');
 
-            $flatArray = ["/event_search", "/publisher_gallery_photos"];
+            $flatArray = ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_downloads"];
             foreach ($allUnprotected as $unprotected) {
                 $flatArray[] = $unprotected['text'];
             }
@@ -76,7 +76,7 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-        if (in_array($route, ["/event_search", "/publisher_gallery_photos"])) {
+        if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_downloads"])) {
             $this->enable([
                 'onTwigInitialized' => ['onTwigInitialized', 0]
             ]);
@@ -163,6 +163,8 @@ class PhotoContainerPlugin extends Plugin
 
     public function onTwigInitialized()
     {
+        header('Access-Control-Allow-Origin: *');
+
         $route = $this->grav['uri']->route();
 
         if ($route == "/event_search" && !empty($_POST)) {
@@ -173,23 +175,26 @@ class PhotoContainerPlugin extends Plugin
             $this->searchGalleryPhotos();
         }
 
+        if ($route == "/publisher_gallery_downloads") {
+            $this->publisherDownloadGallery();
+        }
+
         exit;
     }
 
     private function searchGalleryPhotos()
     {
-        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."/search/events/".$_REQUEST['id']."/photos");
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events/".$_REQUEST['id']."/photos");
         $found = json_decode($response, true);
 
-        header('Access-Control-Allow-Origin: *');
         echo $this->grav['twig']->processTemplate(
             "partials/components/render_gallery_photos.html.twig",
             [
                 'event' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
                 'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
-                'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
-                'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
+                'profile' => 'publisher',
+                'sigla' => 'pu',
             ]
         );
         exit;
@@ -220,4 +225,30 @@ class PhotoContainerPlugin extends Plugin
         );
         exit;
     }
+
+    private function publisherDownloadGallery()
+    {
+        $qs = http_build_query([
+            'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
+            'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
+        ]);
+
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/photo/user/".$_REQUEST['publisher_id']."/downloads?".$qs);
+
+        $found = json_decode($response, true);
+
+        echo $this->grav['twig']->processTemplate(
+            "partials/components/render_gallery_historic.html.twig",
+            [
+                'event' => $found,
+                'logged_user_id' => $this->grav['session']->user->id,
+                'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
+                'profile' => 'publisher',
+                'sigla' => 'pu',
+            ]
+        );
+        exit;
+
+    }
+
 }

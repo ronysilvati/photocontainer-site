@@ -386,6 +386,32 @@ var Event = (function () {
     });
   }
 
+  var loadPublisherDownloadGallery = function (api) {
+    var form = new FormData();
+    form.append("keyword", $("#keyword-search").val());
+
+    $('input[name="tags[]"]:checked').each(function (i, item){
+      form.append('tags[]', $(item).val())
+    })
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"publisher_gallery_downloads?publisher_id="+localStorage.user,
+      "method": "POST",
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": form
+    }
+
+    $.ajax(settings).done(function (response) {
+      if (response) {
+        $("#thumb-data-download").append(response)
+      }
+    });
+  }
+
   var loadPublisherGallery = function (api) {
     var id = location.search.split("=")[1]
 
@@ -547,6 +573,7 @@ var Event = (function () {
     likeEvent: likeEvent,
     dislikeEvent: dislikeEvent,
     loadPublisherGallery: loadPublisherGallery,
+    loadPublisherDownloadGallery: loadPublisherDownloadGallery,
     id: id
   };
 })();

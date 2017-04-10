@@ -1,12 +1,37 @@
-{% set thumb_class = 'card thumb-gallery ratio-1by1 thumb-' ~ sigla %}
-{% if type %}
-    {% set thumb_class = thumb_class ~ ' thumb-gallery-' ~ type %}
-{% endif %}
-{% if not col %}
-    {% set col = "col-md-3" %}
-{% endif %}
+  {%
+  include 'partials/components/thumb-gallery.twig' with {
+    'type': 'footer',
+    'id': 'event-thumb-' ~ data.id,
+    'img_src': data.thumb,
+    'img_attr': 'data-dz-thumbnail',
+    'remove_attr': 'data-dz-remove',
+    'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
 
-<div class="{{col}} search-result-thumb" data-src="{{ data.thumb }}" id="event-thumb-{{ data.id }}">
+    'data_album_name' : data.title,
+    'data_album_type' : data.category,
+    'data_image_count' : data.photos,
+    'data_album_date' : 'Criado em ' ~ data.eventdate,
+    'data_photo_label' : '',
+    'data_photo_name' : '',
+    'data_fav_count' : data.likes,
+
+    'show': [
+      'album-name',
+      'album-type',
+      'image-count',
+      'date',
+      'nav'
+    ],
+    'nav': [
+      'fav',
+      'download',
+      'edit'
+    ]
+  }
+  %}
+
+
+<!--div class="{{col}} search-result-thumb" data-src="{{ data.thumb }}" id="event-thumb-{{ data.id }}">
   <div class="{{thumb_class}}">
     <img alt='' src="{{ data.thumb }}">
     <div class="card-text">
@@ -20,10 +45,10 @@
         {% endif %}
 
         {% if data.context == "gallery_photographer" and profile == 'photographer' and data.photographer_id == logged_user_id %}
-        <ul class="nav">
+        <!--ul class="nav">
           <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i>Remover</a></li>
           <li class="nav-item"><a class="nav-link" href="./gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i>Editar</a></li>
-        </ul>
+        </ul- ->
         {% endif %}
 
         {% if data.context == "gallery_publisher" and profile == 'publisher' %}
@@ -43,14 +68,7 @@
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i>Download</a></li>
         </ul>
         {% endif %}
-
-        {% if data.context == "gallery_publisher_downloads" %}
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link" href="#"><i class="icon-star"></i>Favoritar</a></li>
-          <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.event_id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i>Download</a></li>
-        </ul>
-        {% endif %}
       </div>
     </div>
   </div>
-</div>
+</div -->

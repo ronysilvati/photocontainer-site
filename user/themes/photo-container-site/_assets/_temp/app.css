@@ -9488,6 +9488,7 @@ select.form-control {
 }
 .card.thumb-gallery .card-text .card-text-inner .nav-link i {
   color: #fff;
+  transition: .3s;
 }
 .card.thumb-gallery .card-text .card-text-inner p + ul .nav-link {
   padding: 6px;
@@ -9527,6 +9528,12 @@ select.form-control {
 }
 .card.thumb-gallery:hover .card-text .card-text-inner .album-name, .card.thumb-gallery:hover .card-text .card-text-inner .album-name a, .card.thumb-gallery:hover .card-text .card-text-inner .album-type, .card.thumb-gallery:hover .card-text .card-text-inner .album-type a {
   text-align: center;
+}
+.card.thumb-gallery.thumb-ph .card-text .card-text-inner .nav-link:hover i {
+  color: #54b6e0;
+}
+.card.thumb-gallery.thumb-pu .card-text .card-text-inner .nav-link:hover i {
+  color: #e1c09d;
 }
 .card.thumb-gallery.thumb-gallery-home {
   cursor: pointer;
