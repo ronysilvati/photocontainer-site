@@ -7,6 +7,13 @@
   include 'partials/components/thumb-gallery.twig' with {
     'type': 'home',
     'col': 'col-md-2 col-sm-4 col-6',
+
+
+    'img_src': url('theme://_temp/photos/' ~ (random(9)+1) ~ '.jpg'),
+    'data_photo_name' : 'Sebastião Salgado',
+    'data_album_name' : 'Paulo e Roberta',
+    'data_album_type' : 'Casamento',
+
     'show': [
       'icon',
       'photo-name',
