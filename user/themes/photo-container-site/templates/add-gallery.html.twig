@@ -200,6 +200,11 @@
             <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
             <script>
                 $( document ).ready(function() {
+
+                    $('.end-add-gallery-tab').on('click',function(){
+                       window.location.href = '/success?id='+Event.id;
+                    });
+
                     var previewNode = document.querySelector("#template");
                     var previewTemplate = previewNode.parentNode.innerHTML;
                     previewNode.parentNode.removeChild(previewNode);
@@ -215,13 +220,13 @@
                                 formData.append('event_id', Event.id);
                             });
                             this.on("queuecomplete", function (file) {
-                                console.log(file);
+                                $('.end-add-gallery-tab').prop("disabled", false);
                             });
                             this.on("addedfile", function(file) {
                                 console.log("Added file.");
                             });
                             this.on("processing", function(file) {
-                                console.log(file);
+                                $('.end-add-gallery-tab').prop("disabled", true);
                             });
                         },
                         method: "POST",
