@@ -315,7 +315,7 @@ var Event = (function () {
     return $.ajax(settings).done(function (response) {
       response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
-          <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'">'+item.description+'\
+          <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
       });
     });
@@ -341,8 +341,9 @@ var Event = (function () {
 
           tagGroup.tags.forEach(function (tag) {
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input name="tags[]" type="radio" autocomplete="off" value="' + tag.id + '">' + tag.description + '\
+              <input name="tags[]" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
+            list += '<label class="error msg-error" for="tags[]" style="display: none;"></label>';
           })
 
           list += '\

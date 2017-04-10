@@ -467,8 +467,45 @@ select.form-control {
     font-size: 20px;
   }
 }
+
 .form-check{
   position: relative;
+
+  span {
+    position: relative;
+    &:before {
+      color: #383838;
+      border: 0;
+      background: #E5E3E5;
+      width: 40px;
+      height: 20px;
+      display: inline-block;
+      margin-right: 4px;
+      border-radius: 12px;
+      position: relative;
+      top: 4px;
+      content: "";
+      transition: .2s;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      background: white;
+      left: 2px;
+      border-radius: 50%;
+      top: 3px;
+      transition: .2s;
+    }
+  }
+  input:checked ~ span:before {
+    background-color: #46A148;
+  }
+  input:checked ~ span:after {
+    left: 22px;
+  }
+
   .form-check-label {
     padding: 0;
   }
@@ -476,39 +513,45 @@ select.form-control {
     position: absolute;
     opacity: 0;
   }
-  span {
-    &:before {
-      @include checkicon();
-      margin-right: 7px;
-      position: relative;
-      width: 16px;
-      height: 16px;
-      display: inline-block;
-      top: -2px;
-      background-color: rgba($gray-dark ,0);
-      border: 2px solid $gray-dark;
-      border-radius: 4px;
-      line-height: 12px;
-      font-size: 10px;
-      color:rgba($gray-dark ,0);
-      transition: .3s;
-      text-align: center;
-    }
-  }
-  input:checked ~ span:before {
-    color: rgba($gray-dark ,1);
-  }
-
-  &.text-white {
+  &.form-check-alt{
     span {
+      &:after {
+        content:initial;
+      }
       &:before {
-        background-color: rgba($white ,0);
-        border: 2px solid $white;
-        color:rgba($white ,0);
+        @include checkicon();
+        margin-right: 7px;
+        position: relative;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        top: -2px;
+        background-color: rgba($gray-dark ,0);
+        border: 2px solid $gray-dark;
+        border-radius: 4px;
+        line-height: 12px;
+        font-size: 10px;
+        color:rgba($gray-dark ,0);
+        transition: .3s;
+        text-align: center;
+        background: transparent;
       }
     }
     input:checked ~ span:before {
-      color: rgba($white ,1);
+      color: rgba($gray-dark ,1);
+    }
+
+    &.text-white {
+      span {
+        &:before {
+          background-color: rgba($white ,0);
+          border: 2px solid $white;
+          color:rgba($white ,0);
+        }
+      }
+      input:checked ~ span:before {
+        color: rgba($white ,1);
+      }
     }
   }
 }
@@ -577,6 +620,14 @@ select.form-control {
 
   }
 // }
+
+label.error.msg-error {
+  display: block;
+  font-size: 11px;
+  color: red;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
 
 @include make-other-row(0, row);
 @include make-other-row(1px, row-xxs);
@@ -1860,7 +1911,7 @@ select.form-control {
   line-height: 16px;
 }
 
-.msg-error {
+.page-login .msg-error {
   display: block;
   font-size: 10px;
   color: #fff;

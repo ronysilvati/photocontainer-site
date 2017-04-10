@@ -13,48 +13,54 @@
   %}
   <div class="container">
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="evento" role="tabpanel">
+      <form class="tab-pane step1 fade show active" id="evento" role="tabpanel">
         <h4 class="title mb-5">Evento</h4>
-        <h5 class="title mb-3">Selecione as categorias</h5>
+        <h5 class="title mb-3">Selecione as categorias *</h5>
         <div data-toggle="buttons" id="categories-button-group"></div>
-        <h5 class="title mb-3 mt-5">Informações do evento</h5>
+        <label class="error msg-error" for="categories[]" style="display: none;"></label>
+        <h5 class="title mb-3 mt-5">Informações do evento *</h5>
         <div class="row row-lg">
 
           <!-- COL 1 -->
           <div class="col-md-4">
             <div class="form-group">
-              <label>Nome da noiva</label>
-              <input id="input-bride" type="text" class="form-control">
+              <label>Nome da noiva *</label>
+              <input id="input-bride" name="input-bride" type="text" class="form-control" required>
+              <label class="error msg-error" for="input-bride" style="display: none;"></label>
             </div>
             <div class="form-group">
-              <label>Nome do noivo</label>
-              <input id="input-groom" type="text" class="form-control">
+              <label>Nome do noivo *</label>
+              <input id="input-groom" name="input-groom" type="text" class="form-control" required>
+              <label class="error msg-error" for="input-groom" style="display: none;"></label>
             </div>
-            <label>Data do evento</label>
+            <label>Data do evento *</label>
             <div class="row row-xs">
               <div class="col-3">
                 <div class="form-group">
-                  <select id="select-day" class="form-control">
-                    <option selected="true" disabled="disabled">Dia</option>
+                  <select id="select-day" name="select-day" class="form-control" required>
+                    <option selected="true" value="" disabled="disabled">Dia</option>
                     <option value="21">21</option>
                     <option value="22">22</option>
                   </select>
+                  <label class="error msg-error" for="select-day" style="display: none;"></label>
                 </div>
               </div>
               <div class="col-5">
                 <div class="form-group">
-                  <select id="select-month" class="form-control">
+                  <select id="select-month" name="select-month" class="form-control" required>
                     <option selected="true" disabled="disabled">Mês</option>
                     <option value="04">Abril</option>
                   </select>
+                  <label class="error msg-error" for="select-month" style="display: none;"></label>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <select id="select-year" class="form-control">
+                  <select id="select-year" name="select-year" class="form-control" required>
                     <option selected="true" disabled="disabled">Ano</option>
                     <option value="2017">2017</option>
                   </select>
+                  <label class="error msg-error" for="select-year" style="display: none;"></label>
                 </div>
               </div>
             </div>
@@ -63,74 +69,81 @@
           <!-- COL 2 -->
           <div class="col-md-4">
             <div class="form-group">
-              <label>País</label>
-              <select id="input-country" class="form-control">
-                <option selected="true" disabled="disabled">Selecione</option>
+              <label>País *</label>
+              <select id="input-country" name="input-country" class="form-control" required>
+                <option selected="" value="" disabled="disabled">Selecione</option>
                 <option value="1">Brasil</option>
               </select>
+              <label class="error msg-error" for="input-country" style="display: none;"></label>
             </div>
             <div class="form-group">
-              <label>Estado</label>
-              <select id="input-state" class="form-control">
+              <label>Estado *</label>
+              <select id="input-state" name="input-state" class="form-control" required>
                 <option selected="true" disabled="disabled">Selecione</option>
               </select>
+              <label class="error msg-error" for="input-state" style="display: none;"></label>
             </div>
             <div class="form-group">
-              <label>Cidade</label>
-              <select id="input-city" class="form-control">
+              <label>Cidade *</label>
+              <select id="input-city" name="input-city" class="form-control" required>
                 <option selected="true" disabled="disabled">Selecione</option>
               </select>
+              <label class="error msg-error" for="input-city" style="display: none;"></label>
             </div>
           </div>
 
           <!-- COL 3 -->
           <div class="col-md-4">
             <div class="form-group">
-              <label>Título</label>
-              <input id="input-title" type="text" class="form-control">
+              <label>Título *</label>
+              <input id="input-title" name="input-title" type="text" class="form-control" required>
+              <label class="error msg-error" for="input-title" style="display: none;"></label>
             </div>
             <div class="form-group">
               <label>
-                Descrição
+                Descrição *
                 <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
               </label>
-              <textarea id="input-description" class="form-control"></textarea>
+              <textarea id="input-description" name="input-description" class="form-control" required></textarea>
+              <label class="error msg-error" for="input-description" style="display: none;"></label>
             </div>
           </div>
 
         </div>
 
-        <h5 class="title mb-3 mt-5">Preferências</h5>
+        <h5 class="title mb-3 mt-5">Preferências *</h5>
         <div class="form-check">
           <label class="form-check-label">
-            <input id="input-approval-general" type="checkbox" class="form-check-input">
+            <input id="input-approval-general" name="input-approval-general" type="checkbox" class="form-check-input" required>
             <span>Liberado</span>
           </label>
           <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <label class="error msg-error" for="input-approval-general" style="display: none;"></label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input id="input-approval-photographer" type="checkbox" class="form-check-input">
+            <input id="input-approval-photographer" name="input-approval-photographer" type="checkbox" class="form-check-input" required>
             <span>Liberado pelo fotógrafo</span>
           </label>
           <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <label class="error msg-error" for="input-approval-photographer" style="display: none;"></label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input id="input-approval-bride" type="checkbox" class="form-check-input">
+            <input id="input-approval-bride" name="input-approval-bride" type="checkbox" class="form-check-input" required>
             <span>Liberado pelos noivos</span>
           </label>
-          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <label class="error msg-error" for="input-approval-bride" style="display: none;"></label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input id="input-terms" type="checkbox" class="form-check-input">
+            <input id="input-terms" name="input-terms" type="checkbox" class="form-check-input" required>
             <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
           </label>
-          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+          <label class="error msg-error" for="input-terms" style="display: none;"></label>
         </div>
-      </div>
-      <div class="tab-pane fade" id="fornecedores" role="tabpanel">
+      </form>
+      <form class="tab-pane step2 fade" id="fornecedores" role="tabpanel">
         <h5 class="title mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
@@ -167,11 +180,12 @@
               <label>{{ value[0] }}</label>
               <div class="form-control-fields">
                 <div id="campo-{{ value[1] }}"  class="form-control-close">
-                  <input name="supplier[{{ value[1] }}][]" type="text" class="form-control">
+                  <input name="supplier[{{ value[1] }}][]" type="text" class="form-control" required>
                   <button type="button" class="close" data-toggle="remove" data-target="_parent">
                     <span aria-hidden="true">×</span>
                   </button>
                 </div>
+                <label class="error msg-error" for="supplier[{{ value[1] }}][]" style="display: none;"></label>
               </div>
               <small class="form-text text-muted text-right">
                 <a data-toggle="clone" class="link btn-add-field-{{ value[1] }}" data-target="#campo-{{ value[1] }}">Adicionar</a>
@@ -183,12 +197,12 @@
             {% endif %}
           {% endfor %}
         </div>
-      </div>
-      <div class="tab-pane fade" id="caracteristicas" role="tabpanel">
+      </form>
+      <form class="tab-pane step3 fade" id="caracteristicas" role="tabpanel">
         <h4 class="title mb-4">Características</h4>
-        {{ include('partials/components/filters.twig') }}
-      </div>
-      <div class="tab-pane fade" id="fotos" role="tabpanel">
+        {% include 'partials/components/filters.twig' with {'validate':1} %}
+      </form>
+      <form class="tab-pane step4 fade" id="fotos" role="tabpanel">
         <div class="upload-area">
           <div class="upload-area-inner" style="pointer-events: none;">
             <i class="icon-upload"></i>
@@ -240,7 +254,7 @@
             </script>
 
           </div>
-        </div>
+        </form>
         <div class="row row-sm"  id="previews">
 
             {%
@@ -267,7 +281,6 @@
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
-
 <script>
   Event.createHandler(localStorage.endpoint, localStorage.user);
   Event.loadCategories(localStorage.endpoint)
@@ -281,6 +294,8 @@
   $("#input-state").on('change', function (e) {
     Cep.loadCities(localStorage.endpoint)
   })
+
+
 </script>
 
 {% endblock %}

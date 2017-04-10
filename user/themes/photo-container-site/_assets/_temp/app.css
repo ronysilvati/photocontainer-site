@@ -8846,6 +8846,40 @@ select.form-control {
 .form-check {
   position: relative;
 }
+.form-check span {
+  position: relative;
+}
+.form-check span:before {
+  color: #383838;
+  border: 0;
+  background: #E5E3E5;
+  width: 40px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 12px;
+  position: relative;
+  top: 4px;
+  content: "";
+  transition: .2s;
+}
+.form-check span:after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background: white;
+  left: 2px;
+  border-radius: 50%;
+  top: 3px;
+  transition: .2s;
+}
+.form-check input:checked ~ span:before {
+  background-color: #46A148;
+}
+.form-check input:checked ~ span:after {
+  left: 22px;
+}
 .form-check .form-check-label {
   padding: 0;
 }
@@ -8853,7 +8887,10 @@ select.form-control {
   position: absolute;
   opacity: 0;
 }
-.form-check span:before {
+.form-check.form-check-alt span:after {
+  content: initial;
+}
+.form-check.form-check-alt span:before {
   font-family: fontello;
   content: '\e812';
   margin-right: 7px;
@@ -8870,16 +8907,17 @@ select.form-control {
   color: rgba(56, 56, 56, 0);
   transition: .3s;
   text-align: center;
+  background: transparent;
 }
-.form-check input:checked ~ span:before {
+.form-check.form-check-alt input:checked ~ span:before {
   color: #383838;
 }
-.form-check.text-white span:before {
+.form-check.form-check-alt.text-white span:before {
   background-color: rgba(255, 255, 255, 0);
   border: 2px solid #fff;
   color: rgba(255, 255, 255, 0);
 }
-.form-check.text-white input:checked ~ span:before {
+.form-check.form-check-alt.text-white input:checked ~ span:before {
   color: white;
 }
 
@@ -8935,6 +8973,14 @@ select.form-control {
   background-color: #e1c09d;
   color: #fff;
   border-color: transparent;
+}
+
+label.error.msg-error {
+  display: block;
+  font-size: 11px;
+  color: red;
+  margin-bottom: 14px;
+  text-transform: uppercase;
 }
 
 .row {
@@ -10232,7 +10278,7 @@ select.form-control {
   line-height: 16px;
 }
 
-.msg-error {
+.page-login .msg-error {
   display: block;
   font-size: 10px;
   color: #fff;

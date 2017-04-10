@@ -32,11 +32,15 @@
       %}
       {% for color in colors %}
       <label style="background-color:{{ color[1] }}" class="btn btn-secondary btn-check btn-color" title="{{ color[0] }}">
-        <input name="tags[]" type="checkbox" autocomplete="off" value="{{color[2]}}"/>
+        <input name="tags[]" type="checkbox" autocomplete="off" value="{{color[2]}}"  {{ (validate == 1)? 'required' : ''  }}/>
       </label>
       {% endfor %}
 
     </div>
+
+    {% if validate == 1 %}
+    <label class="error msg-error" for="tags[]" style="display: none;"></label>
+    {% endif %}
   </div>
   <h5 class="title mt-5">Selecione as tags</h5>
   <div class="row row-md" id="tag-list"></div>
