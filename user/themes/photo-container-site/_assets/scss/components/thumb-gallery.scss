@@ -58,6 +58,7 @@
         font-size: 30px;
           i {
             color:$white;
+            transition: .3s;
           }
       }
       p + ul .nav-link {
@@ -105,6 +106,18 @@
           text-align: center;
         }
       }
+    }
+  }
+
+  &.thumb-ph {
+    .card-text .card-text-inner .nav-link:hover i {
+      color: $color-ph
+    }
+  }
+
+  &.thumb-pu {
+    .card-text .card-text-inner .nav-link:hover i {
+      color: $color-pu
     }
   }
 
