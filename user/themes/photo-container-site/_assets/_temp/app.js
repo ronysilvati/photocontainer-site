@@ -237,6 +237,9 @@ function updateAddGalleryNavTabs(index) {
 }
 
 $(document).ready(function(){
+  $(".cep-mask").inputmask({
+    mask: "99.999-999",
+  });
   $(".email-mask").inputmask({
     mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
     greedy: false,
@@ -256,6 +259,17 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".form-validate.form-signin").validate({
+    rules: {
+			input_email: {
+				required: true
+			},
+			input_password: {
+				required: true
+			}
+		}
+  });
+
+  $(".form-validate.form-profile").validate({
     rules: {
 			input_email: {
 				required: true

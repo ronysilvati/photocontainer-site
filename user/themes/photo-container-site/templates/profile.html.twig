@@ -25,16 +25,18 @@
         <div class="col-md-4 col-sm-6">
           <h3 class="h5 title mb-5">Personal information</h3>
           <div class="form-group">
-            <label>Nome</label>
-            <input name="input_name" id="input-name" type="text" class="form-control">
+            <label>Nome *</label>
+            <input name="input_name" id="input-name" type="text" class="form-control" required>
+            <label class="error msg-error" for="input-name" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Sexo</label>
-            <select name="input_genre" id="input-genre" class="form-control">
+            <label>Sexo *</label>
+            <select name="input-genre" id="input-genre" class="form-control" required>
               <option selected="true" disabled="disabled">Selecione</option>
               <option value="F">Feminino</option>
               <option value="M">Masculino</option>
             </select>
+            <label class="error msg-error" for="input-genre" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label>Telefone</label>
@@ -109,35 +111,41 @@
         <div class="col-md-4 col-sm-6">
           <h3 class="h5 title mb-5">Locate</h3>
           <div class="form-group">
-            <label>CEP</label>
-            <input id="input-cep" type="text" class="form-control">
+            <label>CEP *</label>
+            <input id="input-cep" name="input-cep" type="text" class="form-control cep-mask" required>
+            <label class="error msg-error" for="input-cep" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>País</label>
-            <select id="input-country" class="form-control">
+            <label>País *</label>
+            <select id="input-country" name="input-country" class="form-control" required>
               <option value="0" disabled="disabled">Selecione</option>
               <option value="1" selected="true">Brasil</option>
             </select>
+            <label class="error msg-error" for="input-country" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Estado</label>
-            <select id="input-state" class="form-control">
+            <label>Estado *</label>
+            <select id="input-state" name="input-state" class="form-control" required>
               <option value="0" selected="true" disabled="disabled">Selecione</option>
             </select>
+            <label class="error msg-error" for="input-state" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Cidade</label>
-            <select id="input-city" class="form-control">
+            <label>Cidade *</label>
+            <select id="input-city" name="input-city" class="form-control" required>
               <option value="0" selected="true" disabled="disabled">Selecione</option>
             </select>
+            <label class="error msg-error" for="input-city" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Bairro</label>
-            <input id="input-neighborhood" type="text" class="form-control">
+            <label>Bairro *</label>
+            <input id="input-neighborhood" name="input-neighborhood" type="text" class="form-control" required>
+            <label class="error msg-error" for="input-neighborhood" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Logradouro</label>
-            <input id="input-street" type="text" class="form-control">
+            <label>Logradouro *</label>
+            <input id="input-street" name="input-street" type="text" class="form-control" required>
+            <label class="error msg-error" for="input-street" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label>Complemento</label>
@@ -148,15 +156,17 @@
           <div class="card">
             <h4 class="card-title text-uppercase text-center h5">Dados de acesso</h4>
             <div class="card-block">
-              <h3 class="h5 title mb-5">Alterar senha</h3>
+              <h3 class="h5 title">Alterar senha</h3>
               <div class="form-group">
-                <label>Senha</label>
-                <input type="text" class="form-control">
+                <label>Senha *</label>
+                <input id="input-password" name="input-password" type="text" class="form-control" required>
+                <label class="error msg-error" for="input-password" style="display: none;"></label>
               </div>
-              <h3 class="h5 title mb-5">Alterar email</h3>
+              <h3 class="h5 title mt-5">Alterar email *</h3>
               <div class="form-group">
-                <label>Email</label>
-                <input id="input-email" type="text" class="form-control">
+                <label>Email *</label>
+                <input id="input-email" name="input-email" type="text" class="form-control email-mask" required>
+                <label class="error msg-error" for="input-email" style="display: none;"></label>
               </div>
               <div class="row row-sm">
                 <div class="col-md-6">

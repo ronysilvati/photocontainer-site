@@ -10,6 +10,17 @@ $(document).ready(function(){
 		}
   });
 
+  $(".form-validate.form-profile").validate({
+    rules: {
+			input_email: {
+				required: true
+			},
+			input_password: {
+				required: true
+			}
+		}
+  });
+
   $(".form-validate.form-signup-photographer").validate({
     rules: {
 			input_plan: {
