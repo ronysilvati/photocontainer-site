@@ -220,6 +220,11 @@ var Event = (function () {
 
   var createHandler = function (api, user) {
     $(".next-add-gallery-tab").on('click', function () {
+
+      if ($(".error, .msg-error").is(':visible') == true) {
+        return false
+      }
+
       var settings = {
         "async": true,
         "method": "POST",
@@ -244,6 +249,9 @@ var Event = (function () {
           approval_bride: $("#input-approval-bride").is(":checked"),
           terms: $("#input-terms").is(":checked"),
           categories: [$('input[name="categories[]"]:checked').val()],
+          country: $("#input-country").val(),
+          state: $("#input-state").val(),
+          city: $("#input-city").val(),
           tags: []
         }
 
@@ -255,8 +263,10 @@ var Event = (function () {
         settings.data = JSON.stringify(data)
         $.ajax(settings)
         .done(function (response) {
-          Event.id = response.id
-          $("#event_id").val(Event.id);
+          if (response.id != undefined) {
+            Event.id = response.id
+            $("#event_id").val(Event.id);
+          }
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
@@ -269,12 +279,15 @@ var Event = (function () {
           tags: []
         }
 
-        $('input[name="tags[]"]:checked').each(function (key, item) {
+        $('input[name^="tags"]:checked').each(function (key, item) {
           data.tags.push($(item).val())
         })
 
         settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/tags"
         settings.data = JSON.stringify(data)
+
+        console.log(JSON.stringify(data))
+
         $.ajax(settings)
           .done(function (response) {
             // Event.id = response.id
@@ -340,10 +353,12 @@ var Event = (function () {
             <div data-toggle="buttons">';
 
           tagGroup.tags.forEach(function (tag) {
+            var name = 'tags['+tagGroup.id+'][]'
+
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input name="tags[]" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
+              <input name="'+name+'" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
-            list += '<label class="error msg-error" for="tags[]" style="display: none;"></label>';
+            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
           })
 
           list += '\
@@ -360,7 +375,7 @@ var Event = (function () {
     var form = new FormData();
     form.append("keyword", $("#keyword-search").val());
 
-    $('input[name="tags[]"]:checked').each(function (i, item){
+    $('input[name^="tags"]:checked').each(function (i, item){
       form.append('tags[]', $(item).val())
     })
 
@@ -379,7 +394,12 @@ var Event = (function () {
 
     $.ajax(settings).done(function (response) {
       if (response) {
-        $("#gallery").append(response)
+        if ($("#add-page").data().page > 1) {
+          $("#gallery").append(response)
+        } else {
+          $(".search-result-thumb").remove()
+          $("#gallery").append(response)
+        }
         $("#add-page").prop('disabled', false)
       } else {
         $("#add-page").prop('disabled', true)
@@ -458,13 +478,25 @@ var Event = (function () {
       $("#input-approval-photographer").attr('checked', response.approval_photographer);
       $("#input-terms").attr('checked', response.terms);
 
+      var date = response.eventdate.split(" ")[0].split("-")
+      $("#select-day").val(parseInt(date[2])).change();
+      $("#select-month").val(date[1]).change();
+      $("#select-year").val(date[0]).change();
+
+      $("#input-country").val(1).change()
+
+      setTimeout(function(){
+        $("#input-state").val(response.state).change()
+        setTimeout(function(){$("#input-city").val(response.city).change()}, 400)
+      }, 400)
+
       response.categories.forEach(function(key, item) {
         $("[name^='categories']").filter(":checkbox[value=3]").attr("checked", true)
         $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
       });
 
       response.tags.forEach(function(key, item) {
-        var checkbox = $("[name^='tags']").filter(":checkbox[value="+key+"]")
+        var checkbox = $("[name^='tags']").filter("[value="+key+"]")
         $(checkbox).click()
         $(checkbox).prop("checked", true)
       });
@@ -627,7 +659,7 @@ var Cep = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"location/zipcode/"+$("#input-cep").val(),
+      "url": api+"location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join(''),
       "method": "GET"
     }
 
