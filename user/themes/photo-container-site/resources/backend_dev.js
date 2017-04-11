@@ -220,6 +220,11 @@ var Event = (function () {
 
   var createHandler = function (api, user) {
     $(".next-add-gallery-tab").on('click', function () {
+
+      if ($(".error, .msg-error").is(':visible') == true) {
+        return false
+      }
+
       var settings = {
         "async": true,
         "method": "POST",
@@ -244,6 +249,9 @@ var Event = (function () {
           approval_bride: $("#input-approval-bride").is(":checked"),
           terms: $("#input-terms").is(":checked"),
           categories: [$('input[name="categories[]"]:checked').val()],
+          country: $("#input-country").val(),
+          state: $("#input-state").val(),
+          city: $("#input-city").val(),
           tags: []
         }
 
@@ -255,8 +263,10 @@ var Event = (function () {
         settings.data = JSON.stringify(data)
         $.ajax(settings)
         .done(function (response) {
-          Event.id = response.id
-          $("#event_id").val(Event.id);
+          if (response.id != undefined) {
+            Event.id = response.id
+            $("#event_id").val(Event.id);
+          }
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
@@ -458,6 +468,18 @@ var Event = (function () {
       $("#input-approval-photographer").attr('checked', response.approval_photographer);
       $("#input-terms").attr('checked', response.terms);
 
+      var date = response.eventdate.split(" ")[0].split("-")
+      $("#select-day").val(parseInt(date[2])).change();
+      $("#select-month").val(date[1]).change();
+      $("#select-year").val(date[0]).change();
+
+      $("#input-country").val(1).change()
+
+      setTimeout(function(){
+        $("#input-state").val(response.state).change()
+        setTimeout(function(){$("#input-city").val(response.city).change()}, 400)
+      }, 400)
+
       response.categories.forEach(function(key, item) {
         $("[name^='categories']").filter(":checkbox[value=3]").attr("checked", true)
         $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
@@ -627,7 +649,7 @@ var Cep = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"location/zipcode/"+$("#input-cep").val(),
+      "url": api+"location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join(''),
       "method": "GET"
     }
 

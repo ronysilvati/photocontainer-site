@@ -39,8 +39,9 @@
                 <div class="form-group">
                   <select id="select-day" name="select-day" class="form-control" required>
                     <option selected="true" value="" disabled="disabled">Dia</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
+                    {% for day in 1..31 %}
+                    <option value="{{ day }}">{{ day }}</option>
+                    {% endfor %}
                   </select>
                   <label class="error msg-error" for="select-day" style="display: none;"></label>
                 </div>
@@ -49,7 +50,18 @@
                 <div class="form-group">
                   <select id="select-month" name="select-month" class="form-control" required>
                     <option selected="true" disabled="disabled">Mês</option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
                     <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
                   </select>
                   <label class="error msg-error" for="select-month" style="display: none;"></label>
                 </div>
@@ -58,7 +70,9 @@
                 <div class="form-group">
                   <select id="select-year" name="select-year" class="form-control" required>
                     <option selected="true" disabled="disabled">Ano</option>
-                    <option value="2017">2017</option>
+                    {% for year in 2015..2017 %}
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
                   </select>
                   <label class="error msg-error" for="select-year" style="display: none;"></label>
                 </div>
@@ -281,7 +295,9 @@
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
+
 <script>
+$( document ).ready(function() {
   Event.createHandler(localStorage.endpoint, localStorage.user);
   Event.loadCategories(localStorage.endpoint)
     .then(Event.loadTags(localStorage.endpoint)
@@ -294,8 +310,7 @@
   $("#input-state").on('change', function (e) {
     Cep.loadCities(localStorage.endpoint)
   })
-
-
+})
 </script>
 
 {% endblock %}
