@@ -212,6 +212,9 @@
             <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
 
             <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+            <style>
+              .dz-max-files-reached {background-color: red};
+            </style>
             <script>
                 $( document ).ready(function() {
 
@@ -223,6 +226,7 @@
                     var previewTemplate = previewNode.parentNode.innerHTML;
                     previewNode.parentNode.removeChild(previewNode);
                     new Dropzone(".upload-area", {
+                        maxFiles: 30,
                         url: localStorage.endpoint+'/photo',
                         previewTemplate: previewTemplate,
                         previewsContainer: "#previews",
@@ -241,6 +245,9 @@
                             });
                             this.on("processing", function(file) {
                                 $('.end-add-gallery-tab').prop("disabled", true);
+                            });
+                            this.on("maxfilesexceeded", function(file){
+                                this.removeFile(file);
                             });
                         },
                         method: "POST",
