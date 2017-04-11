@@ -279,12 +279,15 @@ var Event = (function () {
           tags: []
         }
 
-        $('input[name="tags[]"]:checked').each(function (key, item) {
+        $('input[name^="tags"]:checked').each(function (key, item) {
           data.tags.push($(item).val())
         })
 
         settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/tags"
         settings.data = JSON.stringify(data)
+
+        console.log(JSON.stringify(data))
+
         $.ajax(settings)
           .done(function (response) {
             // Event.id = response.id
@@ -350,10 +353,12 @@ var Event = (function () {
             <div data-toggle="buttons">';
 
           tagGroup.tags.forEach(function (tag) {
+            var name = 'tags['+tagGroup.id+'][]'
+
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input name="tags[]" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
+              <input name="'+name+'" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
-            list += '<label class="error msg-error" for="tags[]" style="display: none;"></label>';
+            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
           })
 
           list += '\
@@ -370,7 +375,7 @@ var Event = (function () {
     var form = new FormData();
     form.append("keyword", $("#keyword-search").val());
 
-    $('input[name="tags[]"]:checked').each(function (i, item){
+    $('input[name^="tags"]:checked').each(function (i, item){
       form.append('tags[]', $(item).val())
     })
 
@@ -389,7 +394,12 @@ var Event = (function () {
 
     $.ajax(settings).done(function (response) {
       if (response) {
-        $("#gallery").append(response)
+        if ($("#add-page").data().page > 1) {
+          $("#gallery").append(response)
+        } else {
+          $(".search-result-thumb").remove()
+          $("#gallery").append(response)
+        }
         $("#add-page").prop('disabled', false)
       } else {
         $("#add-page").prop('disabled', true)
@@ -486,7 +496,7 @@ var Event = (function () {
       });
 
       response.tags.forEach(function(key, item) {
-        var checkbox = $("[name^='tags']").filter(":checkbox[value="+key+"]")
+        var checkbox = $("[name^='tags']").filter("[value="+key+"]")
         $(checkbox).click()
         $(checkbox).prop("checked", true)
       });
