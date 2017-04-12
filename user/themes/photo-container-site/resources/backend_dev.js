@@ -407,7 +407,7 @@ var Event = (function () {
     });
   }
 
-  var loadPublisherDownloadGallery = function (api) {
+  var loadPublisherHistoricGallery = function (api, type) {
     var form = new FormData();
     form.append("keyword", $("#keyword-search").val());
 
@@ -418,7 +418,7 @@ var Event = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api+"publisher_gallery_downloads?publisher_id="+localStorage.user,
+      "url": api+"publisher_gallery_historic?publisher_id="+localStorage.user+"&type="+type,
       "method": "POST",
       "processData": false,
       "contentType": false,
@@ -596,6 +596,59 @@ var Event = (function () {
     })
   }
 
+  var likePhoto = function (api) {
+    $(".photo-like").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "url": api+"photo/"+$(this).data().likephoto+"/like/publisher/"+localStorage.user
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          var $favoriteLink = $("[data-likephoto="+response.photo_id+"]")
+
+          $favoriteLink.hide()
+          $("[data-dislikephoto="+response.photo_id+"]").show()
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
+        })
+    })
+  }
+
+  var dislikePhoto = function (api) {
+    $(".photo-dislike").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "DELETE",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": {},
+        "url": api+"photo/"+$(this).data().dislikephoto+"/dislike/publisher/"+localStorage.user
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          var $favoriteLink = $("[data-dislikephoto="+response.photo_id+"]")
+
+          $favoriteLink.hide()
+          $("[data-likephoto="+response.photo_id+"]").show()
+          $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
+        })
+    })
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -606,7 +659,9 @@ var Event = (function () {
     likeEvent: likeEvent,
     dislikeEvent: dislikeEvent,
     loadPublisherGallery: loadPublisherGallery,
-    loadPublisherDownloadGallery: loadPublisherDownloadGallery,
+    loadPublisherHistoricGallery: loadPublisherHistoricGallery,
+    likePhoto: likePhoto,
+    dislikePhoto: dislikePhoto,
     id: id
   };
 })();

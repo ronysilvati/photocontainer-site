@@ -39,12 +39,13 @@
 
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
-          <li class="nav-item"><a class="nav-link" href="#"><i class="icon-star"></i>Favoritar</a></li>
+          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>
+          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i>Download</a></li>
         </ul>
         {% endif %}
 
-        {% if data.context == "gallery_publisher_downloads" %}
+        {% if data.context == "gallery_publisher_historic" %}
         <ul class="nav">
           <li class="nav-item"><a class="nav-link" href="#"><i class="icon-star"></i>Favoritar</a></li>
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.event_id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i>Download</a></li>
