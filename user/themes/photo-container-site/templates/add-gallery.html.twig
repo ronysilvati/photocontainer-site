@@ -223,11 +223,14 @@
 
             <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
+            <p class="dropzone-feedback">yesye</p>
             <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
 
             <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
             <style>
-              .dz-max-files-reached {background-color: red};
+              .dz-max-files-reached {
+                  background-color: #fbff96;
+              }
             </style>
             <script>
                 $( document ).ready(function() {
@@ -241,6 +244,7 @@
                     previewNode.parentNode.removeChild(previewNode);
                     new Dropzone(".upload-area", {
                         maxFiles: 30,
+                        parallelUploads: 5,
                         url: localStorage.endpoint+'/photo',
                         previewTemplate: previewTemplate,
                         previewsContainer: "#previews",
@@ -260,7 +264,12 @@
                             this.on("processing", function(file) {
                                 $('.end-add-gallery-tab').prop("disabled", true);
                             });
+                            this.on("maxfilesreached", function(file){
+                                $('.dropzone-feedback').html("maxfilesreached");
+                                this.removeFile(file);
+                            });
                             this.on("maxfilesexceeded", function(file){
+                                $('.dropzone-feedback').html("maxfilesexceeded");
                                 this.removeFile(file);
                             });
                         },
