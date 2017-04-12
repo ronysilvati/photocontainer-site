@@ -10,7 +10,6 @@ include 'partials/components/navbar-top.twig' with {
 %}
 
 <div class="app page-gallery">
-
     {%
     include 'partials/components/page-header.twig' with {
     'title': 'Histórico',
@@ -23,15 +22,14 @@ include 'partials/components/navbar-top.twig' with {
 
         <div class="row">
             <div id="btn-favorites" class="col-6 col-md-3 offset-md-3">
-                <button type="button" class="btn btn-{{grav.user.sigla}} text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
+                <button type="button" id="btn-favorites" class="btn btn-{{grav.user.sigla}} text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
             </div>
             <div id="btn-downloaded" class="col-6 col-md-3 mb-5">
-                <button type="button" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
+                <button type="button" id="btn-downloads" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
             </div>
         </div>
 
-        <div id="thumb-data-download">
-        </div>
+        <div id="thumb-data-download" class="row row-sm"></div>
     </div>
 
     {{ include('partials/components/modal-filters.twig') }}
@@ -42,19 +40,35 @@ include 'partials/components/navbar-top.twig' with {
   $( document ).ready(function(){
     Event.loadTags(localStorage.endpoint)
 
+    $("#btn-favorites").on('click', function(){
+      $("#btn-favorites :input").addClass('btn-pu').removeClass('btn-secondary')
+      $("#btn-downloaded :input").removeClass('btn-pu').addClass('btn-secondary')
+
+      $("#thumb-data-download").html('')
+      Event.loadPublisherHistoricGallery(localStorage.domain, 'favorites')
+    })
+
+    $("#btn-downloads").on('click', function(){
+      $("#btn-favorites :input").removeClass('btn-pu').addClass('btn-secondary')
+      $("#btn-downloaded :input").addClass('btn-pu').removeClass('btn-secondary')
+
+      $("#thumb-data-download").html('')
+      Event.loadPublisherHistoricGallery(localStorage.domain, 'downloads')
+    })
+
     $(".form-search").submit(function (e) {
       e.preventDefault();
 
       $(".search-result-thumb").remove()
 
-      Event.loadPublisherDownloadGallery(localStorage.domain)
+//      Event.loadPublisherHistoricGallery(localStorage.domain)
     })
 
     $('#gallery').lightGallery({
       subHtmlSelectorRelative: true
     });
 
-    Event.loadPublisherDownloadGallery(localStorage.domain)
+    Event.loadPublisherHistoricGallery(localStorage.domain, 'favorites')
   });
 </script>
 {% endblock %}

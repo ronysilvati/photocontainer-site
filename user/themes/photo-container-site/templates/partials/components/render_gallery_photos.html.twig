@@ -23,5 +23,12 @@
     }
   %}
 {% endfor %}
-
 </div>
+
+
+<script>
+$( document ).ready(function(){
+    Event.likePhoto(localStorage.endpoint)
+    Event.dislikePhoto(localStorage.endpoint)
+});
+</script>

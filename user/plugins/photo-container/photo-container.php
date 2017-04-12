@@ -57,7 +57,7 @@ class PhotoContainerPlugin extends Plugin
         if ($this->grav['user']->authenticated == null) {
             $allUnprotected = $this->grav['config']->get('plugins.photo-container.unprotected_routes');
 
-            $flatArray = ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_downloads"];
+            $flatArray = ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic", "/thumbs"];
             foreach ($allUnprotected as $unprotected) {
                 $flatArray[] = $unprotected['text'];
             }
@@ -76,7 +76,7 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-        if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_downloads"])) {
+        if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic"])) {
             $this->enable([
                 'onTwigInitialized' => ['onTwigInitialized', 0]
             ]);
@@ -175,8 +175,8 @@ class PhotoContainerPlugin extends Plugin
             $this->searchGalleryPhotos();
         }
 
-        if ($route == "/publisher_gallery_downloads") {
-            $this->publisherDownloadGallery();
+        if ($route == "/publisher_gallery_historic") {
+            $this->publisherHistoricGallery();
         }
 
         exit;
@@ -184,7 +184,7 @@ class PhotoContainerPlugin extends Plugin
 
     private function searchGalleryPhotos()
     {
-        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events/".$_REQUEST['id']."/photos");
+        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events/".$_REQUEST['id']."/photos/user/".$this->grav['session']->user->id);
         $found = json_decode($response, true);
 
         echo $this->grav['twig']->processTemplate(
@@ -226,14 +226,17 @@ class PhotoContainerPlugin extends Plugin
         exit;
     }
 
-    private function publisherDownloadGallery()
+    private function publisherHistoricGallery()
     {
         $qs = http_build_query([
             'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
             'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
         ]);
 
-        $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/photo/user/".$_REQUEST['publisher_id']."/downloads?".$qs);
+        $endpoint = $this->grav['config']->get('plugins.photo-container.api_endpoint');
+        $response = Response::get(
+            $endpoint."search/photo/user/".$_REQUEST['publisher_id']."/".$_REQUEST['type']."?".$qs
+        );
 
         $found = json_decode($response, true);
 
