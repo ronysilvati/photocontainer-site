@@ -221,10 +221,6 @@ var Event = (function () {
   var createHandler = function (api, user) {
     $(".next-add-gallery-tab").on('click', function () {
 
-      if ($(".error, .msg-error").is(':visible') == true) {
-        return false
-      }
-
       var settings = {
         "async": true,
         "method": "POST",
@@ -285,9 +281,7 @@ var Event = (function () {
 
         settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/tags"
         settings.data = JSON.stringify(data)
-
-        console.log(JSON.stringify(data))
-
+        
         $.ajax(settings)
           .done(function (response) {
             // Event.id = response.id
@@ -429,6 +423,9 @@ var Event = (function () {
     $.ajax(settings).done(function (response) {
       if (response) {
         $("#thumb-data-download").append(response)
+
+        Event.likePhoto(localStorage.endpoint)
+        Event.dislikePhoto(localStorage.endpoint)
       }
     });
   }
@@ -483,7 +480,7 @@ var Event = (function () {
       $("#select-month").val(date[1]).change();
       $("#select-year").val(date[0]).change();
 
-      $("#input-country").val(1).change()
+      $("#input-country").val(response.country).change()
 
       setTimeout(function(){
         $("#input-state").val(response.state).change()
@@ -667,6 +664,24 @@ var Event = (function () {
 })();
 
 var Cep = (function () {
+
+  var loadCountries = function (api) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": api+"/location/countries",
+      "method": "GET"
+    }
+
+    return $.ajax(settings)
+      .done(function (response) {
+        for (var prop in response) {
+          var obj = response[prop]
+          $("#input-country").append("<option data-id='"+obj.id+"' value='"+obj.id+"'>"+obj.name+"</option>")
+        }
+      });
+  }
+
   var loadStates = function(api) {
     var country = $("#input-country :selected").length > 0 ? $("#input-country :selected").val() : 1
 
@@ -734,7 +749,6 @@ var Cep = (function () {
       )
     })
     .fail(function (response){
-      console.log('aqui')
       $("#input-country").val()
 
       $("#input-state").val(0)
@@ -751,6 +765,7 @@ var Cep = (function () {
   return {
     loadCep: loadCep,
     loadStates: loadStates,
-    loadCities: loadCities
+    loadCities: loadCities,
+    loadCountries: loadCountries
   };
 })()

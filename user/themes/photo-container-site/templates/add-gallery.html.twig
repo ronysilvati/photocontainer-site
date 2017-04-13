@@ -70,7 +70,7 @@
                 <div class="form-group">
                   <select id="select-year" name="select-year" class="form-control" required>
                     <option selected="true" disabled="disabled">Ano</option>
-                    {% for year in 2015..2017 %}
+                    {% for year in 2013.."now"|date("Y") %}
                     <option value="{{ year }}">{{ year }}</option>
                     {% endfor %}
                   </select>
@@ -86,23 +86,24 @@
               <label>País *</label>
               <select id="input-country" name="input-country" class="form-control" required>
                 <option selected="" value="" disabled="disabled">Selecione</option>
-                <option value="1">Brasil</option>
               </select>
               <label class="error msg-error" for="input-country" style="display: none;"></label>
             </div>
-            <div class="form-group">
-              <label>Estado *</label>
-              <select id="input-state" name="input-state" class="form-control" required>
-                <option selected="true" disabled="disabled">Selecione</option>
-              </select>
-              <label class="error msg-error" for="input-state" style="display: none;"></label>
-            </div>
-            <div class="form-group">
-              <label>Cidade *</label>
-              <select id="input-city" name="input-city" class="form-control" required>
-                <option selected="true" disabled="disabled">Selecione</option>
-              </select>
-              <label class="error msg-error" for="input-city" style="display: none;"></label>
+            <div class="localization-extra-fields" style="display: none">
+              <div class="form-group">
+                <label>Estado *</label>
+                <select id="input-state" name="input-state" class="form-control" required>
+                  <option selected="true" disabled="disabled">Selecione</option>
+                </select>
+                <label class="error msg-error" for="input-state" style="display: none;"></label>
+              </div>
+              <div class="form-group">
+                <label>Cidade *</label>
+                <select id="input-city" name="input-city" class="form-control" required>
+                  <option selected="true" disabled="disabled">Selecione</option>
+                </select>
+                <label class="error msg-error" for="input-city" style="display: none;"></label>
+              </div>
             </div>
           </div>
 
@@ -306,11 +307,23 @@
 <script>
 $( document ).ready(function() {
   Event.createHandler(localStorage.endpoint, localStorage.user);
+
   Event.loadCategories(localStorage.endpoint)
     .then(Event.loadTags(localStorage.endpoint)
-      .then(Event.loadEvent(localStorage.endpoint)))
+      .then(Cep.loadCountries(localStorage.endpoint))
+        .then(Event.loadEvent(localStorage.endpoint)))
 
   $("#input-country").on('change', function (e) {
+    if ($("#input-country :selected").val() == 1) {
+        $('.localization-extra-fields').show()
+    } else {
+      $('.localization-extra-fields').hide()
+
+      $('.localization-extra-fields :input').each(function(){
+        $(this).val('')
+      })
+    }
+
     Cep.loadStates(localStorage.endpoint)
   })
 
