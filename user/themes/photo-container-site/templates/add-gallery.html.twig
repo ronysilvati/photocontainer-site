@@ -218,20 +218,25 @@
         {% include 'partials/components/filters.twig' with {'validate':1} %}
       </form>
       <form class="tab-pane step4 fade" id="fotos" role="tabpanel">
-        <div class="upload-area">
-          <div class="upload-area-inner" style="pointer-events: none;">
-            <i class="icon-upload"></i>
 
+        <div class="upload-area-inner drop-feedback" style="pointer-events: none; display: none;">
+          <i class="icon-alert"></i>
+          <h2 class="mb-5 text-uppercase">Você selecionou mais 30 imagens</h2>
+          <h6 class="text-muted text-uppercase">Somente as 30 primeiras serão adicionadas ao álbum.</h6>
+          <h6 class="text-muted text-uppercase">Para enviar uma nova foto, exclua uma que ainda não foi utilizada.</h6>
+        </div>
+
+        <div class="upload-area">
+          <div class="upload-area-inner drop-area" style="pointer-events: none;">
+            <i class="icon-upload"></i>
             <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
+            <div class="dropzone-feedback"></div>
             <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
-
             <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-            <style>
-              .dz-max-files-reached {background-color: red};
-            </style>
             <script>
                 $( document ).ready(function() {
+                    var maxFilesLimit = 30;
 
                     $('.end-add-gallery-tab').on('click',function(){
                        window.location.href = '/success?id='+Event.id;
@@ -241,28 +246,52 @@
                     var previewTemplate = previewNode.parentNode.innerHTML;
                     previewNode.parentNode.removeChild(previewNode);
                     new Dropzone(".upload-area", {
-                        maxFiles: 30,
-                        url: localStorage.endpoint+'/photo',
+                        maxFiles: maxFilesLimit,
+                        parallelUploads: 5,
+                        url: localStorage.endpoint+'photo',
                         previewTemplate: previewTemplate,
                         previewsContainer: "#previews",
                         init: function() {
                             this.on("success", function(file, responseText) {
+                                $('.dropzone-feedback').html(dropzoneFeedback());
                                 console.log(responseText);
+                                console.info("success");
                             });
-                            this.on('sending', function(file, xhr, formData){
+                            this.on('sending', function(file, xhr, formData) {
                                 formData.append('event_id', Event.id);
+                                console.info("sending");
                             });
                             this.on("queuecomplete", function (file) {
                                 $('.end-add-gallery-tab').prop("disabled", false);
+                                console.info("queuecomplete");
                             });
                             this.on("addedfile", function(file) {
-                                console.log("Added file.");
+                                $('.dropzone-feedback').html(dropzoneFeedback());
+                                console.info("addedfile");
                             });
                             this.on("processing", function(file) {
                                 $('.end-add-gallery-tab').prop("disabled", true);
+                                console.info("processing");
                             });
-                            this.on("maxfilesexceeded", function(file){
+                            this.on("maxfilesreached", function(file) {
+                                $('.drop-area').hide();
+                                $('.drop-feedback').show();
+                                console.info("maxfilesreached");
                                 this.removeFile(file);
+                            });
+                            this.on("maxfilesexceeded", function(file) {
+                                console.info("maxfilesexceeded");
+                                this.removeFile(file);
+                            });
+                            this.on("removedfile", function(file) {
+                                var total = $('.thumb-gallery').length;
+                                console.info(total);
+                                if (total < 30) {
+                                    $('.drop-area').show();
+                                    $('.drop-feedback').hide();
+                                    $('.dropzone-feedback').html(dropzoneFeedback());
+                                }
+                                console.info("removedfile");
                             });
                         },
                         method: "POST",
@@ -272,6 +301,11 @@
                             "X-Requested-With": null
                         }
                     });
+
+                    function dropzoneFeedback() {
+                        var total = $('.thumb-gallery').length;
+                        return "Você já enviou "+total+" foto de "+maxFilesLimit+" permitida.";
+                    }
                 });
             </script>
 
