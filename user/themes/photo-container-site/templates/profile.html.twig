@@ -30,15 +30,6 @@
             <label class="error msg-error" for="input-name" style="display: none;"></label>
           </div>
           <div class="form-group">
-            <label>Sexo *</label>
-            <select name="input-genre" id="input-genre" class="form-control" required>
-              <option selected="true" disabled="disabled">Selecione</option>
-              <option value="F">Feminino</option>
-              <option value="M">Masculino</option>
-            </select>
-            <label class="error msg-error" for="input-genre" style="display: none;"></label>
-          </div>
-          <div class="form-group">
             <label>Telefone</label>
             <input id="input-phone" type="tel" class="form-control">
           </div>
@@ -93,8 +84,8 @@
             <input id="input-instagram" type="url" class="form-control">
           </div>
           <div class="form-group">
-            <label>Linkedin</label>
-            <input id="input-linkedin" type="url" class="form-control">
+            <label>Pinterest</label>
+            <input id="input-pinterest" type="url" class="form-control">
           </div>
           <div class="form-group">
             <label>Site</label>
@@ -106,6 +97,34 @@
             </label>
             <input id="input-blog" type="url" class="form-control">
           </div>
+
+          {% if grav.user.profile == 2 %}
+          <div class="form-group">
+            <label>Nome do estúdio
+              <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+            </label>
+            <input id="input-studio" type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Biografia
+              <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+            </label>
+            <input id="input-bio" type="text" class="form-control">
+          </div>
+
+          <div class="form-check">
+            <label class="form-radio-label">
+              <input id="input-name-type-name" name="name_type[]" value="name" type="radio" class="form-radio-input" required>
+              <span>Exibe nome do fotógrafo</span>
+            </label>
+
+            <label class="form-radio-label">
+              <input id="input-name-type-studio" name="name_type[]" value="studio" type="radio" class="form-radio-input" required>
+              <span>Exibe nome do estúdio</span>
+            </label>
+          </div>
+          {% endif %}
         </div>
 
         <div class="col-md-4 col-sm-6">
@@ -118,7 +137,7 @@
           <div class="form-group">
             <label>País *</label>
             <select id="input-country" name="input-country" class="form-control" required>
-              <option value="0" disabled="disabled">Selecione</option>
+              <option value="">Selecione</option>
               <option value="1" selected="true">Brasil</option>
             </select>
             <label class="error msg-error" for="input-country" style="display: none;"></label>
@@ -126,14 +145,14 @@
           <div class="form-group">
             <label>Estado *</label>
             <select id="input-state" name="input-state" class="form-control" required>
-              <option value="0" selected="true" disabled="disabled">Selecione</option>
+              <option value="" selected="true">Selecione</option>
             </select>
             <label class="error msg-error" for="input-state" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label>Cidade *</label>
             <select id="input-city" name="input-city" class="form-control" required>
-              <option value="0" selected="true" disabled="disabled">Selecione</option>
+              <option value="" selected="true">Selecione</option>
             </select>
             <label class="error msg-error" for="input-city" style="display: none;"></label>
           </div>
@@ -217,8 +236,18 @@ $( document ).ready(function(){
   .then(Profile.load(localStorage.endpoint));
 
   $("#input-cep").on('keyup', function (e) {
-    if ($("#input-cep").val().length == 10) {
+    var cep = $("#input-cep").val().split('.').join('').split('-').join('').split('_').join("")
+    if (cep.length == 8) {
       Cep.loadCep(localStorage.endpoint)
+    }
+
+    if (cep.length == 0) {
+      $("#input-country").val(0).change()
+      $("#input-state").val(0)
+      $("#input-city").val(0)
+      $("#input-neighborhood").val('')
+      $("#input-street").val('')
+      $("#input-complement").val('')
     }
   })
 

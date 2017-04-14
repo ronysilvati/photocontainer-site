@@ -115,7 +115,25 @@ var Profile = (function () {
         $("#input-site").val(response.details.site)
         $("#input-blog").val(response.details.blog)
         $("#input-phone").val(response.details.phone)
-        $("#input-genre").val(response.details.gender).change()
+        $("#input-pinterest").val(response.details.pinterest).change()
+
+        if (response.details.name_type != null) {
+          if (response.details.name_type == "name") {
+            $("#input-name-type-name").click();
+          }
+
+          if (response.details.name_type == "studio") {
+            $("#input-name-type-studio").click();
+          }
+        }
+
+        if (response.details.studio != null) {
+          $("#input-studio").val(response.details.studio);
+        }
+
+        if (response.details.bio != null) {
+          $("#input-bio").val(response.details.bio);
+        }
 
         if (response.details.birth != null) {
           birthParts = response.details.birth.split('-')
@@ -146,14 +164,18 @@ var Profile = (function () {
     data = {
       email: $("#input-email").val(),
       name: $("#input-name").val(),
+      profile_id: localStorage.profile,
       details: {
+        bio: $("#input-bio").length > 0 ? $("#input-bio").val() : '',
+        studio: $("#input-studio").length > 0 ? $("#input-studio").val() : '',
+        name_type: $("#input-name-type-name").is(":checked") ? 'name' : 'studio',
         facebook: $("#input-facebook").val(),
         instagram: $("#input-instagram").val(),
         linkedin: $("#input-linkedin").val(),
         site: $("#input-site").val(),
         blog: $("#input-blog").val(),
         phone: $("#input-phone").val(),
-        gender: $("#input-genre :selected").val(),
+        pinterest: $("#input-pinterest").val(),
         birth: ''
       },
       address: {
@@ -281,7 +303,7 @@ var Event = (function () {
 
         settings.url = localStorage.getItem('endpoint')+"events/"+Event.id+"/tags"
         settings.data = JSON.stringify(data)
-        
+
         $.ajax(settings)
           .done(function (response) {
             // Event.id = response.id
@@ -716,7 +738,7 @@ var Cep = (function () {
     return $.ajax(settings)
       .done(function (response) {
         $("#input-city option").remove()
-        $("#input-city").append("<option value=\"0\" disabled=\"disabled\">Selecione</option>")
+        $("#input-city").append("<option value=\"\" >Selecione</option>")
 
         for (var prop in response) {
           var obj = response[prop]
