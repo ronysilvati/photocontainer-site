@@ -340,16 +340,9 @@
 
 <script>
 $( document ).ready(function() {
-  Event.createHandler(localStorage.endpoint, localStorage.user);
-
-  Event.loadCategories(localStorage.endpoint)
-    .then(Event.loadTags(localStorage.endpoint)
-      .then(Cep.loadCountries(localStorage.endpoint))
-        .then(Event.loadEvent(localStorage.endpoint)))
-
   $("#input-country").on('change', function (e) {
     if ($("#input-country :selected").val() == 1) {
-        $('.localization-extra-fields').show()
+      $('.localization-extra-fields').show()
     } else {
       $('.localization-extra-fields').hide()
 
@@ -364,6 +357,13 @@ $( document ).ready(function() {
   $("#input-state").on('change', function (e) {
     Cep.loadCities(localStorage.endpoint)
   })
+
+  Event.loadCategories(localStorage.endpoint)
+    .then(Event.loadTags(localStorage.endpoint)
+      .then(Cep.loadCountries(localStorage.endpoint))
+        .then(Event.loadEvent(localStorage.endpoint)))
+
+  Event.createHandler(localStorage.endpoint, localStorage.user);
 })
 </script>
 
