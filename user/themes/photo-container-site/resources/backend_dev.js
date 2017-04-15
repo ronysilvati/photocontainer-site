@@ -427,7 +427,7 @@ var Event = (function () {
     var form = new FormData();
     form.append("keyword", $("#keyword-search").val());
 
-    $('input[name="tags[]"]:checked').each(function (i, item){
+    $('input[name^="tags"]:checked').each(function (i, item){
       form.append('tags[]', $(item).val())
     })
 
@@ -668,6 +668,33 @@ var Event = (function () {
     })
   }
 
+  var requestDownload = function (api) {
+    $(".no-auth").on('click', function(e){
+      e.preventDefault();
+
+      var settings = {
+        "async": true,
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "url": $('a', this).prop('href')
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+          alert('Pedido enviado para o fotógrafo.')
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+          var object = JSON.parse(jqXHR.responseText)
+          alert(object.message)
+        })
+
+    })
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -681,6 +708,7 @@ var Event = (function () {
     loadPublisherHistoricGallery: loadPublisherHistoricGallery,
     likePhoto: likePhoto,
     dislikePhoto: dislikePhoto,
+    requestDownload: requestDownload,
     id: id
   };
 })();

@@ -6,6 +6,7 @@
 {% for photo in event.photos %}
   {%
     include 'partials/components/render_thumb.twig' with {
+      'event_id': event.id,
       'data': photo,
       'logged_user_id': logged_user_id,
       'api_endpoint': api_endpoint,
@@ -30,5 +31,6 @@
 $( document ).ready(function(){
     Event.likePhoto(localStorage.endpoint)
     Event.dislikePhoto(localStorage.endpoint)
+    Event.requestDownload(localStorage.endpoint)
 });
 </script>
