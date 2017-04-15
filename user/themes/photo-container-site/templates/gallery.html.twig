@@ -42,27 +42,31 @@
 </div>
 
 <script>
-$( document ).ready(function(){
+$( document ).ready(function() {
   Event.loadTags(localStorage.endpoint)
 
-  $(".form-search").submit(function (e) {
-    e.preventDefault();
+  if (location.pathname.split('/').length == 2 && location.pathname.split('/')[1] == "gallery") {
+    Event.search(localStorage.domain);
 
-    $(".search-result-thumb").remove()
-    $("#add-page").data().page = 1
+    $(".form-search").submit(function (e) {
+      e.preventDefault();
 
-    Event.search(localStorage.domain)
-  })
+      $(".search-result-thumb").remove()
+      $("#add-page").data().page = 1
+
+      Event.search(localStorage.domain)
+    })
+
+    $('#modal-filters-ok').click(function() {
+      Event.search(localStorage.domain);
+    });
+  }
 
   $('#gallery').lightGallery({
       subHtmlSelectorRelative: true
   });
 
   $( ".add-gallery-click" ).unbind();
-
-  {% if page.slug() == "gallery" %}
-    Event.search(localStorage.domain);
-  {% endif %}
 
   $("#add-page").on('click', function (e) {
     e.preventDefault()

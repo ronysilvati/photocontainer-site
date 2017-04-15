@@ -22,7 +22,7 @@ include 'partials/components/navbar-top.twig' with {
 
         <div class="row">
             <div id="btn-favorites" class="col-6 col-md-3 offset-md-3">
-                <button type="button" id="btn-favorites" class="btn btn-{{grav.user.sigla}} text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
+                <button type="button" id="btn-favorites" class="btn btn-pu text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>
             </div>
             <div id="btn-downloaded" class="col-6 col-md-3 mb-5">
                 <button type="button" id="btn-downloads" class="btn btn-secondary text-uppercase btn-block rounded-top-left-0 rounded-bottom-left-0">Fotos baixadas</button>
@@ -40,7 +40,9 @@ include 'partials/components/navbar-top.twig' with {
   $( document ).ready(function(){
     Event.loadTags(localStorage.endpoint)
 
-    $("#btn-favorites").on('click', function(){
+    $("#btn-favorites").on('click', function(e){
+      e.preventDefault()
+
       $("#btn-favorites :input").addClass('btn-pu').removeClass('btn-secondary')
       $("#btn-downloaded :input").removeClass('btn-pu').addClass('btn-secondary')
 
@@ -48,7 +50,9 @@ include 'partials/components/navbar-top.twig' with {
       Event.loadPublisherHistoricGallery(localStorage.domain, 'favorites')
     })
 
-    $("#btn-downloads").on('click', function(){
+    $("#btn-downloads").on('click', function(e){
+      e.preventDefault()
+
       $("#btn-favorites :input").removeClass('btn-pu').addClass('btn-secondary')
       $("#btn-downloaded :input").addClass('btn-pu').removeClass('btn-secondary')
 
@@ -56,12 +60,14 @@ include 'partials/components/navbar-top.twig' with {
       Event.loadPublisherHistoricGallery(localStorage.domain, 'downloads')
     })
 
-    $(".form-search").submit(function (e) {
+    $(".form-search, #modal-filters-ok").on('click', function (e) {
       e.preventDefault();
 
       $(".search-result-thumb").remove()
 
-//      Event.loadPublisherHistoricGallery(localStorage.domain)
+      var type = $("#btn-favorites .btn-pu").length > 0 ? 'favorites' : 'downloads'
+      console.log(type)
+      Event.loadPublisherHistoricGallery(localStorage.domain, type)
     })
 
     $('#gallery').lightGallery({
