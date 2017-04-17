@@ -260,8 +260,42 @@
       }
     }
   }
+  .block-gallery2, .block-gallery {
+    text-align: center;
+    padding: 100px 0;
+
+    @include media-breakpoint-up(lg) {
+        padding: 100px 0 0;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: 400;
+      margin: 0 auto;
+      max-width: 980px;
+      padding: 0 20px 80px;
+    }
+
+    h5 {
+      font-size: 26px;
+      font-weight: 400;
+      margin: 0 auto;
+      max-width: 980px;
+      padding: 0 20px 80px;
+    }
+
+    .link-mail {
+      margin: 60px 0;
+      display: inline-block;
+      font-size: 20px;
+    }
+  }
   .block-gallery {
     overflow: hidden;
+
+    h2 {
+      padding-bottom: 0;
+    }
   }
   .block-plans {
     text-align: center;

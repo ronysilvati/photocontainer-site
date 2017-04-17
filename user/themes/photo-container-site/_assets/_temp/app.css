@@ -9335,6 +9335,16 @@ label.error.msg-error {
     font-size: 10px;
   }
 }
+.slider.slider-quotes .slider-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
 .slider.slider-quotes .slider-caption {
   position: absolute;
   top: 50%;
@@ -10113,8 +10123,39 @@ label.error.msg-error {
     content: '';
   }
 }
+.page-home .block-gallery2, .page-home .block-gallery {
+  text-align: center;
+  padding: 100px 0;
+}
+@media (min-width: 992px) {
+  .page-home .block-gallery2, .page-home .block-gallery {
+    padding: 100px 0 0;
+  }
+}
+.page-home .block-gallery2 h2, .page-home .block-gallery h2 {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 20px 80px;
+}
+.page-home .block-gallery2 h5, .page-home .block-gallery h5 {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 20px 80px;
+}
+.page-home .block-gallery2 .link-mail, .page-home .block-gallery .link-mail {
+  margin: 60px 0;
+  display: inline-block;
+  font-size: 20px;
+}
 .page-home .block-gallery {
   overflow: hidden;
+}
+.page-home .block-gallery h2 {
+  padding-bottom: 0;
 }
 .page-home .block-plans {
   text-align: center;

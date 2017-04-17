@@ -10,6 +10,7 @@
 <div id="{{id}}" class="{{col}}" data-src="{{img_src}}">
   <div class="{{thumb_class}}">
     <img alt='' {{img_attr}} src="{{img_src}}">
+    {% if show %}
     <div class="card-text">
       <div class="card-text-inner">
 
@@ -50,6 +51,7 @@
 
       </div>
     </div>
+    {% endif %}
     {% if progressbar == 1 %}
     <div class="progressbar" role="progressbar">
       <div style="width:0%;" data-dz-uploadprogress></div>

@@ -1,0 +1,26 @@
+<div class="block block-gallery2 gallery-no-link">
+<h2 class="title text-uppercase text-center">Somos um grupo de pessoas que acreditam que as conexões mudam a vida</h2>
+<div class="row row-xxs" id="block-gallery2">
+
+<!-- get_component('thumb-gallery', ['type' => 'home', 'col' => 'col-md-2', 'show'=> ['icon', , , ]]); -->
+{% for i in range(1, 8) %}
+  {%
+  include 'partials/components/thumb-gallery.twig' with {
+    'type': 'logos',
+    'col': 'col-md-3 col-sm-4 col-6',
+
+
+    'img_src': url('theme://_temp/photos/' ~ (random(9)+1) ~ '.jpg'),
+    'data_photo_name' : 'Sebastião Salgado',
+    'data_album_name' : 'Paulo e Roberta',
+    'data_album_type' : 'Casamento',
+
+    'show': []
+  }
+  %}
+{% endfor %}
+
+</div>
+
+<a class="link link-mail" href="mailto:contato@fotocontainer.com.br">contato@fotocontainer.com.br</a>
+</div>
