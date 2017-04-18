@@ -233,87 +233,9 @@
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
             <div class="dropzone-feedback"></div>
             <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
-            <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-            <script>
-                $( document ).ready(function() {
-                    var maxFilesLimit = 30;
-
-                    $('.end-add-gallery-tab').on('click',function(){
-                       window.location.href = '/success?id='+Event.id;
-                    });
-
-                    var previewNode = document.querySelector("#template");
-                    var previewTemplate = previewNode.parentNode.innerHTML;
-                    previewNode.parentNode.removeChild(previewNode);
-                    new Dropzone(".upload-area", {
-                        maxFiles: maxFilesLimit,
-                        parallelUploads: 5,
-                        url: localStorage.endpoint+'photo',
-                        previewTemplate: previewTemplate,
-                        previewsContainer: "#previews",
-                        init: function() {
-                            this.on("success", function(file, responseText) {
-                                $('.dropzone-feedback').html(dropzoneFeedback());
-                                console.log(responseText);
-                                console.info("success");
-                            });
-                            this.on('sending', function(file, xhr, formData) {
-                                formData.append('event_id', Event.id);
-                                console.info("sending");
-                            });
-                            this.on("queuecomplete", function (file) {
-                                $('.end-add-gallery-tab').prop("disabled", false);
-                                console.info("queuecomplete");
-                            });
-                            this.on("addedfile", function(file) {
-                                $('.dropzone-feedback').html(dropzoneFeedback());
-                                console.info("addedfile");
-                            });
-                            this.on("processing", function(file) {
-                                $('.end-add-gallery-tab').prop("disabled", true);
-                                console.info("processing");
-                            });
-                            this.on("maxfilesreached", function(file) {
-                                $('.drop-area').hide();
-                                $('.drop-feedback').show();
-                                console.info("maxfilesreached");
-                                this.removeFile(file);
-                            });
-                            this.on("maxfilesexceeded", function(file) {
-                                console.info("maxfilesexceeded");
-                                this.removeFile(file);
-                            });
-                            this.on("removedfile", function(file) {
-                                var total = $('.thumb-gallery').length;
-                                console.info(total);
-                                if (total < 30) {
-                                    $('.drop-area').show();
-                                    $('.drop-feedback').hide();
-                                    $('.dropzone-feedback').html(dropzoneFeedback());
-                                }
-                                console.info("removedfile");
-                            });
-                        },
-                        method: "POST",
-                        withCredentials: false,
-                        headers: {
-                            "Cache-Control": null,
-                            "X-Requested-With": null
-                        }
-                    });
-
-                    function dropzoneFeedback() {
-                        var total = $('.thumb-gallery').length;
-                        return "Você já enviou "+total+" foto de "+maxFilesLimit+" permitida.";
-                    }
-                });
-            </script>
-
           </div>
         </div>
-      </form>
-      <div class="row row-sm"  id="previews">
-
+        <div class="row row-sm"  id="previews">
           {%
           include 'partials/components/thumb-gallery.twig' with {
             'type': '',
@@ -330,14 +252,15 @@
             ]
           }
           %}
-
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
 
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script>
 $( document ).ready(function() {
   $("#input-country").on('change', function (e) {
@@ -364,6 +287,79 @@ $( document ).ready(function() {
         .then(Event.loadEvent(localStorage.endpoint)))
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
+
+  var maxFilesLimit = 30;
+  var countAdded = 0;
+
+  $('.end-add-gallery-tab').on('click',function(){
+      window.location.href = '/success?id='+Event.id;
+  });
+
+  var previewNode = document.querySelector("#template");
+  var previewTemplate = previewNode.parentNode.innerHTML;
+  previewNode.parentNode.removeChild(previewNode);
+  new Dropzone(".upload-area", {
+      maxFiles: maxFilesLimit,
+      parallelUploads: 5,
+      url: localStorage.endpoint+'photo',
+      previewTemplate: previewTemplate,
+      previewsContainer: "#previews",
+      init: function() {
+          this.on("success", function(file, responseText) {
+              $('.dropzone-feedback').html(dropzoneFeedback());
+              console.log(responseText);
+              console.info("success");
+          });
+          this.on('sending', function(file, xhr, formData) {
+              formData.append('event_id', Event.id);
+              console.info("sending");
+          });
+          this.on("queuecomplete", function (file) {
+              $('.end-add-gallery-tab').prop("disabled", false);
+              console.info("queuecomplete");
+          });
+          this.on("addedfile", function(file) {
+              $('.dropzone-feedback').html(dropzoneFeedback());
+              console.info("addedfile");
+              countAdded++;
+              if (countAdded > 30) {
+                  $('.drop-area').hide();
+                  $('.drop-feedback').show();
+                  console.info("maxfilesreached");
+              }
+          });
+          this.on("processing", function(file) {
+              $('.end-add-gallery-tab').prop("disabled", true);
+              console.info("processing");
+          });
+          this.on("removedfile", function(file) {
+              var total = $('.thumb-gallery').length;
+              console.info(total);
+              if (total < 30) {
+                  $('.drop-area').show();
+                  $('.drop-feedback').hide();
+                  $('.dropzone-feedback').html(dropzoneFeedback());
+              }
+              console.info("removedfile");
+          });
+          this.on("error", function(file, message) {
+              console.error(message);
+              this.removeFile(file);
+          });
+      },
+      method: "POST",
+      withCredentials: false,
+      headers: {
+          "Cache-Control": null,
+          "X-Requested-With": null
+      }
+  });
+
+  function dropzoneFeedback() {
+      var total = $('.thumb-gallery').length;
+      return "Você já enviou "+total+" foto de "+maxFilesLimit+" permitida.";
+  }
+
 })
 </script>
 
