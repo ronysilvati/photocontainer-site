@@ -8,7 +8,11 @@ $( document ).ready(function() {
 	});
 	$('.next-add-gallery-tab').click(function() {
 
-		if($(".step1").hasClass("active") && !step1.valid()) {
+		if(
+			$(".step1").hasClass("active") && !step1.valid() ||
+			$(".step2").hasClass("active") && !step2.valid() ||
+			$(".step3").hasClass("active") && !step3.valid()
+		) {
 			// alert(add_gallery_tab_index);
 			event.stopPropagation();
 		}else {

@@ -351,7 +351,7 @@ var Event = (function () {
     return $.ajax(settings).done(function (response) {
       response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
-          <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
+          <input name="categories[]" type="radio" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
       });
     });
@@ -374,14 +374,14 @@ var Event = (function () {
             <h6 class="title mt-3 text-center text-uppercase"><small>' + tagGroup.description + '</small></h6>\
             <hr class="mt-0">\
             <div data-toggle="buttons">';
+            var name = 'tags['+tagGroup.id+'][]'
+            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
-            var name = 'tags['+tagGroup.id+'][]'
 
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
               <input name="'+name+'" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
-            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
           })
 
           list += '\

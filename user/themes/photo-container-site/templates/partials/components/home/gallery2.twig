@@ -1,13 +1,13 @@
 <div class="block block-gallery2 gallery-no-link">
-<h2 class="title text-uppercase text-center">Somos um grupo de pessoas que acreditam que as conexões mudam a vida</h2>
+<h2 class="title text-uppercase text-center">"SOMOS UM GRUPO DE PESSOAS QUE ACREDITAM QUE AS CONEXÕES MUDAM A VIDA"</h2>
 <div class="row row-xxs" id="block-gallery2">
 
 <!-- get_component('thumb-gallery', ['type' => 'home', 'col' => 'col-md-2', 'show'=> ['icon', , , ]]); -->
-{% for i in range(1, 8) %}
+{% for i in range(1, 12) %}
   {%
   include 'partials/components/thumb-gallery.twig' with {
     'type': 'logos',
-    'col': 'col-md-3 col-sm-4 col-6',
+    'col': 'col-md-2 col-sm-4 col-6',
 
 
     'img_src': url('theme://_temp/photos/' ~ (random(9)+1) ~ '.jpg'),

@@ -77,25 +77,25 @@
           </div>
           <div class="form-group">
             <label>Facebook</label>
-            <input id="input-facebook" type="url" class="form-control">
+            <input id="input-facebook" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Instagram</label>
-            <input id="input-instagram" type="url" class="form-control">
+            <input id="input-instagram" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Pinterest</label>
-            <input id="input-pinterest" type="url" class="form-control">
+            <input id="input-pinterest" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Site</label>
-            <input id="input-site" type="url" class="form-control">
+            <input id="input-site" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Blog
               <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
             </label>
-            <input id="input-blog" type="url" class="form-control">
+            <input id="input-blog" type="text" class="form-control">
           </div>
 
           {% if grav.user.profile == 2 %}
@@ -110,7 +110,7 @@
             <label>Biografia
               <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
             </label>
-            <input id="input-bio" type="text" class="form-control">
+            <textarea id="input-bio" type="text" rows="6" class="form-control"></textarea>
           </div>
 
           <div class="form-check">
@@ -197,7 +197,7 @@
               </div>
             </div>
           </div>
-          <div class="card mt-4">
+          <!-- <div class="card mt-4">
             <div class="card-block">
               <small class="d-block text-center title text-center text-uppercase mb-3">Faltam <b class="h5 bold">10</b> dias para o seu Plano anual encerrar</small>
               <h4 class="title text-center bold h4 mb-4"><small>R$</small> 399</h4>
@@ -206,13 +206,13 @@
                   <button class="btn btn-outline-primary btn-block">Alterar</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block">Renovar</button>
+                  <button class="{#{ functions.buttonClass(grav.user.profile) }#} btn btn-block">Renovar</button>
                 </div>
               </div>
               </div>
-            </div>
+            </div> -->
 
-          <button class="mt-4 btn btn-secondary btn-block">Quero deletar minha conta</button>
+          <!-- <button class="mt-4 btn btn-secondary btn-block">Quero deletar minha conta</button> -->
         </div>
       </div>
 
@@ -223,6 +223,12 @@
           <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
         </label>
         <a data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3 offset-md--9">
+          <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block btn-save-profile">Atualizar perfil</button>
+        </div>
       </div>
     </div>
   </form>

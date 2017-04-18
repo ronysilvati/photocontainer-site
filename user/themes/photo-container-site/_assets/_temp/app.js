@@ -161,6 +161,20 @@ $( document ).ready(function(){
 	});
 })();
 
+$(document).ready(function(){
+  $('.page-add-gallery .form-colors [data-toggle="buttons"] .btn-color').click(function(){
+    if($(this).hasClass('active')) {
+      // alert('active');
+    }else {
+      if($('.page-add-gallery .form-colors [data-toggle="buttons"] .active').length >= 3) {
+        event.stopPropagation();
+      }
+      // alert('NOT active');
+    }
+  });
+
+});
+
 // $('#myTab li:eq(2) a').tab('show');
 var add_gallery_tab_index = 0;
 var add_gallery_tab_total_tabs = 4;
@@ -171,7 +185,11 @@ $( document ).ready(function() {
 	});
 	$('.next-add-gallery-tab').click(function() {
 
-		if($(".step1").hasClass("active") && !step1.valid()) {
+		if(
+			$(".step1").hasClass("active") && !step1.valid() ||
+			$(".step2").hasClass("active") && !step2.valid() ||
+			$(".step3").hasClass("active") && !step3.valid()
+		) {
 			// alert(add_gallery_tab_index);
 			event.stopPropagation();
 		}else {
