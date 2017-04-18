@@ -661,6 +661,11 @@ var Event = (function () {
         .done(function (response) {
           var $favoriteLink = $("[data-dislikephoto="+response.photo_id+"]")
 
+          if ($('#btn-favorites .btn-pu').length > 0){
+            $favoriteLink.parents('div').filter('.search-result-thumb').remove()
+            return
+          }
+
           $favoriteLink.hide()
           $("[data-likephoto="+response.photo_id+"]").show()
           $favoriteLink.parents('ul').siblings('.fav-count').text(response.totalLikes+" Like")
