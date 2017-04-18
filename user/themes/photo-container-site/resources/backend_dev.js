@@ -330,6 +330,13 @@ var Event = (function () {
           })
       }
 
+        /**
+         * TODO: Marcelo / Luiz -> não está disparando a função
+         */
+      if ($("#fotos").is(':visible')) {
+        Event.loadPhotos();
+      }
+
     })
   }
 
@@ -700,6 +707,42 @@ var Event = (function () {
     })
   }
 
+  var loadPhotos = function() {
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": localStorage.endpoint+"search/events/"+Event.id+"/photos",
+          "method": "GET"
+      }
+
+      $.ajax(settings)
+        .done(function (response) {
+            $(".dz-image-preview").remove();
+            response.photos.forEach(function(photo) {
+              var photoHtml = '\
+                <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
+                  <div class="card thumb-gallery ratio-1by1 thumb-">\
+                    <img alt="'+photo.filename+'" data-dz-thumbnail="" src="/images'+photo.thumb+'">\
+                    <div class="card-text">\
+                      <div class="card-text-inner">\
+                        <ul class="nav">\
+                          <li class="nav-item">\
+                            <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
+                          </li>\
+                        </ul>\
+                      </div>\
+                    </div>\
+                    <div class="progressbar" role="progressbar">\
+                      <div style="width: 100%;" data-dz-uploadprogress=""></div>\
+                    </div>\
+                  </div>\
+                </div>\
+              ';
+              $("#previews").append(photoHtml);
+            });
+      });
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -714,6 +757,7 @@ var Event = (function () {
     likePhoto: likePhoto,
     dislikePhoto: dislikePhoto,
     requestDownload: requestDownload,
+    loadPhotos: loadPhotos,
     id: id
   };
 })();
