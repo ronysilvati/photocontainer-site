@@ -731,41 +731,25 @@ var Event = (function () {
         .done(function (response) {
             $(".dz-image-preview").remove();
             response.photos.forEach(function(photo) {
-              var photoHtml = '\
-                <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
-                  <div class="card thumb-gallery ratio-1by1 thumb-">\
-                    <img alt="'+photo.filename+'" data-dz-thumbnail="" src="/images'+photo.thumb+'">\
-                    <div class="card-text">\
-                      <div class="card-text-inner">\
-                        <ul class="nav">\
-                          <li class="nav-item">\
-                            <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
-                          </li>\
-                        </ul>\
-                      </div>\
-                    </div>\
-                    <div class="progressbar" role="progressbar">\
-                      <div style="width: 100%;" data-dz-uploadprogress=""></div>\
-                    </div>\
-                  </div>\
-                </div>\
-              ';
-              $("#previews").append(photoHtml);
+              Photo.addThumb(photo)
             });
 
-            Event.dropzoneFeedback(response.photos.length);
+            Photo.deleteHandler();
+
+            Event.updateFeedback();
       });
   }
 
-  var dropzoneFeedback = function(adicionados) {
-    if (adicionados >= Event.maxFilesLimit) {
+  var updateFeedback = function() {
+    var total = $(".dz-image-preview").length;
+    if (total >= Event.maxFilesLimit) {
       $('.drop-area').hide();
       $('.drop-feedback').show();
     } else {
       $('.drop-area').show();
       $('.drop-feedback').hide();
     }
-    $('.dropzone-feedback').html("Você já enviou "+adicionados+" foto de "+Event.maxFilesLimit+" permitida.");
+    $('.dropzone-feedback').html("Você já enviou "+total+" foto de "+Event.maxFilesLimit+" permitida.");
   }
 
   return {
@@ -783,7 +767,7 @@ var Event = (function () {
     dislikePhoto: dislikePhoto,
     requestDownload: requestDownload,
     loadPhotos: loadPhotos,
-    dropzoneFeedback: dropzoneFeedback,
+    updateFeedback: updateFeedback,
     id: id,
     maxFilesLimit: maxFilesLimit
   };
@@ -897,3 +881,63 @@ var Cep = (function () {
     loadCountries: loadCountries
   };
 })()
+
+var Photo = (function() {
+  var deleteHandler = function() {
+      $(".icon-trash").on("click",function(e){
+          e.preventDefault();
+          var guid = $(this).closest( ".dz-processing" ).prop("id");
+          Photo.runAction("DELETE", guid, function(){
+              $("#"+guid).fadeOut("slow", function() {
+                  Event.updateFeedback();
+                  $("#"+guid).remove();
+              });
+          });
+      });
+  }
+
+  var addThumb = function(photo) {
+      var photoHtml = '\
+        <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
+          <div class="card thumb-gallery ratio-1by1 thumb-">\
+            <img alt="'+photo.filename+'" data-dz-thumbnail="" src="/images'+photo.thumb+'">\
+            <div class="card-text">\
+              <div class="card-text-inner">\
+                <ul class="nav">\
+                  <li class="nav-item">\
+                    <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
+                  </li>\
+                </ul>\
+              </div>\
+            </div>\
+            <div class="progressbar" role="progressbar">\
+              <div style="width: 100%;" data-dz-uploadprogress=""></div>\
+            </div>\
+          </div>\
+        </div>\
+      ';
+      $("#previews").append(photoHtml);
+  }
+
+  var runAction = function(method, guid, callback) {
+      var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": localStorage.endpoint+"photo/"+guid,
+          "method": method
+      }
+      $.ajax(settings)
+          .done(function (response) {
+            console.log(response.message);
+            console.log(response);
+            callback();
+          }
+        )
+  }
+
+  return {
+    addThumb: addThumb,
+    runAction: runAction,
+    deleteHandler: deleteHandler
+  };
+})();
