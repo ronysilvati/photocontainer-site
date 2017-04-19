@@ -260,7 +260,6 @@
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
 
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script>
 $( document ).ready(function() {
   Event.loadCategories(localStorage.endpoint)
@@ -294,14 +293,17 @@ $( document ).ready(function() {
   previewNode.parentNode.removeChild(previewNode);
   new Dropzone(".upload-area", {
       maxFiles: Event.maxFilesLimit,
+      acceptedFiles: ".png, .jpg, .jpeg",
       parallelUploads: 5,
       url: localStorage.endpoint+'photo',
       previewTemplate: previewTemplate,
       previewsContainer: "#previews",
       init: function() {
           this.on("success", function(file, responseText) {
-              Event.dropzoneFeedback(countAdded);
               console.log(responseText);
+              console.log(file);
+              file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
+              console.log(responseText[0].filename.substr(0,36));
               console.info("success");
           });
           this.on('sending', function(file, xhr, formData) {
@@ -311,24 +313,23 @@ $( document ).ready(function() {
           this.on("queuecomplete", function (file) {
               $('.end-add-gallery-tab').prop("disabled", false);
               console.info("queuecomplete");
+              Event.loadPhotos();
           });
           this.on("addedfile", function(file) {
               console.info("addedfile");
-              countAdded++;
-              Event.dropzoneFeedback(countAdded);
-              console.info("maxfilesreached");
           });
           this.on("processing", function(file) {
               $('.end-add-gallery-tab').prop("disabled", true);
               console.info("processing");
           });
           this.on("removedfile", function(file) {
-              Event.dropzoneFeedback(countAdded);
+              Event.updateFeedback();
               console.info("removedfile");
           });
           this.on("error", function(file, message) {
               console.error(message);
               this.removeFile(file);
+              //Photo.runAction("DELETE", guid);
           });
       },
       method: "POST",
