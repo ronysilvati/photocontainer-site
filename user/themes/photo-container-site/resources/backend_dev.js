@@ -239,6 +239,7 @@ var Logout = (function () {
 
 var Event = (function () {
   var id = 0;
+  var maxFilesLimit = 30;
 
   var createHandler = function (api, user) {
     $(".next-add-gallery-tab").on('click', function () {
@@ -738,7 +739,20 @@ var Event = (function () {
               ';
               $("#previews").append(photoHtml);
             });
+
+            Event.dropzoneFeedback(response.photos.length);
       });
+  }
+
+  var dropzoneFeedback = function(adicionados) {
+    if (adicionados >= Event.maxFilesLimit) {
+      $('.drop-area').hide();
+      $('.drop-feedback').show();
+    } else {
+      $('.drop-area').show();
+      $('.drop-feedback').hide();
+    }
+    $('.dropzone-feedback').html("Você já enviou "+adicionados+" foto de "+Event.maxFilesLimit+" permitida.");
   }
 
   return {
@@ -756,7 +770,9 @@ var Event = (function () {
     dislikePhoto: dislikePhoto,
     requestDownload: requestDownload,
     loadPhotos: loadPhotos,
-    id: id
+    dropzoneFeedback: dropzoneFeedback,
+    id: id,
+    maxFilesLimit: maxFilesLimit
   };
 })();
 

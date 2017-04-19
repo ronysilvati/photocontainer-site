@@ -288,7 +288,6 @@ $( document ).ready(function() {
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
 
-  var maxFilesLimit = 30;
   var countAdded = 0;
 
   $('.end-add-gallery-tab').on('click',function(){
@@ -299,14 +298,14 @@ $( document ).ready(function() {
   var previewTemplate = previewNode.parentNode.innerHTML;
   previewNode.parentNode.removeChild(previewNode);
   new Dropzone(".upload-area", {
-      maxFiles: maxFilesLimit,
+      maxFiles: Event.maxFilesLimit,
       parallelUploads: 5,
       url: localStorage.endpoint+'photo',
       previewTemplate: previewTemplate,
       previewsContainer: "#previews",
       init: function() {
           this.on("success", function(file, responseText) {
-              $('.dropzone-feedback').html(dropzoneFeedback());
+              Event.dropzoneFeedback(countAdded);
               console.log(responseText);
               console.info("success");
           });
@@ -319,27 +318,17 @@ $( document ).ready(function() {
               console.info("queuecomplete");
           });
           this.on("addedfile", function(file) {
-              $('.dropzone-feedback').html(dropzoneFeedback());
               console.info("addedfile");
               countAdded++;
-              if (countAdded > 30) {
-                  $('.drop-area').hide();
-                  $('.drop-feedback').show();
-                  console.info("maxfilesreached");
-              }
+              Event.dropzoneFeedback(countAdded);
+              console.info("maxfilesreached");
           });
           this.on("processing", function(file) {
               $('.end-add-gallery-tab').prop("disabled", true);
               console.info("processing");
           });
           this.on("removedfile", function(file) {
-              var total = $('.thumb-gallery').length;
-              console.info(total);
-              if (total < 30) {
-                  $('.drop-area').show();
-                  $('.drop-feedback').hide();
-                  $('.dropzone-feedback').html(dropzoneFeedback());
-              }
+              Event.dropzoneFeedback(countAdded);
               console.info("removedfile");
           });
           this.on("error", function(file, message) {
@@ -354,11 +343,6 @@ $( document ).ready(function() {
           "X-Requested-With": null
       }
   });
-
-  function dropzoneFeedback() {
-      var total = $('.thumb-gallery').length;
-      return "Você já enviou "+total+" foto de "+maxFilesLimit+" permitida.";
-  }
 
 })
 </script>
