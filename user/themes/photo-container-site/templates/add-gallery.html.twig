@@ -263,6 +263,11 @@
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script>
 $( document ).ready(function() {
+  Event.loadCategories(localStorage.endpoint)
+    .then(Event.loadTags(localStorage.endpoint)
+      .then(Cep.loadCountries(localStorage.endpoint))
+        .then(Event.loadEvent(localStorage.endpoint)))
+
   $("#input-country").on('change', function (e) {
     if ($("#input-country :selected").val() == 1) {
       $('.localization-extra-fields').show()
@@ -280,11 +285,6 @@ $( document ).ready(function() {
   $("#input-state").on('change', function (e) {
     Cep.loadCities(localStorage.endpoint)
   })
-
-  Event.loadCategories(localStorage.endpoint)
-    .then(Event.loadTags(localStorage.endpoint)
-      .then(Cep.loadCountries(localStorage.endpoint))
-        .then(Event.loadEvent(localStorage.endpoint)))
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
 

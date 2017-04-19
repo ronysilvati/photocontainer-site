@@ -486,7 +486,7 @@ var Event = (function () {
       "contentType": false,
     }
 
-    $.ajax(settings).done(function (response) {
+    return $.ajax(settings).done(function (response) {
       $("#input-bride").val(response.bride)
       $("#input-groom").val(response.groom)
       $("#input-title").val(response.title)
@@ -503,15 +503,20 @@ var Event = (function () {
       $("#select-year").val(date[0]).change();
 
       $("#input-country").val(response.country).change()
-
-      setTimeout(function(){
+      $.when(Cep.loadStates(api)).then(function(){
         $("#input-state").val(response.state).change()
-        setTimeout(function(){$("#input-city").val(response.city).change()}, 400)
-      }, 400)
+        return Cep.loadCities(api)
+      }).then(function(){
+        $("#input-city").val(response.city).change()
+      })
+
+      // setTimeout(function(){
+      //   $("#input-state").val(response.state).change()
+      //   setTimeout(function(){$("#input-city").val(response.city).change()}, 400)
+      // }, 400)
 
       response.categories.forEach(function(key, item) {
-        $("[name^='categories']").filter(":checkbox[value=3]").attr("checked", true)
-        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
+        $("[name^='categories']").filter(":radio[value="+key+"]").click()
       });
 
       response.tags.forEach(function(key, item) {
@@ -786,6 +791,8 @@ var Cep = (function () {
 
     return $.ajax(settings)
       .done(function (response) {
+        $("#input-state").append("<option value=\"\">Selecione</option>")
+
         for (var prop in response) {
           var obj = response[prop]
           $("#input-state").append("<option data-id='"+obj.id+"' value='"+obj.statecode+"'>"+obj.name+"</option>")
