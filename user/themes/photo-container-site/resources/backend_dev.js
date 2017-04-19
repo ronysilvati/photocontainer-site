@@ -242,6 +242,16 @@ var Event = (function () {
   var maxFilesLimit = 30;
 
   var createHandler = function (api, user) {
+    if (Event.id == undefined) {
+      $("#input-country").on('change', function (e) {
+        Cep.loadStates(localStorage.endpoint)
+      })
+
+      $("#input-state").on('change', function (e) {
+        Cep.loadCities(localStorage.endpoint)
+      })
+    }
+
     $(".next-add-gallery-tab").on('click', function () {
 
       var settings = {
@@ -509,12 +519,15 @@ var Event = (function () {
         return Cep.loadCities(api)
       }).then(function(){
         $("#input-city").val(response.city).change()
-      })
 
-      // setTimeout(function(){
-      //   $("#input-state").val(response.state).change()
-      //   setTimeout(function(){$("#input-city").val(response.city).change()}, 400)
-      // }, 400)
+        $("#input-country").on('change', function (e) {
+          Cep.loadStates(localStorage.endpoint)
+        })
+
+        $("#input-state").on('change', function (e) {
+          Cep.loadCities(localStorage.endpoint)
+        })
+      })
 
       response.categories.forEach(function(key, item) {
         $("[name^='categories']").filter(":radio[value="+key+"]").click()

@@ -266,7 +266,8 @@ $( document ).ready(function() {
   Event.loadCategories(localStorage.endpoint)
     .then(Event.loadTags(localStorage.endpoint)
       .then(Cep.loadCountries(localStorage.endpoint))
-        .then(Event.loadEvent(localStorage.endpoint)))
+        .then(Event.loadEvent(localStorage.endpoint))
+          .then(Event.loadPhotos()))
 
   $("#input-country").on('change', function (e) {
     if ($("#input-country :selected").val() == 1) {
@@ -278,12 +279,6 @@ $( document ).ready(function() {
         $(this).val('')
       })
     }
-
-    Cep.loadStates(localStorage.endpoint)
-  })
-
-  $("#input-state").on('change', function (e) {
-    Cep.loadCities(localStorage.endpoint)
   })
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
