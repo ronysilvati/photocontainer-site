@@ -513,24 +513,8 @@ var Event = (function () {
       $("#select-month").val(date[1]).change();
       $("#select-year").val(date[0]).change();
 
-      $("#input-country").val(response.country).change()
-      $.when(Cep.loadStates(api)).then(function(){
-        $("#input-state").val(response.state).change()
-        return Cep.loadCities(api)
-      }).then(function(){
-        $("#input-city").val(response.city).change()
-
-        $("#input-country").on('change', function (e) {
-          Cep.loadStates(localStorage.endpoint)
-        })
-
-        $("#input-state").on('change', function (e) {
-          Cep.loadCities(localStorage.endpoint)
-        })
-      })
-
       response.categories.forEach(function(key, item) {
-        $("[name^='categories']").filter(":radio[value="+key+"]").click()
+        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
       });
 
       response.tags.forEach(function(key, item) {
@@ -554,6 +538,22 @@ var Event = (function () {
           }
         }
       }
+
+      $("#input-country").val(response.country).change()
+      $.when(Cep.loadStates(api)).then(function(){
+        $("#input-state").val(response.state).change()
+        return Cep.loadCities(api)
+      }).then(function(){
+        $("#input-city").val(response.city).change()
+
+        $("#input-country").on('change', function (e) {
+          Cep.loadStates(localStorage.endpoint)
+        })
+
+        $("#input-state").on('change', function (e) {
+          Cep.loadCities(localStorage.endpoint)
+        })
+      })
     });
   }
 
