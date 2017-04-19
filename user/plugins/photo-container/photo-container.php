@@ -196,6 +196,7 @@ class PhotoContainerPlugin extends Plugin
                 'event' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
                 'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
+                'image_cdn' => $this->grav['config']->get('plugins.photo-container.image_cdn'),
                 'profile' => 'publisher',
                 'sigla' => 'pu',
             ]
@@ -224,6 +225,7 @@ class PhotoContainerPlugin extends Plugin
                 'logged_user_id' => $this->grav['session']->user->id,
                 'profile' => $_GET['profileType'] === '2' ? 'photographer' : 'publisher',
                 'sigla' => $_GET['profileType'] === '2' ? 'ph' : 'pu',
+                'image_cdn' => $this->grav['config']->get('plugins.photo-container.image_cdn'),
             ]
         );
         exit;
@@ -249,6 +251,7 @@ class PhotoContainerPlugin extends Plugin
                 'event' => $found,
                 'logged_user_id' => $this->grav['session']->user->id,
                 'api_endpoint' => $this->grav['config']->get('plugins.photo-container.api_endpoint'),
+                'image_cdn' => $this->grav['config']->get('plugins.photo-container.image_cdn'),
                 'profile' => 'publisher',
                 'sigla' => 'pu',
             ]
