@@ -52,7 +52,7 @@ $( document ).ready(function() {
 		if(!step1.valid() || !step2.valid() || !step3.valid()) {
 			event.stopPropagation();
 		}
-	});
+    });
 	// $(".page-add-gallery .next-add-gallery-tab").click(function(event) {
 	// 	alert();
 	// });
@@ -74,5 +74,9 @@ function updateAddGalleryNavTabs(index) {
      $('.prev-add-gallery-tab').attr('disabled','');
   }else {
      $('.prev-add-gallery-tab').removeAttr('disabled');
+  }
+
+  if (index == 4) {
+	  Event.loadPhotos();
   }
 }
