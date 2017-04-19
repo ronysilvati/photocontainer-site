@@ -39,6 +39,7 @@
 <script>
 localStorage.setItem('endpoint', '{{ config.plugins.photocontainer.endpoint }}')
 localStorage.setItem('domain', '{{ config.plugins.photocontainer.domain }}')
+localStorage.setItem('image_cdn', '{{ config.plugins.photocontainer.image_cdn }}')
 
 {% if grav.user.id is not null %}
 if (localStorage.user != "" && localStorage.user != {{ grav.user.id }}) {

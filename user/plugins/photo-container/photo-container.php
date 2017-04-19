@@ -42,6 +42,9 @@ class PhotoContainerPlugin extends Plugin
         $endpoint = $this->grav['config']->get('plugins.photo-container.api_endpoint');
         $this->config->set('plugins.photocontainer.endpoint', $endpoint);
 
+        $image_cdn = $this->grav['config']->get('plugins.photo-container.image_cdn');
+        $this->config->set('plugins.photocontainer.image_cdn', $image_cdn);
+
         $this->config->set(
             'plugins.photocontainer.domain',
             $this->grav['config']->get('plugins.photo-container.domain')
