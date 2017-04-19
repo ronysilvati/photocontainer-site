@@ -514,6 +514,7 @@ var Event = (function () {
       $("#select-year").val(date[0]).change();
 
       response.categories.forEach(function(key, item) {
+        $("[name^='categories']").filter(":checkbox[value="+key+"]").attr("checked", true)
         $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
       });
 
