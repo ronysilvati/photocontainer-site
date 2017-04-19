@@ -21,8 +21,8 @@
 
         {% if data.context == "gallery_photographer" and profile == 'photographer' and data.photographer_id == logged_user_id %}
         <ul class="nav">
-          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i>Remover</a></li>
-          <li class="nav-item"><a class="nav-link" href="./gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i>Editar</a></li>
+          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="./gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i></a></li>
         </ul>
         {% endif %}
 
@@ -33,7 +33,7 @@
             {#<a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>#}
             {#<a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>#}
           {#</li>#}
-          <li class="nav-item"><a class="nav-link" href="/gallery/photos?id={{ data.id }}"><i class="icon-trash"></i>Fotos</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gallery/photos?id={{ data.id }}"><i class="icon-trash"></i></a></li>
         </ul>
         {% endif %}
 
