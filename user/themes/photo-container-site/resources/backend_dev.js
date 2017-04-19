@@ -901,7 +901,7 @@ var Photo = (function() {
       var photoHtml = '\
         <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
           <div class="card thumb-gallery ratio-1by1 thumb-">\
-            <img alt="'+photo.filename+'" data-dz-thumbnail="" src="/images'+photo.thumb+'">\
+            <img alt="'+photo.filename+'" data-dz-thumbnail="" src="'+localStorage.image_cdn+photo.thumb+'">\
             <div class="card-text">\
               <div class="card-text-inner">\
                 <ul class="nav">\
