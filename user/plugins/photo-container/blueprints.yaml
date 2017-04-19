@@ -36,6 +36,10 @@ form:
               type: text
               label: URL do Site
               help: URL do site do Photo Container
+            image_cdn:
+              type: text
+              label: URL com a CDN das fotos
+              help: URL com a CDN das fotos
         login:
           type: tab
           title: 'Login'
