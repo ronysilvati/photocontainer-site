@@ -281,6 +281,7 @@ $( document ).ready(function() {
   })
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
+  Event.updateFeedback();
 
   var countAdded = 0;
 
@@ -303,8 +304,8 @@ $( document ).ready(function() {
               console.log(responseText);
               console.log(file);
               file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
-              console.log(responseText[0].filename.substr(0,36));
               console.info("success");
+              Event.updateFeedback();
           });
           this.on('sending', function(file, xhr, formData) {
               formData.append('event_id', Event.id);
@@ -329,7 +330,6 @@ $( document ).ready(function() {
           this.on("error", function(file, message) {
               console.error(message);
               this.removeFile(file);
-              //Photo.runAction("DELETE", guid);
           });
       },
       method: "POST",

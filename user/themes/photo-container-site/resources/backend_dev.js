@@ -732,11 +732,9 @@ var Event = (function () {
         .done(function (response) {
             $(".dz-image-preview").remove();
             response.photos.forEach(function(photo) {
-              Photo.addThumb(photo)
+              Photo.addThumb(photo);
             });
-
             Photo.deleteHandler();
-
             Event.updateFeedback();
       });
   }
@@ -744,9 +742,10 @@ var Event = (function () {
   var updateFeedback = function() {
     var total = $(".dz-image-preview").length;
     if (total >= Event.maxFilesLimit) {
-      $('.drop-area').hide();
-      $('.drop-feedback').show();
-    } else {
+        $('.drop-area').hide();
+        $('.drop-feedback').show();
+    }
+    if (total < Event.maxFilesLimit) {
       $('.drop-area').show();
       $('.drop-feedback').hide();
     }
@@ -890,8 +889,8 @@ var Photo = (function() {
           var guid = $(this).closest( ".dz-processing" ).prop("id");
           Photo.runAction("DELETE", guid, function(){
               $("#"+guid).fadeOut("slow", function() {
-                  Event.updateFeedback();
                   $("#"+guid).remove();
+                  Event.updateFeedback();
               });
           });
       });
