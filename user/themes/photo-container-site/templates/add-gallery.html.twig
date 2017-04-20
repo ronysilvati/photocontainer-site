@@ -283,8 +283,6 @@ $( document ).ready(function() {
   Event.createHandler(localStorage.endpoint, localStorage.user);
   Event.updateFeedback();
 
-  var countAdded = 0;
-
   $('.end-add-gallery-tab').on('click',function(){
       window.location.href = '/success?id='+Event.id;
   });
@@ -295,7 +293,7 @@ $( document ).ready(function() {
   new Dropzone(".upload-area", {
       maxFiles: Event.maxFilesLimit,
       acceptedFiles: ".png, .jpg, .jpeg",
-      parallelUploads: 5,
+      parallelUploads: 1,
       url: localStorage.endpoint+'photo',
       previewTemplate: previewTemplate,
       previewsContainer: "#previews",
