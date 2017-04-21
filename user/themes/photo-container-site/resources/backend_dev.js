@@ -1,3 +1,40 @@
+var Utils = (function(){
+  var invokeAPI = function(method, action, doneCallback, failCallback) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "headers": {
+        "content-type": "application/json",
+        "accept": "application/json",
+      },
+      "url": localStorage.endpoint+action,
+      "method": method
+    }
+
+    return $.ajax(settings)
+      .done(function (response) {
+          console.log(response.message);
+          console.log(response);
+          doneCallback(response);
+        }
+      )
+      .fail(function (response) {
+          if (failCallback == undefined) {
+            return false;
+          }
+
+          console.log(response.message);
+          console.log(response);
+          failCallback(response);
+        }
+      )
+  }
+
+  return {
+    invokeAPI: invokeAPI
+  };
+})();
+
 var Signup = (function () {
 
   var autologin = function() {
@@ -92,19 +129,7 @@ var Signup = (function () {
 
 var Profile = (function () {
   var load = function(api) {
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": localStorage.getItem('endpoint')+"users?id="+localStorage.getItem('user'),
-      "method": "GET",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-      }
-    }
-
-    $.ajax(settings)
-    .done(function (response) {
+    return Utils.invokeAPI("GET", "users?id="+localStorage.user, function (response) {
       $("#input-email").val(response.email)
       $("#input-name").val(response.name)
 
@@ -149,15 +174,15 @@ var Profile = (function () {
         $("#input-state").val(response.address.state)
 
         Cep.loadCities(localStorage.endpoint)
-        .then(function () {
-          $("#input-city").val(response.address.city)
-        })
+          .then(function () {
+            $("#input-city").val(response.address.city)
+          })
 
         $("#input-neighborhood").val(response.address.neighborhood)
         $("#input-street").val(response.address.street)
         $("#input-complement").val(response.address.complement)
       }
-    });
+    })
   }
 
   var update = function(api) {
@@ -345,31 +370,17 @@ var Event = (function () {
   }
 
   var loadCategories = function (api) {
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"search/categories",
-      "method": "GET",
-    }
-
-    return $.ajax(settings).done(function (response) {
+    return Utils.invokeAPI("GET", "search/categories", function (response) {
       response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
       });
-    });
+    })
   }
 
   var loadTags = function (api) {
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"search/tags",
-      "method": "GET",
-    }
-
-    return $.ajax(settings).done(function (response) {
+    return Utils.invokeAPI("GET", "search/tags", function (response) {
       response.forEach(function(tagGroup) {
 
         if (tagGroup.id != 12) {
@@ -395,7 +406,7 @@ var Event = (function () {
           $("#tag-list").append(list);
         }
       });
-    });
+    })
   }
 
   var search = function(api) {
@@ -774,43 +785,26 @@ var Event = (function () {
 })();
 
 var Cep = (function () {
-
   var loadCountries = function (api) {
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"/location/countries",
-      "method": "GET"
-    }
-
-    return $.ajax(settings)
-      .done(function (response) {
-        for (var prop in response) {
-          var obj = response[prop]
-          $("#input-country").append("<option data-id='"+obj.id+"' value='"+obj.id+"'>"+obj.name+"</option>")
-        }
-      });
+    return Utils.invokeAPI("GET", "/location/countries", function (response) {
+      for (var prop in response) {
+        var obj = response[prop]
+        $("#input-country").append("<option data-id='"+obj.id+"' value='"+obj.id+"'>"+obj.name+"</option>")
+      }
+    })
   }
 
   var loadStates = function(api) {
     var country = $("#input-country :selected").length > 0 ? $("#input-country :selected").val() : 1
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"/location/country/"+country+"/states",
-      "method": "GET"
-    }
+    return Utils.invokeAPI("GET", "/location/country/"+country+"/states", function (response) {
+      $("#input-state").append("<option value=\"\">Selecione</option>")
 
-    return $.ajax(settings)
-      .done(function (response) {
-        $("#input-state").append("<option value=\"\">Selecione</option>")
-
-        for (var prop in response) {
-          var obj = response[prop]
-          $("#input-state").append("<option data-id='"+obj.id+"' value='"+obj.statecode+"'>"+obj.name+"</option>")
-        }
-      });
+      for (var prop in response) {
+        var obj = response[prop]
+        $("#input-state").append("<option data-id='"+obj.id+"' value='"+obj.statecode+"'>"+obj.name+"</option>")
+      }
+    })
   }
 
   var loadCities = function(api) {
@@ -818,35 +812,22 @@ var Cep = (function () {
       return false;
     }
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"/location/state/"+$("#input-state :selected").data('id')+"/cities",
-      "method": "GET"
-    }
+    var url = "/location/state/"+$("#input-state :selected").data('id')+"/cities"
+    return Utils.invokeAPI("GET", url, function (response) {
+      $("#input-city option").remove()
+      $("#input-city").append("<option value=\"\" >Selecione</option>")
 
-    return $.ajax(settings)
-      .done(function (response) {
-        $("#input-city option").remove()
-        $("#input-city").append("<option value=\"\" >Selecione</option>")
-
-        for (var prop in response) {
-          var obj = response[prop]
-          $("#input-city").append("<option value='"+obj.name+"'>"+obj.name+"</option>")
-        }
-      });
+      for (var prop in response) {
+        var obj = response[prop]
+        $("#input-city").append("<option value='"+obj.name+"'>"+obj.name+"</option>")
+      }
+    })
   }
 
   var loadCep = function(api) {
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": api+"location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join(''),
-      "method": "GET"
-    }
+    var url = "location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join('')
 
-    return $.ajax(settings)
-    .done(function (response) {
+    return Utils.invokeAPI("GET", url, function (response) {
       $("#input-country").val(1).change()
       $("#input-state").val(response.state)
       $("#input-neighborhood").val(response.neighborhood)
@@ -854,13 +835,12 @@ var Cep = (function () {
       $("#input-complement").val(response.complement)
 
       Cep.loadStates(localStorage.endpoint)
-      .then(Cep.loadCities(localStorage.endpoint)
-        .then(function () {
-          $("#input-city").val(response.city).change()
-        })
-      )
-    })
-    .fail(function (response){
+        .then(Cep.loadCities(localStorage.endpoint)
+          .then(function () {
+            $("#input-city").val(response.city).change()
+          })
+        )
+    }, function (response){
       $("#input-country").val()
 
       $("#input-state").val(0)
@@ -871,7 +851,7 @@ var Cep = (function () {
       $("#input-neighborhood").val('')
       $("#input-street").val('')
       $("#input-complement").val('')
-    });
+    })
   }
 
   return {
@@ -887,7 +867,7 @@ var Photo = (function() {
       $(".icon-trash").on("click",function(e){
           e.preventDefault();
           var guid = $(this).closest( ".dz-processing" ).prop("id");
-          Photo.runAction("DELETE", guid, function(){
+          Utils.invokeAPI("DELETE", "photo/"+guid, function(response){
               $("#"+guid).fadeOut("slow", function() {
                   $("#"+guid).remove();
                   Event.updateFeedback();
@@ -919,25 +899,52 @@ var Photo = (function() {
       $("#previews").append(photoHtml);
   }
 
-  var runAction = function(method, guid, callback) {
-      var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": localStorage.endpoint+"photo/"+guid,
-          "method": method
+  return {
+    addThumb: addThumb,
+    deleteHandler: deleteHandler
+  };
+})();
+
+var Approval = (function() {
+  var approvalDenialAction = function() {
+    $(".ico-approval, .ico-denial").on("click",function(e){
+      e.preventDefault();
+      Utils.invokeAPI("PUT", $(this).attr('href'), function(){
+        $(".ico-approval").parent('li').fadeOut()
+      });
+    });
+  }
+
+  var render = function(api, photographer_id) {
+    Utils.invokeAPI("GET", "search/waiting_approval/user/"+photographer_id, function(list){
+      var approvalsHtml = "";
+      for (var i = 0; i < list.length; i++) {
+        var data = list[i]
+        var linkApproval = "events/"+data.event_id+"/approval/user/"+data.publisher_id
+        var linkDeny = "events/"+data.event_id+"/disapproval/user/"+data.publisher_id
+
+        approvalsHtml += "\
+          <li>\ "
+            +data.name+
+            "<a class='ico-approval' href='"+linkApproval+"'>Aprovar</a>\
+             <a class='ico-denial' href='"+linkDeny+"'>Negar</a>\
+          </li>\
+        ";
       }
-      $.ajax(settings)
-          .done(function (response) {
-            console.log(response.message);
-            console.log(response);
-            callback();
-          }
-        )
+
+      var listHtml = '\
+        <ul>\ '
+        +approvalsHtml+
+        '</ul>\
+      ';
+
+      $(".filters-list").html(listHtml)
+      Approval.approvalDenialAction()
+    });
   }
 
   return {
-    addThumb: addThumb,
-    runAction: runAction,
-    deleteHandler: deleteHandler
+    approvalDenialAction: approvalDenialAction,
+    render: render
   };
 })();
