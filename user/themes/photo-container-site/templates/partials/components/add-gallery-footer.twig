@@ -1,3 +1,5 @@
+
+{{ include('partials/components/modal-alert.twig') }}
 <footer class="footer footer-steps bg-ph">
   <div class="container">
     <div class="row">
@@ -7,10 +9,12 @@
         <button class="btn btn-secondary end-add-gallery-tab px-5" style="display:none;">Finalizar</button>
       </div>
       <div class="col-md-3 push-md-3 text-md-right text-center mt-4 mt-md-0">
-        <button type="button" class="btn btn-circle btn-outline-secondary"><i class="icon-cancel"></i></button>
+        <a onclick="show_modal_alert('danger','/gallery','Tem certeza que dejesa sair? Todas as informações serão perdidas!');" href="#" class="btn btn-circle btn-outline-secondary">
+          <i class="icon-cancel"></i>
+        </a>
       </div>
       <div class="col-md-3 pull-md-9">
-        <a class="footer-brand" href="#"><img src="{{url('theme://resources/images/logo-white.svg')}}"/></a>
+        <a class="footer-brand" href="/"><img src="{{url('theme://resources/images/logo-white.svg')}}"/></a>
       </div>
     </div>
   </div>

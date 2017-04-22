@@ -9546,6 +9546,9 @@ label.error.msg-error {
   color: #fff;
   transition: .3s;
 }
+.card.thumb-gallery .card-text .card-text-inner .nav-link.photo-dislike i {
+  color: yellow;
+}
 .card.thumb-gallery .card-text .card-text-inner p + ul .nav-link {
   padding: 6px;
   font-size: 18px;

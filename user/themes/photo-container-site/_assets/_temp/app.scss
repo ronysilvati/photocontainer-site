@@ -1206,10 +1206,16 @@ label.error.msg-error {
       .nav-link {
         padding: 6px;
         font-size: 30px;
+        i {
+          color:$white;
+          transition: .3s;
+        }
+
+        &.photo-dislike {
           i {
-            color:$white;
-            transition: .3s;
+            color: yellow;
           }
+        }
       }
       p + ul .nav-link {
         padding: 6px;
