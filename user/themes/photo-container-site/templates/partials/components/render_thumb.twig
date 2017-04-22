@@ -12,8 +12,8 @@
     <div class="card-text">
       <div class="card-text-inner">
         {% if data.context in ["gallery_photographer", "gallery_publisher"] %}
-          <p class="album-name"><a href="#">{{ data.title }}</a></p>
-          <p class="album-type"><a href="#">{{ data.category }}</a></p>
+          <p class="album-name">{{ data.title }}</p>
+          <p class="album-type">{{ data.category }}</p>
           <p class="image-count"><span>{{ data.photos }}</span> fotos</p>
           <p class="date">Criado em {{ data.eventdate }}</p>
           <p class="fav-count">{{ data.likes }} Likes</p>
@@ -21,7 +21,7 @@
 
         {% if data.context == "gallery_photographer" and profile == 'photographer' %}
         <ul class="nav">
-          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" href="#"><i class="icon-trash"></i></a></li>
+          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" ><i class="icon-trash"></i></a></li>
           <li class="nav-item"><a class="nav-link" href="./gallery/edit?id={{ data.id }}"><i class="icon-pencil"></i></a></li>
         </ul>
         {% endif %}
@@ -39,8 +39,8 @@
 
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
-          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>
-          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>
+          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" ><i class="icon-star"></i>Like</a>
+          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star"></i>Dislike</a>
 
           {% if authorized == true %}
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
@@ -52,8 +52,8 @@
 
         {% if data.context == "gallery_publisher_historic" %}
         <ul class="nav">
-          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.photo_id }}" href="#"><i class="icon-star"></i>Like</a>
-          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.photo_id }}" href="#"><i class="icon-star"></i>Dislike</a>
+          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.photo_id }}" ><i class="icon-star"></i>Like</a>
+          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.photo_id }}" ><i class="icon-star"></i>Dislike</a>
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.event_id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
         </ul>
         {% endif %}
