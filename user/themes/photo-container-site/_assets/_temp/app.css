@@ -9170,6 +9170,14 @@ label.error.msg-error {
   height: 42px;
   margin: 0 0 8px;
 }
+.navbar-top .nav-item {
+  position: relative;
+}
+.navbar-top .nav-item .badge {
+  position: absolute;
+  top: 10px;
+  right: -18px;
+}
 .navbar-top .nav-item .nav-link {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;

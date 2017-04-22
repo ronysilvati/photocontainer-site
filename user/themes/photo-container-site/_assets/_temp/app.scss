@@ -782,6 +782,12 @@ label.error.msg-error {
     }
   }
   .nav-item {
+    position: relative;
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: -18px;
+    }
     .nav-link {
       font-family: $headings-font-family;
 
