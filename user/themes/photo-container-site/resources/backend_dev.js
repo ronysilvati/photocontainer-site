@@ -435,7 +435,7 @@ var Event = (function () {
         if ($("#add-page").data().page > 1) {
           $("#gallery").append(response)
         } else {
-          $(".search-result-thumb").fadeOut('slow')
+          $(".search-result-thumb").remove()
           $("#gallery").append(response)
         }
         $("#add-page").prop('disabled', false)
@@ -587,7 +587,7 @@ var Event = (function () {
 
       $.ajax(settings)
         .done(function (response) {
-          $("#event-thumb-"+response.id).fadeOut('slow')
+          $("#event-thumb-"+response.id).remove()
         })
     })
   }
@@ -693,7 +693,7 @@ var Event = (function () {
           var $favoriteLink = $("[data-dislikephoto="+response.photo_id+"]")
 
           if ($('#btn-favorites .btn-pu').length > 0){
-            $favoriteLink.parents('div').filter('.search-result-thumb').fadeOut('slow')
+            $favoriteLink.parents('div').filter('.search-result-thumb').remove()
             return
           }
 
@@ -741,7 +741,7 @@ var Event = (function () {
 
       $.ajax(settings)
         .done(function (response) {
-            $(".dz-image-preview").fadeOut('slow');
+            $(".dz-image-preview").remove();
             response.photos.forEach(function(photo) {
               Photo.addThumb(photo);
             });
@@ -910,7 +910,7 @@ var Approval = (function() {
     $(".ico-approval, .ico-denial").on("click",function(e){
       e.preventDefault();
       Utils.invokeAPI("PUT", $(this).attr('href'), function(){
-        $(".ico-approval").parent('li').fadeOut('slow')
+        $(".ico-approval").parent('li').fadeOut()
       });
     });
   }
