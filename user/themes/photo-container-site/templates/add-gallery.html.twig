@@ -264,11 +264,10 @@
 
 <script>
 $( document ).ready(function() {
-  Event.loadCategories(localStorage.endpoint)
-    .then(Event.loadTags(localStorage.endpoint)
+  $.when(Event.loadCategories(localStorage.endpoint))
+    .then(Event.loadTags(localStorage.endpoint))
       .then(Cep.loadCountries(localStorage.endpoint))
         .then(Event.loadEvent(localStorage.endpoint))
-          .then(Event.loadPhotos()))
 
   $("#input-country").on('change', function (e) {
     if ($("#input-country :selected").val() == 1) {
