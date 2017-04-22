@@ -34,7 +34,18 @@ var Utils = (function(){
       )
   }
 
+  var notifications = function(){
+    Utils.invokeAPI("GET", 'search/notifications/user/'+localStorage.user, function(response){
+      if (response.all > 0) {
+        $(".approvals").append('<span class="badge badge-danger">'+response.all+'</span>')
+      } else {
+        $(".approvals > .badge").remove()
+      }
+    });
+  }
+
   return {
+    notifications: notifications,
     invokeAPI: invokeAPI
   };
 })();
@@ -944,6 +955,7 @@ var Approval = (function() {
 
       $(".list-group").html(approvalsHtml)
       Approval.approvalDenialAction()
+      Utils.notifications()
     });
   }
 
