@@ -18,7 +18,7 @@
         <h5 class="title mb-3">Selecione as categorias *</h5>
         <div data-toggle="buttons" id="categories-button-group"></div>
         <label class="error msg-error" for="categories[]" style="display: none;"></label>
-        <h5 class="title mb-3 mt-5">Informações do evento *</h5>
+        <h5 class="title mb-3 mt-5">Informações do evento</h5>
         <div class="row row-lg">
 
           <!-- COL 1 -->
@@ -159,7 +159,9 @@
         </div>
       </form>
       <form class="tab-pane step2 fade" id="fornecedores" role="tabpanel">
-        <h5 class="title mb-3 mt-5">Informações do evento</h5>
+        <h5 class="title mt-5">Informações do evento</h5>
+        <p class="mb-5 text-muted" <small="">Publishers gostam de ter acesso à maior quantidade possível de informação. Preencha estes campos com carinho e aumente suas chances de ser publicado!</p>
+
         <div class="row row-lg">
 
             {%
@@ -195,7 +197,7 @@
               <label>{{ value[0] }}</label>
               <div class="form-control-fields">
                 <div id="campo-{{ value[1] }}"  class="form-control-close">
-                  <input name="supplier[{{ value[1] }}][]" type="text" class="form-control" required>
+                  <input name="supplier[{{ value[1] }}][]" type="text" class="form-control">
                   <button type="button" class="close" data-toggle="remove" data-target="_parent">
                     <span aria-hidden="true">×</span>
                   </button>

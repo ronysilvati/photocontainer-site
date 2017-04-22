@@ -384,19 +384,19 @@ var Event = (function () {
       response.forEach(function(tagGroup) {
 
         if (tagGroup.id != 12) {
+          var name = 'tags['+tagGroup.id+'][]'
           var list = '\
           <div class="col-md-3">\
             <h6 class="title mt-3 text-center text-uppercase"><small>' + tagGroup.description + '</small></h6>\
             <hr class="mt-0">\
             <div data-toggle="buttons">';
+            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
-            var name = 'tags['+tagGroup.id+'][]'
 
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
               <input name="'+name+'" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
-            list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
           })
 
           list += '\
