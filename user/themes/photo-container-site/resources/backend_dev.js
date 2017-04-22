@@ -3,10 +3,6 @@ var Utils = (function(){
     var settings = {
       "async": true,
       "crossDomain": true,
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-      },
       "url": localStorage.endpoint+action,
       "method": method
     }
@@ -539,11 +535,6 @@ var Event = (function () {
       $("#select-month").val(date[1]).change();
       $("#select-year").val(date[0]).change();
 
-      response.categories.forEach(function(key, item) {
-        $("[name^='categories']").filter(":checkbox[value="+key+"]").attr("checked", true)
-        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
-      });
-
       response.tags.forEach(function(key, item) {
         var checkbox = $("[name^='tags']").filter("[value="+key+"]")
         $(checkbox).click()
@@ -568,6 +559,10 @@ var Event = (function () {
 
       $("#input-country").val(response.country).change()
       $.when(Cep.loadStates(api)).then(function(){
+        if (response.state == null) {
+          return
+        }
+
         $("#input-state").val(response.state).change()
         return Cep.loadCities(api)
       }).then(function(){
@@ -581,6 +576,11 @@ var Event = (function () {
           Cep.loadCities(localStorage.endpoint)
         })
       })
+
+      response.categories.forEach(function(key, item) {
+        $("[name^='categories']").filter(":checkbox[value="+key+"]").attr("checked", true)
+        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
+      });
     });
   }
 
