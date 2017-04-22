@@ -265,8 +265,8 @@
 
 <script>
 $( document ).ready(function() {
-  $.when(Event.loadCategories(localStorage.endpoint))
-    .then(Event.loadTags(localStorage.endpoint))
+  $.when(Event.loadTags(localStorage.endpoint))
+    .then(Event.loadCategories(localStorage.endpoint))
       .then(Cep.loadCountries(localStorage.endpoint))
         .then(Event.loadEvent(localStorage.endpoint))
 
