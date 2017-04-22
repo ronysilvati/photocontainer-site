@@ -40,7 +40,7 @@
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
           <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" ><i class="icon-star"></i></a>
-          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star"></i></a>
+          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star-full"></i></a>
 
           {% if authorized == true %}
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
@@ -53,7 +53,7 @@
         {% if data.context == "gallery_publisher_historic" %}
         <ul class="nav">
           <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.photo_id }}" ><i class="icon-star"></i></a>
-          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.photo_id }}" ><i class="icon-star"></i></a>
+          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.photo_id }}" ><i class="icon-star-full"></i></a>
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.event_id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
         </ul>
         {% endif %}

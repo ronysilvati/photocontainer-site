@@ -10,3 +10,6 @@ body {
 .app.bg-gray-lightest {
   background-color: $gray-lightest;
 }
+a, button {
+  cursor:pointer;
+}
