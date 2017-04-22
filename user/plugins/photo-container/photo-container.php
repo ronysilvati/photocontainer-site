@@ -86,12 +86,6 @@ class PhotoContainerPlugin extends Plugin
         }
     }
 
-    /**
-     * Do some work for this event, full details of events can be found
-     * on the learn site: http://learn.getgrav.org/plugins/event-hooks
-     *
-     * @param Event $e
-     */
     public function onLoginByApi()
     {
         try {
@@ -162,6 +156,7 @@ class PhotoContainerPlugin extends Plugin
     public function onLogout() {
         session_destroy();
         $this->grav->redirect('/');
+        exit();
     }
 
     public function onTwigInitialized()
