@@ -697,7 +697,7 @@ var Event = (function () {
           var $favoriteLink = $("[data-dislikephoto="+response.photo_id+"]")
 
           if ($('#btn-favorites .btn-pu').length > 0){
-            $favoriteLink.parents('div').filter('.search-result-thumb').remove()
+            $favoriteLink.parents('div').filter('.search-result-thumb').fadeOut('slow').remove()
             return
           }
 
