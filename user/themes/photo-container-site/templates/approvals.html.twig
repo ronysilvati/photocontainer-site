@@ -1,0 +1,18 @@
+{% extends 'partials/base.html.twig' %}
+{% import "functions.twig" as functions %}
+
+{% block content %}
+
+
+    <div class="app page-profile">
+        {%
+        include 'partials/components/navbar-top.twig' with {
+        'profile': grav.user.profile,
+        'active': 'profile',
+        'class': functions.profileClass(grav.user.profile)
+        }
+        %}
+    </div>
+
+  {% include 'partials/components/footer.twig' with {'class': functions.profileClass(grav.user.profile)} %}
+{% endblock %}
