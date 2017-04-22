@@ -57,13 +57,13 @@ cache/*
 assets/*
 logs/*
 images/*
+tmp/*
 
 # THEME
 user/themes/photo-container-site/_assets/node_modules/*
 user/themes/photo-container-site/_assets/.sass-cache/*
 
 .idea/
-vendor/*
 user/config/plugins/photo-container.yaml
 user/plugins/photo-container/photo-container.php
 user/config/plugins/photo-container.yaml

@@ -1,5 +1,5 @@
 enabled: true
-api_endpoint: 'http://64.137.180.165:8081/'
+api_endpoint: 'http://192.168.99.100:8081/'
 login_route: /do-signin
 input_pwd: input_password
 input_username: input_email
@@ -14,4 +14,4 @@ unprotected_routes:
     text: /signup-publisher
   -
     text: /do-signin
-domain: 'http://localhost/Work/FotoContainer/photocontainer-site/'
+domain: 'http://192.168.99.100/'

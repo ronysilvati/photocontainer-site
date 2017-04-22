@@ -7,9 +7,13 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
+          <root url="phar://$MODULE_DIR$/tmp/Grav-58faab056627a/grav-update/bin/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
           <root url="phar://$MODULE_DIR$/bin/composer.phar/" />
         </CLASSES>
         <SOURCES>
+          <root url="phar://$MODULE_DIR$/tmp/Grav-58faab056627a/grav-update/bin/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
           <root url="phar://$MODULE_DIR$/bin/composer.phar/" />
         </SOURCES>
       </library>
