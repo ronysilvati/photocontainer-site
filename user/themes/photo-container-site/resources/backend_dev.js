@@ -13,6 +13,10 @@ var Utils = (function(){
 
     return $.ajax(settings)
       .done(function (response) {
+          if (doneCallback == undefined) {
+            return false;
+          }
+
           console.log(response.message);
           console.log(response);
           doneCallback(response);
@@ -907,11 +911,10 @@ var Photo = (function() {
 
 var Approval = (function() {
   var approvalDenialAction = function() {
-    $(".ico-approval, .ico-denial").on("click",function(e){
+    $(".approval, .deny").on("click", function(e){
       e.preventDefault();
-      Utils.invokeAPI("PUT", $(this).attr('href'), function(){
-        $(".ico-approval").parent('li').fadeOut()
-      });
+      $(this).parents('li').fadeOut()
+      Utils.invokeAPI("PUT", $(this).attr('href'));
     });
   }
 
@@ -922,23 +925,24 @@ var Approval = (function() {
         var data = list[i]
         var linkApproval = "events/"+data.event_id+"/approval/user/"+data.publisher_id
         var linkDeny = "events/"+data.event_id+"/disapproval/user/"+data.publisher_id
+        var galleryLink = localStorage.domain+'gallery/edit?id='+data.event_id
 
-        approvalsHtml += "\
-          <li>\ "
-            +data.name+
-            "<a class='ico-approval' href='"+linkApproval+"'>Aprovar</a>\
-             <a class='ico-denial' href='"+linkDeny+"'>Negar</a>\
-          </li>\
-        ";
+        approvalsHtml += '\
+        <li class="list-group-item list-group-item-action justify-content-between">\
+          <span>\
+            <a href="#">'+data.publisher_name+'</a>\
+            <small class="text-muted">solicitou acesso à galeria</small>\
+            <a href="'+galleryLink+'">'+data.name+'</a>\
+          </span>\
+          <span>\
+            <a href='+linkDeny+' class="deny btn btn-secondary">Recusar <i class="icon-cancel"></i></a>\
+            <a href='+linkApproval+' class="approval btn btn-secondary">Aprovar <i class="icon-check"></i></a>\
+          </span>\
+        </li>\
+        '
       }
 
-      var listHtml = '\
-        <ul>\ '
-        +approvalsHtml+
-        '</ul>\
-      ';
-
-      $(".filters-list").html(listHtml)
+      $(".list-group").html(approvalsHtml)
       Approval.approvalDenialAction()
     });
   }

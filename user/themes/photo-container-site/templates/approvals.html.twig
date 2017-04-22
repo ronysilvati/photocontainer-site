@@ -19,30 +19,12 @@
           }
         %}
       <div class="container">
-        <ul class="list-group">
-          {% set g_labels = [
-            ['Galeria de fotos 1', 'Marcelo Kohl'],
-            ['Galeria fotos 2', 'Renato Aragão'],
-            ['Galeria 3', 'Lula preso amanhã'],
-            ['Galeria de fotos 345', 'Paola Paola']
-          ] %}
-
-          {% for item in g_labels %}
-            <li class="list-group-item list-group-item-action justify-content-between">
-              <span>
-                <a href=#"" target="_blank">{{item[1]}}</a>
-                <small class="text-muted">solicitou acesso à galeria</small>
-                <a href="#" target="_blank">{{item[0]}}</a>
-              </span>
-              <span>
-                <a class="btn btn-secondary">Recusar <i class="icon-cancel"></i></a>
-                <a class="btn btn-secondary">Aprovar <i class="icon-check"></i></a>
-              </span>
-            </li>
-          {% endfor %}
-        </ul>
+        <ul class="list-group"></ul>
       </div>
     </div>
 
   {% include 'partials/components/footer.twig' with {'class': functions.profileClass(grav.user.profile)} %}
+<script>
+  Approval.render(localStorage.endpoint, localStorage.user)
+</script>
 {% endblock %}
