@@ -171,8 +171,15 @@ a, button {
   cursor:pointer;
 }
 
+
+// POGS
 #lg-download {
   display: none;
+}
+.page-gallery .page-header .btn-circle i{
+  position: relative;
+  top: 2px;
+  left: -1px;
 }
 
 .btn {

@@ -8588,6 +8588,12 @@ a, button {
   display: none;
 }
 
+.page-gallery .page-header .btn-circle i {
+  position: relative;
+  top: 2px;
+  left: -1px;
+}
+
 .btn {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
