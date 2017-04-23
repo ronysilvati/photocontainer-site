@@ -19,3 +19,9 @@
     }
     %}
 {% endfor %}
+
+<script>
+$( document ).ready(function(){
+  Event.requestDownload(localStorage.endpoint)
+});
+</script>

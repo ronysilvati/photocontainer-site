@@ -29,10 +29,6 @@
         {% if data.context == "gallery_publisher" and profile == 'publisher' %}
         <p class="photo-name">Fotógrafo {{ data.photographer }}</p>
         <ul class="nav">
-          {#<li class="nav-item">#}
-            {#<a {% if data.publisher_like == true %}style="display: none;"{% endif %} class="nav-link event-like" data-likeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Like</a>#}
-              {#<a {% if data.publisher_like == false %}style="display: none;"{% endif %} class="nav-link event-dislike" data-dislikeevent="{{ data.id }}" href="#"><i class="icon-star"></i>Dislike</a>#}
-          {#</li>#}
           <li class="nav-item"><a class="nav-link" href="/gallery/photos?id={{ data.id }}"><i class="icon-trash"></i></a></li>
         </ul>
         {% endif %}
@@ -54,7 +50,12 @@
         <ul class="nav">
           <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.photo_id }}" ><i class="icon-star"></i></a>
           <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.photo_id }}" ><i class="icon-star-full"></i></a>
+
+          {% if data.authorized == true %}
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.event_id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
+          {% else %}
+          <li class="nav-item download-image no-auth"><a class="nav-link" href="{{ api_endpoint }}events/{{ data.event_id }}/request/user/{{ logged_user_id }}"><i class="icon-download"></i></a></li>
+          {% endif %}
         </ul>
         {% endif %}
       </div>
