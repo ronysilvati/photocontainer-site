@@ -940,7 +940,7 @@ var Approval = (function() {
         approvalsHtml += '\
         <li class="list-group-item list-group-item-action justify-content-between">\
           <span>\
-            <a href="#">'+data.publisher_name+'</a>\
+            <a href="'+data.blog+'" target="_blank">'+data.publisher_name+'</a>\
             <small class="text-muted">solicitou acesso à galeria</small>\
             <a href="'+galleryLink+'">'+data.name+'</a>\
           </span>\
