@@ -38,7 +38,7 @@ include 'partials/components/navbar-top.twig' with {
 
 <script>
   $( document ).ready(function(){
-    Event.loadTags(localStorage.endpoint)
+    Event.loadTags(localStorage.endpoint, 'checkbox')
 
     $("#btn-favorites").on('click', function(e){
       e.preventDefault()

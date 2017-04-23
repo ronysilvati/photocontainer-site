@@ -43,7 +43,7 @@
 
 <script>
 $( document ).ready(function() {
-  Event.loadTags(localStorage.endpoint)
+  Event.loadTags(localStorage.endpoint, 'checkbox')
 
   if (location.pathname.split('/').length == 2 && location.pathname.split('/')[1] == "gallery") {
     Event.search(localStorage.domain);

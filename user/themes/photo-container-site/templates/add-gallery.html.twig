@@ -266,7 +266,7 @@
 <script>
 $( document ).ready(function() {
   $.when(Event.loadCategories(localStorage.endpoint))
-    .then(Event.loadTags(localStorage.endpoint))
+    .then(Event.loadTags(localStorage.endpoint, 'radio'))
       .then(Cep.loadCountries(localStorage.endpoint))
         .then(Event.loadEvent(localStorage.endpoint))
 

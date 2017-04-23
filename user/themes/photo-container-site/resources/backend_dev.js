@@ -390,7 +390,7 @@ var Event = (function () {
     })
   }
 
-  var loadTags = function (api) {
+  var loadTags = function (api, type) {
     return Utils.invokeAPI("GET", "search/tags", function (response) {
       response.forEach(function(tagGroup) {
 
@@ -404,9 +404,8 @@ var Event = (function () {
             list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
-
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input name="'+name+'" type="radio" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
+              <input name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
           })
 
