@@ -21,18 +21,23 @@
       'album-type',
       'album-name',
       'image-count',
-      'fav-count'
+      'fav-count',
+      'search'
       ]
     }
   %}
 {% endfor %}
 </div>
 
-
 <script>
 $( document ).ready(function(){
-    Event.likePhoto(localStorage.endpoint)
-    Event.dislikePhoto(localStorage.endpoint)
-    Event.requestDownload(localStorage.endpoint)
+  Event.likePhoto(localStorage.endpoint);
+  Event.dislikePhoto(localStorage.endpoint);
+  Event.requestDownload(localStorage.endpoint);
+
+  $('#gallery').lightGallery({
+    subHtmlSelectorRelative: true
+  });
 });
+
 </script>
