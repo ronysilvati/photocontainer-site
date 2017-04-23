@@ -15,14 +15,14 @@
       'profile': 3,
       'type': 'gallery',
       'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
-    'show': [
-      'icon',
-      'photo-name',
-      'album-type',
-      'album-name',
-      'image-count',
-      'fav-count',
-      'search'
+      'show': [
+        'icon',
+        'photo-name',
+        'album-type',
+        'album-name',
+        'image-count',
+        'fav-count',
+        'search'
       ]
     }
   %}
@@ -39,8 +39,14 @@ $( document ).ready(function(){
     subHtmlSelectorRelative: true
   });
 
-  $('.thumb-gallery .nav').click(function( event ) {
+  $('.thumb-gallery .nav-item').click(function( event ) {
     event.stopPropagation();
+  });
+
+    // $('.search-result-thumb').unbind( "click", handler );
+  $('.thumb-gallery .view-image').click(function( event ) {
+    $(this).closest(".thumb-item").click();
+    alert();
   });
 
 });

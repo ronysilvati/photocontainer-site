@@ -6,7 +6,7 @@
     {% set col = "col-md-3" %}
 {% endif %}
 
-<div class="{{col}} search-result-thumb" data-src="{{ image_cdn }}{{ data.watermark }}" id="event-thumb-{{ data.id }}">
+<div class="{{col}} thumb-item search-result-thumb" data-src="{{ image_cdn }}{{ data.watermark }}" id="event-thumb-{{ data.id }}">
   <div class="{{thumb_class}}">
     <img alt='' src="{{ image_cdn }}{{ data.thumb }}">
     <div class="card-text">
@@ -37,8 +37,16 @@
 
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
-          <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" ><i class="icon-star"></i></a>
-          <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star-full"></i></a>
+          <li class="nav-item view-image">
+            <a class="nav-link">
+              <i class="icon-search"></i>
+            </a>
+          </li>
+
+          <li class="nav-item download-image">
+            <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" ><i class="icon-star"></i></a>
+            <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star-full"></i></a>
+          </li>
 
           {% if authorized == true %}
           <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
