@@ -8584,6 +8584,10 @@ a, button {
   cursor: pointer;
 }
 
+#lg-download {
+  display: none;
+}
+
 .btn {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
@@ -9668,6 +9672,7 @@ label.error.msg-error {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-right: 20px;
 }
 .card.thumb-gallery.thumb-gallery-footer .card-text .card-text-inner .album-type {
   margin-bottom: 20px;
@@ -9688,7 +9693,7 @@ label.error.msg-error {
   right: 20px;
 }
 .card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-name {
-  margin-right: 20px;
+  margin-right: 0;
 }
 .card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-name a, .card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-type a {
   transform: translateX(-50%);

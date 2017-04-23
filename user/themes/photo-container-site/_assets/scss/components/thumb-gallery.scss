@@ -191,6 +191,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          margin-right: 20px;
         }
         .album-type {
           margin-bottom: 20px;
@@ -220,7 +221,7 @@
       .card-text {
         .card-text-inner {
           .album-name {
-            margin-right: 20px;
+            margin-right: 0;
           }
           .album-name, .album-type {
             a{

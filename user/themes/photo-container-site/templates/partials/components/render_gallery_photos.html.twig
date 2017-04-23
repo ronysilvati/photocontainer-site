@@ -38,6 +38,11 @@ $( document ).ready(function(){
   $('#gallery').lightGallery({
     subHtmlSelectorRelative: true
   });
+
+  $('.thumb-gallery .nav-link').click(function( event ) {
+    event.stopPropagation();
+  });
+
 });
 
 </script>

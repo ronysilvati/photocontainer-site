@@ -171,6 +171,10 @@ a, button {
   cursor:pointer;
 }
 
+#lg-download {
+  display: none;
+}
+
 .btn {
   font-family:  $buttons-font-family;
   font-size: 14px;
@@ -1350,6 +1354,7 @@ label.error.msg-error {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          margin-right: 20px;
         }
         .album-type {
           margin-bottom: 20px;
@@ -1379,7 +1384,7 @@ label.error.msg-error {
       .card-text {
         .card-text-inner {
           .album-name {
-            margin-right: 20px;
+            margin-right: 0;
           }
           .album-name, .album-type {
             a{
