@@ -9664,6 +9664,11 @@ label.error.msg-error {
 .card.thumb-gallery.thumb-gallery-footer .card-text .card-text-inner .album-name, .card.thumb-gallery.thumb-gallery-footer .card-text .card-text-inner .photo-name {
   text-transform: uppercase;
 }
+.card.thumb-gallery.thumb-gallery-footer .card-text .card-text-inner .album-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .card.thumb-gallery.thumb-gallery-footer .card-text .card-text-inner .album-type {
   margin-bottom: 20px;
 }
@@ -9681,6 +9686,9 @@ label.error.msg-error {
   position: absolute;
   top: 17px;
   right: 20px;
+}
+.card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-name {
+  margin-right: 20px;
 }
 .card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-name a, .card.thumb-gallery.thumb-gallery-footer:hover .card-text .card-text-inner .album-type a {
   transform: translateX(-50%);

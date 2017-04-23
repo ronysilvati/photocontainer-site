@@ -1346,6 +1346,11 @@ label.error.msg-error {
         .album-name, .photo-name {
           text-transform: uppercase;
         }
+        .album-name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
         .album-type {
           margin-bottom: 20px;
         }
@@ -1373,6 +1378,9 @@ label.error.msg-error {
     &:hover {
       .card-text {
         .card-text-inner {
+          .album-name {
+            margin-right: 20px;
+          }
           .album-name, .album-type {
             a{
               transform: translateX(-50%);
