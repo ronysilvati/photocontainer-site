@@ -96,7 +96,7 @@ var Signup = (function () {
     })
     .fail(function (response) {
       var object = JSON.parse(response.responseText)
-      alert("Erro: "+object.message)
+      show_modal_alert('danger', '', "Erro: "+object.message)
     });
   }
 
@@ -128,7 +128,7 @@ var Signup = (function () {
       })
       .fail(function (response) {
         var object = JSON.parse(response.responseText)
-        alert("Erro: "+object.message)
+        show_modal_alert('danger', '', "Erro: "+object.message)
       });
     }
 
@@ -245,11 +245,11 @@ var Profile = (function () {
 
     $.ajax(settings)
     .done(function (response) {
-      alert('Salvo com sucesso.')
+      show_modal_alert('success', '', 'Salvo com sucesso.')
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
       var object = JSON.parse(jqXHR.responseText)
-      alert(object.message)
+      show_modal_alert('default', '', object.message)
     })
   }
 
@@ -335,7 +335,7 @@ var Event = (function () {
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
-          alert(object.message)
+          show_modal_alert('default', '', object.message)
         })
       }
 
@@ -357,7 +357,7 @@ var Event = (function () {
           })
           .fail(function (jqXHR, textStatus, errorThrown) {
             var object = JSON.parse(jqXHR.responseText)
-            alert(object.message)
+            show_modal_alert('default', '', object.message)
           })
       }
 
@@ -373,7 +373,7 @@ var Event = (function () {
           })
           .fail(function (jqXHR, textStatus, errorThrown) {
             var object = JSON.parse(jqXHR.responseText)
-            alert(object.message)
+            show_modal_alert('default', '', object.message)
           })
       }
 
@@ -735,11 +735,11 @@ var Event = (function () {
 
       $.ajax(settings)
         .done(function (response) {
-          alert('Pedido enviado para o fotógrafo.')
+          show_modal_alert('default', '', 'Pedido enviado para o fotógrafo.')
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
-          alert(object.message)
+          show_modal_alert('default', '', object.message)
         })
 
     })
