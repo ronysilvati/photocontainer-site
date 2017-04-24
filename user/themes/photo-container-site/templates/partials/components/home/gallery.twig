@@ -3,15 +3,34 @@
 <h5 class="title text-uppercase text-center">Confira nossas conexôes mais recentes</h5>
 <div class="row row-xxs" id="block-gallery">
 
-<!-- get_component('thumb-gallery', ['type' => 'home', 'col' => 'col-md-2', 'show'=> ['icon', , , ]]); -->
-{% for i in range(1, 18) %}
+{% set slider_images = [
+  url('theme://resources/images/home/1.jpg'),
+  url('theme://resources/images/home/2.jpg'),
+  url('theme://resources/images/home/3.jpg'),
+  url('theme://resources/images/home/4.jpg'),
+  url('theme://resources/images/home/5.jpg'),
+  url('theme://resources/images/home/6.jpg'),
+  url('theme://resources/images/home/7.jpg'),
+  url('theme://resources/images/home/8.jpg'),
+  url('theme://resources/images/home/9.jpg'),
+  url('theme://resources/images/home/10.jpg'),
+  url('theme://resources/images/home/11.jpg'),
+  url('theme://resources/images/home/12.jpg'),
+  url('theme://resources/images/home/13.jpg'),
+  url('theme://resources/images/home/14.jpg'),
+  url('theme://resources/images/home/15.jpg'),
+  url('theme://resources/images/home/16.jpg'),
+  url('theme://resources/images/home/17.jpg'),
+  url('theme://resources/images/home/18.jpg'),
+]%}
+{% for image in slider_images %}
   {%
   include 'partials/components/thumb-gallery.twig' with {
     'type': 'home',
     'col': 'col-md-2 col-sm-4 col-6',
 
 
-    'img_src': url('theme://_temp/photos/' ~ (random(9)+1) ~ '.jpg'),
+    'img_src': image,
     'data_photo_name' : 'Sebastião Salgado',
     'data_album_name' : 'Paulo e Roberta',
     'data_album_type' : 'Casamento',
