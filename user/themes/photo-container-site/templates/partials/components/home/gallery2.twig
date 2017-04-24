@@ -2,15 +2,28 @@
 <h2 class="title text-uppercase text-center">"SOMOS UM GRUPO DE PESSOAS QUE ACREDITA QUE AS CONEXÕES MUDAM A VIDA"</h2>
 <div class="row row-xxs" id="block-gallery2">
 
-<!-- get_component('thumb-gallery', ['type' => 'home', 'col' => 'col-md-2', 'show'=> ['icon', , , ]]); -->
-{% for i in range(1, 12) %}
+{% set slider_images = [
+  url('theme://resources/images/home/30.jpg'),
+  url('theme://resources/images/home/29.jpg'),
+  url('theme://resources/images/home/28.jpg'),
+  url('theme://resources/images/home/27.jpg'),
+  url('theme://resources/images/home/26.jpg'),
+  url('theme://resources/images/home/25.jpg'),
+  url('theme://resources/images/home/24.jpg'),
+  url('theme://resources/images/home/23.jpg'),
+  url('theme://resources/images/home/22.jpg'),
+  url('theme://resources/images/home/21.jpg'),
+  url('theme://resources/images/home/20.jpg'),
+  url('theme://resources/images/home/19.jpg')
+]%}
+{% for image in slider_images %}
   {%
   include 'partials/components/thumb-gallery.twig' with {
     'type': 'logos',
     'col': 'col-md-2 col-sm-4 col-6',
 
 
-    'img_src': url('theme://_temp/photos/' ~ (random(9)+1) ~ '.jpg'),
+    'img_src': image,
     'data_photo_name' : 'Sebastião Salgado',
     'data_album_name' : 'Paulo e Roberta',
     'data_album_type' : 'Casamento',
