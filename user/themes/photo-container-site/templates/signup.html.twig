@@ -5,7 +5,7 @@
 <div class="app page-login page-signup" style="background-image: url({{ url('theme://_temp/signup-bg.png') }})">
   <div class="page-login-inner">
     <div class="login-box landingpage-box">
-      <form class="form-signup-publisher form-validate" method="post" action="">
+      <form id="landing-form" class="form-signup-publisher form-validate" method="post" action="">
 
         <img class="img-fluid" src="{{ url('theme://resources/images/logo-land.png') }}"/>
         <h3>Fotógrafos e Publishers</h3>
@@ -13,13 +13,14 @@
         <h4>Cadastre-se agora e receba mais informações em breve!</h4>
           <div class="form-check form-check-alt text-center mb-3">
             <label class="form-check-label mr-3" onclick="$('#campo-url-blog').collapse('hide');">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="radio" class="form-check-input" name="input_type" value="option2" required="">
             <span>  Fotógrafo</span>
             </label>
             <label class="form-check-label" onclick="$('#campo-url-blog').collapse('show');">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="radio" class="form-check-input" name="input_type" value="option2" required="">
               <span>Publisher</span>
             </label>
+            <label class="error msg-error" for="input_type" style="display: none;"></label>
           </div>
 
           <div class="form-group">
@@ -34,7 +35,7 @@
           </div>
           <div class="form-group">
             <label for="input_remail" class="sr-only">Telefone</label>
-            <input type="number" name="input_phone" class="form-control mask-phone" placeholder="Telefone">
+            <input type="text" name="input_phone" class="form-control phone-mask" placeholder="Telefone">
             <label class="error msg-error" for="input_phone" style="display: none;"></label>
           </div>
           <div id="campo-url-blog" class="collapse">
@@ -46,8 +47,7 @@
           </div>
 
           <div class="text-center mt-4">
-            <button class="btn btn-submit btn-ph" onclick="show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.
-Em breve entraremos em contato com novidades!')" type="__submit">Enviar</button>
+            <button class="btn btn-submit btn-ph" type="submit">Enviar</button>
           </div>
   </form>
 
@@ -58,4 +58,39 @@ Em breve entraremos em contato com novidades!')" type="__submit">Enviar</button>
     {#{ include('partials/components/login-footer.twig') }#}
   </div>
 </div>
+{{ include('partials/components/modal-alert.twig') }}
+
+<script>
+
+$(document).ready(function(){
+  $(".form-validate.form-signin").validate({
+    rules: {
+			input_email: {
+				required: true
+			},
+			input_password: {
+				required: true
+			}
+		}
+  });
+
+  $(".form-validate.form-profile").validate({
+    rules: {
+			input_email: {
+				required: true
+			},
+			input_password: {
+				required: true
+			}
+		}
+  });
+
+  $("#landing-form").validate({
+    submitHandler: function() {
+      show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.<br>Em breve entraremos em contato com novidades!<br><br>');
+    }
+  });
+
+
+</script>
 {% endblock %}
