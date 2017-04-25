@@ -1000,14 +1000,13 @@ var Contact = (function() {
       "crossDomain": true,
       "url": localStorage.endpoint+"/contact/total",
       "method": "GET",
-      "headers": {
-        "cache-control": "no-cache",
-        "postman-token": "abb2bfc9-39bd-6a0b-da21-965859d0bc63"
-      }
     }
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
+      if (response.total > 5) {
+        $(".btn").remove()
+        show_modal_alert('ph', '','As vagas acabaram.<br><br>');
+      }
     });
   }
 
