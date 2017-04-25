@@ -963,3 +963,51 @@ var Approval = (function() {
     render: render
   };
 })();
+
+var Contact = (function() {
+  var create = function() {
+    var form = new FormData();
+    form.append("name", $("#input_name").val());
+    form.append("email", $("#input_email").val());
+    form.append("phone", $("#input_phone").val());
+    form.append("profile", $("input:checked").val());
+    form.append("blog", $("#input_name").val());
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.endpoint+"/contact",
+      "method": "POST",
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": form
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+  }
+
+  var total = function(api, photographer_id) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": localStorage.endpoint+"/contact/total",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "postman-token": "abb2bfc9-39bd-6a0b-da21-965859d0bc63"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+  }
+
+  return {
+    create: create,
+    total: total
+  };
+})();
