@@ -976,7 +976,7 @@ var Contact = (function() {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": localStorage.endpoint+"/contact",
+      "url": localStorage.endpoint+"contact",
       "method": "POST",
       "processData": false,
       "contentType": false,
@@ -984,29 +984,31 @@ var Contact = (function() {
       "data": form
     }
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings)
+      .done(function (response) {
       show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.<br>Em breve entraremos em contato com novidades!<br><br>');
 
       $("#input_name").val('')
       $("#input_email").val('')
       $("#input_phone").val('')
       $("#input_blog").val('')
-    });
+    }).fail(function (response) {
+      $(".btn").remove()
+      show_modal_alert('ph', '','As vagas acabaram.<br><br>');
+    })
   }
 
   var total = function(api, photographer_id) {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": localStorage.endpoint+"/contact/total",
+      "url": localStorage.endpoint+"contact/total",
       "method": "GET",
     }
 
-    $.ajax(settings).done(function (response) {
-      if (response.total > 5) {
-        $(".btn").remove()
-        show_modal_alert('ph', '','As vagas acabaram.<br><br>');
-      }
+    $.ajax(settings).fail(function (response) {
+      $(".btn").remove()
+      show_modal_alert('ph', '','As vagas acabaram.<br><br>');
     });
   }
 
