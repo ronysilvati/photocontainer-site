@@ -92,7 +92,7 @@ select.form-control {
     }
   }
   input:checked ~ span:before {
-    background-color: #46A148;
+    background-color: $color-ph;
   }
   input:checked ~ span:after {
     left: 22px;

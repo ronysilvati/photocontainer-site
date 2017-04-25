@@ -4,59 +4,58 @@
 
 <div class="app page-login page-signup" style="background-image: url({{ url('theme://_temp/signup-bg.png') }})">
   <div class="page-login-inner">
-    <div class="login-box">
+    <div class="login-box landingpage-box">
       <form class="form-signup-publisher form-validate" method="post" action="">
-      <div class="row row-md">
-      <div class="col-md-6">
-        <h2 class='title text-uppercase'>Texto explicativo</h2>
-        <p class="text-white">Frater et T. Tum Piso: Quoniam igitur aliquid omnes, quid Lucius noster? Dicet pro me ipsa virtus nec dubitabit isti vestro beato M. Verba tu fingas et ea dicas, quae non sentias? Itaque contra est, ac dicitis; Cuius quidem, quoniam Stoicus fuit, sententia condemnata mihi videtur esse inanitas ista verborum. Quodsi ipsam honestatem undique pertectam atque absolutam. Quid autem habent admirationis, cum prope accesseris? Nobis aliter videtur, recte secusne, postea; Et quod est munus, quod opus sapientiae?
-      </p>
-      </div>
-      <div class="col-md-6">
-        <h2 class='title text-uppercase'>Insira seus dados</h2>
-          <div class="text-center mb-3">
-            <label class="form-check-label text-white" onclick="$('#campo-url-blog').collapse('hide');">
+
+        <img class="img-fluid" src="{{ url('theme://resources/images/logo-land.png') }}"/>
+        <h3>Fotógrafos e Publishers</h3>
+        <h2>Seja um dos <b>200</b> fundadores e tenha vantagens para sempre!</h2>
+        <h4>Cadastre-se agora e receba mais informações em breve!</h4>
+          <div class="form-check form-check-alt text-center mb-3">
+            <label class="form-check-label mr-3" onclick="$('#campo-url-blog').collapse('hide');">
               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-              Fotógrafo
+            <span>  Fotógrafo</span>
             </label>
-            <label class="form-check-label text-white" onclick="$('#campo-url-blog').collapse('show');">
+            <label class="form-check-label" onclick="$('#campo-url-blog').collapse('show');">
               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-              Publisher
+              <span>Publisher</span>
             </label>
           </div>
+
           <div class="form-group">
             <label for="input_name" class="sr-only">Seu nome</label>
-            <input type="text" name="input_name" id="input_name" class="form-control form-control-login" placeholder="Nome" required="">
+            <input type="text" name="input_name" id="input_name" class="form-control" placeholder="Nome" required="">
             <label class="error msg-error" for="input_name" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label for="input_email" class="sr-only">Seu melhor e-mail</label>
-            <input type="email" name="input_email" id="input_email" class="form-control form-control-login" placeholder="E-mail" required="">
+            <input type="email" name="input_email" id="input_email" class="form-control" placeholder="E-mail" required="">
             <label class="error msg-error" for="input_email" style="display: none;"></label>
           </div>
           <div class="form-group">
             <label for="input_remail" class="sr-only">Telefone</label>
-            <input type="number" name="input_phone" class="form-control form-control-login mask-phone" placeholder="Telefone" required="">
+            <input type="number" name="input_phone" class="form-control mask-phone" placeholder="Telefone">
             <label class="error msg-error" for="input_phone" style="display: none;"></label>
           </div>
           <div id="campo-url-blog" class="collapse">
             <div class="form-group">
               <label for="input_blog" class="sr-only">Seu site ou blog</label>
-              <input type="url" name="input_blog" id="input_blog" class="form-control form-control-login" placeholder="URL do blog" required="">
+              <input type="url" name="input_blog" id="input_blog" class="form-control" placeholder="URL do blog">
               <label class="error msg-error" for="input_blog" style="display: none;"></label>
             </div>
           </div>
 
           <div class="text-center mt-4">
-            <button class="btn btn-submit btn-outline-secondary" type="submit">Submeter</button>
+            <button class="btn btn-submit btn-ph" onclick="show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.
+Em breve entraremos em contato com novidades!')" type="__submit">Enviar</button>
           </div>
-      </div>
-    </div>
   </form>
 
     </div>
+    <div class="landing-banner">Conexões que mudam a vida
+    </div>
 
-    {{ include('partials/components/login-footer.twig') }}
+    {#{ include('partials/components/login-footer.twig') }#}
   </div>
 </div>
 {% endblock %}
