@@ -986,7 +986,7 @@ var Contact = (function() {
 
     $.ajax(settings)
       .done(function (response) {
-      show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.<br>Em breve entraremos em contato com novidades!<br><br>');
+      show_modal_alert('ph', '','Em breve entraremos em contato para você se tornar um fundador Foto Container.<br><br>');
 
       $("#input_name").val('')
       $("#input_email").val('')
