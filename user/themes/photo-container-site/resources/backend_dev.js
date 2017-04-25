@@ -993,8 +993,8 @@ var Contact = (function() {
       $("#input_phone").val('')
       $("#input_blog").val('')
     }).fail(function (response) {
-      $(".btn").remove()
-      show_modal_alert('ph', '','As vagas acabaram.<br><br>');
+      // $(".btn").remove()
+      // show_modal_alert('ph', '','As vagas acabaram.<br><br>');
     })
   }
 
@@ -1007,8 +1007,8 @@ var Contact = (function() {
     }
 
     $.ajax(settings).fail(function (response) {
-      $(".btn").remove()
-      show_modal_alert('ph', '','As vagas acabaram.<br><br>');
+      // $(".btn").remove()
+      // show_modal_alert('ph', '','As vagas acabaram.<br><br>');
     });
   }
 
