@@ -985,7 +985,7 @@ var Contact = (function() {
     }
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
+      show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.<br>Em breve entraremos em contato com novidades!<br><br>');
     });
   }
 

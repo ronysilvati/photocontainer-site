@@ -5,7 +5,7 @@
 <div class="app page-login page-signup" style="background-image: url({{ url('theme://resources/images/landing-bg.jpg') }})">
   <div class="page-login-inner">
     <div class="login-box landingpage-box">
-      <form id="landing-form" class="form-signup-publisher form-validate" method="post" action="">
+      <form id="landing-form" class="form-validate" method="post" action="">
 
         <img class="img-fluid" src="{{ url('theme://resources/images/logo-land.png') }}"/>
         <h3>Fotógrafos e Publishers</h3>
@@ -62,35 +62,35 @@
 
 <script>
 
-$(document).ready(function(){
+$(document).ready(function() {
   $(".form-validate.form-signin").validate({
     rules: {
-			input_email: {
-				required: true
-			},
-			input_password: {
-				required: true
-			}
-		}
+      input_email: {
+        required: true
+      },
+      input_password: {
+        required: true
+      }
+    }
   });
 
   $(".form-validate.form-profile").validate({
     rules: {
-			input_email: {
-				required: true
-			},
-			input_password: {
-				required: true
-			}
-		}
-  });
-
-  $("#landing-form").validate({
-    submitHandler: function() {
-      show_modal_alert('ph', '','Obrigado pelo seu interesse no Foto Container.<br>Em breve entraremos em contato com novidades!<br><br>');
+      input_email: {
+        required: true
+      },
+      input_password: {
+        required: true
+      }
     }
   });
 
+  $("#landing-form").validate({
+    submitHandler: function () {
+      Contact.create()
+    }
+  });
+})
 
 </script>
 {% endblock %}
