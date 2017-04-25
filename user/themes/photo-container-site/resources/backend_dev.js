@@ -971,7 +971,7 @@ var Contact = (function() {
     form.append("email", $("#input_email").val());
     form.append("phone", $("#input_phone").val());
     form.append("profile", $("input:checked").val());
-    form.append("blog", $("#input_name").val());
+    form.append("blog", $("#input_blog").val());
 
     var settings = {
       "async": true,
