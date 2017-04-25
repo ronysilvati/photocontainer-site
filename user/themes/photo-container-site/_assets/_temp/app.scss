@@ -1911,6 +1911,8 @@ label.error.msg-error {
   bottom: 0;
   left: 0;
   overflow: auto;
+  background-size: cover;
+  background-position: center;
 
   .page-login-inner {
     overflow: hidden;
