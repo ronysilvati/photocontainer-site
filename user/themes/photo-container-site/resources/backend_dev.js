@@ -40,7 +40,7 @@ var Utils = (function(){
     });
   }
 
-  var show_modal_remove = function(text, callback, url, paramsObj) {
+  var show_modal_remove = function(text, callback, paramsObj) {
     $('#modal-alert .modal-body').html(text);
     $('#modal-alert .modal-footer').show();
 
@@ -54,7 +54,7 @@ var Utils = (function(){
     $('#modal-alert #modal-alert-confirm').on('click', function (e) {
       e.preventDefault();
 
-      callback(url, paramsObj)
+      callback(paramsObj)
       $('#modal-alert').modal('hide')
     })
 
@@ -634,7 +634,7 @@ var Event = (function () {
 
       Utils.show_modal_remove(
         "Deseja remover o evento?",
-        function (url, params) {
+        function (params) {
           var settings = {
             "async": true,
             "method": "DELETE",
@@ -643,7 +643,7 @@ var Event = (function () {
               "accept": "application/json",
             },
             "processData": false,
-            "url": url
+            "url": params.url
           }
 
           return $.ajax(settings)
@@ -651,7 +651,7 @@ var Event = (function () {
               $("#event-thumb-"+response.id).remove()
             })
         },
-        api+"events/"+event_id
+        {url: api+"events/"+event_id}
       )
     })
   }
@@ -934,16 +934,15 @@ var Photo = (function() {
         var guid = $(this).closest( ".dz-processing" ).prop("id");
         Utils.show_modal_remove(
           "Remover a foto?",
-          function (url, params) {
-            Utils.invokeAPI("DELETE", url, function(response){
+          function (params) {
+            Utils.invokeAPI("DELETE", params.url, function(response){
               $("#"+params.guid).fadeOut("slow", function() {
                 $("#"+params.guid).remove();
                 Event.updateFeedback();
               });
             });
           },
-          "photo/"+guid,
-          {guid: guid}
+          {url: "photo/"+guid, guid: guid}
         )
       });
   }
