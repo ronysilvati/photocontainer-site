@@ -384,7 +384,7 @@ var Event = (function () {
     return Utils.invokeAPI("GET", "search/categories", function (response) {
       response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
-          <input name="categories[]" type="checkbox" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
+          <input name="categories[]" type="radio" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
       });
     })
@@ -598,8 +598,8 @@ var Event = (function () {
       })
 
       response.categories.forEach(function(key, item) {
-        $("[name^='categories']").filter(":checkbox[value="+key+"]").attr("checked", true)
-        $("[name^='categories']").filter(":checkbox[value="+key+"]").click()
+        $("[name^='categories']").filter(":radio[value="+key+"]").attr("checked", true)
+        $("[name^='categories']").filter(":radio[value="+key+"]").click()
       });
     });
   }
