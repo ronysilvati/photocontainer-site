@@ -267,9 +267,7 @@ class PhotoContainerPlugin extends Plugin
 
     public function forceLogout()
     {
-        if (isset($_SESSION['user'])) {
-            session_destroy();
-        }
+        session_destroy();
 
         header('HTTP/1.0 403 Forbidden');
         header('Content-Type: application/json');
