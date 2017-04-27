@@ -163,6 +163,11 @@ class PhotoContainerPlugin extends Plugin
     {
         header('Access-Control-Allow-Origin: *');
 
+        if ($this->grav['session']->user->id == null) {
+            $this->forceLogout();
+            exit;
+        }
+
         $route = $this->grav['uri']->route();
 
         if ($route == "/event_search" && !empty($_POST)) {
@@ -201,6 +206,12 @@ class PhotoContainerPlugin extends Plugin
 
     private function searchGallery()
     {
+        if ($this->grav['session']->user->profile != $_GET['profileType'] ||
+            $this->grav['session']->user->id != $_GET['user_id']) {
+            $this->forceLogout();
+            exit;
+        }
+
         $qs = http_build_query([
             'keyword' => isset($_POST['keyword']) ? $_POST['keyword'] : '',
             'tags' => isset($_POST['tags']) ? $_POST['tags'] : '',
@@ -212,7 +223,6 @@ class PhotoContainerPlugin extends Plugin
         $response = Response::get($this->grav['config']->get('plugins.photo-container.api_endpoint')."search/events?".$qs);
         $found = json_decode($response, true);
 
-        header('Access-Control-Allow-Origin: *');
         echo $this->grav['twig']->processTemplate(
             "partials/components/render_gallery.twig",
             [
@@ -255,4 +265,15 @@ class PhotoContainerPlugin extends Plugin
 
     }
 
+    public function forceLogout()
+    {
+        if (isset($_SESSION['user'])) {
+            session_destroy();
+        }
+
+        header('HTTP/1.0 403 Forbidden');
+        header('Content-Type: application/json');
+
+        echo json_encode(['session_cancel' => true]);
+    }
 }

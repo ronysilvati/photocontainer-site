@@ -432,7 +432,7 @@ var Event = (function () {
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": api + "event_search?profileType="+localStorage.profile+page,
+      "url": api + "event_search?profileType="+localStorage.profile+page+"&user_id="+localStorage.user,
       "method": "POST",
       "processData": false,
       "contentType": false,
@@ -440,7 +440,8 @@ var Event = (function () {
       "data": form
     }
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings)
+    .done(function (response) {
       if (response) {
         if ($("#add-page").data().page > 1) {
           $("#gallery").append(response)
@@ -451,6 +452,12 @@ var Event = (function () {
         $("#add-page").prop('disabled', false)
       } else {
         $("#add-page").prop('disabled', true)
+      }
+    })
+    .fail(function (response) {
+      if (response.status == 403) {
+        localStorage.clear()
+        $(".icon-logout").click()
       }
     });
   }
@@ -474,12 +481,19 @@ var Event = (function () {
       "data": form
     }
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings)
+    .done(function (response) {
       if (response) {
         $("#thumb-data-download").append(response)
 
         Event.likePhoto(localStorage.endpoint)
         Event.dislikePhoto(localStorage.endpoint)
+      }
+    })
+    .fail(function (response) {
+      if (response.status == 403) {
+        localStorage.clear()
+        $(".icon-logout").click()
       }
     });
   }
@@ -496,8 +510,15 @@ var Event = (function () {
       "contentType": false,
     }
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings)
+    .done(function (response) {
       $(".publisher-gallery-photos").html(response)
+    })
+    .fail(function (response) {
+      if (response.status == 403) {
+        localStorage.clear()
+        $(".icon-logout").click()
+      }
     });
   }
 
