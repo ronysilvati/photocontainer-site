@@ -933,7 +933,7 @@ var Photo = (function() {
 
         var guid = $(this).closest( ".dz-processing" ).prop("id");
         Utils.show_modal_remove(
-          "remover?",
+          "Remover a foto?",
           function (url, params) {
             Utils.invokeAPI("DELETE", url, function(response){
               $("#"+params.guid).fadeOut("slow", function() {
