@@ -40,9 +40,31 @@ var Utils = (function(){
     });
   }
 
+  var show_modal_remove = function(text, callback, api, event_id) {
+    $('#modal-alert .modal-body').html(text);
+    $('#modal-alert .modal-footer').show();
+
+    $('#modal-alert #modal-alert-header').removeClass();
+    $('#modal-alert #modal-alert-header').addClass('modal-header alert alert-danger');
+
+    $('#modal-alert #modal-alert-confirm').removeClass();
+    $('#modal-alert #modal-alert-confirm').addClass('btn btn-danger');
+    $('#modal-alert #modal-alert-confirm').attr('href', "#");
+
+    $('#modal-alert #modal-alert-confirm').on('click', function (e) {
+      e.preventDefault();
+
+      callback(api, event_id)
+      $('#modal-alert').modal('hide')
+    })
+
+    $('#modal-alert').modal('show');
+  }
+
   return {
     notifications: notifications,
-    invokeAPI: invokeAPI
+    invokeAPI: invokeAPI,
+    show_modal_remove: show_modal_remove
   };
 })();
 
@@ -608,22 +630,31 @@ var Event = (function () {
     $(".event-remove").on('click', function(e){
       e.preventDefault();
 
-      var settings = {
-        "async": true,
-        "method": "DELETE",
-        "headers": {
-          "content-type": "application/json",
-          "accept": "application/json",
-        },
-        "processData": false,
-        "data": {},
-        "url": api+"events/"+$(this).data().event
-      }
+      var event_id = $(this).data().event
 
-      $.ajax(settings)
-        .done(function (response) {
-          $("#event-thumb-"+response.id).remove()
-        })
+      Utils.show_modal_remove(
+        "Deseja remover o evento?",
+        function () {
+          var settings = {
+            "async": true,
+            "method": "DELETE",
+            "headers": {
+              "content-type": "application/json",
+              "accept": "application/json",
+            },
+            "processData": false,
+            "data": {},
+            "url": api+"events/"+event_id
+          }
+
+          return $.ajax(settings)
+            .done(function (response) {
+              $("#event-thumb-"+response.id).remove()
+            })
+        },
+        api,
+        event_id
+      )
     })
   }
 
