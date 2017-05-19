@@ -1,5 +1,7 @@
 ---
 title: PhotoContainer
+body_classes: 'modular header-image fullwidth'
+menu: Home
 content:
     items: '@self.modular'
     order:
@@ -8,8 +10,6 @@ content:
         custom:
             - _banner
             - _testimonials
-body_classes: 'modular header-image fullwidth'
-menu: Home
 onpage_menu: true
 ---
 
