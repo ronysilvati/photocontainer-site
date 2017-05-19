@@ -230,13 +230,38 @@
         </div>
 
         <div class="upload-area">
-          <div class="upload-area-inner drop-area" style="pointer-events: none;">
+          <!-- <div class="upload-area-inner drop-area" style="pointer-events: none;">
             <i class="icon-upload"></i>
             <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
             <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
             <div class="dropzone-feedback"></div>
             <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
+          </div> -->
+
+          <div class="upload-area-inner drop-area" style="pointer-events: none;">
+            <h2 class="mb-3 text-uppercase">Arraste suas fotos para esta área</h2>
+              <i class="icon-upload" style="
+              display: block;
+              width: 200px;
+              border: 9px dashed #54b6e0;
+              height: 200px;
+              line-height: 234px;
+              margin: 20px auto;
+              "></i>
+            <h6 class="mt-4 text-uppercase">Ou busque no seu HD</h6>
+            <button class="btn btn-ph px-5 mt-1" id="btn-buscar" style="pointer-events: none;">Buscar</button>
+            <div class="mt-4 dropzone-feedback">Você já enviou 0 foto de 30 permitida.</div>
+            <h6 class="mt-3">Tamanho das fotos: 1280x800 máximo 2mb</h6>
           </div>
+
+
+
+
+
+
+
+
+
         </div>
         <div class="row row-sm"  id="previews">
           {%
