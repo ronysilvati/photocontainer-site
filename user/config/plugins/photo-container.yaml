@@ -14,4 +14,6 @@ unprotected_routes:
     text: /signup-publisher
   -
     text: /do-signin
+  -
+    text: /signup-contact
 domain: 'http://localhost/Work/4/photocontainer-site/'
