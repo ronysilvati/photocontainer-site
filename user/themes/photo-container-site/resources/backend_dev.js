@@ -40,6 +40,24 @@ var Utils = (function(){
     });
   }
 
+  var show_modal_alert = function(style, url, text) {
+    $('#modal-alert .modal-body').html(text);
+    if(url === "") {
+      $('#modal-alert .modal-footer').hide();
+    }else {
+      $('#modal-alert .modal-footer').show();
+    }
+
+    $('#modal-alert #modal-alert-header').removeClass();
+    $('#modal-alert #modal-alert-header').addClass('modal-header alert alert-'+style);
+
+    $('#modal-alert #modal-alert-confirm').removeClass();
+    $('#modal-alert #modal-alert-confirm').addClass('btn btn-'+style);
+    $('#modal-alert #modal-alert-confirm').attr('href', url);
+
+    $('#modal-alert').modal('show');
+  }
+
   var show_modal_remove = function(text, callback, paramsObj) {
     $('#modal-alert .modal-body').html(text);
     $('#modal-alert .modal-footer').show();
@@ -61,10 +79,20 @@ var Utils = (function(){
     $('#modal-alert').modal('show');
   }
 
+  var axiosInit = function () {
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    axios.defaults.headers.patch['Content-Type'] = 'application/json';
+    axios.defaults.headers.patch['Access-Control-Allow-Origin'] = '*';
+    axios.defaults.headers.get['Content-Type'] = 'application/json';
+  }
+
   return {
     notifications: notifications,
     invokeAPI: invokeAPI,
-    show_modal_remove: show_modal_remove
+    show_modal_remove: show_modal_remove,
+    show_modal_alert: show_modal_alert,
+    axiosInit: axiosInit
   };
 })();
 
@@ -89,6 +117,13 @@ var Signup = (function () {
     $.ajax(settings).done(function (response) {
       location.href = "/gallery"
     })
+  }
+  
+  var verifyPreConditions = function () {
+    axios.get(localStorage.endpoint+"users/satisfyPreConditions")
+      .catch(function (err) {
+        location.href = "/signup-contact"
+      })
   }
 
   var photographer = function(api) {
@@ -118,7 +153,7 @@ var Signup = (function () {
     })
     .fail(function (response) {
       var object = JSON.parse(response.responseText)
-      show_modal_alert('danger', '', "Erro: "+object.message)
+      Utils.show_modal_alert('danger', '', "Erro: "+object.message)
     });
   }
 
@@ -150,72 +185,76 @@ var Signup = (function () {
       })
       .fail(function (response) {
         var object = JSON.parse(response.responseText)
-        show_modal_alert('danger', '', "Erro: "+object.message)
+        Utils.show_modal_alert('danger', '', "Erro: "+object.message)
       });
     }
 
     return {
         publisher: publisher,
-        photographer: photographer
+        photographer: photographer,
+        verifyPreConditions: verifyPreConditions
     };
 })();
 
 var Profile = (function () {
   var load = function(api) {
-    return Utils.invokeAPI("GET", "users?id="+localStorage.user, function (response) {
-      $("#input-email").val(response.email)
-      $("#input-name").val(response.name)
+    return axios.get(localStorage.endpoint+"users?id="+localStorage.user)
+      .then(function (response) {
+        var user = response.data
 
-      if (response.details) {
-        $("#input-facebook").val(response.details.facebook)
-        $("#input-instagram").val(response.details.instagram)
-        $("#input-linkedin").val(response.details.linkedin)
-        $("#input-site").val(response.details.site)
-        $("#input-blog").val(response.details.blog)
-        $("#input-phone").val(response.details.phone)
-        $("#input-pinterest").val(response.details.pinterest).change()
+        $("#input-email").val(user.email)
+        $("#input-name").val(user.name)
 
-        if (response.details.name_type != null) {
-          if (response.details.name_type == "name") {
-            $("#input-name-type-name").click();
+        if (response.details) {
+          $("#input-facebook").val(user.details.facebook)
+          $("#input-instagram").val(user.details.instagram)
+          $("#input-linkedin").val(user.details.linkedin)
+          $("#input-site").val(user.details.site)
+          $("#input-blog").val(user.details.blog)
+          $("#input-phone").val(user.details.phone)
+          $("#input-pinterest").val(user.details.pinterest).change()
+
+          if (user.details.name_type != null) {
+            if (user.details.name_type == "name") {
+              $("#input-name-type-name").click();
+            }
+
+            if (user.details.name_type == "studio") {
+              $("#input-name-type-studio").click();
+            }
           }
 
-          if (response.details.name_type == "studio") {
-            $("#input-name-type-studio").click();
+          if (user.details.studio != null) {
+            $("#input-studio").val(response.details.studio);
+          }
+
+          if (user.details.bio != null) {
+            $("#input-bio").val(response.details.bio);
+          }
+
+          if (user.details.birth != null) {
+            birthParts = user.details.birth.split('-')
+            $("#input-year").val(birthParts[0]).change()
+            $("#input-month").val(birthParts[1]).change()
+            $("#input-day").val(parseInt(birthParts[2])).change()
           }
         }
 
-        if (response.details.studio != null) {
-          $("#input-studio").val(response.details.studio);
+        if (user.address) {
+          $("#input-cep").val(user.address.zipcode)
+          $("#input-country").val(1)
+          $("#input-state").val(user.address.state)
+
+          Cep.loadCities(localStorage.endpoint)
+            .then(function () {
+              $("#input-city").val(user.address.city)
+            })
+
+          $("#input-neighborhood").val(user.address.neighborhood)
+          $("#input-street").val(user.address.street)
+          $("#input-complement").val(user.address.complement)
         }
-
-        if (response.details.bio != null) {
-          $("#input-bio").val(response.details.bio);
-        }
-
-        if (response.details.birth != null) {
-          birthParts = response.details.birth.split('-')
-          $("#input-year").val(birthParts[0]).change()
-          $("#input-month").val(birthParts[1]).change()
-          $("#input-day").val(parseInt(birthParts[2])).change()
-        }
-      }
-
-      if (response.address) {
-        $("#input-cep").val(response.address.zipcode)
-        $("#input-country").val(1)
-        $("#input-state").val(response.address.state)
-
-        Cep.loadCities(localStorage.endpoint)
-          .then(function () {
-            $("#input-city").val(response.address.city)
-          })
-
-        $("#input-neighborhood").val(response.address.neighborhood)
-        $("#input-street").val(response.address.street)
-        $("#input-complement").val(response.address.complement)
-      }
-    })
+      })
   }
 
   var update = function(api) {
@@ -252,27 +291,14 @@ var Profile = (function () {
       data.details.birth = $("#input-year").val()+'-'+$("#input-month").val()+'-'+day
     }
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": localStorage.getItem('endpoint')+"users/"+localStorage.getItem('user'),
-      "method": "PATCH",
-      "headers": {
-          "content-type": "application/json",
-          "accept": "application/json",
-      },
-      "processData": false,
-      "data": JSON.stringify(data)
-    }
-
-    $.ajax(settings)
-    .done(function (response) {
-      show_modal_alert('success', '', 'Salvo com sucesso.')
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      var object = JSON.parse(jqXHR.responseText)
-      show_modal_alert('default', '', object.message)
-    })
+    var url = localStorage.getItem('endpoint')+"users/"+localStorage.getItem('user')
+    axios.patch(url, JSON.stringify(data))
+      .then(function (response) {
+        Utils.show_modal_alert('success', '', 'Salvo com sucesso.');
+      })
+      .catch(function (error) {
+        Utils.show_modal_alert('default', '', error.response.data.message)
+      });
   }
 
   return {
@@ -357,7 +383,7 @@ var Event = (function () {
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
-          show_modal_alert('default', '', object.message)
+          Utils.show_modal_alert('default', '', object.message)
         })
       }
 
@@ -379,7 +405,7 @@ var Event = (function () {
           })
           .fail(function (jqXHR, textStatus, errorThrown) {
             var object = JSON.parse(jqXHR.responseText)
-            show_modal_alert('default', '', object.message)
+            Utils.show_modal_alert('default', '', object.message)
           })
       }
 
@@ -395,7 +421,7 @@ var Event = (function () {
           })
           .fail(function (jqXHR, textStatus, errorThrown) {
             var object = JSON.parse(jqXHR.responseText)
-            show_modal_alert('default', '', object.message)
+            Utils.show_modal_alert('default', '', object.message)
           })
       }
 
@@ -403,13 +429,14 @@ var Event = (function () {
   }
 
   var loadCategories = function (api) {
-    return Utils.invokeAPI("GET", "search/categories", function (response) {
-      response.forEach(function(item) {
-        $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
+    return axios.get(localStorage.endpoint+"search/categories")
+      .then(function (response) {
+        response.data.forEach(function(item) {
+          $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="radio" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
-      });
-    })
+        });
+      })
   }
 
   var loadTags = function (api, type) {
@@ -785,11 +812,11 @@ var Event = (function () {
 
       $.ajax(settings)
         .done(function (response) {
-          show_modal_alert('default', '', 'Pedido enviado para o fotógrafo.')
+          Utils.show_modal_alert('default', '', 'Pedido enviado para o fotógrafo.')
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
           var object = JSON.parse(jqXHR.responseText)
-          show_modal_alert('default', '', object.message)
+          Utils.show_modal_alert('default', '', object.message)
         })
 
     })
@@ -1043,7 +1070,7 @@ var Contact = (function() {
 
     $.ajax(settings)
       .done(function (response) {
-      show_modal_alert('ph', '','Em breve entraremos em contato para você se tornar um fundador Foto Container.<br><br>');
+        Utils.show_modal_alert('ph', '','Em breve entraremos em contato para você se tornar um fundador Foto Container.<br><br>');
 
       $("#input_name").val('')
       $("#input_email").val('')
@@ -1074,3 +1101,5 @@ var Contact = (function() {
     total: total
   };
 })();
+
+Utils.axiosInit()
