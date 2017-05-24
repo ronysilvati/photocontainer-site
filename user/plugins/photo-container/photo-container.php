@@ -79,6 +79,11 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
+        if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
+            $this->verifySignupSlots();
+            exit;
+        }
+
         if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic"])) {
             $this->enable([
                 'onTwigInitialized' => ['onTwigInitialized', 0]
@@ -183,6 +188,20 @@ class PhotoContainerPlugin extends Plugin
         }
 
         exit;
+    }
+
+    private function verifySignupSlots() {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request(
+            'GET',
+            $this->grav['config']->get('plugins.photo-container.api_endpoint')."users/satisfyPreConditions"
+        );
+
+        if ($res->getStatusCode() == 300) {
+            $this->grav->redirect("/signup-contact");
+        }
+
+        return true;
     }
 
     private function searchGalleryPhotos()
