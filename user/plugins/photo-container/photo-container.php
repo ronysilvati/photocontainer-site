@@ -79,10 +79,9 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-        // if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
-        //     $this->verifySignupSlots();
-        //     exit;
-        // }
+         if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
+             $this->verifySignupSlots();
+         }
 
         if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic"])) {
             $this->enable([
@@ -199,6 +198,7 @@ class PhotoContainerPlugin extends Plugin
 
         if ($res->getStatusCode() == 300) {
             $this->grav->redirect("/signup-contact");
+            exit;
         }
 
         return true;
