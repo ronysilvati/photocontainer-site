@@ -429,14 +429,13 @@ var Event = (function () {
   }
 
   var loadCategories = function (api) {
-    return axios.get(localStorage.endpoint+"search/categories")
-      .then(function (response) {
-        response.data.forEach(function(item) {
-          $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
+    return Utils.invokeAPI("GET", "search/categories", function (response) {
+      response.forEach(function(item) {
+        $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="radio" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
-        });
-      })
+      });
+    })
   }
 
   var loadTags = function (api, type) {
