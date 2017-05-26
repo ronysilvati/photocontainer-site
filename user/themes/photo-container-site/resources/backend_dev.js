@@ -360,7 +360,7 @@ var Event = (function () {
           approval_general: $("#input-approval-general").is(":checked"),
           approval_photographer: $("#input-approval-photographer").is(":checked"),
           approval_bride: $("#input-approval-bride").is(":checked"),
-          terms: $("#input-terms").is(":checked"),
+          terms: 1,
           categories: [$('input[name="categories[]"]:checked').val()],
           country: $("#input-country").val(),
           state: $("#input-state").val(),
