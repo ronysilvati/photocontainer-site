@@ -40,6 +40,16 @@ form:
               type: text
               label: URL com a CDN das fotos
               help: URL com a CDN das fotos
+            verify_users_slots:
+                type: toggle
+                label: Verificar slots para cadastro
+                highlight: 1
+                help: Verificar slots para cadastro
+                options:
+                    1: Sim
+                    0: Não
+                validate:
+                    type: bool
         login:
           type: tab
           title: 'Login'

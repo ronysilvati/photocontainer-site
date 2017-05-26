@@ -79,7 +79,8 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-         if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
+        $verify = $this->grav['config']->get('plugins.photo-container.verify_users_slots');
+         if ($verify && in_array($route, ["/signup-photographer", "/signup-publisher"])) {
              $this->verifySignupSlots();
          }
 
