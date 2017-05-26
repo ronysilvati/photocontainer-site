@@ -38,6 +38,12 @@
                   {% if value_nav == 'fav' %}       <a class="nav-link" href="#"><i class="icon-star"></i></a>{% endif %}
                   {% if value_nav == 'edit' %}      <a class="nav-link" href="#"><i class="icon-pencil"></i></a>{% endif %}
                   {% if value_nav == 'trash' %}     <a class="nav-link" {{remove_attr}} href="#"><i class="icon-trash"></i></a>{% endif %}
+                  {% if value_nav == 'pin' %}
+                    <a class="nav-link photo-pin" href="#">
+                      <i class="icon-pin" style="display:none"></i>
+                      <i class="icon-pin-outline"></i>
+                    </a>
+                  {% endif %}
                   {% if value_nav == 'search' %}    <a class="nav-link" href="#"><i class="icon-search"></i></a>{% endif %}
                   {% if value_nav == 'download' %}  <a class="nav-link" href="#"><i class="icon-download"></i></a>{% endif %}
 

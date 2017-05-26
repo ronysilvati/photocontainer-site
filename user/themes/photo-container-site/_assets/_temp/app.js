@@ -268,9 +268,25 @@ $(document).ready(function(){
 		showMaskOnHover: false,
 		keepStatic: true
 	});
+
+	$(".url-mask").inputmask({
+definitions: {
+			"i": {
+				validator: ".",
+				cardinality: 1
+			}
+		},
+		mask: "(\\http://)|(\\http\\s://)|(ftp://)|(ftp\\s://)i{+}",
+    showMaskOnHover: false,
+    greedy: false,
+		keepStatic: true
+  });
+
   $(".email-mask").inputmask({
     mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    showMaskOnHover: false,
     greedy: false,
+		keepStatic: true,
     onBeforePaste: function (pastedValue, opts) {
       pastedValue = pastedValue.toLowerCase();
       return pastedValue.replace("mailto:", "");

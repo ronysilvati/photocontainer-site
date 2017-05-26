@@ -79,10 +79,10 @@ class PhotoContainerPlugin extends Plugin
             $this->onLoginByApi();
         }
 
-        if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
-            $this->verifySignupSlots();
-            exit;
-        }
+        // if (in_array($route, ["/signup-photographer", "/signup-publisher"])) {
+        //     $this->verifySignupSlots();
+        //     exit;
+        // }
 
         if (in_array($route, ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic"])) {
             $this->enable([
