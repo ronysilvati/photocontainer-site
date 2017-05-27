@@ -835,6 +835,7 @@ var Event = (function () {
             response.photos.forEach(function(photo) {
               Photo.addThumb(photo);
             });
+            Photo.photoCoverHandler();
             Photo.deleteHandler();
             Event.updateFeedback();
       });
@@ -1012,7 +1013,6 @@ var Photo = (function() {
         </div>\
       ';
       $("#previews").append(photoHtml);
-      photoCoverHandler()
   }
 
   return {
