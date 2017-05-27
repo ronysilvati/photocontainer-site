@@ -253,8 +253,34 @@
             <div class="mt-4 dropzone-feedback">Você já enviou 0 foto de 30 permitida.</div>
             <h6 class="mt-3">Tamanho das fotos: 1280x800 máximo 2mb</h6>
           </div>
+
+
+
+
+
+
+
+
+
         </div>
         <div class="row row-sm"  id="previews">
+          {%
+          include 'partials/components/thumb-gallery.twig' with {
+            'type': '',
+            'id': 'template',
+            'img_attr': 'data-dz-thumbnail',
+            'remove_attr': 'data-dz-remove',
+            'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+            'show': [
+              'nav',
+              'upload_progress'
+            ],
+            'nav': [
+              'pin',
+              'trash'
+            ]
+          }
+          %}
         </div>
       </form>
     </div>
