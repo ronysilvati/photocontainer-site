@@ -118,7 +118,7 @@ var Signup = (function () {
       location.href = "/gallery"
     })
   }
-  
+
   var verifyPreConditions = function () {
     axios.get(localStorage.endpoint+"users/satisfyPreConditions")
       .catch(function (err) {
@@ -973,6 +973,18 @@ var Photo = (function() {
       });
   }
 
+  var photoCoverHandler = function() {
+    $(".photo-pin").on("click",function(e){
+      e.preventDefault();
+
+      var guid = $(this).closest( ".dz-processing" ).prop("id");
+      axios.patch(localStorage.endpoint+"/photo/cover/"+guid)
+        .then(function (response) {
+          $(this).closest('div').addClass("active")
+        })
+    });
+  }
+
   var addThumb = function(photo) {
       var photoHtml = '\
         <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
@@ -984,6 +996,12 @@ var Photo = (function() {
                   <li class="nav-item">\
                     <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
                   </li>\
+                  <li class="nav-item">\
+                    <a class="nav-link photo-pin" href="#">\
+                      <i class="icon-pin" style="display:none"></i>\
+                      <i class="icon-pin-outline"></i>\
+                    </a>\
+                  </li>\
                 </ul>\
               </div>\
             </div>\
@@ -994,11 +1012,13 @@ var Photo = (function() {
         </div>\
       ';
       $("#previews").append(photoHtml);
+      photoCoverHandler()
   }
 
   return {
     addThumb: addThumb,
-    deleteHandler: deleteHandler
+    deleteHandler: deleteHandler,
+    photoCoverHandler: photoCoverHandler
   };
 })();
 
