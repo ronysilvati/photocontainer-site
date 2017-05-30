@@ -171,6 +171,8 @@
             <input id="input-complement" type="text" class="form-control">
           </div>
         </div>
+
+        <form class="form-validate form-profile" method="post" id="frmDataAccess" action="#">
         <div class="col-md-4">
           <div class="card">
             <h4 class="card-title text-uppercase text-center h5">Dados de acesso</h4>
@@ -178,7 +180,7 @@
               <h3 class="h5 title">Alterar senha</h3>
               <div class="form-group">
                 <label>Senha *</label>
-                <input id="input-password" name="input-password" type="text" class="form-control" required>
+                <input id="input-password" name="input-password" type="password" class="form-control" required>
                 <label class="error msg-error" for="input-password" style="display: none;"></label>
               </div>
               <h3 class="h5 title mt-5">Alterar email *</h3>
@@ -192,11 +194,13 @@
                   <button class="btn btn-secondary btn-block">Cancelar</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block btn-save-profile">Confirmar</button>
+                  <button class="{{ functions.buttonClass(grav.user.profile) }} btn btn-block btn-save-profile-access">Confirmar</button>
                 </div>
               </div>
             </div>
           </div>
+        </form>
+
           <!-- <div class="card mt-4">
             <div class="card-block">
               <small class="d-block text-center title text-center text-uppercase mb-3">Faltam <b class="h5 bold">10</b> dias para o seu Plano anual encerrar</small>
@@ -264,6 +268,11 @@ $( document ).ready(function(){
   $(".btn-save-profile").on('click', function(e){
     e.preventDefault();
     Profile.update(localStorage.endpoint);
+  })
+
+  $(".btn-save-profile-access").on('click', function(e){
+    e.preventDefault();
+    Profile.updateAccessData(localStorage.endpoint);
   })
 })
 </script>

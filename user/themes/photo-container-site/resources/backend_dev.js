@@ -205,7 +205,7 @@ var Profile = (function () {
         $("#input-email").val(user.email)
         $("#input-name").val(user.name)
 
-        if (response.details) {
+        if (user.details) {
           $("#input-facebook").val(user.details.facebook)
           $("#input-instagram").val(user.details.instagram)
           $("#input-linkedin").val(user.details.linkedin)
@@ -225,15 +225,15 @@ var Profile = (function () {
           }
 
           if (user.details.studio != null) {
-            $("#input-studio").val(response.details.studio);
+            $("#input-studio").val(user.details.studio);
           }
 
           if (user.details.bio != null) {
-            $("#input-bio").val(response.details.bio);
+            $("#input-bio").val(user.details.bio);
           }
 
           if (user.details.birth != null) {
-            birthParts = user.details.birth.split('-')
+            var birthParts = user.details.birth.split('-')
             $("#input-year").val(birthParts[0]).change()
             $("#input-month").val(birthParts[1]).change()
             $("#input-day").val(parseInt(birthParts[2])).change()
@@ -257,9 +257,24 @@ var Profile = (function () {
       })
   }
 
-  var update = function(api) {
+  var updateAccessData = function (api) {
     data = {
       email: $("#input-email").val(),
+      password: $("#input-password").val()
+    }
+
+    var url = localStorage.getItem('endpoint')+"users/"+localStorage.getItem('user')
+    axios.patch(url, JSON.stringify(data))
+      .then(function (response) {
+        Utils.show_modal_alert('success', '', 'Salvo com sucesso.');
+      })
+      .catch(function (error) {
+        Utils.show_modal_alert('default', '', error.response.data.message)
+      });
+  }
+  
+  var update = function(api) {
+    data = {
       name: $("#input-name").val(),
       profile_id: localStorage.profile,
       details: {
@@ -303,7 +318,8 @@ var Profile = (function () {
 
   return {
     load: load,
-    update: update
+    update: update,
+    updateAccessData: updateAccessData
   };
 })();
 
