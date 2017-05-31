@@ -74,6 +74,7 @@ var Utils = (function(){
 
       callback(paramsObj)
       $('#modal-alert').modal('hide')
+      $('#modal-alert #modal-alert-confirm').off("click");
     })
 
     $('#modal-alert').modal('show');
