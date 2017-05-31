@@ -319,9 +319,10 @@ $( document ).ready(function() {
   var previewTemplate = previewNode.parentNode.innerHTML;
   previewNode.parentNode.removeChild(previewNode);
   new Dropzone(".upload-area", {
+      uploadMultiple: true,
       maxFiles: Event.maxFilesLimit,
       acceptedFiles: ".png, .jpg, .jpeg",
-      parallelUploads: 1,
+      parallelUploads: 10,
       url: localStorage.endpoint+'photo',
       previewTemplate: previewTemplate,
       previewsContainer: "#previews",
