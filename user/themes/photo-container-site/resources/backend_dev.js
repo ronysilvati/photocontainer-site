@@ -992,13 +992,15 @@ var Photo = (function() {
   }
 
   var photoCoverHandler = function() {
-    $(".photo-pin").on("click",function(e){
+    $('.nav-item .photo-pin').on("click",function(e){
       e.preventDefault();
 
+      var elem = $(this)
       var guid = $(this).closest( ".dz-processing" ).prop("id");
       axios.patch(localStorage.endpoint+"/photo/cover/"+guid)
         .then(function (response) {
-          $(this).closest('div').addClass("active")
+          $('.nav-item.active').removeClass('active');
+          $(elem).parent().addClass('active');
         })
     });
   }
