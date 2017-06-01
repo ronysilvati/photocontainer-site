@@ -1004,8 +1004,7 @@ var Photo = (function() {
   }
 
   var addThumb = function(photo) {
-      var cover = photo.cover === 0 ? '' : 'active';
-
+      var cover = photo.cover == 0 ? '' : 'active';
       var photoHtml = '\
         <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
           <div class="card thumb-gallery ratio-1by1 thumb-">\
@@ -1016,8 +1015,8 @@ var Photo = (function() {
                   <li class="nav-item">\
                     <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
                   </li>\
-                  <li class="nav-item '+cover+'">\
-                    <a class="nav-link photo-pin" href="#">\
+                  <li class="nav-item">\
+                    <a class="nav-link photo-pin '+cover+' " href="#">\
                       <i class="icon-pin" style="display:none"></i>\
                       <i class="icon-pin-outline"></i>\
                     </a>\
