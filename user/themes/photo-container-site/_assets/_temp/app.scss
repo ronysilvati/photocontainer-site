@@ -158,6 +158,9 @@ $gray-lightest:             #f9fafc;
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script:400,700');
 
+html {
+  height: 100%;
+}
 body {
   height: 100%;
   background-color:#FFF;
@@ -1486,6 +1489,13 @@ label.error.msg-error {
     }
   }
 }
+
+.app.page-add-gallery-success {
+  height:100%;
+}
+
+.nav-item.active .photo-pin .icon-pin {display: inline!important; color: #54b6e0!important;}
+.nav-item.active .photo-pin .icon-pin-outline {display: none!important;}
 
 .page-gallery {
   .page-header {
