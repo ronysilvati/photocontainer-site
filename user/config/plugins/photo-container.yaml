@@ -16,4 +16,4 @@ unprotected_routes:
     text: /do-signin
   -
     text: /signup-contact
-domain: 'http://localhost/Work/4/photocontainer-site/'
+domain: 'http://localhost/Work/FotoContainer/photocontainer-site/'

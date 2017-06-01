@@ -40,7 +40,10 @@
   {{ include('partials/components/modal-filters.twig') }}
   {% include 'partials/components/footer.twig' %}
 </div>
-
+<style media="screen">
+  .photo-pin.active .icon-pin {display: inline!important; color: #54b6e0!important;}
+  .photo-pin.active .icon-pin-outline {display: none!important;}
+</style>
 <script>
 $( document ).ready(function() {
   Event.loadTags(localStorage.endpoint, 'checkbox')
