@@ -288,9 +288,18 @@
 
   {% include 'partials/components/add-gallery-footer.twig' %}
 </div>
+<style media="screen">
+  .nav-item.active .photo-pin .icon-pin {display: inline!important; color: #54b6e0!important;}
+  .nav-item.active .photo-pin .icon-pin-outline {display: none!important;}
+</style>
 
 <script>
 $( document ).ready(function() {
+  $('.nav-item .photo-pin').click(function() {
+    $('.nav-item.active').removeClass('active');
+    $(this).parent().addClass('active');
+  });
+
   $.when(Event.loadCategories(localStorage.endpoint))
     .then(Event.loadTags(localStorage.endpoint, 'radio'))
       .then(Cep.loadCountries(localStorage.endpoint))
@@ -307,6 +316,7 @@ $( document ).ready(function() {
       })
     }
   })
+
 
   Event.createHandler(localStorage.endpoint, localStorage.user);
   Event.updateFeedback();
