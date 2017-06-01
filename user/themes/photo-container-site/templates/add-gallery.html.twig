@@ -117,7 +117,7 @@
             <div class="form-group">
               <label>
                 Descrição *
-                <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Quis est tam dissimile homini. Sed quot homines, tot sententiae."><i class="icon-help-circled"></i></a>
+                <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Descreva o melhor possível o evento."><i class="icon-help-circled"></i></a>
               </label>
               <textarea id="input-description" name="input-description" class="form-control" required></textarea>
               <label class="error msg-error" for="input-description" style="display: none;"></label>
@@ -130,7 +130,7 @@
         <div class="form-check">
           <label class="form-check-label">
             <input id="input-approval-general" name="input-approval" type="radio" class="form-check-input" required>
-            <span>Liberado para download</span>
+            <span>Liberado para publicação</span>
           </label>
           <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria é liberada para todos os publishers baixarem as fotos imediatamente."><i class="icon-help-circled"></i></a>
           <!-- <label class="error msg-error" for="input-approval-general" style="display: none;"></label> -->
@@ -295,11 +295,6 @@
 
 <script>
 $( document ).ready(function() {
-  $('.nav-item .photo-pin').click(function() {
-    $('.nav-item.active').removeClass('active');
-    $(this).parent().addClass('active');
-  });
-
   $.when(Event.loadCategories(localStorage.endpoint))
     .then(Event.loadTags(localStorage.endpoint, 'radio'))
       .then(Cep.loadCountries(localStorage.endpoint))
