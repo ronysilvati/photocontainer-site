@@ -295,10 +295,10 @@
 
 <script>
 $( document ).ready(function() {
-  $('.nav-item .photo-pin').click(function() {
-    $('.nav-item.active').removeClass('active');
-    $(this).parent().addClass('active');
-  });
+  // $('.nav-item .photo-pin').click(function() {
+  //   $('.nav-item.active').removeClass('active');
+  //   $(this).parent().addClass('active');
+  // });
 
   $.when(Event.loadCategories(localStorage.endpoint))
     .then(Event.loadTags(localStorage.endpoint, 'radio'))
