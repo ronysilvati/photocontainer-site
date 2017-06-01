@@ -8569,6 +8569,10 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   background-color: #e1c09d !important;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
   background-color: #FFF;
@@ -9878,6 +9882,19 @@ label.error.msg-error {
 .upload-area .upload-area-inner > i:before {
   margin: 0px 0 20px;
   font-size: 110px;
+}
+
+.app.page-add-gallery-success {
+  height: 100%;
+}
+
+.nav-item.active .photo-pin .icon-pin {
+  display: inline !important;
+  color: #54b6e0 !important;
+}
+
+.nav-item.active .photo-pin .icon-pin-outline {
+  display: none !important;
 }
 
 .page-gallery .page-header .navbar-collapse {
