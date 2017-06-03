@@ -23,7 +23,7 @@ definitions: {
   });
 
   $(".email-mask").inputmask({
-    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,30}[.*{2,6}][.*{1,2}]",
     showMaskOnHover: false,
     greedy: false,
 		keepStatic: true,
