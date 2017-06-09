@@ -234,6 +234,7 @@
           <h2 class="mb-5 text-uppercase">Você selecionou mais 30 imagens</h2>
           <h6 class="text-muted text-uppercase">Somente as 30 primeiras serão adicionadas ao álbum.</h6>
           <h6 class="text-muted text-uppercase">Para enviar uma nova foto, exclua uma que ainda não foi utilizada.</h6>
+          <h6 class="text-muted text-uppercase error-msg" style="display: none">Detectados arquivos com mais 2mb, estes arquivos não foram enviados.</h6>
         </div>
 
         <div class="upload-area">
@@ -374,7 +375,7 @@ $( document ).ready(function() {
           });
           this.on("error", function(file, message) {
               if (message === 'dictFileTooBig') {
-                Utils.show_modal_alert('danger', '', 'Detectado arquivo que ultrapassa o limite de 2mb, envio em lote parado. ')
+                $('.error-msg').show()
               }
 
               console.error(message);
