@@ -335,16 +335,24 @@ $( document ).ready(function() {
       maxFiles: Event.maxFilesLimit,
       acceptedFiles: ".png, .jpg, .jpeg",
       parallelUploads: 10,
+      maxFilesize: 2,
       url: localStorage.endpoint+'photo',
       previewTemplate: previewTemplate,
       previewsContainer: "#previews",
       init: function() {
           this.on("success", function(file, responseText) {
+              if (responseText.length === 0) {
+                return;
+              }
+
               console.log(responseText);
               console.log(file);
               file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
               console.info("success");
               Event.updateFeedback();
+          });
+          this.on('maxfilesexceeded', function(file, xhr, formData) {
+            Utils.show_modal_alert('danger', '', 'O arquivo <b>'+file.name+'</b> ultrapassa o limite de 2mb, ele não será enviado.')
           });
           this.on('sending', function(file, xhr, formData) {
               formData.append('event_id', Event.id);
