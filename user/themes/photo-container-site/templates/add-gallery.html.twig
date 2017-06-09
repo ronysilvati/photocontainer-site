@@ -352,9 +352,6 @@ $( document ).ready(function() {
               console.info("success");
               Event.updateFeedback();
           });
-          this.on('maxfilesexceeded', function(file, xhr, formData) {
-            Utils.show_modal_alert('danger', '', 'O arquivo <b>'+file.name+'</b> ultrapassa o limite de 2mb, ele não será enviado.')
-          });
           this.on('sending', function(file, xhr, formData) {
               formData.append('event_id', Event.id);
               console.info("sending");
@@ -377,7 +374,7 @@ $( document ).ready(function() {
           });
           this.on("error", function(file, message) {
               if (message === 'dictFileTooBig') {
-                Utils.show_modal_alert('danger', '', 'O arquivo <b>'+file.name+'</b> ultrapassa o limite de 2mb, não será enviado.')
+                Utils.show_modal_alert('danger', '', 'Detectado arquivo que ultrapassa o limite de 2mb, envio em lote parado. ')
               }
 
               console.error(message);
