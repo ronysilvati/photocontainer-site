@@ -1141,4 +1141,40 @@ var Contact = (function() {
   };
 })();
 
+var PasswordRecovery = (function() {
+  var requestRecover = function() {
+    data = {
+      email: $("#input_email").val()
+    }
+
+    axios.post(localStorage.endpoint+"users/requestPasswordChange", JSON.stringify(data))
+      .then(function (response) {
+        Utils.show_modal_alert('success', '', 'Um email com instruções para atualizar a senha foi enviado para <b>'+$('#input_email').val()+'</b>.');
+      })
+      .catch(function (error) {
+        Utils.show_modal_alert('default', '', error.response.data.message)
+      });
+  }
+
+  var updatePassword = function() {
+    data = {
+      token: location.search.split('=')[1],
+      password: $("#input_password").val()
+    }
+
+    axios.post(localStorage.endpoint+"users/updatePassword", JSON.stringify(data))
+      .then(function (response) {
+        Utils.show_modal_alert('success', '', 'Sua senha foi atualizada com sucesso.');
+      })
+      .catch(function (error) {
+        Utils.show_modal_alert('default', '', error.response.data.message)
+      });
+  }
+
+  return {
+    requestRecover: requestRecover,
+    updatePassword: updatePassword
+  };
+})();
+
 Utils.axiosInit()
