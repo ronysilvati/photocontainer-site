@@ -3,17 +3,29 @@ api_endpoint: 'http://api.fotocontainer.com.br/'
 login_route: /do-signin
 input_pwd: input_password
 input_username: input_email
-unprotected_routes:
+protected_routes:
   -
-    text: /
+    text: /event_search
   -
-    text: /signin
+    text: /publisher_gallery_photos
   -
-    text: /signup-photographer
+    text: /publisher_gallery_historic
   -
-    text: /signup-publisher
+    text: /thumbs
   -
-    text: /do-signin
+    text: /gallery
   -
-    text: /signup-contact
 domain: 'http://localhost/Work/FotoContainer/photocontainer-site/'
+    text: /profile
+  -
+    text: /success
+  -
+    text: /gallery/add
+  -
+    text: /gallery/edit
+  -
+    text: /gallery/historic
+  -
+    text: /gallery/photos
+  -
+    text: /approvals

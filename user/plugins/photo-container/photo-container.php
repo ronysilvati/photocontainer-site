@@ -58,14 +58,14 @@ class PhotoContainerPlugin extends Plugin
         $route = $this->grav['uri']->route();
 
         if ($this->grav['user']->authenticated == null) {
-            $allUnprotected = $this->grav['config']->get('plugins.photo-container.unprotected_routes');
+            $allProtected = $this->grav['config']->get('plugins.photo-container.protected_routes');
 
             $flatArray = ["/event_search", "/publisher_gallery_photos", "/publisher_gallery_historic", "/thumbs"];
-            foreach ($allUnprotected as $unprotected) {
-                $flatArray[] = $unprotected['text'];
+            foreach ($allProtected as $protected) {
+                $flatArray[] = $protected['text'];
             }
 
-            if (!in_array($route, $flatArray)) {
+            if (in_array($route, $flatArray)) {
                 $this->grav->redirect('/');
                 exit(0);
             }
