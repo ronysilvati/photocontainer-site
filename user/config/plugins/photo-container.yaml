@@ -1,6 +1,6 @@
 enabled: true
 api_endpoint: 'http://api.teste.fotocontainer.com.br/'
-domain: 'http://teste.fotocontainer.com.br/'
+domain: 'http://localhost/Work/FotoContainer/photocontainer-site/'
 image_cdn: 'http://img.teste.fotocontainer.com.br/'
 verify_users_slots: false
 login_route: /do-signin
