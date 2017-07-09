@@ -203,7 +203,7 @@ var Signup = (function () {
           });
       },
       abort : function() {
-          alert("abort");
+          Utils.show_modal_alert('danger', '', "Ocorreu um erro no processo de pagamento.")
       }
     })
 
