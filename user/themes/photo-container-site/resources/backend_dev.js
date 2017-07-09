@@ -135,27 +135,36 @@ var Signup = (function () {
       profile: "2"
     }
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": localStorage.endpoint+"users",
-      "method": "POST",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-      },
-      "processData": false,
-      "data": JSON.stringify(data)
-    }
+    PagSeguroLightbox({
+        code: '6A6DA626BDBD990CC4811FA55E8005DE'
+    }, {
+      success : function(transactionCode) {
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": localStorage.endpoint+"users",
+          "method": "POST",
+          "headers": {
+              "content-type": "application/json",
+              "accept": "application/json",
+          },
+          "processData": false,
+          "data": JSON.stringify(data)
+        }
 
-    $.ajax(settings)
-    .done(function (response) {
-      autologin()
+        $.ajax(settings)
+          .done(function (response) {
+              autologin()
+          })
+          .fail(function (response) {
+              var object = JSON.parse(response.responseText)
+              Utils.show_modal_alert('danger', '', "Erro: "+object.message)
+          });
+      },
+      abort : function() {
+          alert("abort");
+      }
     })
-    .fail(function (response) {
-      var object = JSON.parse(response.responseText)
-      Utils.show_modal_alert('danger', '', "Erro: "+object.message)
-    });
   }
 
   var publisher = function(api) {
@@ -167,28 +176,38 @@ var Signup = (function () {
       profile: "3"
     }
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": localStorage.endpoint+"users",
-      "method": "POST",
-      "headers": {
-        "content-type": "application/json",
-        "accept": "application/json",
-      },
-      "processData": false,
-      "data": JSON.stringify(data)
-    }
+    PagSeguroLightbox({
+        code: '02BC69054F4F380BB4E6BF8760FF83EF'
+    }, {
+      success : function(transactionCode) {
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": localStorage.endpoint+"users",
+          "method": "POST",
+          "headers": {
+              "content-type": "application/json",
+              "accept": "application/json",
+          },
+          "processData": false,
+          "data": JSON.stringify(data)
+        }
 
-    $.ajax(settings)
-      .done(function (response) {
-        autologin()
-      })
-      .fail(function (response) {
-        var object = JSON.parse(response.responseText)
-        Utils.show_modal_alert('danger', '', "Erro: "+object.message)
-      });
-    }
+        $.ajax(settings)
+          .done(function (response) {
+            autologin()
+          })
+          .fail(function (response) {
+            var object = JSON.parse(response.responseText)
+            Utils.show_modal_alert('danger', '', "Erro: "+object.message)
+          });
+      },
+      abort : function() {
+          alert("abort");
+      }
+    })
+
+  }
 
     return {
         publisher: publisher,
