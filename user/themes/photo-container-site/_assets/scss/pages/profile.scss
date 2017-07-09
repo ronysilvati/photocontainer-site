@@ -11,6 +11,18 @@
       bottom: 0;
       left: 50%;
       transform: translate(-50%, 50%);
+      overflow: hidden;
+      cursor: pointer;
+
+      input {
+        position: absolute;
+        left: -20px;
+        top: -30px;
+        width: 300px;
+        height: 100px;
+        opacity: 0;
+        cursor: pointer;
+      }
     }
   }
 
