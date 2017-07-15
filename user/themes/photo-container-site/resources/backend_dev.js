@@ -222,6 +222,12 @@ var Profile = (function () {
       .then(function (response) {
         var user = response.data
 
+        var imageUrl = user.profile_image !== ""
+          ? localStorage.image_cdn + user.profile_image
+          : localStorage.domain + '/user/themes/photo-container-site/_temp/signin-bg.png'
+
+        $('.profile-image-upload').css("background-image", "url("+imageUrl+")");
+
         $("#input-email").val(user.email)
         $("#input-name").val(user.name)
 
@@ -336,10 +342,58 @@ var Profile = (function () {
       });
   }
 
+  var updateProfileImageHandler = function () {
+    new Dropzone(".profile-image-upload", {
+      paramName: "profile_image",
+      previewTemplate: '<div class="dz-preview dz-file-preview"></div>',
+      uploadMultiple: false,
+      acceptedFiles: ".png, .jpg, .jpeg, .gif",
+      maxFilesize: 2,
+      url: localStorage.endpoint+'users/'+localStorage.getItem('user')+'/profileImage',
+      createImageThumbnails: false,
+      clickable: '.btn-upload',
+      previewsContainer: null,
+      dictFileTooBig: 'O arquivo é muito grande ({{filesize}}MiB). Máximo esperado: {{maxFilesize}}MiB.',
+      dictInvalidFileType: 'Você não pode enviar arquivos deste tipo.',
+      dictResponseError: 'Envio de arquivo negado.',
+      init: function() {
+        this.on("success", function(file, responseText) {
+          if (responseText.length === 0) {
+            return;
+          }
+
+          var imageUrl = localStorage.image_cdn + responseText.profile_image
+          $('.profile-image-upload')
+            .css("background-image", "url("+imageUrl+")")
+
+          console.log(responseText);
+          console.log(file);
+          console.info("success");
+        });
+        this.on("error", function(file, message) {
+          this.removeFile(file);
+
+          if (typeof message === 'object') {
+            Utils.show_modal_alert('default', '', message.message)
+            return
+          }
+
+          Utils.show_modal_alert('default', '', message)
+        });
+      },
+      method: "POST",
+      withCredentials: false,
+      headers: {
+        "Access-Control-Allow-Origin": '*',
+      }
+    });
+  }
+
   return {
     load: load,
     update: update,
-    updateAccessData: updateAccessData
+    updateAccessData: updateAccessData,
+    updateProfileImageHandler: updateProfileImageHandler
   };
 })();
 

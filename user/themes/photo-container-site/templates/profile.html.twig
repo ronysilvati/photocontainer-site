@@ -13,10 +13,8 @@
     }
     %}
 
-  <div class="profile-header" style="background-image: url({{url('theme://_temp/signin-bg.png')}})">
-    <span class="{{ functions.buttonClass(grav.user.profile) }} btn px-4 btn-upload text-uppercase">
-      <input type="file" accept="image/*">Upload foto
-    </span>
+  <div class="profile-header profile-image-upload">
+    <span class="{{ functions.buttonClass(grav.user.profile) }} btn px-4 btn-upload text-uppercase">Upload foto</span>
   </div>
 
   <form class="form-validate form-profile" method="post" id="frmProfile" action="#">
@@ -276,6 +274,8 @@ $( document ).ready(function(){
     e.preventDefault();
     Profile.updateAccessData(localStorage.endpoint);
   })
+
+  Profile.updateProfileImageHandler()
 })
 </script>
 
