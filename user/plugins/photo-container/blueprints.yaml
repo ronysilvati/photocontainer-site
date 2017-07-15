@@ -69,12 +69,11 @@ form:
               help: ID do input do username
         routes:
           type: tab
-          title: 'Rotas Desprotegidas'
+          title: 'Rotas Protegidas'
           fields:
-            unprotected_routes:
+            protected_routes:
               type: list
               style: vertical
-              label: Rotas desprotegidas
               fields:
                 .text:
                   type: text
