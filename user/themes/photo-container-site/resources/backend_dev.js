@@ -562,7 +562,7 @@ var Event = (function () {
     form.append("keyword", $("#keyword-search").val());
 
     $('input[name^="tags"]:checked').each(function (i, item){
-      var name = 'tags['+$(item).data().category+']'
+      var name = 'tags['+$(item).data().category+'][]'
       form.append(name, $(item).val())
     })
 
