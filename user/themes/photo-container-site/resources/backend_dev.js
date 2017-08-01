@@ -543,7 +543,7 @@ var Event = (function () {
 
           tagGroup.tags.forEach(function (tag) {
             list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
+              <input data-category="'+tagGroup.id+'" name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
             </label>'
           })
 
@@ -562,7 +562,8 @@ var Event = (function () {
     form.append("keyword", $("#keyword-search").val());
 
     $('input[name^="tags"]:checked').each(function (i, item){
-      form.append('tags[]', $(item).val())
+      var name = 'tags['+$(item).data().category+']'
+      form.append(name, $(item).val())
     })
 
     var page = $("#add-page").length == 0 ? '&page=1' : '&page='+$("#add-page").data().page

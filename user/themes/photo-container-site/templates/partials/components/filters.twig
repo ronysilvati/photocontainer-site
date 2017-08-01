@@ -32,7 +32,7 @@
       %}
       {% for color in colors %}
       <label style="background-color:{{ color[1] }}" class="btn btn-secondary btn-check btn-color" title="{{ color[0] }}">
-        <input name="tags[12][]" type="checkbox" autocomplete="off" value="{{color[2]}}"  {{ (validate == 1)? 'required' : ''  }}/>
+        <input data-category="12" name="tags[12][]" type="checkbox" autocomplete="off" value="{{color[2]}}"  {{ (validate == 1)? 'required' : ''  }}/>
       </label>
       {% endfor %}
 
