@@ -56,11 +56,11 @@ $( document ).ready(function(){
 
   {%  if event.authorized %}
   var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+  $(".download-btn").prop('href', link)
   {% else %}
   var link = localStorage.endpoint+'events/id/request/user/'+localStorage.user
+  $(".download-btn").addClass('no-auth')
   {%  endif %}
-
-  $(".download-btn").prop('href', link)
 
   $('input:checkbox').on('click', function () {
     var values = $('input:checked').map(function(i, v){
