@@ -889,26 +889,13 @@ var Event = (function () {
     $(".no-auth").on('click', function(e){
       e.preventDefault();
 
-      var settings = {
-        "async": true,
-        "method": "POST",
-        "headers": {
-          "content-type": "application/json",
-          "accept": "application/json",
-        },
-        "processData": false,
-        "url": $('a', this).prop('href')
-      }
-
-      $.ajax(settings)
-        .done(function (response) {
+      axios.post($('a', this).prop('href'))
+        .then(function (response) {
           Utils.show_modal_alert('default', '', 'Pedido enviado para o fotógrafo.')
         })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-          var object = JSON.parse(jqXHR.responseText)
-          Utils.show_modal_alert('default', '', object.message)
-        })
-
+        .catch(function (error) {
+          Utils.show_modal_alert('default', '', error.response.data.message)
+        });
     })
   }
 
