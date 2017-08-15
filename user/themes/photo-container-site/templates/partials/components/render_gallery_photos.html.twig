@@ -1,3 +1,6 @@
+<a href="#" class="download-btn">Baixar álbum completo.</a><br>
+<a href="#" style="display: none;" class="selected-btn">Baixar fotos selecionadas.</a><br>
+
 <h6 class="title text-muted text-uppercase mb-0">{{ event.category }}</h6>
 <h2 class="title text-uppercase mb-3">{{ event.title }}</span></h2>
 <h6 class="title text-muted text-uppercase mb-5">{{ event.photos|length }} fotos de {{ event.photographer }}</h6>
@@ -43,11 +46,30 @@ $( document ).ready(function(){
     event.stopPropagation();
   });
 
-    // $('.search-result-thumb').unbind( "click", handler );
   $('.thumb-gallery .view-image').click(function( event ) {
     $(this).closest(".thumb-item").click();
   });
 
+  var id = location.search.split("=")[1]
+  var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+  $(".download-btn").prop('href', link)
+
+  $('input:checkbox').on('click', function () {
+    var values = $('input:checked').map(function(i, v){
+      return $(v).val()
+    }).toArray().join(',')
+
+    if (values) {
+      var id = location.search.split("=")[1]
+      var link = localStorage.endpoint+"event/download/select/"+values+"/publisher/"+localStorage.user
+
+      $(".selected-btn").show();
+      $(".selected-btn").prop('href', link)
+    } else {
+      $(".selected-btn").hide();
+      $(".selected-btn").prop('href', '#')
+    }
+  })
 });
 
 </script>
