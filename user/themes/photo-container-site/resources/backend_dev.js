@@ -889,7 +889,9 @@ var Event = (function () {
     $(".no-auth").on('click', function(e){
       e.preventDefault();
 
-      axios.post($('a', this).prop('href'))
+      var url = $('a', this).prop('href') !== undefined ? $('a', this).prop('href') : $(this).prop('href')
+
+      axios.post(url)
         .then(function (response) {
           Utils.show_modal_alert('default', '', 'Pedido enviado para o fotógrafo.')
         })

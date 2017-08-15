@@ -1,6 +1,8 @@
-<a href="#" class="download-btn">Baixar álbum completo.</a><br>
 {%  if event.authorized %}
+<a href="{{ api_endpoint }}event/download/all/{{ event.id }}/publisher/{{ logged_user_id }}" class="download-btn">Baixar álbum completo.</a><br>
 <a href="#" style="display: none;" class="selected-btn">Baixar fotos selecionadas.</a><br>
+{% else %}
+<a href="{{ api_endpoint }}events/{{ event.id }}/request/user/{{ logged_user_id }}" class="download-btn no-auth">Baixar álbum completo.</a>
 {%  endif %}
 
 <h6 class="title text-muted text-uppercase mb-0">{{ event.category }}</h6>
@@ -51,16 +53,6 @@ $( document ).ready(function(){
   $('.thumb-gallery .view-image').click(function( event ) {
     $(this).closest(".thumb-item").click();
   });
-
-  var id = location.search.split("=")[1]
-
-  {%  if event.authorized %}
-  var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
-  $(".download-btn").prop('href', link)
-  {% else %}
-  var link = localStorage.endpoint+'events/id/request/user/'+localStorage.user
-  $(".download-btn").addClass('no-auth')
-  {%  endif %}
 
   $('input:checkbox').on('click', function () {
     var values = $('input:checked').map(function(i, v){
