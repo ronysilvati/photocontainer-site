@@ -430,7 +430,7 @@ var Event = (function () {
   var maxFilesLimit = 30;
 
   var createHandler = function (api, user) {
-    if (Event.id == undefined) {
+    if (Event.id === undefined) {
       $("#input-country").on('change', function (e) {
         Cep.loadStates(localStorage.endpoint)
       })
@@ -675,6 +675,49 @@ var Event = (function () {
     });
   }
 
+  var editEvent = function (api) {
+    var id = location.search.split("=")[1]
+
+    if (id === undefined) {
+      return true
+    }
+
+    Event.id = id
+
+    return axios.get(api + "events?id="+id)
+    .then(function (response) {
+      var data = response.data
+
+      Event.loadPhotos()
+      Cep.loadCountries(localStorage.endpoint)
+
+      axios.get(api+"search/categories")
+        .then(function (response) {
+          response.data.forEach(function(item) {
+            $("#select-categories").append(
+              '<option name="categories" value="'+item.id+'">'+item.description+'</option>'
+            )
+          });
+        })
+
+      $("#input-bride").val(data.bride)
+      $("#input-groom").val(data.groom)
+      $("#input-title").val(data.title)
+      $("#input-description").val(data.description)
+
+      $("#input-approval-general").attr('checked', data.approval);
+      $("#input-approval-bride").attr('checked', data.approval_bride);
+      $("#input-approval-photographer").attr('checked', data.approval_photographer);
+      $("#input-terms").attr('checked', data.terms);
+
+      $("#input-eventdate").val(data.eventdate)
+
+      $("#input-country").val(data.country)
+
+      $("#select-categories").val(data.categories[0])
+    });
+  }
+
   var loadEvent = function (api) {
     var id = location.search.split("=")[1]
     Event.id = id
@@ -916,17 +959,10 @@ var Event = (function () {
   }
 
   var loadPhotos = function() {
-      var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": localStorage.endpoint+"search/events/"+Event.id+"/photos",
-          "method": "GET"
-      }
-
-      $.ajax(settings)
-        .done(function (response) {
+      axios.get(localStorage.endpoint+"search/events/"+Event.id+"/photos")
+        .then(function (response) {
             $(".dz-image-preview").remove();
-            response.photos.forEach(function(photo) {
+            response.data.photos.forEach(function(photo) {
               Photo.addThumb(photo);
             });
             Photo.photoCoverHandler();
@@ -964,6 +1000,7 @@ var Event = (function () {
     requestDownload: requestDownload,
     loadPhotos: loadPhotos,
     updateFeedback: updateFeedback,
+    editEvent: editEvent,
     id: id,
     maxFilesLimit: maxFilesLimit
   };

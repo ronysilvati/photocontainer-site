@@ -1,0 +1,82 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{%
+include 'partials/components/navbar-top.twig' with {
+  'profile': grav.user.profile,
+  'active': 'gallery',
+  'class': 'bg-ph'
+}
+%}
+
+<div class="app page-gallery">
+{%
+include 'partials/components/page-header.twig' with {
+  'title': 'Álbum',
+  'show': ['title']
+}
+%}
+
+  <div class="container">
+    <div id="previews"></div>
+
+    <input id="input-bride" name="input-bride" type="text" class="form-control" required>
+    <input id="input-groom" name="input-groom" type="text" class="form-control" required>
+    <input id="input-title" name="input-title" type="text" class="form-control" required>
+    <input id="input-description" name="input-description" type="text" class="form-control" required>
+    <input id="input-eventdate" name="input-eventdate" type="text" class="form-control" required>
+
+    <select id="input-country" name="input-country" class="form-control" required>
+      <option selected="" value="" disabled="disabled">Selecione</option>
+    </select>
+
+    <select id="select-categories" name="select-categories" class="form-control" required>
+      <option selected="" value="" disabled="disabled">Selecione</option>
+    </select>
+
+    <h5 class="title mb-3 mt-5">Preferências *</h5>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input id="input-approval-general" name="input-approval" type="radio" class="form-check-input" required>
+        <span>Liberado para publicação</span>
+      </label>
+      <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria é liberada para todos os publishers baixarem as fotos imediatamente."><i class="icon-help-circled"></i></a>
+      <!-- <label class="error msg-error" for="input-approval-general" style="display: none;"></label> -->
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input id="input-approval-photographer" name="input-approval" type="radio" class="form-check-input" required>
+        <span>Necessita liberação do fotógrafo</span>
+      </label>
+      <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
+      <!-- <label class="error msg-error" for="input-approval" style="display: none;"></label> -->
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input id="input-approval-bride" name="input-approval" type="radio" class="form-check-input" required>
+        <span>Necessita liberação dos noivos</span>
+      </label>
+      <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo, com o consentimento dos noivos, para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
+      <label class="error msg-error" for="input-approval" style="display: none;"></label>
+    </div>
+
+    <div>
+      <label>
+        <span><a target="_blank" href="/DireitosAutorais.pdf" class="link">Declaração de Direitos Autorais e Uso de Imagem</a></span>
+      </label>
+    </div>
+
+  </div>
+
+{% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
+</div>
+
+<script>
+  $( document ).ready(function() {
+    Event.editEvent(localStorage.endpoint)
+
+    Event.createHandler(localStorage.endpoint, localStorage.user);
+  })
+</script>
+{% endblock %}
