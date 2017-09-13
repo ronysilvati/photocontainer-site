@@ -98,11 +98,14 @@ var Utils = (function(){
 })();
 
 var Signup = (function () {
+  var payment = false
 
   var autologin = function() {
     var form = new FormData();
     form.append("input_email", $("#input_email").val());
     form.append("input_password", $("#input_password").val());
+
+    sessionStorage.setItem('first_time', true);
 
     var settings = {
       "async": true,
@@ -135,36 +138,42 @@ var Signup = (function () {
       profile: "2"
     }
 
-    PagSeguroLightbox({
-        code: '6A6DA626BDBD990CC4811FA55E8005DE'
-    }, {
-      success : function(transactionCode) {
-        var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": localStorage.endpoint+"users",
-          "method": "POST",
-          "headers": {
-              "content-type": "application/json",
-              "accept": "application/json",
-          },
-          "processData": false,
-          "data": JSON.stringify(data)
-        }
-
-        $.ajax(settings)
-          .done(function (response) {
-              autologin()
-          })
-          .fail(function (response) {
-              var object = JSON.parse(response.responseText)
-              Utils.show_modal_alert('danger', '', "Erro: "+object.message)
-          });
-      },
-      abort : function() {
-          alert("abort");
+    var fnAfterPayment = function(transactionCode) {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": localStorage.endpoint+"users",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": JSON.stringify(data)
       }
-    })
+
+      $.ajax(settings)
+        .done(function (response) {
+          autologin()
+        })
+        .fail(function (response) {
+          var object = JSON.parse(response.responseText)
+          Utils.show_modal_alert('danger', '', "Erro: "+object.message)
+        });
+    }
+
+    if (payment) {
+      PagSeguroLightbox({
+        code: '6A6DA626BDBD990CC4811FA55E8005DE'
+      }, {
+        success : fnAfterPayment,
+        abort : function() {
+          alert("abort");
+        }
+      })
+    } else {
+      fnAfterPayment();
+    }
   }
 
   var publisher = function(api) {
@@ -176,37 +185,42 @@ var Signup = (function () {
       profile: "3"
     }
 
-    PagSeguroLightbox({
-        code: '02BC69054F4F380BB4E6BF8760FF83EF'
-    }, {
-      success : function(transactionCode) {
-        var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": localStorage.endpoint+"users",
-          "method": "POST",
-          "headers": {
-              "content-type": "application/json",
-              "accept": "application/json",
-          },
-          "processData": false,
-          "data": JSON.stringify(data)
-        }
-
-        $.ajax(settings)
-          .done(function (response) {
-            autologin()
-          })
-          .fail(function (response) {
-            var object = JSON.parse(response.responseText)
-            Utils.show_modal_alert('danger', '', "Erro: "+object.message)
-          });
-      },
-      abort : function() {
-          Utils.show_modal_alert('danger', '', "Ocorreu um erro no processo de pagamento.")
+    var fnAfterPayment = function(transactionCode) {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": localStorage.endpoint+"users",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        "processData": false,
+        "data": JSON.stringify(data)
       }
-    })
 
+      $.ajax(settings)
+        .done(function (response) {
+          autologin()
+        })
+        .fail(function (response) {
+          var object = JSON.parse(response.responseText)
+          Utils.show_modal_alert('danger', '', "Erro: "+object.message)
+        });
+    }
+
+    if (payment) {
+      PagSeguroLightbox({
+        code: '6A6DA626BDBD990CC4811FA55E8005DE'
+      }, {
+        success : fnAfterPayment,
+        abort : function() {
+          alert("abort");
+        }
+      })
+    } else {
+      fnAfterPayment();
+    }
   }
 
     return {
@@ -1235,8 +1249,8 @@ var PasswordRecovery = (function() {
   }
 
   return {
-    requestRecover: requestRecover,
-    updatePassword: updatePassword
+    updatePassword: updatePassword,
+    requestRecover: requestRecover
   };
 })();
 
