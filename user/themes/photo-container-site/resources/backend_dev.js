@@ -528,7 +528,6 @@ var Event = (function () {
             Utils.show_modal_alert('default', '', object.message)
           })
       }
-
     })
   }
 
@@ -735,54 +734,43 @@ var Event = (function () {
       "contentType": false,
     }
 
-    return $.ajax(settings).done(function (response) {
-      $("#input-bride").val(response.bride)
-      $("#input-groom").val(response.groom)
-      $("#input-title").val(response.title)
-      $("#input-description").val(response.description)
+    return axios.get(api + "events?id="+id)
+    .then(function (response) {
+      var data = response.data
 
-      $("#input-approval-general").attr('checked', response.approval);
-      $("#input-approval-bride").attr('checked', response.approval_bride);
-      $("#input-approval-photographer").attr('checked', response.approval_photographer);
-      $("#input-terms").attr('checked', response.terms);
+      $("#input-bride").val(data.bride)
+      $("#input-groom").val(data.groom)
+      $("#input-title").val(data.title)
+      $("#input-description").val(data.description)
 
-      var date = response.eventdate.split(" ")[0].split("-")
+      $("#input-approval-general").attr('checked', data.approval);
+      $("#input-approval-bride").attr('checked', data.approval_bride);
+      $("#input-approval-photographer").attr('checked', data.approval_photographer);
+      $("#input-terms").attr('checked', data.terms);
+
+      var date = data.eventdate.split(" ")[0].split("-")
       $("#select-day").val(parseInt(date[2])).change();
       $("#select-month").val(date[1]).change();
       $("#select-year").val(date[0]).change();
 
-      response.tags.forEach(function(key, item) {
+      data.tags.forEach(function(key, item) {
         var checkbox = $("[name^='tags']").filter("[value="+key+"]")
         $(checkbox).click()
         $(checkbox).prop("checked", true)
       });
 
-      var suppliers = JSON.parse(response.suppliers)
-      if (suppliers != null) {
-        for (field in suppliers.supplier) {
-          if (suppliers.supplier[field].length > 0) {
-            for (var i = 0; i < suppliers.supplier[field].length; i++) {
-              if (i > 0) {
-                $(".btn-add-field-"+field).click()
-              }
+      Event.loadSuppliers(JSON.parse(data.suppliers))
 
-              var input = $("[name^='supplier["+field+"]']").filter(":eq("+i+")")
-              $(input).val(suppliers.supplier[field][i])
-            }
-          }
-        }
-      }
-
-      $("#input-country").val(response.country).change()
+      $("#input-country").val(data.country).change()
       $.when(Cep.loadStates(api)).then(function(){
-        if (response.state == null) {
+        if (data.state === null) {
           return
         }
 
-        $("#input-state").val(response.state).change()
+        $("#input-state").val(data.state).change()
         return Cep.loadCities(api)
       }).then(function(){
-        $("#input-city").val(response.city).change()
+        $("#input-city").val(data.city).change()
 
         $("#input-country").on('change', function (e) {
           Cep.loadStates(localStorage.endpoint)
@@ -793,7 +781,7 @@ var Event = (function () {
         })
       })
 
-      response.categories.forEach(function(key, item) {
+      data.categories.forEach(function(key, item) {
         $("[name^='categories']").filter(":radio[value="+key+"]").attr("checked", true)
         $("[name^='categories']").filter(":radio[value="+key+"]").click()
       });
@@ -984,6 +972,53 @@ var Event = (function () {
     $('.dropzone-feedback').html("Você já enviou "+total+" foto de "+Event.maxFilesLimit+" permitida.");
   }
 
+  var createSupplier = function () {
+    $(".supplier-add").click(function () {
+      var type = $(this).data('type')
+
+      var total = $(".suppliers-fields-fotos .form-control-fields").length
+
+      var template =
+        '<div class="form-control-fields">\n' +
+        '  <div id="campo-'+type+'"  class="form-control-close">\n' +
+        '    <input name="supplier['+type+']['+total+'][name]" type="text" class="form-control" placeholder="Nome">\n' +
+        '    <input name="supplier['+type+']['+total+'][url]"  type="text" class="form-control" placeholder="URL">\n' +
+        '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
+        '      <span aria-hidden="true">×</span>\n' +
+        '    </button>\n' +
+        '  </div>\n' +
+        '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
+        '</div>'
+
+      $('.suppliers-fields-'+type+' > div').append(template)
+    })
+  }
+
+  var loadSuppliers = function (data) {
+    var suppliers = data.supplier
+
+    for (type in suppliers) {
+      var i = 0
+      for (prop in suppliers[type]) {
+        var template =
+          '<div class="form-control-fields">\n' +
+          '  <div id="campo-'+type+'"  class="form-control-close">\n' +
+          '    <input name="supplier['+type+']['+i+'][name]" value="'+suppliers[type][prop].name+'" type="text" class="form-control" placeholder="Nome">\n' +
+          '    <input name="supplier['+type+']['+i+'][url]" value="'+suppliers[type][prop].url+'" type="text" class="form-control" placeholder="URL">\n' +
+          '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
+          '      <span aria-hidden="true">×</span>\n' +
+          '    </button>\n' +
+          '  </div>\n' +
+          '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
+          '</div>'
+
+        $('.suppliers-fields-'+type+' > div').append(template)
+
+        i++
+      }
+    }
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -1001,6 +1036,8 @@ var Event = (function () {
     loadPhotos: loadPhotos,
     updateFeedback: updateFeedback,
     editEvent: editEvent,
+    createSupplier: createSupplier,
+    loadSuppliers: loadSuppliers,
     id: id,
     maxFilesLimit: maxFilesLimit
   };
