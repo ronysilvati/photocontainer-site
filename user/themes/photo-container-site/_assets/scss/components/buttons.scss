@@ -30,6 +30,11 @@
     font-weight: 400;
   }
 // STYLES
+  &.btn-green {
+    background-color: #67BB4F;
+    border-color: transparent;
+    color: $white!important;
+  }
   &.btn-primary {
     background-color: $gray;
     border-color: $gray;

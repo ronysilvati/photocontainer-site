@@ -91,5 +91,21 @@
       &:before {bottom: 0;}
       &:after {bottom: 4px}
     }
+
+    .btn-help {
+      background: rgba(255, 255, 255, 0.5);
+      color: #54b6e0;
+      margin: 22px 0 0 30px;
+      width: 24px;
+      height: 24px;
+      line-height: 20px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.75);
+      }
+    }
   }
+}
+.bg-pu .navbar-top .nav-item .btn-help {
+  color: #e1c09d;
 }

@@ -312,7 +312,7 @@ var Profile = (function () {
         Utils.show_modal_alert('default', '', error.response.data.message)
       });
   }
-  
+
   var update = function(api) {
     data = {
       name: $("#input-name").val(),
@@ -548,25 +548,31 @@ var Event = (function () {
         if (tagGroup.id != 12) {
           var name = 'tags['+tagGroup.id+'][]'
           var list = '\
-          <div class="col-md-3">\
-            <h6 class="title mt-3 text-center text-uppercase"><small>' + tagGroup.description + '</small></h6>\
-            <hr class="mt-0">\
-            <div data-toggle="buttons">';
+            <h5 class="title">' + tagGroup.description + '</h5>\
+            <select class="select2-filter" name="state" multiple="multiple" style="width: 100%">';
             list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
-            list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-              <input data-category="'+tagGroup.id+'" name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
-            </label>'
+            list += '<option value="">' + tag.description + '</option>'
           })
+          // tagGroup.tags.forEach(function (tag) {
+          //   list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
+          //     <input data-category="'+tagGroup.id+'" name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
+          //   </label>'
+          // })
 
           list += '\
-            </div>\
-          </div>';
+            </select>';
 
           $("#tag-list").append(list);
         }
       });
+
+      // !!LUIZ
+      $('.select2-filter').select2({
+         //placeholder: "---"
+      });
+
     })
   }
 
@@ -1159,8 +1165,8 @@ var Photo = (function() {
   var addThumb = function(photo) {
       var cover = photo.cover === 0 ? '' : 'active';
       var photoHtml = '\
-        <div id="'+photo.filename.substr(0,36)+'" class="col-lg-3 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
-          <div class="card thumb-gallery ratio-1by1 thumb-">\
+        <div id="'+photo.filename.substr(0,36)+'" class="col-lg-6 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
+          <div class="card thumb-gallery ratio-16by9 thumb-">\
             <img alt="'+photo.filename+'" data-dz-thumbnail="" src="'+localStorage.image_cdn+photo.thumb+'">\
             <div class="card-text">\
               <div class="card-text-inner">\

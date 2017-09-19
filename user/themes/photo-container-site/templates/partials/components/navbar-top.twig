@@ -39,10 +39,15 @@
         {% endif %}
 
         <li class="nav-item {{ active == "profile" ? 'active' : '' }} ">
-          <a class="nav-link" href="/profile"><i class="icon-user"></i> Perfil</a>
+          <a class="bg-{{grav.user.sigla}} gallery-intro-step-2 nav-link" href="/profile"><i class="icon-user"></i> Perfil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link photocontainer-logout" href="/logout"><i class="icon-logout"></i> Sair</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-help btn-sm btn-circle" href="javascript:void(0);" onclick="startIntro();">
+            <i class="icon-help"></i>
+          </a>
         </li>
       </ul>
     </div>

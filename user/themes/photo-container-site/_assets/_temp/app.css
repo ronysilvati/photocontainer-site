@@ -8628,6 +8628,11 @@ a, button {
   padding: 12px 18px;
   font-weight: 400;
 }
+.btn.btn-green {
+  background-color: #67BB4F;
+  border-color: transparent;
+  color: #fff !important;
+}
 .btn.btn-primary {
   background-color: #656565;
   border-color: #656565;
@@ -8803,22 +8808,61 @@ a, button {
   }
 }
 
+.form-filters-sidebar {
+  background: #FBFBFB;
+  border: 1px solid #DEDEDE;
+  border-radius: 4px;
+  padding: 16px;
+}
+.form-filters-sidebar .form-colors {
+  margin-top: 16px;
+}
+.form-filters-sidebar .form-colors .btn-color {
+  background-color: #FFF;
+  width: 8%;
+  height: 16px;
+  margin-right: 2%;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-filters-sidebar .form-colors .btn-color:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  height: 13px;
+  width: 13px;
+  font-size: 10px;
+  line-height: 13px;
+}
+.form-filters-sidebar h5.title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.form-filters-sidebar .selects-list .select2 {
+  margin-bottom: 16px;
+}
+
 .form-group {
   margin-bottom: 4px;
 }
 .form-group label {
   color: #bebebe;
-  margin: 0 0 -6px 0;
-  text-transform: uppercase;
+  margin: 10px 0 2px;
   font-size: 14px;
   display: block;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.form-control, .form-control:focus {
-  background-color: transparent;
-  border-width: 0 0 1px 0;
-  border-radius: 0;
-  padding: 8px 0;
+.form-control,
+.form-control:focus,
+.select2 .selection .select2-selection {
+  background-color: #F8F8F8;
+  border: 1px solid #DEDEDE;
+  border-radius: 4px;
+  padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -8999,6 +9043,28 @@ label.error.msg-error {
   color: red;
   margin-bottom: 14px;
   text-transform: uppercase;
+}
+
+.select2 .selection .select2-selection {
+  min-height: 38px;
+}
+.select2 .selection .select2-selection__rendered {
+  line-height: 20px !important;
+  padding: 0 !important;
+}
+.select2 .selection .select2-selection__arrow {
+  height: 36px !important;
+  display: flex;
+  align-items: center;
+}
+.select2 .selection .select2-selection__arrow b {
+  display: none;
+}
+.select2 .selection .select2-selection__arrow:before {
+  content: '\e813';
+  font-family: 'fontello';
+  font-size: 11px;
+  color: #B7B7B7;
 }
 
 .row {
@@ -9243,6 +9309,21 @@ label.error.msg-error {
 }
 .navbar-top .nav-item .nav-link:hover:after, .navbar-top .nav-item.active .nav-link:after {
   bottom: 4px;
+}
+.navbar-top .nav-item .btn-help {
+  background: rgba(255, 255, 255, 0.5);
+  color: #54b6e0;
+  margin: 22px 0 0 30px;
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+}
+.navbar-top .nav-item .btn-help:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.bg-pu .navbar-top .nav-item .btn-help {
+  color: #e1c09d;
 }
 
 .page-header {
@@ -9882,6 +9963,10 @@ label.error.msg-error {
 .upload-area .upload-area-inner > i:before {
   margin: 0px 0 20px;
   font-size: 110px;
+}
+
+.page-album .progressbar div[style*="width: 100%"] {
+  display: none;
 }
 
 .app.page-add-gallery-success {

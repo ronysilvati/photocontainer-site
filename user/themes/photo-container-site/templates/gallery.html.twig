@@ -18,21 +18,30 @@
     }
   %}
 
-  <div class="container">
-    {{ include('partials/components/filters-list.twig') }}
 
-    <div id="gallery" class="row row-sm">
-      {% if grav.user.profile == 2 %}
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 add-gallery-click">
-        <a href="{{ base_url_absolute  }}/gallery/add" class="card thumb-gallery ratio-1by1 thumb-add">
-          <span class="card-text-add">
-            <i class="icon-plus"></i>
-            <p class="text-uppercase">Novo álbum</p>
-          </span>
-        </a>
+  <div class="container">
+
+    <div class="row row-sm">
+      <div class="col-md-3">
+        {{ include('partials/components/filters-sidebar.twig') }}
       </div>
-      {% endif %}
+      <div class="col-md-9">
+        {{ include('partials/components/filters-list.twig') }}
+        <div id="gallery" class="row row-sm">
+          {% if grav.user.profile == 2 %}
+          <div class="col-lg-4 col-md-4 col-sm-6 col-12 add-gallery-click">
+            <a href="{{ base_url_absolute  }}/gallery/add" class="gallery-intro-step-1 card thumb-gallery ratio-1by1 thumb-add">
+              <span class="card-text-add">
+                <i class="icon-plus"></i>
+                <p class="text-uppercase">Novo álbum</p>
+              </span>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
+
   </div>
 
    <a id="add-page" style="display:none;" data-page="1" href="#">Próxima página</a>
@@ -72,7 +81,41 @@ $( document ).ready(function() {
     $(this).data().page += 1
 
     Event.search(localStorage.domain)
+
+
   })
 });
+function startIntro(){
+  var intro = introJs();
+  intro.setOptions({
+    nextLabel: "Próximo",
+    prevLabel: "Anterior",
+    skipLabel: "Pular",
+    doneLabel: "Finalizar",
+    steps: [
+      {
+        intro: "Olá, seja bem-vindo ao FotoContainer… alguns detalhes importantes sobre a plataforma para seu melhor uso!"
+      },
+      {
+        intro: "Esta é a sua galeria e é nesta página que você poderá criar os seus albums de fotos."
+      },
+      {
+        element: document.querySelector('.gallery-intro-step-1'),
+        intro: "Clique aqui para criar um novo album e lembre de colocar todos os detalhes deste novo evento. Blogueiras amam publicar trabalhos que mostram todos os detalhes."
+      },
+      {
+        element: document.querySelector('.gallery-intro-step-2'),
+        intro: "Clique aqui para completar o seu perfil.",
+        position: "bottom"
+      },
+      {
+        intro: "Prontinho... você está pronto para utilizar o FotoContainer e se tiver mais alguma dúvida mande uma mensagem para equipe@fotocontainer.com.br."
+      },
+
+    ]
+  });
+
+  intro.start();
+}
 </script>
 {% endblock %}

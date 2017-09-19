@@ -17,6 +17,7 @@
 .icon-pin-outline:before { content: '\e80f'; } /* '' */
 .icon-pin:before { content: '\e810'; } /* '' */
 .icon-check:before { content: '\e812'; } /* '' */
+.icon-select-arrow:before { content: '\e813'; } /* '' */
 .icon-plus:before { content: '\e816'; } /* '' */
 .icon-help:before { content: '\e81b'; } /* '' */
 .icon-cancel-1:before { content: '\e81f'; } /* '' */

@@ -14,6 +14,9 @@
         {% do assets.addCss('theme://resources/lightGallery-master/dist/css/lightgallery.min.css', 97) %}
         {% do assets.addCss('theme://resources/lightslider-master/dist/css/lightslider.min.css', 97) %}
         {% do assets.addCss('theme://resources/app.min.css', 96) %}
+        {% do assets.addCss('theme://resources/intro.js-2.7.0/introjs.css', 96) %}
+        {% do assets.addCss('theme://resources/select2-4.0.3/dist/css/select2.min.css', 96) %}
+        {% do assets.addCss('theme://resources/datepicker-master/dist/datepicker.min.css', 96) %}
     {% endblock %}
     {{ assets.css() }}
 
@@ -27,6 +30,9 @@
         {% do assets.addJs('theme://resources/backend_dev.js', 96) %}
         {% do assets.addJs('theme://resources/dropzone.js', 95) %}
         {% do assets.addJs('theme://resources/dropzone.js', 95) %}
+        {% do assets.addJs('theme://resources/intro.js-2.7.0/intro.js', 95) %}
+        {% do assets.addJs('theme://resources/select2-4.0.3/dist/js/select2.min.js', 95) %}
+        {% do assets.addJs('theme://resources/datepicker-master/dist/datepicker.min.js', 95) %}
     {% endblock %}
     {{ assets.js() }}
 {% endblock head%}

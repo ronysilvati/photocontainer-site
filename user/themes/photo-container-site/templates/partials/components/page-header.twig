@@ -33,6 +33,10 @@
         </ul>
         {% endif %}
 
+        {% if 'add-image' in show %}
+        <button type="button" class="btn btn-green ml-auto" name="button">Adicionar foto</button>
+        {% endif %}
+
         {% if 'nav-add-gallery' in show %}
         <ul class="nav nav-tabs nav-steps ml-auto {{class_nav_steps}}">
           <li class="nav-item">

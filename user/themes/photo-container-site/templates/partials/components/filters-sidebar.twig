@@ -1,0 +1,48 @@
+<div class="form-filters form-filters-sidebar">
+  <h5 class="title">Selecione as cores <small class="text-muted">(Até 3)</small></h5>
+  <div class="form-colors">
+    <div data-toggle="buttons">
+      {%
+      set colors = [
+        ['Branco',             '#FFFFFF', 60],
+        ['Pele',               '#FAF1E4', 63],
+        ['Milão',              '#FFFFA3', 64],
+        ['Ouro',               '#FFD200', 65],
+        ['Laranja',            '#FFA400', 66],
+        ['Pera',               '#ED742E', 67],
+        ['Escarlate',          '#FF1A00', 68],
+        ['Roxo',               '#FF00D2', 69],
+        ['Rosa',               '#F9C0EB', 70],
+        ['Azul Hawkes',        '#CAC9FC', 71],
+        ['Violeta',            '#6E1BDF', 72],
+        ['Azul Bahama',        '#08679E', 73],
+        ['Azul Dodger',        '#3BA2FF', 74],
+        ['Azul Vela',          '#B9E2FB', 75],
+        ['Turquesa ',          '#33D4D6', 76],
+        ['Verde hortelã',      '#BAF9C6', 77],
+        ['Arlequim',           '#39D200', 78],
+        ['Verde musgo',        '#029239', 79],
+        ['Castanho',           '#7F5843', 80],
+        ['Prata',              '#A3A3A3', 81],
+        ['Preto',              '#000000', 61],
+        ['Grama dourada',      '#E49F2D', 82],
+        ['Linho',              '#EDCC83', 83],
+        ['Cinza',              '#D5D3D3', 62]
+      ]
+      %}
+      {% for color in colors %}
+      <label style="background-color:{{ color[1] }}" class="btn btn-secondary btn-check btn-color" title="{{ color[0] }}">
+        <input data-category="12" name="tags[12][]" type="checkbox" autocomplete="off" value="{{color[2]}}"  {{ (validate == 1)? 'required' : ''  }}/>
+      </label>
+      {% endfor %}
+
+    </div>
+
+  </div>
+  <hr>
+
+  {% if validate == 1 %}
+  <label id="tags[12][]-error" class="error" for="tags[12][]"></label>
+  {% endif %}
+  <div class="selects-list" id="tag-list"></div>
+</div>
