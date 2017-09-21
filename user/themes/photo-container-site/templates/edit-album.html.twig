@@ -103,10 +103,17 @@ include 'partials/components/page-header.twig' with {
       </label>
       <label class="error msg-error" for="input-terms" style="display: none;"></label>
     </div>
-    <button type="button" class="btn btn-green btn-lg mt-2" name="button">Enviar para publishers</button>
+    <button data-toggle="modal" data-target=".modal-album" type="button" class="btn btn-green btn-lg mt-2" name="button">
+      Enviar para publishers
+    </button>
+    <button data-toggle="modal" data-target=".modal-publish" type="button" class="btn btn-green btn-lg mt-2" name="button">
+      Escolher para publicação
+    </button>
 
   </div>
 
+{% include 'partials/components/modal-album.twig' %}
+{% include 'partials/components/modal-publish.twig' %}
 {% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
 </div>
 

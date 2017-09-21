@@ -2,4 +2,59 @@
   .modal-full {
       max-width: calc(100% - 60px);
   }
+  .modal-md {
+    @media (min-width: 576px) {
+      max-width: 600px;
+      margin: 30px auto;
+    }
+  }
+  &.modal-alt {
+    .modal-dialog {
+      .modal-content {
+        background-color: #EEFAFF;
+        border: 0;
+
+        .modal-close {
+          padding: 0;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          text-align: center;
+          font-size: 19px;
+          font-weight: 200;
+          background: #A3C3DD;
+          text-shadow: none;
+          color: white;
+          border-radius: 50%;
+          right: 8px;
+          position: absolute;
+          top: 8px;
+        }
+
+        .modal-body {
+          text-align: center;
+          padding: 70px;
+
+          h2 {
+            color: #155BA3;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.2em;
+          }
+          h5 {
+            color: #587894;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.2em;
+          }
+          p {
+            color: #587894;
+            font-weight: 400;
+            line-height: 1.2em;
+          }
+        }
+      }
+    }
+
+  }
 }
