@@ -14,61 +14,35 @@
   {%
     include 'partials/components/page-header.twig' with {
       'title': 'Galeria',
-      'show': ['title','form-search', 'nav-gallery']
+      'show': ['title','add-gallery'],
+      'profile': grav.user.profile
     }
   %}
 
-
   <div class="container">
-
     <div class="row row-sm">
+      {% if grav.user.profile == 3 %}
       <div class="col-md-3">
-        {{ include('partials/components/filters-sidebar.twig') }}
+      {{ include('partials/components/filters-sidebar.twig') }}
       </div>
+      {% endif %}
       <div class="col-md-9">
         {{ include('partials/components/filters-list.twig') }}
         <div id="gallery" class="row row-sm">
-          {% if grav.user.profile == 2 %}
-          <div class="col-lg-4 col-md-4 col-sm-6 col-12 add-gallery-click">
-            <a href="{{ base_url_absolute  }}/gallery/add" class="gallery-intro-step-1 card thumb-gallery ratio-1by1 thumb-add">
-              <span class="card-text-add">
-                <i class="icon-plus"></i>
-                <p class="text-uppercase">Novo álbum</p>
-              </span>
-            </a>
-          </div>
-          {% endif %}
         </div>
       </div>
     </div>
-
   </div>
 
-   <a id="add-page" style="display:none;" data-page="1" href="#">Próxima página</a>
+  <a id="add-page" style="display:none;" data-page="1" href="#">Próxima página</a>
 
-  {{ include('partials/components/modal-filters.twig') }}
   {% include 'partials/components/footer.twig' %}
 </div>
 <script>
 $( document ).ready(function() {
   Event.loadTags(localStorage.endpoint, 'checkbox')
 
-  if (location.pathname.split('/').length == 2 && location.pathname.split('/')[1] == "gallery") {
-    Event.search(localStorage.domain);
-
-    $(".form-search").submit(function (e) {
-      e.preventDefault();
-
-      $(".search-result-thumb").remove()
-      $("#add-page").data().page = 1
-
-      Event.search(localStorage.domain)
-    })
-
-    $('#modal-filters-ok').click(function() {
-      Event.search(localStorage.domain);
-    });
-  }
+  Event.search(localStorage.domain);
 
   $('#gallery').lightGallery({
       subHtmlSelectorRelative: true
@@ -81,9 +55,8 @@ $( document ).ready(function() {
     $(this).data().page += 1
 
     Event.search(localStorage.domain)
-
-
   })
+
 });
 function startIntro(){
   var intro = introJs();

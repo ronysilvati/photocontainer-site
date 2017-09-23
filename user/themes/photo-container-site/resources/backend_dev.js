@@ -549,17 +549,12 @@ var Event = (function () {
           var name = 'tags['+tagGroup.id+'][]'
           var list = '\
             <h5 class="title">' + tagGroup.description + '</h5>\
-            <select class="select2-filter" name="state" multiple="multiple" style="width: 100%">';
+            <select data-category="'+tagGroup.id+'" class="select2-filter" name="state" multiple="multiple" style="width: 100%">';
             list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
-            list += '<option value="">' + tag.description + '</option>'
+            list += '<option value="'+tag.id+'">' + tag.description + '</option>'
           })
-          // tagGroup.tags.forEach(function (tag) {
-          //   list += '<label class="btn btn-secondary btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-check btn-block">\
-          //     <input data-category="'+tagGroup.id+'" name="'+name+'" type="'+type+'" autocomplete="off" value="' + tag.id + '" required>' + tag.description + '\
-          //   </label>'
-          // })
 
           list += '\
             </select>';
@@ -573,14 +568,17 @@ var Event = (function () {
          //placeholder: "---"
       });
 
+      $('.select2-filter, input[name^="tags"]').on('change', function () {
+        Event.search(localStorage.domain);
+      })
     })
   }
 
   var search = function(api) {
     var form = new FormData();
-    form.append("keyword", $("#keyword-search").val());
+    form.append("keyword", '');
 
-    $('input[name^="tags"]:checked').each(function (i, item){
+    $('.select2-filter :selected, input[name^="tags"]:checked').each(function (i, item){
       var name = 'tags['+$(item).data().category+'][]'
       form.append(name, $(item).val())
     })
@@ -680,7 +678,7 @@ var Event = (function () {
     });
   }
 
-  var editEvent = function (api) {
+  var viewEvent = function (api) {
     var id = location.search.split("=")[1]
 
     if (id === undefined) {
@@ -715,7 +713,8 @@ var Event = (function () {
       $("#input-approval-photographer").attr('checked', data.approval_photographer);
       $("#input-terms").attr('checked', data.terms);
 
-      $("#input-eventdate").val(data.eventdate)
+      var date = data.eventdate.split(' ')[0].split('-')
+      $("#input-eventdate").val(date.reverse().join('/'))
 
       $("#input-country").val(data.country)
 
@@ -1025,6 +1024,35 @@ var Event = (function () {
     }
   }
 
+  var editHandler = function (api, user) {
+    data = {
+      user_id: localStorage.user,
+      bride: $("#input-bride").val(),
+      groom: $("#input-groom").val(),
+      eventDate: $("#input-eventdate").val().split('/').reverse().join('-'),
+      title: $("#input-title").val(),
+      description: $("#input-description").val(),
+      approval_general: $("#input-approval-general").is(":checked"),
+      approval_photographer: $("#input-approval-photographer").is(":checked"),
+      approval_bride: $("#input-approval-bride").is(":checked"),
+      categories: [$("#select-categories").val()],
+      terms: 1,
+      country: $("#input-country").val()
+    }
+
+    axios.put(localStorage.getItem('endpoint')+"events/"+Event.id, data)
+      .then(function (response) {
+        if (response.id != undefined) {
+          Event.id = response.id
+          $("#event_id").val(Event.id);
+        }
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        var object = JSON.parse(jqXHR.responseText)
+        Utils.show_modal_alert('default', '', object.message)
+      })
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -1041,9 +1069,10 @@ var Event = (function () {
     requestDownload: requestDownload,
     loadPhotos: loadPhotos,
     updateFeedback: updateFeedback,
-    editEvent: editEvent,
+    viewEvent: viewEvent,
     createSupplier: createSupplier,
     loadSuppliers: loadSuppliers,
+    editHandler: editHandler,
     id: id,
     maxFilesLimit: maxFilesLimit
   };
