@@ -33,7 +33,11 @@
         </ul>
         {% endif %}
 
-        {% if 'add-image' in show %}
+        {% if 'add-gallery' in show %}
+          <a href="{{ base_url_absolute  }}/gallery/add" class="btn btn-ph btn-sm btn-outline-primary text-uppercase">Adicionar galeria</a>
+        {% endif %}
+
+        {% if 'add-image' in show and profile == 3 %}
         <button type="button" class="btn btn-green ml-auto" name="button">Adicionar foto</button>
         {% endif %}
 

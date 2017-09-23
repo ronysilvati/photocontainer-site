@@ -109,6 +109,9 @@ include 'partials/components/page-header.twig' with {
     <button data-toggle="modal" data-target=".modal-publish" type="button" class="btn btn-green btn-lg mt-2" name="button">
       Escolher para publicação
     </button>
+    <a type="button" class="btn btn-green btn-lg mt-2 edit-album">
+      Salvar
+    </a>
 
   </div>
 
@@ -119,12 +122,19 @@ include 'partials/components/page-header.twig' with {
 
 <script>
   $( document ).ready(function() {
-    Event.editEvent(localStorage.endpoint)
+    Event.id = location.search.split("=")[1]
 
-    Event.createHandler(localStorage.endpoint, localStorage.user);
+    Event.viewEvent(localStorage.endpoint)
 
     $('.select2-edit').select2();
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+      format: 'dd-mm-yyyy'
+    });
+
+
+    $('.edit-album').on('click', function () {
+      Event.editHandler(localStorage.endpoint, localStorage.user);
+    })
   })
 </script>
 {% endblock %}
