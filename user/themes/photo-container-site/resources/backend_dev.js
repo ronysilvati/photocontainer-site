@@ -716,9 +716,8 @@ var Event = (function () {
       var date = data.eventdate.split(' ')[0].split('-')
       $("#input-eventdate").val(date.reverse().join('/'))
 
-      $("#input-country").val(data.country)
-
-      $("#select-categories").val(data.categories[0])
+      $("#input-country").val(data.country).select2()
+      $("#select-categories").val(data.categories[0]).select2()
     });
   }
 
@@ -1047,10 +1046,14 @@ var Event = (function () {
           $("#event_id").val(Event.id);
         }
       })
-      .fail(function (jqXHR, textStatus, errorThrown) {
-        var object = JSON.parse(jqXHR.responseText)
-        Utils.show_modal_alert('default', '', object.message)
+      .catch(function (response) {
+        Utils.show_modal_alert('default', '', response.message)
       })
+  }
+
+  var broadcastPublishers = function(api) {
+    var id = location.search.split("=")[1]
+    axios.post(api+"events/"+id+"/broadcastPublishers")
   }
 
   return {
@@ -1073,6 +1076,7 @@ var Event = (function () {
     createSupplier: createSupplier,
     loadSuppliers: loadSuppliers,
     editHandler: editHandler,
+    broadcastPublishers: broadcastPublishers,
     id: id,
     maxFilesLimit: maxFilesLimit
   };

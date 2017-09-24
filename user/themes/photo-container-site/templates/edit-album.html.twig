@@ -103,7 +103,7 @@ include 'partials/components/page-header.twig' with {
       </label>
       <label class="error msg-error" for="input-terms" style="display: none;"></label>
     </div>
-    <button data-toggle="modal" data-target=".modal-album" type="button" class="btn btn-green btn-lg mt-2" name="button">
+    <button data-toggle="modal" data-target=".modal-album" type="button" class="btn btn-green btn-lg mt-2 modal-broadcast" name="button">
       Enviar para publishers
     </button>
     <button data-toggle="modal" data-target=".modal-publish" type="button" class="btn btn-green btn-lg mt-2" name="button">
@@ -126,11 +126,13 @@ include 'partials/components/page-header.twig' with {
 
     Event.viewEvent(localStorage.endpoint)
 
-    $('.select2-edit').select2();
     $('.datepicker').datepicker({
       format: 'dd-mm-yyyy'
     });
 
+    $(".modal-broadcast").on('click', function (e) {
+      Event.broadcastPublishers(localStorage.endpoint)
+    });
 
     $('.edit-album').on('click', function () {
       Event.editHandler(localStorage.endpoint, localStorage.user);
