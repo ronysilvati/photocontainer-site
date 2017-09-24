@@ -953,13 +953,13 @@ var Event = (function () {
   var loadPhotos = function() {
       axios.get(localStorage.endpoint+"search/events/"+Event.id+"/photos")
         .then(function (response) {
-            $(".dz-image-preview").remove();
-            response.data.photos.forEach(function(photo) {
-              Photo.addThumb(photo);
-            });
-            Photo.photoCoverHandler();
-            Photo.deleteHandler();
-            Event.updateFeedback();
+          $(".dz-image-preview").remove();
+          response.data.photos.forEach(function(photo) {
+            Photo.addThumb(photo);
+          });
+          Photo.photoCoverHandler();
+          Photo.deleteHandler();
+          Event.updateFeedback();
       });
   }
 

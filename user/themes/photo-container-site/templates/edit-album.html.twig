@@ -13,13 +13,14 @@ include 'partials/components/navbar-top.twig' with {
 <div class="app page-gallery page-album">
 {%
 include 'partials/components/page-header.twig' with {
+  'profile': grav.user.profile,
   'title': 'Álbum',
   'show': ['title', 'add-image']
 }
 %}
 
   <div class="container">
-    <div id="previews" class="row row-md"></div>
+    <div id="previews" class="row row-md template"></div>
 
     <div class="row row-md">
       <div class="col-md-6">
@@ -124,6 +125,73 @@ include 'partials/components/page-header.twig' with {
   $( document ).ready(function() {
     Event.id = location.search.split("=")[1]
 
+    var photoHtml = '\
+        <div class="col-lg-6 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete">\
+          <div class="card thumb-gallery ratio-16by9 thumb-">\
+            <img alt="" data-dz-thumbnail="">\
+            <div class="progressbar" role="progressbar">\
+              <div style="width: 100%;" class="dz-progress" data-dz-uploadprogress></div>\
+            </div>\
+          </div>\
+        </div>\
+      ';
+
+    new Dropzone('.template', {
+      uploadMultiple: true,
+      maxFiles: Event.maxFilesLimit,
+      acceptedFiles: ".png, .jpg, .jpeg",
+      parallelUploads: 10,
+      maxFilesize: 2,
+      previewTemplate: photoHtml,
+      clickable: '.add-image-album',
+      url: localStorage.endpoint+'photo',
+      previewsContainer: "#previews",
+      dictFileTooBig: 'dictFileTooBig',
+      init: function() {
+        this.on("success", function(file, responseText) {
+          if (responseText.length === 0) {
+            return;
+          }
+
+          file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
+          Event.updateFeedback();
+          console.info("init");
+        });
+        this.on('sending', function(file, xhr, formData) {
+          formData.append('event_id', Event.id);
+          console.info("sending");
+        });
+        this.on("queuecomplete", function (file) {
+          console.info("queuecomplete");
+          Event.loadPhotos();
+        });
+        this.on("addedfile", function(file) {
+          console.info("addedfile");
+        });
+        this.on("processing", function(file) {
+          console.info("processing");
+        });
+        this.on("removedfile", function(file) {
+          Event.updateFeedback();
+          console.info("removedfile");
+        });
+        this.on("error", function(file, message) {
+          if (message === 'dictFileTooBig') {
+            $('.error-msg').show()
+          }
+
+          this.removeFile(file);
+          console.error(message);
+        });
+      },
+      method: "POST",
+      withCredentials: false,
+      headers: {
+        "Cache-Control": null,
+        "X-Requested-With": null
+      }
+    });
+
     Event.viewEvent(localStorage.endpoint)
 
     $('.datepicker').datepicker({
@@ -137,6 +205,8 @@ include 'partials/components/page-header.twig' with {
     $('.edit-album').on('click', function () {
       Event.editHandler(localStorage.endpoint, localStorage.user);
     })
+
+
   })
 </script>
 {% endblock %}
