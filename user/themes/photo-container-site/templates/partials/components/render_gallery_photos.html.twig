@@ -1,15 +1,3 @@
-{%  if event.authorized %}
-<a href="{{ api_endpoint }}event/download/all/{{ event.id }}/publisher/{{ logged_user_id }}" class="download-btn">Baixar álbum completo.</a><br>
-<a href="#" style="display: none;" class="selected-btn">Baixar fotos selecionadas.</a><br>
-{% else %}
-<a href="{{ api_endpoint }}events/{{ event.id }}/request/user/{{ logged_user_id }}" class="download-btn no-auth">Baixar álbum completo.</a>
-{%  endif %}
-
-<h6 class="title text-muted text-uppercase mb-0">{{ event.category }}</h6>
-<h2 class="title text-uppercase mb-3">{{ event.title }}</span></h2>
-<h6 class="title text-muted text-uppercase mb-5">{{ event.photos|length }} fotos de {{ event.photographer }}</h6>
-
-<div id="gallery" class="row row-sm">
 {% for photo in event.photos %}
   {%
     include 'partials/components/render_thumb.twig' with {
@@ -21,7 +9,7 @@
       'image_cdn': image_cdn,
       'profile': 3,
       'type': 'gallery',
-      'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+      'col': 'col-lg-6 col-md-4 col-sm-6 col-12',
       'show': [
         'icon',
         'photo-name',
@@ -34,7 +22,6 @@
     }
   %}
 {% endfor %}
-</div>
 
 <script>
 $( document ).ready(function(){
@@ -70,6 +57,10 @@ $( document ).ready(function(){
       $(".selected-btn").prop('href', '#')
     }
   })
+
+  var id = location.search.split("=")[1]
+  var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+  $(".download-btn").prop('href', link)
 });
 
 </script>
