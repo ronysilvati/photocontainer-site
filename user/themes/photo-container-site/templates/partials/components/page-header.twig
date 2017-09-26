@@ -41,6 +41,11 @@
         <button type="button" class="btn btn-green ml-auto add-image-album" name="button">Adicionar foto</button>
         {% endif %}
 
+        {% if 'download-zip' in show and profile == 3 %}
+          <a href="#" class="btn btn-green btn-lg mt-2 download-btn">Baixar álbum completo.</a><br>
+          <a href="#" style="display: none;" class="btn btn-green btn-lg mt-2 selected-btn">Baixar fotos selecionadas.</a><br>
+        {% endif %}
+
         {% if 'nav-add-gallery' in show %}
         <ul class="nav nav-tabs nav-steps ml-auto {{class_nav_steps}}">
           <li class="nav-item">
