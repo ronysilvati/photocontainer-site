@@ -1056,6 +1056,64 @@ var Event = (function () {
     axios.post(api+"events/"+id+"/broadcastPublishers")
   }
 
+  var publisherViewAlbum = function (api) {
+    var id = location.search.split("=")[1]
+
+    if (id === undefined) {
+      return true
+    }
+
+    Event.id = id
+
+    return axios.get(api + "events?id="+id)
+      .then(function (response) {
+        var data = response.data
+
+        $("#input-bride").text(data.bride)
+        $("#input-groom").text(data.groom)
+        $("#input-title").text(data.title)
+        $("#input-description").text(data.description)
+
+        var date = data.eventdate.split(' ')[0].split('-')
+        $("#input-eventdate").text(date.reverse().join('/'))
+
+        axios.get(localStorage.domain+'publisher_gallery_photos?id='+id)
+          .then(function (response) {
+            $("#previews").html(response.data)
+          })
+
+        axios.get(api+"search/categories")
+          .then(function (response) {
+            response.data.forEach(function(item) {
+              if (data.categories[0] === item.id) {
+                $("#input-category").text(item.description)
+              }
+            });
+          })
+
+        axios.get(api+"/location/countries")
+          .then(function (response) {
+            response.data.forEach(function(item) {
+              if (data.country == item.id) {
+                $("#input-country").text(item.name)
+              }
+            })
+        })
+      });
+  }
+
+  var publisherPublish = function (api) {
+    var data = {
+      'publisher_id': localStorage.user,
+      'event_id': Event.id,
+      'text': $('#text').val().replace(/(?:\r\n|\r|\n)/g, '<br />'),
+      'ask_for_changes': $('#ask_for_changes').val(),
+      'approved': $('#approved').val()
+    }
+
+    axios.post(api+"events/publisherPublish", JSON.stringify(data))
+  }
+
   return {
     createHandler: createHandler,
     search: search,
@@ -1077,6 +1135,8 @@ var Event = (function () {
     loadSuppliers: loadSuppliers,
     editHandler: editHandler,
     broadcastPublishers: broadcastPublishers,
+    publisherViewAlbum: publisherViewAlbum,
+    publisherPublish: publisherPublish,
     id: id,
     maxFilesLimit: maxFilesLimit
   };
