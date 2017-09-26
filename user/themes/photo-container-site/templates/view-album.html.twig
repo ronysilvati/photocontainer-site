@@ -1,0 +1,100 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{%
+include 'partials/components/navbar-top.twig' with {
+  'profile': grav.user.profile,
+  'active': 'gallery',
+  'class': 'bg-ph'
+}
+%}
+
+<div class="app page-gallery page-album">
+{%
+include 'partials/components/page-header.twig' with {
+  'profile': grav.user.profile,
+  'title': 'Álbum',
+  'show': ['title', 'download-zip']
+}
+%}
+
+  <div class="container">
+    <div id="previews" class="row row-md template"></div>
+
+    <div class="row row-md">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Título *</label>
+          <p id="input-title"></p>
+        </div>
+        <div class="form-group">
+          <label>Descrição *</label>
+            <p id="input-description"></p>
+          </textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nome da Noiva *</label>
+          <p id="input-bride"></p>
+        </div>
+        <div class="form-group">
+          <label>Nome do Noivo *</label>
+          <p id="input-groom"></p>
+        </div>
+        <div class="row row-sm">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Categoria *</label>
+              <p id="input-category"></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>País *</label>
+              <p id="input-country"></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Data do evento *</label>
+              <p id="input-eventdate"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-check- mt-3">
+      <label class="form-check-label">
+        <input id="input-terms" name="input-terms" type="checkbox" class="form-check-input" required>
+        <span>Aceito os <a class="link stopPropagation">Termos e Condições de uso</a></span>
+      </label>
+      <label class="error msg-error" for="input-terms" style="display: none;"></label>
+    </div>
+    <button data-toggle="modal" data-target=".modal-publish" type="button" class="btn btn-green btn-lg mt-2" name="button">
+      Escolher para publicação
+    </button>
+  </div>
+
+{% include 'partials/components/modal-album.twig' %}
+{% include 'partials/components/modal-publish.twig' %}
+{% include 'partials/components/footer.twig' with {'class': 'bg-ph'} %}
+</div>
+
+<script>
+$( document ).ready(function() {
+  Event.id = location.search.split("=")[1]
+
+  Event.publisherViewAlbum(localStorage.endpoint)
+
+  $('.datepicker').datepicker({
+    format: 'dd-mm-yyyy'
+  });
+  
+  $(".modal-publisher-publish").on('click', function () {
+    Event.publisherPublish(localStorage.endpoint)
+  })
+})
+</script>
+{% endblock %}
