@@ -8580,6 +8580,13 @@ body {
   color: #656565;
 }
 
+.app {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .app.bg-gray-lightest {
   background-color: #f9fafc;
 }
@@ -8600,20 +8607,22 @@ a, button {
 
 .btn {
   font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   outline: 0 !important;
   pointer-events: all;
   text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 500;
   white-space: normal;
   line-height: 1.2em;
   outline: none !important;
   box-shadow: none !important;
   text-decoration: none !important;
+}
+.btn.disabled, .btn:disabled {
+  cursor: not-allowed;
+  opacity: .7;
+  background-color: #ddd;
 }
 .btn.btn-lg, .btn-group-lg > .btn {
   font-size: 16px;
@@ -8792,6 +8801,9 @@ a, button {
 }
 .footer.footer-default p {
   font-weight: 300;
+  font-weight: 300;
+  font-size: 11px;
+  color: #f7eee2 !important;
 }
 .footer.footer-steps {
   margin-top: 140px;
@@ -8817,11 +8829,14 @@ a, button {
 .form-filters-sidebar .form-colors {
   margin-top: 16px;
 }
+.form-filters-sidebar .form-colors [data-toggle="buttons"] {
+  text-align: center;
+}
 .form-filters-sidebar .form-colors .btn-color {
   background-color: #FFF;
-  width: 8%;
-  height: 16px;
-  margin-right: 2%;
+  width: 18px;
+  height: 18px;
+  margin: 2px;
   padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -8842,6 +8857,20 @@ a, button {
 }
 .form-filters-sidebar .selects-list .select2 {
   margin-bottom: 16px;
+}
+.form-filters-sidebar .selects-list .select2 .select2-selection {
+  padding: 0 10px;
+  border: 1px solid #dedede;
+}
+.form-filters-sidebar .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #EEE;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 1px 5px 2px;
 }
 
 .form-group {
@@ -8872,7 +8901,7 @@ a, button {
 select.form-control {
   background-image: url(images/select-arrow.svg);
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center right 10px;
   background-size: 12px;
 }
 
@@ -8907,9 +8936,11 @@ select.form-control {
 
 .form-check {
   position: relative;
+  display: inline-block;
 }
 .form-check span {
   position: relative;
+  display: inline-block;
 }
 .form-check span:before {
   color: #383838;
@@ -8921,7 +8952,7 @@ select.form-control {
   margin-right: 4px;
   border-radius: 12px;
   position: relative;
-  top: 4px;
+  top: 1px;
   content: "";
   transition: .2s;
 }
@@ -9135,6 +9166,19 @@ label.error.msg-error {
 .row-xl > [class*="col-"] {
   padding: 40px !important;
   padding: 40px !important;
+}
+
+body .introjs-helperNumberLayer {
+  display: none;
+}
+body .introjs-tooltip {
+  min-width: 400px;
+}
+body .introjs-tooltip .introjs-tooltiptext {
+  font-size: 17px;
+  padding: 20px;
+  justify-content: space-between;
+  min-height: 100px;
 }
 
 .link {
@@ -9369,7 +9413,7 @@ label.error.msg-error {
   background: rgba(255, 255, 255, 0.75);
 }
 
-.bg-pu .navbar-top .nav-item .btn-help {
+.navbar-top.bg-pu .nav-item .btn-help {
   color: #e1c09d;
 }
 
@@ -9408,6 +9452,16 @@ label.error.msg-error {
   .page-header.page-header-add .nav-steps {
     justify-content: center;
   }
+}
+.page-header .filters-list {
+  margin-left: auto;
+  margin-top: 50px;
+}
+.page-header .filters-list .title {
+  font-size: 15px;
+  float: right;
+  line-height: 20px;
+  color: #bebebe;
 }
 
 .slider {
@@ -9646,15 +9700,15 @@ label.error.msg-error {
   border-radius: 4px;
   position: relative;
 }
-.card.thumb-gallery img {
-  min-width: 100%;
-  min-height: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+.card.thumb-gallery .card-thumb-image {
   transition: .6s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
 }
 .card.thumb-gallery .card-text {
   position: absolute;
@@ -9722,8 +9776,8 @@ label.error.msg-error {
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
 }
-.card.thumb-gallery:hover img {
-  transform: translate(-50%, -50%) scale(1.1);
+.card.thumb-gallery:hover .card-thumb-image {
+  transform: scale(1.1);
 }
 .card.thumb-gallery:hover .card-text {
   position: absolute;
@@ -10041,7 +10095,8 @@ label.error.msg-error {
 
 .page-gallery .page-header .navbar-collapse {
   float: right;
-  margin-top: 28px;
+  margin-top: 0;
+  align-items: center;
 }
 .page-gallery .page-header .navbar-collapse .form-search {
   float: left;

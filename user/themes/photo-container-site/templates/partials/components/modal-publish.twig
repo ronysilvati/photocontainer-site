@@ -9,18 +9,18 @@
       </div>
       <div class="modal-body">
         <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input id="approved" type="checkbox" class="form-check-input">
+          <label class="form-check-label" onmouseup="modalPublishCheckAprov();">
+            <input id="approved" type="radio" name="aprov" class="form-check-input" checked>
             <span>Aprovar</span>
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input id="ask_for_changes" type="checkbox" class="form-check-input">
+          <label class="form-check-label" onmouseup="modalPublishCheckAprov();">
+            <input id="ask_for_changes" type="radio" name="aprov" class="form-check-input">
             <span>Solicitar Mudanças</span>
           </label>
         </div>
-        <textarea id="text" rows="16"  class="form-control p-4 mt-3">
+        <textarea id="text" rows="16"  class="text-approved form-control p-4 mt-3">
 Olá [NOME DO FOTÓGRAFO(A)].
 
 Queremos parabenizar você e sua equipe pelo lindíssimo
@@ -35,10 +35,45 @@ Muito obrigado e continue produzindo esse lindo trabalho!
 
 Equi BlogStar
         </textarea>
+        <textarea rows="16"  class="text-changes form-control p-4 mt-3" style="display:none">
+(texto de solicitação de mudanças) 
+        </textarea>
       </div>
       <div class="modal-footer">
-        <button type="button" name="button" class="btn btn-lg- btn-green mt-4 modal-publisher-publish" data-dismiss="modal">Confirmar</button>
+        <button disabled type="button" name="button" class="btn-ask-for-changes btn btn-green mt-4 modal-publisher-publish download-btn" data-dismiss="modal">
+          Solicitar mudanças
+        </button>
+        <button type="button" name="button" class="btn-approved btn btn-green mt-4 modal-publisher-publish download-btn" data-dismiss="modal">
+          Confirmar e baixar
+        </button>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    function modalPublishCheckAprov() {
+      setTimeout(function(){
+        if ($("#approved").is(':checked')) {
+          $(".text-approved").css('display', 'block');
+          $(".text-changes").css('display', 'none');
+
+          $(".text-approved").attr('id', 'text');
+          $(".text-changes").removeAttr('id');
+
+          $(".btn-ask-for-changes").attr('disabled', 'disabled');
+          $(".btn-approved").removeAttr('disabled');
+        }else if ($("#ask_for_changes").is(':checked')) {
+          $(".text-changes").css('display', 'block');
+          $(".text-approved").css('display', 'none');
+
+          $(".text-changes").attr('id', 'text');
+          $(".text-approved").removeAttr('id');
+
+          $(".btn-approved").attr('disabled', 'disabled');
+          $(".btn-ask-for-changes").removeAttr('disabled');
+        }
+      }, 100);
+    }
+  </script>
+
 </div>

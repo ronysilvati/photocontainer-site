@@ -13,13 +13,11 @@ include 'partials/components/navbar-top.twig' with {
     {%
     include 'partials/components/page-header.twig' with {
     'title': 'Histórico',
-    'show': ['title','form-search', 'nav-gallery']
+    'show': ['title']
     }
     %}
 
     <div class="container">
-        {{ include('partials/components/filters-list.twig') }}
-
         <div class="row">
             <div id="btn-favorites" class="col-6 col-md-3 offset-md-3">
                 <button type="button" id="btn-favorites" class="btn btn-pu text-uppercase btn-block rounded-top-right-0 rounded-bottom-right-0">Fotos favoritas</button>

@@ -35,7 +35,7 @@
 select.form-control {
   background-image: url(images/select-arrow.svg);
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center right 10px;
   background-size: 12px;
 }
 .form-control-fields {
@@ -75,9 +75,11 @@ select.form-control {
 
 .form-check{
   position: relative;
-
+  display: inline-block;
   span {
     position: relative;
+    display: inline-block;
+
     &:before {
       color: #383838;
       border: 0;
@@ -88,7 +90,7 @@ select.form-control {
       margin-right: 4px;
       border-radius: 12px;
       position: relative;
-      top: 4px;
+      top: 1px;
       content: "";
       transition: .2s;
     }

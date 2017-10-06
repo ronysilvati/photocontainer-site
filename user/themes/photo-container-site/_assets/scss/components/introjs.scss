@@ -1,0 +1,19 @@
+body {
+  .introjs-helperNumberLayer {
+    display: none;
+  }
+  .introjs-tooltip {
+    // min-height: 235px;
+    min-width: 400px;
+    // display: flex!important;
+    // flex-direction: column;
+    // justify-content: space-between;
+    .introjs-tooltiptext {
+      font-size: 17px;
+      padding: 20px;
+      // text-align: justify;
+      justify-content: space-between;
+      min-height: 100px;
+    }
+  }
+}

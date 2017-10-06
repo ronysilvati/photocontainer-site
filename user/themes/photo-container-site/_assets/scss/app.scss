@@ -10,6 +10,12 @@ body {
   overflow-x: hidden;
   color: $gray;
 }
+.app {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .app.bg-gray-lightest {
   background-color: $gray-lightest;
 }

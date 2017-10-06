@@ -960,6 +960,8 @@ var Event = (function () {
           Photo.photoCoverHandler();
           Photo.deleteHandler();
           Event.updateFeedback();
+
+          $('[data-toggle="tooltip"]').tooltip();
       });
   }
 
@@ -1260,15 +1262,15 @@ var Photo = (function() {
       var photoHtml = '\
         <div id="'+photo.filename.substr(0,36)+'" class="col-lg-6 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete" data-src="">\
           <div class="card thumb-gallery ratio-16by9 thumb-">\
-            <img alt="'+photo.filename+'" data-dz-thumbnail="" src="'+localStorage.image_cdn+photo.thumb+'">\
+            <div class="card-thumb-image" alt="'+photo.filename+'" style="background-image: url('+localStorage.image_cdn+photo.thumb+');"></div>\
             <div class="card-text">\
               <div class="card-text-inner">\
                 <ul class="nav">\
                   <li class="nav-item">\
-                    <a class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
+                    <a title="Remover" data-toggle="tooltip" data-placement="top" class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
                   </li>\
                   <li class="nav-item '+cover+'">\
-                    <a class="nav-link photo-pin" href="#">\
+                    <a title="Usar Como Capa" data-toggle="tooltip" data-placement="top" class="nav-link photo-pin" href="#">\
                       <i class="icon-pin" style="display:none"></i>\
                       <i class="icon-pin-outline"></i>\
                     </a>\

@@ -5,11 +5,14 @@
   padding: 16px;
   .form-colors {
     margin-top: 16px;
+    [data-toggle="buttons"] {
+      text-align: center;
+    }
     .btn-color {
       background-color: #FFF;
-      width: 8%;
-      height: 16px;
-      margin-right: 2%;
+      width: 18px;
+      height: 18px;
+      margin: 2px;
       padding: 0;
       border: 1px solid rgba(0,0,0,.1);
 
@@ -35,6 +38,20 @@
   .selects-list {
     .select2 {
       margin-bottom: 16px;
+      .select2-selection {
+        padding: 0 10px;
+        border: 1px solid #dedede;
+      }
     }
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1px solid #EEE;
+      border-radius: 4px;
+      cursor: default;
+      float: left;
+      margin-right: 5px;
+      margin-top: 5px;
+      padding: 1px 5px 2px;
   }
 }

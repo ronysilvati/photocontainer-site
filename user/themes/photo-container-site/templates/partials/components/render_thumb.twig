@@ -8,7 +8,7 @@
 
 <div class="{{col}} thumb-item search-result-thumb" data-src="{{ image_cdn }}{{ data.watermark }}" id="event-thumb-{{ data.id }}">
   <div class="{{thumb_class}}">
-    <img alt='' src="{{ image_cdn }}{{ data.thumb }}">
+    <div class="card-thumb-image" alt="" style="background-image: url({{ image_cdn }}{{ data.thumb }});"></div>
     <div class="card-text">
       <div class="card-text-inner">
         {% if data.context in ["gallery_photographer", "gallery_publisher"] %}
@@ -21,8 +21,8 @@
 
         {% if data.context == "gallery_photographer" and profile == 'photographer' %}
         <ul class="nav">
-          <li class="nav-item"><a class="nav-link event-remove" data-event="{{ data.id }}" ><i class="icon-trash"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="./gallery/edit-album?id={{ data.id }}"><i class="icon-pencil"></i></a></li>
+          <li class="nav-item"><a data-toggle="tooltip" data-placement="top" class="nav-link event-remove" title="Remover" data-event="{{ data.id }}" ><i class="icon-trash"></i></a></li>
+          <li class="nav-item"><a data-toggle="tooltip" data-placement="top" class="nav-link" title="Usar Como Capa" href="./gallery/edit-album?id={{ data.id }}"><i class="icon-pencil"></i></a></li>
         </ul>
         {% endif %}
 
@@ -38,19 +38,19 @@
         {% if data.context == "gallery_photos_publisher" %}
         <ul class="nav">
           <li class="nav-item view-image">
-            <a class="nav-link">
+            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Visualizar">
               <i class="icon-search"></i>
             </a>
           </li>
 
-          <li class="nav-item download-image">
+          <li data-toggle="tooltip" data-placement="top" title="Favoritar" class="nav-item star-image">
             <a {% if data.liked == true %}style="display: none;"{% endif %} class="nav-link photo-like" data-likephoto="{{ data.id }}" ><i class="icon-star"></i></a>
             <a {% if data.liked == false %}style="display: none;"{% endif %} class="nav-link photo-dislike" data-dislikephoto="{{ data.id }}" ><i class="icon-star-full"></i></a>
           </li>
 
           {% if authorized == true %}
-          <li class="nav-item download-image"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
-          <li class="nav-item download-image"><input type="checkbox" value="{{ data.id }}" name="photo-select" id="photo-select-{{ data.id }}"/></li>
+          <li class="nav-item download-image"  data-toggle="tooltip" data-placement="top" title="Baixar Imagem"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
+          <li class="nav-item download-image" style="display:none;"><input type="checkbox" value="{{ data.id }}" name="photo-select" id="photo-select-{{ data.id }}"/></li>
           {% else %}
           <li class="nav-item download-image no-auth"><a class="nav-link" href="{{ api_endpoint }}events/{{ event_id }}/request/user/{{ logged_user_id }}"><i class="icon-download"></i></a></li>
           {% endif %}

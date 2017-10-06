@@ -37,6 +37,7 @@ $( document ).ready(function() {
     e.stopPropagation();
     e.preventDefault()
   });
+
 })
 
 $( document ).ready(function(){

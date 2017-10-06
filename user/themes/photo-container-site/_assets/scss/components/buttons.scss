@@ -1,20 +1,24 @@
 .btn {
   font-family:  $buttons-font-family;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   outline: 0!important;
   pointer-events: all;
   text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 500;
   white-space: normal;
   line-height: 1.2em;
 
   outline: none!important;
   box-shadow: none!important;
   text-decoration: none!important;
+
+  &.disabled, &:disabled {
+    cursor: not-allowed;
+    opacity: .7;
+    background-color: #ccc!important;
+  }
+
 // SIZES
   &.btn-lg {
     font-size: 16px;
