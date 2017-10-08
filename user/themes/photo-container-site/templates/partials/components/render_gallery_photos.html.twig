@@ -40,27 +40,6 @@ $( document ).ready(function(){
   $('.thumb-gallery .view-image').click(function( event ) {
     $(this).closest(".thumb-item").click();
   });
-
-  $('input:checkbox').on('click', function () {
-    var values = $('input:checked').map(function(i, v){
-      return $(v).val()
-    }).toArray().join(',')
-
-    if (values) {
-      var id = location.search.split("=")[1]
-      var link = localStorage.endpoint+"event/download/select/"+values+"/publisher/"+localStorage.user
-
-      $(".selected-btn").show();
-      $(".selected-btn").prop('href', link)
-    } else {
-      $(".selected-btn").hide();
-      $(".selected-btn").prop('href', '#')
-    }
-  })
-
-  var id = location.search.split("=")[1]
-  var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
-  $(".download-btn").prop('href', link)
 });
 
 </script>

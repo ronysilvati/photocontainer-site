@@ -92,8 +92,38 @@ $( document ).ready(function() {
     format: 'dd-mm-yyyy'
   });
 
-  $(".modal-publisher-publish").on('click', function () {
-    Event.publisherPublish(localStorage.endpoint)
+  $(".download-btn").on('click', function (e) {
+    e.preventDefault()
+
+    var id = location.search.split("=")[1]
+    window.location.href = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+  })
+
+  $('input:checkbox').on('click', function () {
+    var values = $('input:checked').map(function(i, v){
+      return $(v).val()
+    }).toArray().join(',')
+
+    if (values) {
+      var id = location.search.split("=")[1]
+      var link = localStorage.endpoint+"event/download/select/"+values+"/publisher/"+localStorage.user
+
+      $(".selected-btn").show();
+      $('.modal-publisher-publish').data('link-for-action', link)
+    } else {
+      $(".selected-btn").hide();
+      $('.modal-publisher-publish').removeData('link-for-action', '')
+    }
+  })
+
+  $(".modal-publisher-changes").on('click', function (e) {
+    e.preventDefault();
+    Event.publisherPublish(localStorage.endpoint, {"ask_for_changes": true, 'approved': false})
+  })
+
+  $(".modal-publisher-publish").on('click', function (e) {
+    e.preventDefault();
+    Event.publisherPublish(localStorage.endpoint, {"ask_for_changes": false, 'approved': true})
   })
 })
 </script>

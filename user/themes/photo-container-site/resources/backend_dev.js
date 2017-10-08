@@ -1104,16 +1104,29 @@ var Event = (function () {
       });
   }
 
-  var publisherPublish = function (api) {
+  var publisherPublish = function (api, config) {
     var data = {
       'publisher_id': localStorage.user,
       'event_id': Event.id,
       'text': $('#text').val().replace(/(?:\r\n|\r|\n)/g, '<br />'),
-      'ask_for_changes': $('#ask_for_changes').val(),
-      'approved': $('#approved').val()
+      'ask_for_changes': config.ask_for_changes,
+      'approved': config.approved
     }
 
     axios.post(api+"events/publisherPublish", JSON.stringify(data))
+      .then(function () {
+        var message = ''
+
+        if (config.approved) {
+          message = 'Obrigado! Notificaremos o fotógrafo sobre sua escolha!'
+        }
+
+        if (config.ask_for_changes) {
+          message = 'Obrigado! Notificaremos o fotógrafo sobre as mudanças necessárias!'
+        }
+
+        Utils.show_modal_alert('success', '', message);
+      })
   }
 
   return {
