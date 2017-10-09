@@ -694,7 +694,8 @@ var Event = (function () {
       Event.loadPhotos()
         .then(function () {
           $('#previews').lightGallery({
-            subHtmlSelectorRelative: true
+            subHtmlSelectorRelative: true,
+            selector: '.preview-thumb'
           });
         })
 
@@ -1286,7 +1287,7 @@ var Photo = (function() {
               <div class="card-text-inner">\
                 <ul class="nav">\
                   <li class="nav-item view-image">\
-                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Visualizar">\
+                    <a class="nav-link preview-thumb" data-src="'+localStorage.image_cdn+photo.thumb+'" data-toggle="tooltip" data-placement="top" title="Visualizar">\
                       <i class="icon-search"></i>\
                     </a>\
                   </li>\
@@ -1301,9 +1302,6 @@ var Photo = (function() {
                   </li>\
                 </ul>\
               </div>\
-            </div>\
-            <div class="progressbar" role="progressbar">\
-              <div style="width: 100%;" data-dz-uploadprogress=""></div>\
             </div>\
           </div>\
         </div>\
