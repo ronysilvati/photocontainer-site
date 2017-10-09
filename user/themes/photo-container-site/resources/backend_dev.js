@@ -692,6 +692,12 @@ var Event = (function () {
       var data = response.data
 
       Event.loadPhotos()
+        .then(function () {
+          $('#previews').lightGallery({
+            subHtmlSelectorRelative: true
+          });
+        })
+
       Cep.loadCountries(localStorage.endpoint)
 
       axios.get(api+"search/categories")
@@ -951,7 +957,7 @@ var Event = (function () {
   }
 
   var loadPhotos = function() {
-      axios.get(localStorage.endpoint+"search/events/"+Event.id+"/photos")
+      return axios.get(localStorage.endpoint+"search/events/"+Event.id+"/photos")
         .then(function (response) {
           $(".dz-image-preview").remove();
           response.data.photos.forEach(function(photo) {

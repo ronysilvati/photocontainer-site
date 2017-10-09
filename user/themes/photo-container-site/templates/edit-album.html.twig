@@ -205,10 +205,6 @@ include 'partials/components/page-header.twig' with {
     $('.edit-album').on('click', function () {
       Event.editHandler(localStorage.endpoint, localStorage.user);
     })
-
-    $('#previews').lightGallery({
-      subHtmlSelectorRelative: true
-    });
   })
 </script>
 {% endblock %}
