@@ -126,11 +126,11 @@ include 'partials/components/page-header.twig' with {
     Event.id = location.search.split("=")[1]
 
     var photoHtml = '\
-        <div class="col-lg-6 col-md-4 col-sm-6 col-12 dz-processing dz-image-preview dz-success dz-complete">\
+        <div class="col-lg-6 col-md-4 col-sm-6 col-12 dz-preview" data-src="">\
           <div class="card thumb-gallery ratio-16by9 thumb-">\
-            <img alt="" data-dz-thumbnail="">\
+            <div class="card-thumb-image"><img style="width: auto;height: 100%;" data-dz-thumbnail /></div>\
             <div class="progressbar" role="progressbar">\
-              <div style="width: 100%;" class="dz-progress" data-dz-uploadprogress></div>\
+              <div data-dz-uploadprogress></div>\
             </div>\
           </div>\
         </div>\
