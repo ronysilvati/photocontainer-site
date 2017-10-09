@@ -620,7 +620,7 @@ var Event = (function () {
 
   var loadPublisherHistoricGallery = function (api, type) {
     var form = new FormData();
-    form.append("keyword", $("#keyword-search").val());
+    form.append("keyword", '');
 
     $('input[name^="tags"]:checked').each(function (i, item){
       form.append('tags[]', $(item).val())
