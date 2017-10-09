@@ -206,7 +206,9 @@ include 'partials/components/page-header.twig' with {
       Event.editHandler(localStorage.endpoint, localStorage.user);
     })
 
-
+    $('#previews').lightGallery({
+      subHtmlSelectorRelative: true
+    });
   })
 </script>
 {% endblock %}

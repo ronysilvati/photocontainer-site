@@ -1279,6 +1279,11 @@ var Photo = (function() {
             <div class="card-text">\
               <div class="card-text-inner">\
                 <ul class="nav">\
+                  <li class="nav-item view-image">\
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Visualizar">\
+                      <i class="icon-search"></i>\
+                    </a>\
+                  </li>\
                   <li class="nav-item">\
                     <a title="Remover" data-toggle="tooltip" data-placement="top" class="nav-link" data-dz-remove="" href="#"><i class="icon-trash"></i></a>\
                   </li>\
