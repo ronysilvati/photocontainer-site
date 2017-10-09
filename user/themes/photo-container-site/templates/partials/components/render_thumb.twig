@@ -49,7 +49,7 @@
           </li>
 
           {% if authorized == true %}
-          <li class="nav-item download-image"  data-toggle="tooltip" data-placement="top" title="Baixar Imagem"><a class="nav-link" href="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
+          <li class="nav-item download-image" data-toggle="tooltip" data-placement="top" title="Baixar Imagem"><a class="nav-link" data-link-for-action="{{ api_endpoint }}photo/{{ data.id }}/user/{{ logged_user_id }}/download"><i class="icon-download"></i></a></li>
           <li class="nav-item download-image" style="display:none;"><input type="checkbox" value="{{ data.id }}" name="photo-select" id="photo-select-{{ data.id }}"/></li>
           {% else %}
           <li class="nav-item download-image no-auth"><a class="nav-link" href="{{ api_endpoint }}events/{{ event_id }}/request/user/{{ logged_user_id }}"><i class="icon-download"></i></a></li>

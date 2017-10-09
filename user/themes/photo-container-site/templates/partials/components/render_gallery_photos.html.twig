@@ -29,7 +29,7 @@ $( document ).ready(function(){
   Event.dislikePhoto(localStorage.endpoint);
   Event.requestDownload(localStorage.endpoint);
 
-  $('#gallery').lightGallery({
+  $('#previews').lightGallery({
     subHtmlSelectorRelative: true
   });
 
@@ -40,6 +40,11 @@ $( document ).ready(function(){
   $('.thumb-gallery .view-image').click(function( event ) {
     $(this).closest(".thumb-item").click();
   });
+
+  $('.download-image a').on('click', function (e) {
+    $('.modal-publisher-publish').data('link-for-action', $(this).data('link-for-action'))
+    $('.modal-publish').modal()
+  })
 });
 
 </script>

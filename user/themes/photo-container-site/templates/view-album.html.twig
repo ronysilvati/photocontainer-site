@@ -72,7 +72,7 @@ include 'partials/components/page-header.twig' with {
       </label>
       <label class="error msg-error" for="input-terms" style="display: none;"></label>
     </div>
-    <button data-toggle="modal" data-target=".modal-publish" type="button" class="btn btn-green btn-lg mt-2" name="button">
+    <button type="button" class="btn btn-green btn-lg mt-2 choose-publish" name="button">
       Escolher para publicação
     </button>
   </div>
@@ -92,29 +92,45 @@ $( document ).ready(function() {
     format: 'dd-mm-yyyy'
   });
 
-  $(".download-btn").on('click', function (e) {
-    e.preventDefault()
+  $(".download-btn").on('click', function () {
+    if ($('#input-terms:checked').length === 0) {
+      Utils.show_modal_alert('success', '', 'Você deve aceitar os Temos e condições de uso.');
+      return
+    }
+
+    $('.modal-publish').modal()
 
     var id = location.search.split("=")[1]
-    window.location.href = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+    var link = localStorage.endpoint+"event/download/all/"+id+"/publisher/"+localStorage.user
+
+    $('.modal-publisher-publish').data('link-for-action', link)
   })
 
-  $('input:checkbox').on('click', function () {
-    var values = $('input:checked').map(function(i, v){
-      return $(v).val()
-    }).toArray().join(',')
-
-    if (values) {
-      var id = location.search.split("=")[1]
-      var link = localStorage.endpoint+"event/download/select/"+values+"/publisher/"+localStorage.user
-
-      $(".selected-btn").show();
-      $('.modal-publisher-publish').data('link-for-action', link)
-    } else {
-      $(".selected-btn").hide();
-      $('.modal-publisher-publish').removeData('link-for-action', '')
+  $('.choose-publish').on('click', function () {
+    if ($('#input-terms:checked').length === 0) {
+      Utils.show_modal_alert('success', '', 'Você deve aceitar os Temos e condições de uso.');
+      return
     }
+
+    $('.modal-publish').modal()
   })
+
+  // $('input:checkbox').on('click', function () {
+  //   var values = $('input:checked').map(function(i, v){
+  //     return $(v).val()
+  //   }).toArray().join(',')
+  //
+  //   if (values) {
+  //     var id = location.search.split("=")[1]
+  //     var link = localStorage.endpoint+"event/download/select/"+values+"/publisher/"+localStorage.user
+  //
+  //     $(".selected-btn").show();
+  //     $('.modal-publisher-publish').data('link-for-action', link)
+  //   } else {
+  //     $(".selected-btn").hide();
+  //     $('.modal-publisher-publish').removeData('link-for-action', '')
+  //   }
+  // })
 
   $(".modal-publisher-changes").on('click', function (e) {
     e.preventDefault();
@@ -123,7 +139,13 @@ $( document ).ready(function() {
 
   $(".modal-publisher-publish").on('click', function (e) {
     e.preventDefault();
+
     Event.publisherPublish(localStorage.endpoint, {"ask_for_changes": false, 'approved': true})
+
+    if ($('.modal-publisher-publish').data('link-for-action') !== undefined) {
+      window.location.href = $('.modal-publisher-publish').data('link-for-action')
+      $('.modal-publisher-publish').removeData('link-for-action')
+    }
   })
 })
 </script>
