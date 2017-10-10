@@ -8582,9 +8582,12 @@ body {
 
 .app {
   min-height: calc(100vh - 70px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
+  padding-bottom: 200px;
+}
+
+.app.page-add-gallery {
+  padding-bottom: 0;
 }
 
 .app.bg-gray-lightest {
@@ -8622,7 +8625,7 @@ a, button {
 .btn.disabled, .btn:disabled {
   cursor: not-allowed;
   opacity: .7;
-  background-color: #ddd;
+  background-color: #ccc !important;
 }
 .btn.btn-lg, .btn-group-lg > .btn {
   font-size: 16px;
@@ -8794,7 +8797,12 @@ a, button {
 }
 .footer.footer-default {
   text-align: center;
-  margin-top: 140px;
+  margin: 0;
+  position: absolute;
+  top: initial;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .footer.footer-default .footer-brand img {
   height: 44px;
@@ -8818,6 +8826,24 @@ a, button {
     text-align: center;
     margin: 20px 0;
   }
+}
+
+.form-filters .select2 {
+  margin-bottom: 16px !important;
+}
+.form-filters .select2 .select2-selection {
+  padding: 0 10px !important;
+  border: 1px solid #dedede !important;
+}
+.form-filters .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #EEE;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 1px 5px 2px;
 }
 
 .form-filters-sidebar {
@@ -8855,22 +8881,25 @@ a, button {
   text-transform: uppercase;
   font-size: 15px;
 }
-.form-filters-sidebar .selects-list .select2 {
-  margin-bottom: 16px;
+
+.form-filters-add #tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
 }
-.form-filters-sidebar .selects-list .select2 .select2-selection {
-  padding: 0 10px;
-  border: 1px solid #dedede;
+.form-filters-add .form-filter-item {
+  width: 33%;
+  padding: 0 15px;
+  margin-bottom: 20px;
 }
-.form-filters-sidebar .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid #EEE;
-  border-radius: 4px;
-  cursor: default;
-  float: left;
-  margin-right: 5px;
-  margin-top: 5px;
-  padding: 1px 5px 2px;
+@media (max-width: 767px) {
+  .form-filters-add #tag-list {
+    margin: 0;
+  }
+  .form-filters-add .form-filter-item {
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .form-group {
@@ -9096,6 +9125,16 @@ label.error.msg-error {
   font-family: 'fontello';
   font-size: 11px;
   color: #B7B7B7;
+}
+
+.page-add-gallery .form-control-fields .form-control-close {
+  margin-bottom: 20px;
+}
+.page-add-gallery .form-control-fields .form-control-close .form-control {
+  margin-bottom: 10px;
+}
+.page-add-gallery .form-control-fields .form-control-close .close {
+  right: 10px;
 }
 
 .row {
@@ -10125,6 +10164,17 @@ body .introjs-tooltip .introjs-tooltiptext {
   .page-gallery .page-header .navbar-collapse .form-search input {
     width: 130px;
   }
+}
+
+.app.no-gallery .filters-list {
+  display: none;
+}
+.app.no-gallery #gallery {
+  height: 340px;
+  background-image: url(images/no-gallery.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .page-home h2.title {

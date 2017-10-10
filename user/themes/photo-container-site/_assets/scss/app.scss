@@ -12,9 +12,11 @@ body {
 }
 .app {
   min-height: calc(100vh - 70px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
+  padding-bottom: 200px;
+}
+.app.page-add-gallery {
+  padding-bottom: 0;
 }
 .app.bg-gray-lightest {
   background-color: $gray-lightest;

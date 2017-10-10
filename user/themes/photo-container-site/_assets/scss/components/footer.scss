@@ -4,7 +4,12 @@
   padding: 30px 0;
   &.footer-default {
     text-align: center;
-    margin-top: 140px;
+    margin: 0;
+    position: absolute;
+    top: initial;
+    right: 0;
+    bottom: 0;
+    left: 0;
     .footer-brand {
       img {
         height: 44px;

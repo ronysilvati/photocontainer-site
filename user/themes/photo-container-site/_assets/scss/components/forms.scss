@@ -261,3 +261,17 @@ label.error.msg-error {
     }
   }
 }
+
+.page-add-gallery {
+  .form-control-fields {
+    .form-control-close {
+      margin-bottom: 20px;
+      .form-control {
+        margin-bottom: 10px;
+      }
+      .close {
+        right: 10px;
+      }
+    }
+  }
+}

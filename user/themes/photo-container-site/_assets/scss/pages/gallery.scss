@@ -41,3 +41,16 @@
     }
   }
 }
+
+.app.no-gallery {
+  .filters-list {
+    display: none;
+  }
+  #gallery {
+    height: 340px;
+    background-image: url(images/no-gallery.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

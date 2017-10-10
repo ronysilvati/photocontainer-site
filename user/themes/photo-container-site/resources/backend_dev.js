@@ -218,7 +218,10 @@ var Profile = (function () {
           ? localStorage.image_cdn + user.profile_image
           : localStorage.domain + '/user/themes/photo-container-site/_temp/signin-bg.png'
 
-        $('.profile-image-upload').css("background-image", "url("+imageUrl+")");
+        // alert(user.profile_image);
+        if(user.profile_image) {
+          $('.profile-image-upload').css("background-image", "url("+imageUrl+")");
+        }
 
         $("#input-email").val(user.email)
         $("#input-name").val(user.name)
@@ -526,8 +529,10 @@ var Event = (function () {
         if (tagGroup.id != 12) {
           var name = 'tags['+tagGroup.id+'][]'
           var list = '\
+            <div class="form-filter-item">\
             <h5 class="title">' + tagGroup.description + '</h5>\
-            <select data-category="'+tagGroup.id+'" class="select2-filter" name="state" multiple="multiple" style="width: 100%">';
+            <select data-category="'+tagGroup.id+'" class="select2-filter" name="state" multiple="multiple" style="width: 100%">\
+            </div>';
             list += '<label class="error msg-error" for="'+name+'" style="display: none;"></label>';
 
           tagGroup.tags.forEach(function (tag) {
@@ -579,9 +584,15 @@ var Event = (function () {
       if (response) {
         if ($("#add-page").data().page > 1) {
           $("#gallery").append(response)
+          if($("#gallery > div").length != 0) {
+            $(".page-gallery").removeClass('no-gallery');
+          }
         } else {
           $(".search-result-thumb").remove()
-          $("#gallery").append(response)
+          $("#gallery").append(response);
+          if($("#gallery > div").length != 0) {
+            $(".page-gallery").removeClass('no-gallery');
+          }
         }
         $("#add-page").prop('disabled', false)
       } else {
@@ -949,6 +960,7 @@ var Event = (function () {
           Event.updateFeedback();
 
           $('[data-toggle="tooltip"]').tooltip();
+
       });
   }
 
