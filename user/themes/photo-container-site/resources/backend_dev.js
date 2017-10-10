@@ -1048,7 +1048,7 @@ var Event = (function () {
       country: $("#input-country").val()
     }
 
-    axios.put(localStorage.getItem('endpoint')+"events/"+Event.id, data)
+    return axios.put(localStorage.getItem('endpoint')+"events/"+Event.id, data)
       .then(function (response) {
         if (response.id != undefined) {
           Event.id = response.id
@@ -1062,7 +1062,7 @@ var Event = (function () {
 
   var broadcastPublishers = function(api) {
     var id = location.search.split("=")[1]
-    axios.post(api+"events/"+id+"/broadcastPublishers")
+    return axios.post(api+"events/"+id+"/broadcastPublishers")
   }
 
   var publisherViewAlbum = function (api) {

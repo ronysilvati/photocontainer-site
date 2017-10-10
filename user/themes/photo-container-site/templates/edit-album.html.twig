@@ -104,7 +104,7 @@ include 'partials/components/page-header.twig' with {
       </label>
       <label class="error msg-error" for="input-terms" style="display: none;"></label>
     </div>
-    <button data-toggle="modal" data-target=".modal-album" type="button" class="btn btn-green btn-lg mt-2 modal-broadcast" name="button">
+    <button type="button" class="btn btn-green btn-lg mt-2 modal-broadcast" name="button">
       Enviar para publishers
     </button>
     <a type="button" class="btn btn-green btn-lg mt-2 edit-album">
@@ -196,11 +196,27 @@ include 'partials/components/page-header.twig' with {
     });
 
     $(".modal-broadcast").on('click', function (e) {
+      if($('#input-terms:checked').length === 0) {
+        Utils.show_modal_alert('default', '', 'Você deve aceitar os Temos e condições de uso.');
+        return
+      }
+
       Event.broadcastPublishers(localStorage.endpoint)
+        .then(function () {
+          $('.modal-album').modal()
+        })
     });
 
     $('.edit-album').on('click', function () {
-      Event.editHandler(localStorage.endpoint, localStorage.user);
+      if($('#input-terms:checked').length === 0) {
+        Utils.show_modal_alert('default', '', 'Você deve aceitar os Temos e condições de uso.');
+        return
+      }
+
+      Event.editHandler(localStorage.endpoint, localStorage.user)
+        .then(function () {
+          Utils.show_modal_alert('success', '', 'Atualização realizada com sucesso.');
+        })
     })
   })
 </script>
