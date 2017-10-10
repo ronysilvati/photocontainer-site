@@ -162,18 +162,7 @@ var Signup = (function () {
         });
     }
 
-    if (payment) {
-      PagSeguroLightbox({
-        code: '6A6DA626BDBD990CC4811FA55E8005DE'
-      }, {
-        success : fnAfterPayment,
-        abort : function() {
-          alert("abort");
-        }
-      })
-    } else {
-      fnAfterPayment();
-    }
+    fnAfterPayment();
   }
 
   var publisher = function(api) {
@@ -209,18 +198,7 @@ var Signup = (function () {
         });
     }
 
-    if (payment) {
-      PagSeguroLightbox({
-        code: '6A6DA626BDBD990CC4811FA55E8005DE'
-      }, {
-        success : fnAfterPayment,
-        abort : function() {
-          alert("abort");
-        }
-      })
-    } else {
-      fnAfterPayment();
-    }
+    fnAfterPayment();
   }
 
     return {
