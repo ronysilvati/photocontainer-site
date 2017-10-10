@@ -700,6 +700,9 @@ var Event = (function () {
         })
 
       Cep.loadCountries(localStorage.endpoint)
+        .then(function () {
+          $("#input-country").select2().val(data.country).trigger('change')
+        })
 
       axios.get(api+"search/categories")
         .then(function (response) {
@@ -708,6 +711,8 @@ var Event = (function () {
               '<option name="categories" value="'+item.id+'">'+item.description+'</option>'
             )
           });
+
+          $("#select-categories").select2().val(data.categories[0]).trigger('change')
         })
 
       $("#input-bride").val(data.bride)
@@ -722,9 +727,6 @@ var Event = (function () {
 
       var date = data.eventdate.split(' ')[0].split('-')
       $("#input-eventdate").val(date.reverse().join('/'))
-
-      $("#input-country").val(data.country).select2()
-      $("#select-categories").val(data.categories[0]).select2()
     });
   }
 
@@ -1166,11 +1168,13 @@ var Event = (function () {
 
 var Cep = (function () {
   var loadCountries = function (api) {
-    return Utils.invokeAPI("GET", "/location/countries", function (response) {
-      for (var prop in response) {
-        var obj = response[prop]
-        $("#input-country").append("<option data-id='"+obj.id+"' value='"+obj.id+"'>"+obj.name+"</option>")
-      }
+    return axios.get(localStorage.getItem('endpoint')+"/location/countries")
+      .then(function (response) {
+        var data = response.data
+
+        data.forEach(function (obj) {
+          $("#input-country").append("<option data-id='"+obj.id+"' value='"+obj.id+"'>"+obj.name+"</option>")
+        })
     })
   }
 
