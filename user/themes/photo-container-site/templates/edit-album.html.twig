@@ -160,7 +160,14 @@ include 'partials/components/page-header.twig' with {
         });
         this.on("queuecomplete", function (file) {
           console.info("queuecomplete");
-          Event.loadPhotos();
+          Event.loadPhotos()
+            .then(function () {
+              $('#previews').data('lightGallery').destroy(true);
+              $('#previews').lightGallery({
+                subHtmlSelectorRelative: true,
+                selector: '.preview-thumb'
+              });
+            })
         });
         this.on("addedfile", function(file) {
           console.info("addedfile");
