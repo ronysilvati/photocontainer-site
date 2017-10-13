@@ -1251,14 +1251,14 @@ var Photo = (function() {
           function (params) {
             axios.delete(localStorage.endpoint+'/'+params.url)
               .then(function(response){
-              $("#"+params.guid).fadeOut("slow", function() {
-                $("#"+params.guid).remove();
-                Event.updateFeedback();
+                $("#"+params.guid).fadeOut("slow", function() {
+                  $("#"+params.guid).remove();
+                  Event.updateFeedback();
+                })
               })
               .catch(function (response) {
                 Utils.show_modal_alert('default', '', response.data.message)
-              })
-            });
+              });
           },
           {url: "photo/"+guid, guid: guid}
         )
