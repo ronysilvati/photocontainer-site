@@ -8,7 +8,7 @@
 
 <div class="{{col}} thumb-item search-result-thumb" data-src="{{ image_cdn }}{{ data.watermark }}" id="event-thumb-{{ data.id }}">
   <div class="{{thumb_class}}">
-    <div class="card-thumb-image" alt="" style="background-image: url({{ image_cdn }}{{ data.thumb }});"></div>
+    <div class="card-thumb-image" style="background-image: url({{ image_cdn }}{{ data.thumb }});"></div>
     <div class="card-text">
       <div class="card-text-inner">
         {% if data.context in ["gallery_photographer", "gallery_publisher"] %}
