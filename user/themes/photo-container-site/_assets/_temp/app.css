@@ -9973,6 +9973,12 @@ body .introjs-tooltip .introjs-tooltiptext {
 .card.thumb-gallery.thumb-add:hover {
   background-color: #f9fafc;
 }
+.card.thumb-gallery.thumb-gallery-dropzone img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .card.thumb-gallery:before {
   display: block;
   content: " ";

@@ -1727,6 +1727,15 @@ body {
     }
   }
 
+  &.thumb-gallery-dropzone {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
   @include aspect-ratio(1,1);
 	&.ratio-1by1 {@include aspect-ratio(1,1);}
 	&.ratio-1by2 {@include aspect-ratio(1,2);}
