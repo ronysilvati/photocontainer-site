@@ -72,12 +72,8 @@ $( document ).ready(function() {
 
     Event.search(localStorage.domain)
   })
-  // alert($("#gallery > div").length);
-  if($("#gallery > div").length == 0) {
-    $(".page-gallery").addClass('no-gallery');
-  }
-
 });
+
 var introSteps;
 
 var profile = {{ grav.user.profile }}

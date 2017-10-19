@@ -581,22 +581,10 @@ var Event = (function () {
 
     $.ajax(settings)
     .done(function (response) {
-      if (response) {
-        if ($("#add-page").data().page > 1) {
-          $("#gallery").append(response)
-          if($("#gallery > div").length != 0) {
-            $(".page-gallery").removeClass('no-gallery');
-          }
-        } else {
-          $(".search-result-thumb").remove()
-          $("#gallery").append(response);
-          if($("#gallery > div").length != 0) {
-            $(".page-gallery").removeClass('no-gallery');
-          }
-        }
-        $("#add-page").prop('disabled', false)
-      } else {
-        $("#add-page").prop('disabled', true)
+      $("#gallery").append(response)
+
+      if ($("#gallery > .thumb-item").length === 0) {
+        $(".page-gallery").addClass('no-gallery');
       }
     })
     .fail(function (response) {
