@@ -202,11 +202,18 @@
               {% set forn_count = forn_count+1 %}
               {% set forn_total = forn_total+1 %}
             <div class="form-group suppliers-fields-{{ value[1] }}">
-              <label>{{ value[0] }}</label>
-              <div></div>
-              <small class="form-text text-muted text-right">
-                <a data-toggle="clone" class="supplier-add link btn-add-field-{{ value[1] }}" data-type="{{ value[1] }}">Adicionar</a>
-              </small>
+              <label class="supplier-add btn-add-field-{{ value[1] }}" data-type="{{ value[1] }}">
+                {{ value[0] }}
+
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    <span></span>
+                  </label>
+                </div>
+
+              </label>
+              <div class="suppliers-fields-wrap"></div>
             </div>
             {% if (forn_count == forn_max) or (forn_total == 15) %}
               </div>

@@ -9,7 +9,8 @@
 {% set progressbar = 0 %}
 <div id="{{id}}" class="{{col}}" data-src="{{img_src}}">
   <div class="{{thumb_class}}">
-    <img alt='' {{img_attr}} src="{{img_src}}">
+    <div class="card-thumb-image" style="background-image: url({{img_src}});"></div>
+    <!-- <img alt='' {{img_attr}} src=""> -->
     {% if show %}
     <div class="card-text">
       <div class="card-text-inner">

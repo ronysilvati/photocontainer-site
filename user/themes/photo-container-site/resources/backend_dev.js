@@ -31,10 +31,9 @@ var Utils = (function(){
   }
 
   var notifications = function(){
-    return axios.get(localStorage.endpoint+'search/notifications/user/'+localStorage.user)
-      .then(function(response){
-      if (response.data.all > 0) {
-        $(".approvals").append('<span class="badge badge-danger">'+response.data.all+'</span>')
+    Utils.invokeAPI("GET", 'search/notifications/user/'+localStorage.user, function(response){
+      if (response.all > 0) {
+        $(".approvals").append('<span class="badge badge-danger">'+response.all+'</span>')
       } else {
         $(".approvals > .badge").remove()
       }
@@ -514,9 +513,8 @@ var Event = (function () {
   }
 
   var loadCategories = function (api) {
-    return axios.get(api+"search/categories")
-      .then(function (response) {
-      response.data.forEach(function(item) {
+    return Utils.invokeAPI("GET", "search/categories", function (response) {
+      response.forEach(function(item) {
         $("#categories-button-group").append('<label class="btn btn-'+((localStorage.profile==2)?'ph':'pu')+' btn-secondary btn-check btn-lg text-uppercase px-5">\
           <input name="categories[]" type="radio" autocomplete="off" value="'+item.id+'" required>'+item.description+'\
         </label> ')
@@ -525,11 +523,10 @@ var Event = (function () {
   }
 
   var loadTags = function (api, type) {
-    return axios.get(api+"search/tags")
-      .then(function (response) {
-      response.data.forEach(function(tagGroup) {
+    return Utils.invokeAPI("GET", "search/tags", function (response) {
+      response.forEach(function(tagGroup) {
 
-        if (tagGroup.id !== 12) {
+        if (tagGroup.id != 12) {
           var name = 'tags['+tagGroup.id+'][]'
           var list = '\
             <div class="form-filter-item">\
@@ -969,24 +966,29 @@ var Event = (function () {
   }
 
   var createSupplier = function () {
-    $(".supplier-add").click(function () {
+    $(".supplier-add").mouseup(function () {
       var type = $(this).data('type')
+      var checked = $(this).find('.form-check-input:checked').val();
 
-      var total = $(".suppliers-fields-fotos .form-control-fields").length
+      if (checked) {
+        $(this).removeClass('active');
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html('');
+      }else {
+        $(this).addClass('active');
+        var total = $(".suppliers-fields-fotos .form-control-fields").length
 
-      var template =
+        var template =
         '<div class="form-control-fields">\n' +
         '  <div id="campo-'+type+'"  class="form-control-close">\n' +
         '    <input name="supplier['+type+']['+total+'][name]" type="text" class="form-control" placeholder="Nome">\n' +
         '    <input name="supplier['+type+']['+total+'][url]"  type="text" class="form-control" placeholder="URL">\n' +
-        '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
-        '      <span aria-hidden="true">×</span>\n' +
-        '    </button>\n' +
         '  </div>\n' +
         '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
         '</div>'
 
-      $('.suppliers-fields-'+type+' > div').append(template)
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html(template)
+
+      }
     })
   }
 
@@ -996,19 +998,21 @@ var Event = (function () {
     for (type in suppliers) {
       var i = 0
       for (prop in suppliers[type]) {
-        var template =
-          '<div class="form-control-fields">\n' +
-          '  <div id="campo-'+type+'"  class="form-control-close">\n' +
-          '    <input name="supplier['+type+']['+i+'][name]" value="'+suppliers[type][prop].name+'" type="text" class="form-control" placeholder="Nome">\n' +
-          '    <input name="supplier['+type+']['+i+'][url]" value="'+suppliers[type][prop].url+'" type="text" class="form-control" placeholder="URL">\n' +
-          '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
-          '      <span aria-hidden="true">×</span>\n' +
-          '    </button>\n' +
-          '  </div>\n' +
-          '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
-          '</div>'
+        var total = i;
+        $('.suppliers-fields-'+type).addClass('active');
+        $(this).find('.form-check-input').prop("checked", true);
+        $(this).addClass('active');
 
-        $('.suppliers-fields-'+type+' > div').append(template)
+        var template =
+        '<div class="form-control-fields">\n' +
+        '  <div id="campo-'+type+'"  class="form-control-close">\n' +
+        '    <input name="supplier['+type+']['+total+'][name]" value="'+suppliers[type][prop].name+'" type="text" class="form-control" placeholder="Nome">\n' +
+        '    <input name="supplier['+type+']['+total+'][url]"  value="'+suppliers[type][prop].url+'" type="text" class="form-control" placeholder="URL">\n' +
+        '  </div>\n' +
+        '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
+        '</div>'
+
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html(template)
 
         i++
       }
@@ -1190,10 +1194,9 @@ var Cep = (function () {
   }
 
   var loadCep = function(api) {
-    var url = api+"location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join('')
+    var url = "location/zipcode/"+$("#input-cep").val().split('.').join('').split('-').join('')
 
-    return axios.get(url)
-      .then(function (response) {
+    return Utils.invokeAPI("GET", url, function (response) {
       $("#input-country").val(1).change()
       $("#input-state").val(response.state)
       $("#input-neighborhood").val(response.neighborhood)
@@ -1237,16 +1240,12 @@ var Photo = (function() {
         Utils.show_modal_remove(
           "Remover a foto?",
           function (params) {
-            axios.delete(localStorage.endpoint+'/'+params.url)
-              .then(function(response){
-                $("#"+params.guid).fadeOut("slow", function() {
-                  $("#"+params.guid).remove();
-                  Event.updateFeedback();
-                })
-              })
-              .catch(function (response) {
-                Utils.show_modal_alert('default', '', response.data.message)
+            Utils.invokeAPI("DELETE", params.url, function(response){
+              $("#"+params.guid).fadeOut("slow", function() {
+                $("#"+params.guid).remove();
+                Event.updateFeedback();
               });
+            });
           },
           {url: "photo/"+guid, guid: guid}
         )
