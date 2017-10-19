@@ -1159,10 +1159,12 @@ body {
     margin-left: auto;
     margin-top: 50px;
     .title {
-      font-size: 15px;
       float: right;
       line-height: 20px;
       color: #bebebe;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: initial;
     }
   }
 }
@@ -1784,6 +1786,39 @@ body {
   height:100%;
 }
 
+.page-add-gallery {
+  .form-group {
+    .supplier-add {
+      &.active {
+        color: #6B6B6B;
+        font-weight: bold;
+      }
+    }
+    &>label {
+      height: 24px;
+      margin: 10px 0;
+      .form-check {
+        float: right;
+        height: auto;
+        margin: 0;
+        .form-check-label {
+          height: auto;
+          margin: 0;
+        }
+        .form-check-input {
+          width: 0;
+          height: 0;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+    .suppliers-fields-wrap {
+      min-height: 4px;
+    }
+  }
+}
+
 .nav-item.active .photo-pin .icon-pin {display: inline!important; color: #54b6e0!important;}
 .nav-item.active .photo-pin .icon-pin-outline {display: none!important;}
 
@@ -2376,8 +2411,8 @@ body {
 
 .page-profile {
   .profile-header {
-    height: 300px;
-    background-position: center top;
+    height: 340px;
+    background-position: center;
     background-size: cover;
     position: relative;
     margin-bottom: 60px;

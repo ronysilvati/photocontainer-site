@@ -978,24 +978,29 @@ var Event = (function () {
   }
 
   var createSupplier = function () {
-    $(".supplier-add").click(function () {
+    $(".supplier-add").mouseup(function () {
       var type = $(this).data('type')
+      var checked = $(this).find('.form-check-input:checked').val();
 
-      var total = $(".suppliers-fields-fotos .form-control-fields").length
+      if (checked) {
+        $(this).removeClass('active');
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html('');
+      }else {
+        $(this).addClass('active');
+        var total = $(".suppliers-fields-fotos .form-control-fields").length
 
-      var template =
+        var template =
         '<div class="form-control-fields">\n' +
         '  <div id="campo-'+type+'"  class="form-control-close">\n' +
         '    <input name="supplier['+type+']['+total+'][name]" type="text" class="form-control" placeholder="Nome">\n' +
         '    <input name="supplier['+type+']['+total+'][url]"  type="text" class="form-control" placeholder="URL">\n' +
-        '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
-        '      <span aria-hidden="true">×</span>\n' +
-        '    </button>\n' +
         '  </div>\n' +
         '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
         '</div>'
 
-      $('.suppliers-fields-'+type+' > div').append(template)
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html(template)
+
+      }
     })
   }
 
@@ -1005,19 +1010,21 @@ var Event = (function () {
     for (type in suppliers) {
       var i = 0
       for (prop in suppliers[type]) {
-        var template =
-          '<div class="form-control-fields">\n' +
-          '  <div id="campo-'+type+'"  class="form-control-close">\n' +
-          '    <input name="supplier['+type+']['+i+'][name]" value="'+suppliers[type][prop].name+'" type="text" class="form-control" placeholder="Nome">\n' +
-          '    <input name="supplier['+type+']['+i+'][url]" value="'+suppliers[type][prop].url+'" type="text" class="form-control" placeholder="URL">\n' +
-          '    <button type="button" style="display: block" class="close" data-toggle="remove" data-target="_parent">\n' +
-          '      <span aria-hidden="true">×</span>\n' +
-          '    </button>\n' +
-          '  </div>\n' +
-          '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
-          '</div>'
+        var total = i;
+        $('.suppliers-fields-'+type).addClass('active');
+        $(this).find('.form-check-input').prop("checked", true);
+        $(this).addClass('active');
 
-        $('.suppliers-fields-'+type+' > div').append(template)
+        var template =
+        '<div class="form-control-fields">\n' +
+        '  <div id="campo-'+type+'"  class="form-control-close">\n' +
+        '    <input name="supplier['+type+']['+total+'][name]" value="'+suppliers[type][prop].name+'" type="text" class="form-control" placeholder="Nome">\n' +
+        '    <input name="supplier['+type+']['+total+'][url]"  value="'+suppliers[type][prop].url+'" type="text" class="form-control" placeholder="URL">\n' +
+        '  </div>\n' +
+        '  <label class="error msg-error" for="supplier['+type+'][]" style="display: none;"></label>\n' +
+        '</div>'
+
+        $('.suppliers-fields-'+type+' .suppliers-fields-wrap').html(template)
 
         i++
       }
