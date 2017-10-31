@@ -562,7 +562,7 @@ var Event = (function () {
     form.append("keyword", '');
 
     $('.select2-filter :selected, input[name^="tags"]:checked').each(function (i, item){
-      var name = 'tags['+$(item).data().category+'][]'
+      var name = 'tags['+$(item).parent().data().category+'][]'
       form.append(name, $(item).val())
     })
 
