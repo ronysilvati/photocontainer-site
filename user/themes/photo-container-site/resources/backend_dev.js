@@ -581,6 +581,7 @@ var Event = (function () {
 
     $.ajax(settings)
     .done(function (response) {
+      $("#gallery").html('')
       $("#gallery").append(response)
 
       if ($("#gallery > .thumb-item").length === 0) {
