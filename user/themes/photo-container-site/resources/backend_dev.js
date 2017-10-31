@@ -586,6 +586,8 @@ var Event = (function () {
 
       if ($("#gallery > .thumb-item").length === 0) {
         $(".page-gallery").addClass('no-gallery');
+      } else {
+        $(".page-gallery").removeClass('no-gallery');
       }
     })
     .fail(function (response) {
