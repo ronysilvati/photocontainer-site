@@ -6,7 +6,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
          <img src="{{ url('theme://resources/images/icon-album-modal.png') }}"/>
-         <h2 class="mt-4" >Lauro, Parabéns!</h2>
+         <h2 class="mt-4" >{{ (grav.user.fullname|split(' '))[0] }}, Parabéns!</h2>
          <h5 class="mt-4" >Seu álbum foi enviado para todas as 145 blogueiras que temos em nosso banco de dados e pedimos que aguarde até receber uma resposta.</h5>
          <p class="mt-5" >Importante saber que publicações podem levar entre 10 a 25 dias para seram aprovadas.</p>
          <a href="/gallery" class="btn btn-lg btn-green mt-4">Ok, entendido</a>
