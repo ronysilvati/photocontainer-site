@@ -24,11 +24,9 @@ class PhotoContainerPlugin extends Plugin
      */
     public static function getSubscribedEvents()
     {
-        // return [
-        //     'onPluginsInitialized' => ['onPluginsInitialized', 0],
-        // ];
-        return [
-        ];
+         return [
+             'onPluginsInitialized' => ['onPluginsInitialized', 0],
+         ];
     }
 
     /**
