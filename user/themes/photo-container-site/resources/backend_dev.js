@@ -1072,6 +1072,10 @@ var Event = (function () {
         $("#input-groom").text(data.groom)
         $("#input-title").text(data.title)
         $("#input-description").text(data.description)
+        $("#input-photographer").text(data.photographer.name)
+
+        $("#input-photographer-site a").attr('href', data.photographer.site)
+        $("#input-photographer-site a").text(data.photographer.site)
 
         var date = data.eventdate.split(' ')[0].split('-')
         $("#input-eventdate").text(date.reverse().join('/'))
