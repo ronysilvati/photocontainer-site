@@ -2,251 +2,251 @@
 
 {% block content %}
 
-<div class="app page-add-gallery">
-  {%
-  include 'partials/components/page-header.twig' with {
-    'title': 'Criar Álbum',
-    'show': ['title','nav-add-gallery'],
-    'class': 'page-header-add',
-    'class_nav_steps': 'nav-steps-ph',
-  }
-  %}
-  <div class="container">
-    <div class="tab-content">
-      <form class="tab-pane step1 fade show active" id="evento" role="tabpanel">
-        <h4 class="title mb-5">Evento</h4>
-        <h5 class="title mb-3">Selecione as categorias *</h5>
-        <div data-toggle="buttons" id="categories-button-group"></div>
-        <label class="error msg-error" for="categories[]" style="display: none;"></label>
-        <h5 class="title mb-3 mt-5">Informações do evento</h5>
-        <div class="row row-lg">
+    <div class="app page-add-gallery">
+        {%
+            include 'partials/components/page-header.twig' with {
+            'title': 'Criar Álbum',
+            'show': ['title','nav-add-gallery'],
+            'class': 'page-header-add',
+            'class_nav_steps': 'nav-steps-ph',
+        }
+        %}
+        <div class="container">
+            <div class="tab-content">
+                <form class="tab-pane step1 fade show active" id="evento" role="tabpanel">
+                    <h4 class="title mb-5">Evento</h4>
+                    <h5 class="title mb-3">Selecione as categorias *</h5>
+                    <div data-toggle="buttons" id="categories-button-group"></div>
+                    <label class="error msg-error" for="categories[]" style="display: none;"></label>
+                    <h5 class="title mb-3 mt-5">Informações do evento</h5>
+                    <div class="row row-lg">
 
-          <!-- COL 1 -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Nome da noiva *</label>
-              <input id="input-bride" name="input-bride" type="text" class="form-control" required>
-              <label class="error msg-error" for="input-bride" style="display: none;"></label>
-            </div>
-            <div class="form-group">
-              <label>Nome do noivo *</label>
-              <input id="input-groom" name="input-groom" type="text" class="form-control" required>
-              <label class="error msg-error" for="input-groom" style="display: none;"></label>
-            </div>
-            <label>Data do evento *</label>
-            <div class="row row-xs">
-              <div class="col-3">
-                <div class="form-group">
-                  <select id="select-day" name="select-day" class="form-control" required>
-                    <option selected="true" value="" disabled="disabled">Dia</option>
-                    {% for day in 1..31 %}
-                    <option value="{{ day }}">{{ day }}</option>
-                    {% endfor %}
-                  </select>
-                  <label class="error msg-error" for="select-day" style="display: none;"></label>
-                </div>
-              </div>
-              <div class="col-5">
-                <div class="form-group">
-                  <select id="select-month" name="select-month" class="form-control" required>
-                    <option selected="true" disabled="disabled">Mês</option>
-                    <option value="01">Janeiro</option>
-                    <option value="02">Fevereiro</option>
-                    <option value="03">Março</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Maio</option>
-                    <option value="06">Junho</option>
-                    <option value="07">Julho</option>
-                    <option value="08">Agosto</option>
-                    <option value="09">Setembro</option>
-                    <option value="10">Outubro</option>
-                    <option value="11">Novembro</option>
-                    <option value="12">Dezembro</option>
-                  </select>
-                  <label class="error msg-error" for="select-month" style="display: none;"></label>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="form-group">
-                  <select id="select-year" name="select-year" class="form-control" required>
-                    <option selected="true" disabled="disabled">Ano</option>
-                    {% for year in 2013.."now"|date("Y") %}
-                    <option value="{{ year }}">{{ year }}</option>
-                    {% endfor %}
-                  </select>
-                  <label class="error msg-error" for="select-year" style="display: none;"></label>
-                </div>
-              </div>
-            </div>
-          </div>
+                        <!-- COL 1 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Nome da noiva *</label>
+                                <input id="input-bride" name="input-bride" type="text" class="form-control" required>
+                                <label class="error msg-error" for="input-bride" style="display: none;"></label>
+                            </div>
+                            <div class="form-group">
+                                <label>Nome do noivo *</label>
+                                <input id="input-groom" name="input-groom" type="text" class="form-control" required>
+                                <label class="error msg-error" for="input-groom" style="display: none;"></label>
+                            </div>
+                            <label>Data do evento *</label>
+                            <div class="row row-xs">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <select id="select-day" name="select-day" class="form-control" required>
+                                            <option selected="true" value="" disabled="disabled">Dia</option>
+                                            {% for day in 1..31 %}
+                                                <option value="{{ day }}">{{ day }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <label class="error msg-error" for="select-day" style="display: none;"></label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <select id="select-month" name="select-month" class="form-control" required>
+                                            <option selected="true" disabled="disabled">Mês</option>
+                                            <option value="01">Janeiro</option>
+                                            <option value="02">Fevereiro</option>
+                                            <option value="03">Março</option>
+                                            <option value="04">Abril</option>
+                                            <option value="05">Maio</option>
+                                            <option value="06">Junho</option>
+                                            <option value="07">Julho</option>
+                                            <option value="08">Agosto</option>
+                                            <option value="09">Setembro</option>
+                                            <option value="10">Outubro</option>
+                                            <option value="11">Novembro</option>
+                                            <option value="12">Dezembro</option>
+                                        </select>
+                                        <label class="error msg-error" for="select-month" style="display: none;"></label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <select id="select-year" name="select-year" class="form-control" required>
+                                            <option selected="true" disabled="disabled">Ano</option>
+                                            {% for year in 2013.."now"|date("Y") %}
+                                                <option value="{{ year }}">{{ year }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <label class="error msg-error" for="select-year" style="display: none;"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-          <!-- COL 2 -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>País *</label>
-              <select id="input-country" name="input-country" class="form-control" required>
-                <option selected="" value="" disabled="disabled">Selecione</option>
-              </select>
-              <label class="error msg-error" for="input-country" style="display: none;"></label>
-            </div>
-            <div class="localization-extra-fields" style="display: none">
-              <div class="form-group">
-                <label>Estado *</label>
-                <select id="input-state" name="input-state" class="form-control" required>
-                  <option selected="true" disabled="disabled">Selecione</option>
-                </select>
-                <label class="error msg-error" for="input-state" style="display: none;"></label>
-              </div>
-              <div class="form-group">
-                <label>Cidade *</label>
-                <select id="input-city" name="input-city" class="form-control" required>
-                  <option selected="true" disabled="disabled">Selecione</option>
-                </select>
-                <label class="error msg-error" for="input-city" style="display: none;"></label>
-              </div>
-            </div>
-          </div>
+                        <!-- COL 2 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>País *</label>
+                                <select id="input-country" name="input-country" class="form-control" required>
+                                    <option selected="" value="" disabled="disabled">Selecione</option>
+                                </select>
+                                <label class="error msg-error" for="input-country" style="display: none;"></label>
+                            </div>
+                            <div class="localization-extra-fields" style="display: none">
+                                <div class="form-group">
+                                    <label>Estado *</label>
+                                    <select id="input-state" name="input-state" class="form-control" required>
+                                        <option selected="true" disabled="disabled">Selecione</option>
+                                    </select>
+                                    <label class="error msg-error" for="input-state" style="display: none;"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cidade *</label>
+                                    <select id="input-city" name="input-city" class="form-control" required>
+                                        <option selected="true" disabled="disabled">Selecione</option>
+                                    </select>
+                                    <label class="error msg-error" for="input-city" style="display: none;"></label>
+                                </div>
+                            </div>
+                        </div>
 
-          <!-- COL 3 -->
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Título *</label>
-              <input id="input-title" name="input-title" type="text" class="form-control" required>
-              <label class="error msg-error" for="input-title" style="display: none;"></label>
-            </div>
-            <div class="form-group">
-              <label>
-                Descrição *
-                <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Descreva o melhor possível o evento."><i class="icon-help-circled"></i></a>
-              </label>
-              <textarea id="input-description" name="input-description" class="form-control" required></textarea>
-              <label class="error msg-error" for="input-description" style="display: none;"></label>
-            </div>
-          </div>
+                        <!-- COL 3 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Título *</label>
+                                <input id="input-title" name="input-title" type="text" class="form-control" required>
+                                <label class="error msg-error" for="input-title" style="display: none;"></label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Descrição *
+                                    <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Descreva o melhor possível o evento."><i class="icon-help-circled"></i></a>
+                                </label>
+                                <textarea id="input-description" name="input-description" class="form-control" required></textarea>
+                                <label class="error msg-error" for="input-description" style="display: none;"></label>
+                            </div>
+                        </div>
 
-        </div>
+                    </div>
 
-        <h5 class="title mb-3 mt-5">Preferências *</h5>
-        <div class="form-check d-block">
-          <label class="form-check-label ">
-            <input id="input-approval-general" name="input-approval" type="radio" class="form-check-input" required>
-            <span>Liberado para publicação</span>
-          </label>
-          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria é liberada para todos os publishers baixarem as fotos imediatamente."><i class="icon-help-circled"></i></a>
-          <!-- <label class="error msg-error" for="input-approval-general" style="display: none;"></label> -->
-        </div>
-        <div class="form-check d-block">
-          <label class="form-check-label">
-            <input id="input-approval-photographer" name="input-approval" type="radio" class="form-check-input" required>
-            <span>Necessita liberação do fotógrafo</span>
-          </label>
-          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
-          <!-- <label class="error msg-error" for="input-approval" style="display: none;"></label> -->
-        </div>
-        <div class="form-check d-block">
-          <label class="form-check-label">
-            <input id="input-approval-bride" name="input-approval" type="radio" class="form-check-input" required>
-            <span>Necessita liberação dos noivos</span>
-          </label>
-          <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo, com o consentimento dos noivos, para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
-          <label class="error msg-error" for="input-approval" style="display: none;"></label>
-        </div>
+                    <h5 class="title mb-3 mt-5">Preferências *</h5>
+                    <div class="form-check d-block">
+                        <label class="form-check-label ">
+                            <input id="input-approval-general" name="input-approval" type="radio" class="form-check-input" required>
+                            <span>Liberado para publicação</span>
+                        </label>
+                        <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria é liberada para todos os publishers baixarem as fotos imediatamente."><i class="icon-help-circled"></i></a>
+                        <!-- <label class="error msg-error" for="input-approval-general" style="display: none;"></label> -->
+                    </div>
+                    <div class="form-check d-block">
+                        <label class="form-check-label">
+                            <input id="input-approval-photographer" name="input-approval" type="radio" class="form-check-input" required>
+                            <span>Necessita liberação do fotógrafo</span>
+                        </label>
+                        <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
+                        <!-- <label class="error msg-error" for="input-approval" style="display: none;"></label> -->
+                    </div>
+                    <div class="form-check d-block">
+                        <label class="form-check-label">
+                            <input id="input-approval-bride" name="input-approval" type="radio" class="form-check-input" required>
+                            <span>Necessita liberação dos noivos</span>
+                        </label>
+                        <a class="btn-help" data-toggle="tooltip" data-placement="top" title="Esta galeria deve ser liberada pelo fotógrafo, com o consentimento dos noivos, para cada publisher que quiser baixar as fotos."><i class="icon-help-circled"></i></a>
+                        <label class="error msg-error" for="input-approval" style="display: none;"></label>
+                    </div>
 
-        <div>
-          <label>
-            <span><a target="_blank" href="/DireitosAutorais.pdf" class="link">Declaração de Direitos Autorais e Uso de Imagem</a></span>
-          </label>
-        </div>
+                    <div>
+                        <label>
+                            <span><a target="_blank" href="/DireitosAutorais.pdf" class="link">Declaração de Direitos Autorais e Uso de Imagem</a></span>
+                        </label>
+                    </div>
 
-        <!-- <div class="form-check">
-          <label class="form-check-label">
-            <input id="input-terms" name="input-terms" type="checkbox" class="form-check-input" required>
-            <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
-          </label>
-          <label class="error msg-error" for="input-terms" style="display: none;"></label>
-        </div> -->
-      </form>
-      <form class="tab-pane step2 fade" id="fornecedores" role="tabpanel">
-        <h5 class="title mt-5">Informações do evento</h5>
-        <p class="mb-5 text-muted" <small="">Publishers gostam de ter acesso à maior quantidade possível de informação. Preencha estes campos com carinho e aumente suas chances de ser publicado!</p>
+                    <!-- <div class="form-check">
+                      <label class="form-check-label">
+                        <input id="input-terms" name="input-terms" type="checkbox" class="form-check-input" required>
+                        <span>Aceito os <a class="link">Termos e Condições de uso</a></span>
+                      </label>
+                      <label class="error msg-error" for="input-terms" style="display: none;"></label>
+                    </div> -->
+                </form>
+                <form class="tab-pane step2 fade" id="fornecedores" role="tabpanel">
+                    <h5 class="title mt-5">Informações do evento</h5>
+                    <p class="mb-5 text-muted" <small="">Publishers gostam de ter acesso à maior quantidade possível de informação. Preencha estes campos com carinho e aumente suas chances de ser publicado!</p>
 
-        <div class="row row-lg">
+                    <div class="row row-lg">
 
-            {%
-            set forn_labels = [
-                ['Fotos', 'fotos'],
-                ['Filmagem', 'filmagem'],
-                ['Cerimonial', 'cerimonial'],
-                ['Decoração', 'decoracao'],
-                ['Lista de presentes', 'presentes'],
-                ['Buffet', 'buffet'],
-                ['Doces', 'doces'],
-                ['Bebidas', 'bebidas'],
-                ['Música', 'musica'],
-                ['Salão de festa', 'festa'],
-                ['Salão de beleza', 'beleza'],
-                ['Roupas', 'roupas'],
-                ['Sapatos', 'sapatos'],
-                ['Alianças', 'aliancas'],
-                ['Local cerimônia', 'local']
-              ]
-            %}
-            {% set forn_max =   5 %}
-            {% set forn_count = 0 %}
-            {% set forn_total = 0 %}
+                        {%
+                            set forn_labels = [
+                            ['Fotos', 'fotos'],
+                            ['Filmagem', 'filmagem'],
+                            ['Cerimonial', 'cerimonial'],
+                            ['Decoração', 'decoracao'],
+                            ['Lista de presentes', 'presentes'],
+                            ['Buffet', 'buffet'],
+                            ['Doces', 'doces'],
+                            ['Bebidas', 'bebidas'],
+                            ['Música', 'musica'],
+                            ['Salão de festa', 'festa'],
+                            ['Salão de beleza', 'beleza'],
+                            ['Roupas', 'roupas'],
+                            ['Sapatos', 'sapatos'],
+                            ['Alianças', 'aliancas'],
+                            ['Local cerimônia', 'local']
+                        ]
+                        %}
+                        {% set forn_max =   5 %}
+                        {% set forn_count = 0 %}
+                        {% set forn_total = 0 %}
 
-            {% for value in forn_labels %}
-              {% if forn_count == 0 %}
-                <div class="col-md-4">
-              {% endif %}
-              {% set forn_count = forn_count+1 %}
-              {% set forn_total = forn_total+1 %}
-            <div class="form-group suppliers-fields-{{ value[1] }}">
-              <label class="supplier-add btn-add-field-{{ value[1] }}" data-type="{{ value[1] }}">
-                {{ value[0] }}
+                        {% for value in forn_labels %}
+                            {% if forn_count == 0 %}
+                                <div class="col-md-4">
+                            {% endif %}
+                            {% set forn_count = forn_count+1 %}
+                            {% set forn_total = forn_total+1 %}
+                            <div class="form-group suppliers-fields-{{ value[1] }}">
+                                <label class="supplier-add btn-add-field-{{ value[1] }}" data-type="{{ value[1] }}">
+                                    {{ value[0] }}
 
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input">
-                    <span></span>
-                  </label>
-                </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <span></span>
+                                        </label>
+                                    </div>
 
-              </label>
-              <div class="suppliers-fields-wrap"></div>
-            </div>
-            {% if (forn_count == forn_max) or (forn_total == 15) %}
-              </div>
-              {% set forn_count = 0 %}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </form>
-      <form class="tab-pane step3 fade" id="caracteristicas" role="tabpanel">
-        <h4 class="title mb-4">Características</h4>
-        {% include 'partials/components/filters.twig' with {'validate':1} %}
-      </form>
-      <form class="tab-pane step4 fade" id="fotos" role="tabpanel">
+                                </label>
+                                <div class="suppliers-fields-wrap"></div>
+                            </div>
+                            {% if (forn_count == forn_max) or (forn_total == 15) %}
+                                </div>
+                                {% set forn_count = 0 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </form>
+                <form class="tab-pane step3 fade" id="caracteristicas" role="tabpanel">
+                    <h4 class="title mb-4">Características</h4>
+                    {% include 'partials/components/filters.twig' with {'validate':1} %}
+                </form>
+                <form class="tab-pane step4 fade" id="fotos" role="tabpanel">
 
-        <div class="upload-area-inner drop-feedback" style="pointer-events: none; display: none;">
-          <i class="icon-alert"></i>
-          <h2 class="mb-5 text-uppercase">Você selecionou mais 30 imagens</h2>
-          <h6 class="text-muted">Somente as 30 primeiras serão adicionadas ao álbum.</h6>
-          <h6 class="text-muted">Para enviar uma nova foto, exclua uma que ainda não foi utilizada.</h6>
-        </div>
+                    <div class="upload-area-inner drop-feedback" style="pointer-events: none; display: none;">
+                        <i class="icon-alert"></i>
+                        <h2 class="mb-5 text-uppercase">Você selecionou mais 30 imagens</h2>
+                        <h6 class="text-muted">Somente as 30 primeiras serão adicionadas ao álbum.</h6>
+                        <h6 class="text-muted">Para enviar uma nova foto, exclua uma que ainda não foi utilizada.</h6>
+                    </div>
 
-        <div class="upload-area">
-          <!-- <div class="upload-area-inner drop-area" style="pointer-events: none;">
-            <i class="icon-upload"></i>
-            <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
-            <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
-            <div class="dropzone-feedback"></div>
-            <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
-          </div> -->
+                    <div class="upload-area">
+                        <!-- <div class="upload-area-inner drop-area" style="pointer-events: none;">
+                          <i class="icon-upload"></i>
+                          <h2 class="mb-5 text-uppercase">Arraste suas fotos para esta área</h2>
+                          <h6 class="text-muted text-uppercase">Ou busque no seu HD</h6>
+                          <div class="dropzone-feedback"></div>
+                          <button class="btn btn-ph px-5" id="btn-buscar" style="pointer-events: none;">Buscar</button>
+                        </div> -->
 
-          <div class="upload-area-inner drop-area" style="pointer-events: none;">
-            <h2 class="mb-3 text-uppercase">Arraste suas fotos para esta área</h2>
-              <i class="icon-upload" style="
+                        <div class="upload-area-inner drop-area" style="pointer-events: none;">
+                            <h2 class="mb-3 text-uppercase">Arraste suas fotos para esta área</h2>
+                            <i class="icon-upload" style="
               display: block;
               width: 200px;
               border: 9px dashed #54b6e0;
@@ -254,133 +254,139 @@
               line-height: 234px;
               margin: 20px auto;
               "></i>
-            <h6 class="mt-4 text-uppercase">Ou busque no seu HD</h6>
-            <button class="btn btn-ph px-5 mt-1" id="btn-buscar" style="pointer-events: none;">Buscar</button>
-            <div class="mt-4 dropzone-feedback">Você já enviou 0 foto de 30 permitida.</div>
-            <h6 class="mt-3">Tamanho das fotos: 1280x800 máximo 2mb</h6>
-            <h6 class="mt-3 error-msg" style="display: none">Detectados arquivos com mais 2mb, estes arquivos não foram enviados.</h6>
-          </div>
+                            <h6 class="mt-4 text-uppercase">Ou busque no seu HD</h6>
+                            <button class="btn btn-ph px-5 mt-1" id="btn-buscar" style="pointer-events: none;">Buscar</button>
+                            <div class="mt-4 dropzone-feedback">Você já enviou 0 foto de 30 permitida.</div>
+
+                            <!-- DEPRECATED ON 22062018 -->
+                            <!--
+                            <h6 class="mt-3">Tamanho das fotos: 1280x800 máximo 2mb</h6>
+                            <h6 class="mt-3 error-msg" style="display: none">Detectados arquivos com mais 2mb, estes arquivos não foram enviados.</h6>
+                            -->
+                        </div>
+                    </div>
+                    <div class="row row-sm"  id="previews">
+                        {%
+                            include 'partials/components/thumb-gallery.twig' with {
+                            'type': 'dropzone',
+                            'id': 'template',
+                            'img_attr': 'data-dz-thumbnail',
+                            'remove_attr': 'data-dz-remove',
+                            'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
+                            'show': [
+                                'nav',
+                                'upload_progress'
+                            ],
+                            'nav': [
+                                'pin',
+                                'trash'
+                            ]
+                        }
+                        %}
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="row row-sm"  id="previews">
-          {%
-          include 'partials/components/thumb-gallery.twig' with {
-            'type': 'dropzone',
-            'id': 'template',
-            'img_attr': 'data-dz-thumbnail',
-            'remove_attr': 'data-dz-remove',
-            'col': 'col-lg-3 col-md-4 col-sm-6 col-12',
-            'show': [
-              'nav',
-              'upload_progress'
-            ],
-            'nav': [
-              'pin',
-              'trash'
-            ]
-          }
-          %}
-        </div>
-      </form>
+
+        {% include 'partials/components/add-gallery-footer.twig' %}
     </div>
-  </div>
+    <style media="screen">
+        .nav-item.active .photo-pin .icon-pin {display: inline!important; color: #54b6e0!important;}
+        .nav-item.active .photo-pin .icon-pin-outline {display: none!important;}
+    </style>
 
-  {% include 'partials/components/add-gallery-footer.twig' %}
-</div>
-<style media="screen">
-  .nav-item.active .photo-pin .icon-pin {display: inline!important; color: #54b6e0!important;}
-  .nav-item.active .photo-pin .icon-pin-outline {display: none!important;}
-</style>
+    <script>
+        $( document ).ready(function() {
+            $.when(Event.loadCategories(localStorage.endpoint))
+                .then(Event.loadTags(localStorage.endpoint, 'radio'))
+                .then(Cep.loadCountries(localStorage.endpoint))
+                .then(Event.loadEvent(localStorage.endpoint))
 
-<script>
-$( document ).ready(function() {
-  $.when(Event.loadCategories(localStorage.endpoint))
-    .then(Event.loadTags(localStorage.endpoint, 'radio'))
-      .then(Cep.loadCountries(localStorage.endpoint))
-        .then(Event.loadEvent(localStorage.endpoint))
+            $("#input-country").on('change', function (e) {
+                if ($("#input-country :selected").val() == 1) {
+                    $('.localization-extra-fields').show()
+                } else {
+                    $('.localization-extra-fields').hide()
 
-  $("#input-country").on('change', function (e) {
-    if ($("#input-country :selected").val() == 1) {
-      $('.localization-extra-fields').show()
-    } else {
-      $('.localization-extra-fields').hide()
+                    $('.localization-extra-fields :input').each(function(){
+                        $(this).val('')
+                    })
+                }
+            })
 
-      $('.localization-extra-fields :input').each(function(){
-        $(this).val('')
-      })
-    }
-  })
+            Event.createHandler(localStorage.endpoint, localStorage.user);
+            Event.createSupplier()
+            Event.updateFeedback();
 
-  Event.createHandler(localStorage.endpoint, localStorage.user);
-  Event.createSupplier()
-  Event.updateFeedback();
+            $('.end-add-gallery-tab').on('click',function(){
+                window.location.href = '/success?id='+Event.id;
+            });
 
-  $('.end-add-gallery-tab').on('click',function(){
-      window.location.href = '/success?id='+Event.id;
-  });
+            var previewNode = document.querySelector("#template");
+            var previewTemplate = previewNode.parentNode.innerHTML;
+            previewNode.parentNode.removeChild(previewNode);
+            new Dropzone(".upload-area", {
+                uploadMultiple: true,
+                maxFiles: Event.maxFilesLimit,
+                acceptedFiles: ".png, .jpg, .jpeg",
+                parallelUploads: 10,
+                // DEPRECATED ON 22062018
+                //maxFilesize: 2,
+                url: localStorage.endpoint+'photo',
+                previewTemplate: previewTemplate,
+                previewsContainer: "#previews",
+                // DEPRECATED ON 22062018
+                //dictFileTooBig: 'dictFileTooBig',
+                init: function() {
+                    this.on("success", function(file, responseText) {
+                        if (responseText.length === 0) {
+                            return;
+                        }
 
-  var previewNode = document.querySelector("#template");
-  var previewTemplate = previewNode.parentNode.innerHTML;
-  previewNode.parentNode.removeChild(previewNode);
-  new Dropzone(".upload-area", {
-      uploadMultiple: true,
-      maxFiles: Event.maxFilesLimit,
-      acceptedFiles: ".png, .jpg, .jpeg",
-      parallelUploads: 10,
-      maxFilesize: 2,
-      url: localStorage.endpoint+'photo',
-      previewTemplate: previewTemplate,
-      previewsContainer: "#previews",
-      dictFileTooBig: 'dictFileTooBig',
-      init: function() {
-          this.on("success", function(file, responseText) {
-              if (responseText.length === 0) {
-                return;
-              }
+                        console.log(responseText);
+                        console.log(file);
+                        file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
+                        console.info("success");
+                        Event.updateFeedback();
+                    });
+                    this.on('sending', function(file, xhr, formData) {
+                        formData.append('event_id', Event.id);
+                        console.info("sending");
+                    });
+                    this.on("queuecomplete", function (file) {
+                        $('.end-add-gallery-tab').prop("disabled", false);
+                        console.info("queuecomplete");
+                        Event.loadPhotos();
+                    });
+                    this.on("addedfile", function(file) {
+                        console.info("addedfile");
+                    });
+                    this.on("processing", function(file) {
+                        $('.end-add-gallery-tab').prop("disabled", true);
+                        console.info("processing");
+                    });
+                    this.on("removedfile", function(file) {
+                        Event.updateFeedback();
+                        console.info("removedfile");
+                    });
+                    this.on("error", function(file, message) {
+                        if (message === 'dictFileTooBig') {
+                            $('.error-msg').show()
+                        }
 
-              console.log(responseText);
-              console.log(file);
-              file.previewElement.attributes["0"].nodeValue = responseText[0].filename.substr(0,36);
-              console.info("success");
-              Event.updateFeedback();
-          });
-          this.on('sending', function(file, xhr, formData) {
-              formData.append('event_id', Event.id);
-              console.info("sending");
-          });
-          this.on("queuecomplete", function (file) {
-              $('.end-add-gallery-tab').prop("disabled", false);
-              console.info("queuecomplete");
-              Event.loadPhotos();
-          });
-          this.on("addedfile", function(file) {
-              console.info("addedfile");
-          });
-          this.on("processing", function(file) {
-              $('.end-add-gallery-tab').prop("disabled", true);
-              console.info("processing");
-          });
-          this.on("removedfile", function(file) {
-              Event.updateFeedback();
-              console.info("removedfile");
-          });
-          this.on("error", function(file, message) {
-              if (message === 'dictFileTooBig') {
-                $('.error-msg').show()
-              }
+                        this.removeFile(file);
+                        console.error(message);
+                    });
+                },
+                method: "POST",
+                withCredentials: false,
+                headers: {
+                    "Cache-Control": null,
+                    "X-Requested-With": null
+                }
+            });
 
-              this.removeFile(file);
-              console.error(message);
-          });
-      },
-      method: "POST",
-      withCredentials: false,
-      headers: {
-          "Cache-Control": null,
-          "X-Requested-With": null
-      }
-  });
-
-})
-</script>
+        })
+    </script>
 
 {% endblock %}
